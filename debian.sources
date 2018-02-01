@@ -1,0 +1,9 @@
+deb http://mirrors.digitalocean.com/debian sid main contrib non-free
+deb-src http://mirrors.digitalocean.com/debian sid main contrib non-free
+
+# deb http://security.debian.org/ sid/updates main
+# deb-src http://security.debian.org/ sid/updates main
+
+# docker
+deb [arch=amd64] https://download.docker.com/linux/debian jessie edge
+# deb-src [arch=amd64] https://download.docker.com/linux/debian jessie edge

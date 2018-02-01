@@ -1,0 +1,52 @@
+[user]
+	name = Avelino
+	email = t@avelino.xxx
+	signingkey = 2E98180A
+[github]
+	user = avelino
+[color]
+	ui = auto
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	new = green bold
+[core]
+	excludesfile = /Users/avelino/.gitignore_global
+	editor = emacsclient -t -a=\\\"\\\" --socket-name avelino
+[merge]
+	tool = ediff
+	log = true
+[mergetool "ediff"]
+	cmd = emacsclient -c -a \"\"  --eval \"(ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" nil \\\"$MERGED\\\")\"
+[alias]
+	st = status -sb
+	ci = commit -v
+	commit = commit -v
+	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
+	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
+	url =! bash -c 'git config --get remote.origin.url | sed -E "s/.+:\\(.+\\)\\.git$/https:\\\\/\\\\/github\\\\.com\\\\/\\\\1/g"'
+	change = codereview change
+	gofmt = codereview gofmt
+	mail = codereview mail
+	pending = codereview pending
+	submit = codereview submit
+	sync = codereview sync
+[push]
+	default = current
+[apply]
+	whitespace = fix
+[credential]
+	helper = keychain
+[gpg]
+	program = gpg2
+[commit]
+	gpgsign = false
+[http]
+	cookiefile = /home/avelino/.gitcookies
+[url "https://github.com/"]
+	insteadOf = git://github.com/
