@@ -115,18 +115,14 @@ fi
 eval $(keychain --agents ssh --eval id_rsa)
 
 # GOLANG
-export GOPATH=$HOME/data
-export GOCACHE=$HOME/data/cache
+export GOPATH=$HOME
+export GOCACHE=$HOME/cache
 
 # Python
-export WORKON_HOME=$HOME/data/.virtualenvs
+export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
-export PROJECT_HOME=$HOME/data/src
+export PROJECT_HOME=$HOME/src
 source /usr/local/bin/virtualenvwrapper.sh
 
 # PATH
-export PATH=/home/avelino/data/bin:$PATH
-
-# Pivotal
-export PIVOTAL_TOKEN='64d12b95565bf79421aeacccfb683a73'
-
+export PATH=/home/avelino/bin:$PATH
