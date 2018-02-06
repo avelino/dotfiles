@@ -104,6 +104,7 @@ alias vi="emacsclient -nw --socket-name avelino"
 alias es="emacs --eval '(setq server-name \"avelino\")' --daemon"
 alias esk="killall emacs"
 alias emacs="emacs -nw"
+alias htop="TERM=tmux htop"
 
 if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
     source ~/.gnupg/.gpg-agent-info
