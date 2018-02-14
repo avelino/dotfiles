@@ -17,3 +17,6 @@ git clone git://github.com/avelino/.emacs.git ~/.emacs.d
 
 ## vim
 curl 'http://vim-bootstrap.com/generate.vim' --data 'langs=javascript&langs=html&langs=python&langs=go&langs=lua&langs=rust&editor=vim' > ~/.vimrc
+
+## golang install bins
+./golang.sh
