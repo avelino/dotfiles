@@ -73,9 +73,7 @@ dkms						install
 dmidecode					install
 dmsetup						install
 dnsutils					install
-do-agent					install
 doc-debian					install
-docker-ce					install
 docutils-common					deinstall
 dpkg						install
 dpkg-dev					install
@@ -90,10 +88,6 @@ emacs25-common					install
 emacs25-el					install
 emacsen-common					install
 euca2ools					deinstall
-exim4						install
-exim4-base					install
-exim4-config					install
-exim4-daemon-light				install
 exuberant-ctags					install
 fakeroot					install
 fdisk						install
@@ -501,7 +495,6 @@ libpython2.7-minimal:amd64			install
 libpython2.7-stdlib:amd64			install
 libpython3-dev:amd64				install
 libpython3-stdlib:amd64				install
-libpython3.4-minimal:amd64			deinstall
 libpython3.6:amd64				install
 libpython3.6-dev:amd64				install
 libpython3.6-minimal:amd64			install
@@ -539,7 +532,6 @@ libssh2-1:amd64					install
 libssl1.0.0:amd64				install
 libssl1.0.2:amd64				install
 libssl1.1:amd64					install
-libstd-rust-1.23:amd64				install
 libstd-rust-dev:amd64				install
 libstdc++-7-dev:amd64				install
 libstdc++6:amd64				install
@@ -624,12 +616,10 @@ libxtst6:amd64					install
 libyaml-0-2:amd64				install
 linux-base					install
 linux-compiler-gcc-7-x86			install
-linux-headers-4.14.0-3-amd64			install
 linux-headers-4.14.0-3-common			install
 linux-headers-amd64				install
 linux-image-3.16.0-4-amd64			deinstall
 linux-image-3.16.0-5-amd64			install
-linux-image-4.14.0-3-amd64			install
 linux-image-amd64				install
 linux-kbuild-4.14				install
 linux-libc-dev:amd64				install
@@ -769,8 +759,6 @@ python3-urllib3					install
 python3-wheel					install
 python3-xdg					install
 python3-yaml					install
-python3.4					deinstall
-python3.4-minimal				deinstall
 python3.6					install
 python3.6-dev					install
 python3.6-minimal				install
