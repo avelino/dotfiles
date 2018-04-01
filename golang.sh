@@ -29,3 +29,6 @@ do
     echo "Install/Upgrade ${package}"
     go get -u  $package && go install $package
 done
+
+# go meta linter install/update
+gometalinter --install --update
