@@ -1,9 +1,15 @@
-deb http://ftp.br.debian.org/debian sid main contrib non-free
-deb-src http://ftp.br.debian.org/debian sid main contrib non-free
+deb http://ftp.br.debian.org/debian/ jessie main contrib non-free
+deb-src http://ftp.br.debian.org/debian/ jessie main contrib non-free
 
-# deb http://security.debian.org/ sid/updates main
-# deb-src http://security.debian.org/ sid/updates main
+deb http://security.debian.org/ jessie/updates main contrib non-free
+deb-src http://security.debian.org/ jessie/updates main contrib non-free
 
-# docker
-deb [arch=amd64] https://download.docker.com/linux/debian jessie edge
-# deb-src [arch=amd64] https://download.docker.com/linux/debian jessie edge
+# jessie-updates, previously known as 'volatile'
+deb http://ftp.br.debian.org/debian/ jessie-updates main contrib non-free
+deb-src http://ftp.br.debian.org/debian/ jessie-updates main contrib non-free
+
+deb http://ftp.br.debian.org/debian jessie-backports main contrib non-free
+deb http://ftp.br.debian.org/debian jessie-backports-sloppy main contrib non-free
+deb [arch=amd64] https://download.docker.com/linux/debian jessie stable
+deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main
+deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main
