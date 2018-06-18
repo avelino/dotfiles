@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+DROPBOX_FOLDERS[0]=$HOME
+DROPBOX_FOLDERS[1]=$HOME/mnt/dropbox-nuveo/.dropbox-alt
+DAEMON=/home/$USER/.dropbox-dist/dropboxd
+unset DISPLAY
+
+start() {
+    echo "Starting dropbox..."
+    for DROPBOX_HOME in ${DROPBOX_FOLDERS[@]}; do
+	echo "=> dropboxd ${DROPBOX_HOME}"
+	HOME=${DROPBOX_HOME} nohup /home/$USER/.dropbox-dist/dropboxd &
+    done
+}
+
+stop() {
+    echo "Stopping dropbox..."
+    for dbpid in $(pgrep -u avelino dropbox); do
+	echo "=> dropboxd kill pid: ${dbpid}"
+	kill -9 ${dbpid}
+    done
+}
+
+status() {
+    echo "Status dropbox..."
+    for dbpid in $(pgrep -u avelino dropbox); do
+	echo "=> dropboxd pid: ${dbpid}"
+    done
+}
+
+case "${1}" in
+    start)
+	start
+	sleep 1
+	status
+	;;
+
+    stop)
+	stop
+	sleep 1
+	;;
+
+    restart|reload|force-reload)
+	stop
+	start
+	sleep 1
+	status
+	;;
+
+    status)
+	status
+	;;
+
+    *)
+	echo "Usage: dropbox-service {start|stop|reload|force-reload|restart|status}"
+	exit 1
+
+esac
+
+exit 0
