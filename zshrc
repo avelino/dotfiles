@@ -3,13 +3,7 @@ export ZSH=/home/avelino/.oh-my-zsh
 
 ZSH_THEME="lambda"
 
-plugins=(
-    git
-    zsh-syntax-highlighting
-    sudo
-    command-not-found
-    history
-)
+plugins=()
 
 source $ZSH/oh-my-zsh.sh
 
