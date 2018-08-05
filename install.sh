@@ -10,6 +10,7 @@ sudo dselect update && sudo dpkg --set-selections < debian.packages && sudo apt-
 ln -s gitconfig ~/.gitconfig
 ln -s tmux.conf ~/.tmux.conf
 ln -s zshrc ~/.zshrc
+ln -s fzf.zsh ~/.fzf.zsh
 
 ## emacs
 git clone git://github.com/avelino/.emacs.git ~/.emacs.d
