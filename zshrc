@@ -1,7 +1,9 @@
 # OHMYZSH Load
-export ZSH=/home/avelino/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
+export ZSH_CUSTOM=$HOME/dotfiles/zsh_custom
+export TERM=xterm-256color
 
-ZSH_THEME="lambda"
+ZSH_THEME="yan"
 
 plugins=()
 
@@ -14,6 +16,7 @@ TZ='America/Sao_Paulo'; export TZ
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+alias g=git
 alias G=g
 alias e="emacsclient -nw --socket-name avelino"
 alias vi="emacsclient -nw --socket-name avelino"
@@ -28,8 +31,9 @@ if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
     source ~/.gnupg/.gpg-agent-info
     export GPG_AGENT_INFO
 else
-    eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
+    eval $(gpg-agent --daemon ~/.gnupg/.gpg-agent-info)
 fi
+export GPG_TTY=$(tty)
 
 eval $(keychain --agents ssh --eval id_rsa)
 
@@ -49,8 +53,6 @@ source /usr/share/virtualenvwrapper/virtualenvwrapper_lazy.sh
 
 # Java
 export JAVA_HOME="/usr/lib/jvm/default-java"
-unset http_proxy
-unset https_proxy
 
 # PATH
 export PATH=/usr/local/go/bin:$PROJECT_PATH/bin:$HOME/.local/bin:$PATH
