@@ -24,20 +24,22 @@ brew "coreutils"
 brew "docker"
 brew "ffmpeg"
 brew "fzf"
+brew "git"
 brew "glew"
 brew "gnupg", link: false
 brew "go"
 brew "htop"
 brew "hugo"
-brew "libimobiledevice", args: ["HEAD"]
+brew "libimobiledevice"
 brew "ideviceinstaller"
-brew "imagemagick"
+brew "imagemagick@6"
 brew "keychain"
 brew "kompose"
 brew "kubernetes-cli"
 brew "leiningen"
 brew "libarchive"
 brew "libogg"
+brew "libtensorflow"
 brew "libvorbis"
 brew "lua@5.1"
 brew "mas"
@@ -52,7 +54,6 @@ brew "node"
 brew "offlineimap"
 brew "p7zip"
 brew "pandoc"
-brew "phantomjs"
 brew "php"
 brew "physfs"
 brew "poppler"
@@ -83,48 +84,50 @@ cask "caffeine"
 cask "dbeaver-community"
 cask "discord"
 cask "docker"
+cask "dropbox"
 cask "emacs"
 cask "expo-xde"
-cask "filezilla"
 cask "firefox-developer-edition"
 cask "font-fira-code"
 cask "font-hack-nerd-font"
 cask "font-source-code-pro"
-cask "google-chrome"
 cask "gpg-suite"
 cask "irccloud"
 cask "itau"
-cask "iterm2"
 cask "libreoffice"
 cask "mactex"
 cask "microsoft-office"
 cask "ngrok"
+cask "phantomjs"
 cask "protonmail-bridge"
 cask "protonvpn"
 cask "quitter"
 cask "racket"
 cask "sketch"
 cask "skype"
-cask "slack"
 cask "spotify"
 cask "steam"
-cask "tableplus"
 cask "telegram"
 cask "tomighty"
 cask "virtualbox"
 cask "visual-studio-code"
 cask "vlc"
 mas "1Password 7", id: 1333542190
+mas "AdBlock", id: 1402042596
 mas "Airmail 3", id: 918858936
-mas "Booster", id: 907023335
+mas "Bear", id: 1091189122
 mas "DaisyDisk", id: 411643860
 mas "iZip Unarchiver", id: 717545828
 mas "Keynote", id: 409183694
+mas "Magnet", id: 441258766
+mas "MindNode", id: 1289197285
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Pixelmator", id: 407963104
 mas "Pocket", id: 568494494
-mas "SIDT", id: 1308724728
-mas "Twitter", id: 409789998
+mas "Reeder", id: 880001334
+mas "Slack", id: 803453959
+mas "Todoist", id: 585829637
+mas "Tweetbot", id: 1384080005
 mas "WhatsApp", id: 1147396723
 mas "Xcode", id: 497799835
