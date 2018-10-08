@@ -5,29 +5,20 @@ export TERM=xterm-256color
 
 ZSH_THEME="yan"
 
-plugins=()
+plugins=(my-aliases)
 
 source $ZSH/oh-my-zsh.sh
 
 # Avelino's Custom
 export KEYTIMEOUT=1
 
+# timezone/location
 TZ='America/Sao_Paulo'; export TZ
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # PATH
 export PATH=$HOME/.local/bin:$PATH
-
-alias g=git
-alias G=g
-alias e="emacsclient -nw --socket-name avelino"
-alias vi="emacsclient -nw --socket-name avelino"
-alias es="emacs --eval '(setq server-name \"avelino\")' --daemon"
-alias esk="killall emacs"
-alias emacs="emacs -nw"
-alias htop="TERM=screen htop"
-alias gl="git log --graph --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'"
 
 if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
     source ~/.gnupg/.gpg-agent-info
@@ -42,7 +33,7 @@ eval $(keychain --agents ssh --eval id_rsa)
 # Projects folder
 export PROJECT_PATH=$HOME
 
-# GOLANG
+# Go
 export GOPATH=$PROJECT_PATH
 export GOCACHE=$PROJECT_PATH/cache
 export PATH=/usr/local/go/bin:$PROJECT_PATH/bin:$PATH
