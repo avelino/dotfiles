@@ -16,6 +16,9 @@ TZ='America/Sao_Paulo'; export TZ
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+# PATH
+export PATH=$HOME/.local/bin:$PATH
+
 alias g=git
 alias G=g
 alias e="emacsclient -nw --socket-name avelino"
@@ -24,7 +27,7 @@ alias vi="emacsclient -nw --socket-name avelino"
 alias es="emacs --eval '(setq server-name \"avelino\")' --daemon"
 alias esk="killall emacs"
 alias emacs="emacs -nw"
-# alias htop="TERM=tmux htop"
+alias htop="TERM=screen htop"
 alias gl="git log --graph --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'"
 
 if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
@@ -43,6 +46,7 @@ export PROJECT_PATH=$HOME
 # GOLANG
 export GOPATH=$PROJECT_PATH
 export GOCACHE=$PROJECT_PATH/cache
+export PATH=/usr/local/go/bin:$PROJECT_PATH/bin:$PATH
 
 # Python
 export WORKON_HOME=$HOME/.virtualenvs
@@ -54,11 +58,7 @@ export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 # Java
 export JAVA_HOME="/usr/lib/jvm/default-java"
 
-# PATH
-export PATH=/usr/local/go/bin:$PROJECT_PATH/bin:$HOME/.local/bin:$PATH
-
 [ -f ~/dotfiles/fzf.zsh ] && source ~/dotfiles/fzf.zsh
-
 stty sane
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
