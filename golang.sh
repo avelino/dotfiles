@@ -4,7 +4,7 @@ packages=(
     "github.com/junegunn/fzf"
     "github.com/GoogleCloudPlatform/container-diff"
     "github.com/jessfraz/dockfmt"
-    "github.com/alecthomas/gometalinter"
+    "gopkg.in/alecthomas/gometalinter.v2"
     "github.com/davidrjenni/reftools/cmd/fillstruct"
     "github.com/dominikh/go-tools/cmd/keyify"
     "github.com/fatih/gomodifytags"
@@ -27,7 +27,7 @@ packages=(
 for package in "${packages[@]}"
 do
     echo "Install/Upgrade ${package}"
-    go get -u  $package && go install $package
+    go get -v -u $package && go install $package
 done
 
 # go meta linter install/update
