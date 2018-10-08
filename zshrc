@@ -46,10 +46,10 @@ export GOCACHE=$PROJECT_PATH/cache
 
 # Python
 export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export PROJECT_HOME=$PROJECT_PATH/src
-export VIRTUALENVWRAPPER_SCRIPT=/usr/share/virtualenvwrapper/virtualenvwrapper.sh
-source /usr/share/virtualenvwrapper/virtualenvwrapper_lazy.sh
+export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+[ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && source /usr/local/bin/virtualenvwrapper_lazy.sh
 
 # Java
 export JAVA_HOME="/usr/lib/jvm/default-java"
@@ -57,7 +57,7 @@ export JAVA_HOME="/usr/lib/jvm/default-java"
 # PATH
 export PATH=/usr/local/go/bin:$PROJECT_PATH/bin:$HOME/.local/bin:$PATH
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/dotfiles/fzf.zsh ] && source ~/dotfiles/fzf.zsh
 
 stty sane
 
