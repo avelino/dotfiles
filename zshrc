@@ -23,7 +23,6 @@ alias g=git
 alias G=g
 alias e="emacsclient -nw --socket-name avelino"
 alias vi="emacsclient -nw --socket-name avelino"
-# alias es="emacs --eval '(setq server-name \"avelino\")' --daemon --with-x-toolkit=lucid"
 alias es="emacs --eval '(setq server-name \"avelino\")' --daemon"
 alias esk="killall emacs"
 alias emacs="emacs -nw"
