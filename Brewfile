@@ -114,7 +114,6 @@ cask "virtualbox"
 cask "visual-studio-code"
 cask "vlc"
 mas "1Password 7", id: 1333542190
-mas "AdBlock", id: 1402042596
 mas "Airmail 3", id: 918858936
 mas "Bear", id: 1091189122
 mas "DaisyDisk", id: 411643860
