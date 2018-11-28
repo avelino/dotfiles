@@ -1,3 +1,4 @@
+tap "bukalapak/packages"
 tap "buo/cask-upgrade"
 tap "heroku/brew"
 tap "homebrew/bundle"
@@ -73,11 +74,13 @@ brew "tesseract", args: ["with-all-languages"]
 brew "the_silver_searcher"
 brew "tmux"
 brew "tree"
+brew "unrar"
 brew "watch"
 brew "weechat", args: ["with-aspell", "with-curl", "with-lua", "with-perl", "with-ruby"]
 brew "wget"
 brew "wxmac"
 brew "zsh"
+brew "bukalapak/packages/snowboard"
 brew "heroku/brew/heroku"
 brew "puma/puma/puma-dev"
 cask "alfred"
