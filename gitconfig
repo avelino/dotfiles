@@ -18,12 +18,12 @@
 	new = green bold
 [core]
 	excludesfile = ~/dotfiles/gitignore_global
-	editor = emacsclient -t -a=\\\"\\\" --socket-name avelino
+	editor = emacsclient -t -a=\"\" --socket-name avelino
 [merge]
 	tool = ediff
 	log = true
 [mergetool "ediff"]
-	cmd = emacsclient -c -a \"\"  --eval \"(ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" nil \\\"$MERGED\\\")\"
+	cmd = emacsclient -c -a \"\" --eval \"(ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" nil \\\"$MERGED\\\")\"
 [alias]
 	st = status -sb
 	ci = commit -v
