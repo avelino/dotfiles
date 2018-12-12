@@ -11,6 +11,7 @@ tap "puma/puma"
 cask "java"
 cask "xquartz"
 brew "openssl"
+brew "aurora"
 brew "boost"
 brew "caddy"
 brew "carthage"
@@ -24,6 +25,7 @@ brew "cocoapods"
 brew "composer"
 brew "coreutils"
 brew "docker", link: false
+brew "drafter"
 brew "libogg"
 brew "libvorbis"
 brew "ffmpeg"
@@ -89,7 +91,7 @@ cask "appcleaner"
 cask "battle-net"
 cask "dbeaver-community"
 cask "discord"
-cask "docker"
+cask "docker-edge"
 cask "dropbox"
 cask "emacs"
 cask "expo-xde"
@@ -99,6 +101,7 @@ cask "font-hack-nerd-font"
 cask "font-source-code-pro"
 cask "gitter"
 cask "gpg-suite"
+cask "insomnia"
 cask "irccloud"
 cask "itau"
 cask "keepingyouawake"
@@ -118,7 +121,6 @@ cask "skype"
 cask "spotify"
 cask "steam"
 cask "telegram"
-cask "tomighty"
 cask "virtualbox"
 cask "visual-studio-code"
 cask "vlc"
@@ -137,7 +139,6 @@ mas "Pocket", id: 568494494
 mas "Reeder", id: 880001334
 mas "Slack", id: 803453959
 mas "Todoist", id: 585829637
-mas "Tweetbot", id: 1384080005
-mas "uBlock", id: 1385985095
+mas "TweetDeck", id: 485812721
 mas "WhatsApp", id: 1147396723
 mas "Xcode", id: 497799835
