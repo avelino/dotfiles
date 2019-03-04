@@ -52,7 +52,7 @@
 [apply]
 	whitespace = fix
 [gpg]
-	program = gpg2
+	program = gpg
 [commit]
 	template = ~/dotfiles/gitcommittemplate
 	gpgsign = true
