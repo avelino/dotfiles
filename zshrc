@@ -16,6 +16,7 @@ export KEYTIMEOUT=1
 TZ='America/Sao_Paulo'; export TZ
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+export LC_ALL=C
 
 # PATH
 export PATH=$HOME/.local/bin:$PATH
@@ -31,11 +32,12 @@ export GPG_TTY=$(tty)
 eval $(keychain --agents ssh --eval id_rsa)
 
 # Projects folder
-export PROJECT_PATH=$HOME
+export PROJECT_PATH=/home/project
 
 # Go
-export GOPATH=$PROJECT_PATH
-export GOCACHE=$PROJECT_PATH/cache
+export GOROOT=/usr/local/go
+export GOPATH=/home/project
+export GOCACHE=$GOPATH/cache
 export PATH=/usr/local/go/bin:$PROJECT_PATH/bin:$PATH
 
 # Python
@@ -48,9 +50,9 @@ export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 # Java
 export JAVA_HOME="/usr/lib/jvm/default-java"
 
-[ -f ~/dotfiles/fzf.zsh ] && source ~/dotfiles/fzf.zsh
-stty sane
+# Ruby
+eval "$(rbenv init -)"
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/avelino/.sdkman"
-[[ -s "/home/avelino/.sdkman/bin/sdkman-init.sh" ]] && source "/home/avelino/.sdkman/bin/sdkman-init.sh"
+# [ -f ~/dotfiles/fzf.zsh ] && source ~/dotfiles/fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+stty sane
