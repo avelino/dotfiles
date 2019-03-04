@@ -26,8 +26,8 @@
 	cmd = emacsclient -c -a \"\" --eval \"(ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" nil \\\"$MERGED\\\")\"
 [alias]
 	st = status -sb
-	ci = commit -v
-	commit = commit -v
+	ci = commit -v -s
+	commit = commit -v -s
 	up = pull --ff-only --all -p
 	who = blame
 	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
