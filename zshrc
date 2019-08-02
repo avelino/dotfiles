@@ -11,6 +11,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Avelino's Custom
 export KEYTIMEOUT=1
+export EDITOR=e
 
 # timezone/location
 TZ='America/Sao_Paulo'; export TZ
@@ -39,11 +40,22 @@ export GOCACHE=$PROJECT_PATH/cache
 export PATH=/usr/local/go/bin:$PROJECT_PATH/bin:$PATH
 
 # Python
+## virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export PROJECT_HOME=$PROJECT_PATH/src
 export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 [ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && source /usr/local/bin/virtualenvwrapper_lazy.sh
+## pyenv
+export PYENV_ROOT=$HOME/.pyenv
+export PATH=$PYENV_ROOT/bin:$PATH
+
+# Node
+export PATH=/usr/local/opt/node@10/bin:$PATH
+export NVM_DIR="$HOME/.nvm"
+
+# Flutter
+export PATH=$PROJECT_PATH/bin/flutter/bin:$PATH
 
 # Java
 export JAVA_HOME="/usr/lib/jvm/default-java"
@@ -51,6 +63,4 @@ export JAVA_HOME="/usr/lib/jvm/default-java"
 [ -f ~/dotfiles/fzf.zsh ] && source ~/dotfiles/fzf.zsh
 stty sane
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/avelino/.sdkman"
-[[ -s "/home/avelino/.sdkman/bin/sdkman-init.sh" ]] && source "/home/avelino/.sdkman/bin/sdkman-init.sh"
+eval "$(direnv hook zsh)"
