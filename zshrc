@@ -62,9 +62,6 @@ export PATH=$PROJECT_PATH/bin/flutter/bin:$PATH
 # Java
 export JAVA_HOME="/usr/lib/jvm/default-java"
 
-# Ruby
-eval "$(rbenv init -)"
-
 eval "$(direnv hook zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 stty sane
