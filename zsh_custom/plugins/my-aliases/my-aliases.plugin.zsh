@@ -9,13 +9,13 @@ alias ex=emacsx_start
 alias esk=emacs_kill
 # alias esk="killall emacs"
 alias emacs="emacs -nw"
+alias tmux="tmux -u"
 alias htop="TERM=screen htop"
 alias gl="git log --graph --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'"
 alias loadrbenv='rbenv init -'
 alias loadrvm='[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"'
 alias loadnvm='[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh" && [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"'
 alias loadpyenv='pyenv init -'
-
 alias loadtravis='[ -f $HOME/.travis/travis.sh ] && . "$HOME/.travis/travis.sh"'
 
 function emacs_session_name(){
