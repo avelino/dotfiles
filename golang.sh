@@ -4,7 +4,7 @@ packages=(
     "github.com/junegunn/fzf/..."
     "github.com/GoogleCloudPlatform/container-diff/..."
     "github.com/jessfraz/dockfmt/..."
-    "gopkg.in/alecthomas/gometalinter.v2/..."
+    "github.com/golangci/golangci-lint/cmd/golangci-lint"
     "github.com/davidrjenni/reftools/cmd/fillstruct/..."
     "github.com/dominikh/go-tools/cmd/keyify/..."
     "github.com/fatih/gomodifytags/..."
