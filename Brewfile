@@ -129,6 +129,7 @@ cask "chromedriver"
 cask "dbeaver-community"
 cask "discord"
 cask "docker-edge"
+cask "dozer"
 cask "dropbox"
 cask "emacs"
 cask "expo-xde"
@@ -177,12 +178,8 @@ cask "xmind"
 cask "xquartz"
 cask "zwift"
 mas "1Password 7", id: 1333542190
-mas "Airmail", id: 918858936
-mas "Be Focused Pro", id: 961632517
-mas "Bear", id: 1091189122
 mas "Fantastical", id: 975937182
 mas "GravitDesigner", id: 1207744923
-mas "iA Writer", id: 775737590
 mas "iMovie", id: 408981434
 mas "iZip Unarchiver", id: 717545828
 mas "Keynote", id: 409183694
@@ -193,6 +190,7 @@ mas "Pages", id: 409201541
 mas "Pixelmator", id: 407963104
 mas "Pocket", id: 568494494
 mas "Reeder", id: 880001334
+mas "Spark", id: 1176895641
 mas "Todoist", id: 585829637
 mas "TweetDeck", id: 485812721
 mas "WhatsApp", id: 1147396723
