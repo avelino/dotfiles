@@ -1,7 +1,6 @@
 alias g=git
 alias G=g
 alias e=emacs_open
-alias vi=e
 alias es=emacs_start
 # alias es="emacs --eval '(setq server-name \"avelino\")' --daemon"
 alias ex=emacsx_start
@@ -17,6 +16,7 @@ alias loadrvm='[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"'
 alias loadnvm='[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh" && [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"'
 alias loadpyenv='pyenv init -'
 alias loadtravis='[ -f $HOME/.travis/travis.sh ] && . "$HOME/.travis/travis.sh"'
+alias brewup='brew update && brew upgrade && brew cu -ay'
 
 function emacs_session_name(){
     TMUX_SESSION=$(tmux display-message -p '#S')
