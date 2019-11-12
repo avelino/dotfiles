@@ -14,7 +14,7 @@ packages=(
     "github.com/jstemmer/gotags/..."
     "github.com/kisielk/errcheck/..."
     "github.com/klauspost/asmfmt/cmd/asmfmt/..."
-    "github.com/nsf/gocode/..."
+    "github.com/stamblerre/gocode/..."
     "github.com/rogpeppe/godef/..."
     "github.com/zmb3/gogetdoc/..."
     "golang.org/x/tools/cmd/goimports/..."
@@ -22,6 +22,14 @@ packages=(
     "golang.org/x/tools/cmd/guru/..."
     "github.com/gsamokovarov/jump/..."
     "github.com/golang/dep/cmd/dep/..."
+    "github.com/uudashr/gopkgs/cmd/gopkgs"
+    "github.com/ramya-rao-a/go-outline/..."
+    "github.com/acroca/go-symbols/..."
+    "github.com/cweill/gotests/..."
+    "github.com/haya14busa/goplay/cmd/goplay"
+    "github.com/godoctor/godoctor"
+    "github.com/go-delve/delve/cmd/dlv"
+    "github.com/sqs/goreturns"
 )
 
 for package in "${packages[@]}"
@@ -29,6 +37,3 @@ do
     echo "Install/Upgrade ${package}"
     go get -v -u $package && go install $package
 done
-
-# go meta linter install/update
-gometalinter --install --update
