@@ -36,10 +36,10 @@ eval $(keychain --agents ssh --eval id_rsa)
 export PROJECT_PATH=/home/project
 
 # Go
-export GOROOT=/usr/local/go
-export GOPATH=/home/project
+export GOROOT=/usr/local/Cellar/go/1.13.4/libexec
+export GOPATH=/Users/avelino/gdrive/My\ Drive/Projects/go
 export GOCACHE=$GOPATH/cache
-export PATH=/usr/local/go/bin:$PROJECT_PATH/bin:$PATH
+export PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
 
 # Python
 ## virtualenv
