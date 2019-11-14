@@ -1,5 +1,7 @@
 alias g=git
 alias G=g
+alias vim=nvim
+alias v=nvim
 alias e=emacs_open
 alias es=emacs_start
 # alias es="emacs --eval '(setq server-name \"avelino\")' --daemon"

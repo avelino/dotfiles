@@ -24,7 +24,8 @@ cp ~/dotfiles/gitignore_global ~/.gitignore_global
 git clone git://github.com/avelino/.emacs.git ~/.emacs.d
 
 ## vim
-curl 'http://vim-bootstrap.com/generate.vim' --data 'langs=javascript&langs=html&langs=python&langs=go&langs=lua&langs=rust&editor=vim' > ~/.vimrc
+mkdir ~/.config/nvim && \
+    curl 'http://vim-bootstrap.com/generate.vim' --data 'langs=javascript&langs=html&langs=python&langs=go&langs=lua&langs=rust&editor=nvim' > ~/.config/nvim/init.vim
 
 ## golang install bins
 ./dotfiles/golang.sh
