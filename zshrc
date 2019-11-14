@@ -15,9 +15,8 @@ export EDITOR=e
 
 # timezone/location
 TZ='America/Sao_Paulo'; export TZ
-export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export LC_ALL=C
+export LC_ALL=
 
 # PATH
 export PATH=$HOME/.local/bin:$PATH
