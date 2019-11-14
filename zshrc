@@ -33,11 +33,11 @@ export GPG_TTY=$(tty)
 eval $(keychain --agents ssh --eval id_rsa)
 
 # Projects folder
-export PROJECT_PATH=/home/project
+export PROJECT_PATH=~/Projects
 
 # Go
 export GOROOT=/usr/local/Cellar/go/1.13.4/libexec
-export GOPATH=/Users/avelino/gdrive/My\ Drive/Projects/go
+export GOPATH=$PROJECT_PATH/go
 export GOCACHE=$GOPATH/cache
 export PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
 
