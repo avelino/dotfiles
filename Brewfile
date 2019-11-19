@@ -129,6 +129,7 @@ brew "mongodb/brew/mongodb-community-shell"
 brew "puma/puma/puma-dev"
 brew "railwaycat/emacsmacport/emacs-mac", args: ["with-modern-icon"], link: false
 brew "ravenac95/sudolikeaboss/sudolikeaboss"
+cask "1password-cli"
 cask "alfred"
 cask "android-ndk"
 cask "android-platform-tools"
