@@ -2,6 +2,7 @@ tap "adoptopenjdk/openjdk"
 tap "bukalapak/packages"
 tap "buo/cask-upgrade"
 tap "dart-lang/dart"
+tap "github/gh"
 tap "heroku/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask"
@@ -16,7 +17,6 @@ tap "mongodb/brew"
 tap "puma/puma"
 tap "railwaycat/emacsmacport"
 tap "ravenac95/sudolikeaboss"
-cask "adoptopenjdk"
 brew "antigen"
 brew "openssl@1.1"
 brew "aurora"
@@ -31,6 +31,7 @@ brew "carthage"
 brew "gmp"
 brew "cask"
 brew "clisp"
+brew "openjdk"
 brew "rlwrap"
 brew "clojure"
 brew "cmake"
@@ -39,7 +40,7 @@ brew "composer"
 brew "coreutils"
 brew "ctop"
 brew "direnv"
-brew "docker"
+brew "docker", link: false
 brew "drafter"
 brew "wxmac"
 brew "elixir"
@@ -59,6 +60,7 @@ brew "hugo"
 brew "libusbmuxd", args: ["HEAD"]
 brew "libimobiledevice", args: ["HEAD"]
 brew "ideviceinstaller"
+brew "imagemagick", link: false
 brew "imagemagick@6", link: true
 brew "ios-deploy"
 brew "ironcli"
@@ -90,10 +92,10 @@ brew "nim"
 brew "nnn"
 brew "node"
 brew "node@10"
+brew "node@12"
 brew "nvm"
 brew "offlineimap"
 brew "openal-soft"
-brew "openjdk"
 brew "p7zip"
 brew "pandoc"
 brew "php"
@@ -125,6 +127,7 @@ brew "youtube-dl"
 brew "zsh"
 brew "bukalapak/packages/snowboard"
 brew "dart-lang/dart/dart"
+brew "github/gh/gh"
 brew "heroku/brew/heroku"
 brew "jeroenknoops/tap/gitin"
 brew "johanhaleby/kubetail/kubetail"
@@ -133,6 +136,7 @@ brew "mongodb/brew/mongodb-community-shell"
 brew "puma/puma/puma-dev"
 brew "railwaycat/emacsmacport/emacs-mac", args: ["with-modern-icon"], link: false
 brew "ravenac95/sudolikeaboss/sudolikeaboss"
+cask "adoptopenjdk"
 cask "alfred"
 cask "android-ndk"
 cask "android-platform-tools"
@@ -164,12 +168,13 @@ cask "java"
 cask "keepingyouawake"
 cask "libreoffice"
 cask "mactex"
+cask "miro-formerly-realtimeboard"
 cask "mongodb-compass-community"
 cask "ngrok"
 cask "phantomjs"
 cask "pocket-casts"
 cask "postico"
-cask "protonvpn"
+cask "protonmail-bridge"
 cask "quitter"
 cask "racket"
 cask "sequel-pro"
@@ -189,7 +194,6 @@ mas "Bear", id: 1091189122
 mas "GarageBand", id: 682658836
 mas "GravitDesigner", id: 1207744923
 mas "iMovie", id: 408981434
-mas "iZip Unarchiver", id: 717545828
 mas "Keynote", id: 409183694
 mas "Magnet", id: 441258766
 mas "MindNode", id: 1289197285
@@ -197,6 +201,8 @@ mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Pixelmator", id: 407963104
 mas "Pocket", id: 568494494
+mas "The Unarchiver", id: 425424353
 mas "Todoist", id: 585829637
+mas "Trello", id: 1278508951
 mas "WhatsApp", id: 1147396723
 mas "Xcode", id: 497799835
