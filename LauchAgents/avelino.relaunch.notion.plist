@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>avelino.relaunch.notion</string>
+  <key>Program</key>
+  <string>/Applications/Notion.app/Contents/MacOS/Notion</string>
+  <key>KeepAlive</key>
+  <true/> <!-- run the program again if it is terminated -->
+  <key>RunAtLoad</key>
+  <true/> <!-- run the program at login -->
+</dict>
+</plist>

@@ -19,6 +19,11 @@ cp ~/dotfiles/tmux.conf ~/.tmux.conf
 cp ~/dotfiles/zshrc ~/.zshrc
 cp ~/dotfiles/fzf.zsh ~/.fzf.zsh
 cp ~/dotfiles/gitignore_global ~/.gitignore_global
+cp ~/dotfiles/dotfiles/LauchAgents/*.plist ~/Library/LaunchAgents/
+
+# load agents
+launchctl load ~/Library/LaunchAgents/avelino.relaunch.todoist.plist
+launchctl load ~/Library/LaunchAgents/avelino.relaunch.notion.plist
 
 ## emacs
 git clone git://github.com/avelino/.emacs.git ~/.emacs.d
