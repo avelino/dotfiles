@@ -1,13 +1,8 @@
-# jessie to sid
-deb http://ftp.br.debian.org/debian/ sid main contrib non-free
-deb-src http://ftp.br.debian.org/debian/ sid main contrib non-free
-
-# deb http://security.debian.org/ jessie/updates main contrib non-free
-# deb-src http://security.debian.org/ jessie/updates main contrib non-free
-
-# jessie-updates, previously known as 'volatile'
-# deb http://ftp.br.debian.org/debian/ jessie-updates main contrib non-free
-# deb-src http://ftp.br.debian.org/debian/ jessie-updates main contrib non-free
-
-# deb http://ftp.br.debian.org/debian jessie-backports main contrib non-free
-# deb http://ftp.br.debian.org/debian jessie-backports-sloppy main contrib non-free
+deb http://deb.debian.org/debian/ stretch main
+deb-src http://deb.debian.org/debian/ stretch main
+deb http://security.debian.org/ stretch/updates main
+deb-src http://security.debian.org/ stretch/updates main
+deb http://deb.debian.org/debian/ stretch-updates main
+deb-src http://deb.debian.org/debian/ stretch-updates main
+deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
+# deb-src [arch=amd64] https://download.docker.com/linux/debian stretch stable
