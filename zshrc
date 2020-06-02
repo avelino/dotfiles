@@ -15,8 +15,9 @@ export EDITOR=e
 
 # timezone/location
 TZ='America/Sao_Paulo'; export TZ
+export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export LC_ALL=
+export LANGUAGE=en_US.UTF-8
 
 # PATH
 export PATH=$HOME/.local/bin:$PATH
@@ -35,7 +36,6 @@ eval $(keychain --agents ssh --eval id_rsa)
 export PROJECT_PATH=~/Projects
 
 # Go
-export GOROOT=/usr/local/Cellar/go/1.13.4/libexec
 export GOPATH=$PROJECT_PATH/go
 export GOCACHE=$GOPATH/cache
 export PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
@@ -43,10 +43,10 @@ export PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
 # Python
 ## virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3.8
 export PROJECT_HOME=$PROJECT_PATH/src
-export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
-[ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && source /usr/local/bin/virtualenvwrapper_lazy.sh
+export VIRTUALENVWRAPPER_SCRIPT=$HOME/.local/bin/virtualenvwrapper.sh
+[ -f $HOME/.local/bin/virtualenvwrapper_lazy.sh ] && source $HOME/.local/bin/virtualenvwrapper_lazy.sh
 ## pyenv
 export PYENV_ROOT=$HOME/.pyenv
 export PATH=$PYENV_ROOT/bin:$PATH
@@ -60,7 +60,20 @@ export PATH=$PROJECT_PATH/bin/flutter/bin:$PATH
 
 # Java
 export JAVA_HOME="/usr/lib/jvm/default-java"
+export M2_HOME="$HOME/maven"
+export MAVEN_HOME=$M2_HOME
+export PATH=$HOME/.local/share/coursier/bin:$PATH
 
 eval "$(direnv hook zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 stty sane
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
