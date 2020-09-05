@@ -3,9 +3,10 @@ export ZSH=$HOME/.oh-my-zsh
 export ZSH_CUSTOM=$HOME/dotfiles/zsh_custom
 export TERM=xterm-256color
 
-ZSH_THEME="yan"
+# ZSH_THEME="yan"
+ZSH_THEME="dracula-pro"
 
-plugins=(my-aliases)
+plugins=(my-aliases git osx zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -15,12 +16,11 @@ export EDITOR=e
 
 # timezone/location
 TZ='America/Sao_Paulo'; export TZ
-export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export LANGUAGE=en_US.UTF-8
+export LC_ALL=
 
 # PATH
-export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
 
 if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
     source ~/.gnupg/.gpg-agent-info
@@ -36,6 +36,7 @@ eval $(keychain --agents ssh --eval id_rsa)
 export PROJECT_PATH=~/Projects
 
 # Go
+export GOROOT=/usr/local/opt/go/libexec
 export GOPATH=$PROJECT_PATH/go
 export GOCACHE=$GOPATH/cache
 export PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
@@ -43,10 +44,10 @@ export PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
 # Python
 ## virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3.8
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
 export PROJECT_HOME=$PROJECT_PATH/src
-export VIRTUALENVWRAPPER_SCRIPT=$HOME/.local/bin/virtualenvwrapper.sh
-[ -f $HOME/.local/bin/virtualenvwrapper_lazy.sh ] && source $HOME/.local/bin/virtualenvwrapper_lazy.sh
+export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+[ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && source /usr/local/bin/virtualenvwrapper_lazy.sh
 ## pyenv
 export PYENV_ROOT=$HOME/.pyenv
 export PATH=$PYENV_ROOT/bin:$PATH
@@ -54,26 +55,31 @@ export PATH=$PYENV_ROOT/bin:$PATH
 # Node
 export PATH=/usr/local/opt/node@10/bin:$PATH
 export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # Flutter
-export PATH=$PROJECT_PATH/bin/flutter/bin:$PATH
+export PATH=$PROJECT_PATH/flutter/bin:$PATH
 
 # Java
-export JAVA_HOME="/usr/lib/jvm/default-java"
-export M2_HOME="$HOME/maven"
-export MAVEN_HOME=$M2_HOME
-export PATH=$HOME/.local/share/coursier/bin:$PATH
+export JAVA_HOME=/usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home
+export M2_HOME=/usr/local/opt/maven/libexec
+export M2=${M2_HOME}/bin
+export PATH=${PATH}:${M2_HOME}/bin:/usr/local/opt/openjdk/bin
+
+source $(brew --prefix)/share/antigen/antigen.zsh
 
 eval "$(direnv hook zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 stty sane
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
+if [ -f '/Users/avelino/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/avelino/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
+if [ -f '/Users/avelino/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/avelino/google-cloud-sdk/completion.zsh.inc'; fi
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+cd ~/
+
+# added by travis gem
+[ ! -s /Users/avelino/.travis/travis.sh ] || source /Users/avelino/.travis/travis.sh
