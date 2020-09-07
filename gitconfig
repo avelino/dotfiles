@@ -31,9 +31,9 @@
 	up = pull --ff-only --all -p
 	who = blame
 	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
-	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
-	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
-	url =! bash -c 'git config --get remote.origin.url | sed -E "s/.+:\\(.+\\)\\.git$/https:\\\\/\\\\/github\\\\.com\\\\/\\\\1/g"'
+	d = "!git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+	di = "!d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
+	url = ! bash -c 'git config --get remote.origin.url | sed -E s/.+:\\(.+\\)\\.git$/https:\\\\/\\\\/github\\\\.com\\\\/\\\\1/g'
 	lg = log --pretty=format:'%C(yellow)%h%C(reset) %s %C(cyan)%cI%C(reset) %C(blue)%an%C(reset) %C(green)%d%C(reset)' --graph
 	review = log --summary --patch --stat=100 --dirstat --ignore-all-space --reverse --decorate --find-renames=33 --find-copies-harder --cc
 	ignored = ls-files --others -i --exclude-standard
@@ -55,7 +55,7 @@
 	program = gpg
 [commit]
 	template = ~/dotfiles/gitcommittemplate
-	gpgsign = true
+ 	gpgsign = true
 	verbose = true
 [branch]
 	autosetuprebase = always
