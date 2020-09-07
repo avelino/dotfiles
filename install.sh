@@ -6,14 +6,15 @@ cp ~/dotfiles/tmux.conf ~/.tmux.conf
 cp ~/dotfiles/zshrc ~/.zshrc
 cp ~/dotfiles/fzf.zsh ~/.fzf.zsh
 cp ~/dotfiles/gitignore_global ~/.gitignore_global
-cp ~/dotfiles/dotfiles/LauchAgents/*.plist ~/Library/LaunchAgents/
+cp ~/dotfiles/npmrc ~/.npmrc
+# cp ~/dotfiles/dotfiles/LauchAgents/*.plist ~/Library/LaunchAgents/
 
 ## emacs
 git clone git://github.com/avelino/.emacs.git ~/.emacs.d
 
 ## vim
-mkdir ~/.config/nvim && \
-    curl 'http://vim-bootstrap.com/generate.vim' --data 'langs=javascript&langs=html&langs=python&langs=go&langs=lua&langs=rust&editor=nvim' > ~/.config/nvim/init.vim
+mkdir -p ~/.config/nvim && \
+    curl 'http://vim-bootstrap.com/generate.vim' --data 'langs=javascript&langs=typescript&langs=html&langs=python&langs=go&langs=lua&theme=dracula&editor=nvim' > ~/.config/nvim/init.vim
 
 ## golang install bins
 ./dotfiles/golang.sh
@@ -21,3 +22,6 @@ mkdir ~/.config/nvim && \
 ## zsh plugins
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+## oh-my-zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
