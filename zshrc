@@ -2,11 +2,17 @@
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_CUSTOM=$HOME/dotfiles/zsh_custom
 export TERM=xterm-256color
+export LC_ALL="en_US.UTF-8"
 
 # ZSH_THEME="yan"
-ZSH_THEME="dracula-pro"
+if [[ -n "$INSIDE_EMACS" ]]; then
+    plugins=(my-aliases git)
+    ZSH_THEME="simple"
+else
+    ZSH_THEME="dracula-pro"
+    plugins=(my-aliases git osx zsh-autosuggestions zsh-syntax-highlighting)
+fi
 
-plugins=(my-aliases git osx zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -33,18 +39,21 @@ export GPG_TTY=$(tty)
 eval $(keychain --agents ssh --eval id_rsa)
 
 # Projects folder
-export PROJECT_PATH=~/Projects
+export PROJECT_PATH=~/projects
 
 # Go
 export GOROOT=/usr/local/opt/go/libexec
-export GOPATH=$PROJECT_PATH/go
+export GOPATH=$PROJECT_PATH
 export GOCACHE=$GOPATH/cache
 export PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
 
 # Python
+# export PATH="/usr/local/opt/python@3.7/bin:$PATH"
+export PATH="/usr/local/opt/python3/bin:$PATH"
 ## virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python@3.7/bin/python
+
 export PROJECT_HOME=$PROJECT_PATH/src
 export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 [ -f /usr/local/bin/virtualenvwrapper_lazy.sh ] && source /usr/local/bin/virtualenvwrapper_lazy.sh

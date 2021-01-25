@@ -10,6 +10,7 @@ alias ex=emacsx_start
 alias esk=emacs_kill
 # alias esk="killall emacs"
 alias emacs="emacs -nw"
+alias code="code-insiders"
 alias tmux="tmux -u"
 alias htop="TERM=screen htop"
 alias gl="git log --graph --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'"
