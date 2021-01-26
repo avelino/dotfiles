@@ -7,6 +7,9 @@ cp ~/dotfiles/zshrc ~/.zshrc
 cp ~/dotfiles/fzf.zsh ~/.fzf.zsh
 cp ~/dotfiles/gitignore_global ~/.gitignore_global
 cp ~/dotfiles/npmrc ~/.npmrc
+cp ~/dotfiles/htoprc ~/.htoprc
+cp ~/dotfiles/curlrc ~/.curlrc
+cp ~/dotfiles/antigenrc ~/.antigenrc
 # cp ~/dotfiles/dotfiles/LauchAgents/*.plist ~/Library/LaunchAgents/
 
 ## emacs

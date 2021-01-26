@@ -10,7 +10,7 @@ alias ex=emacsx_start
 alias esk=emacs_kill
 # alias esk="killall emacs"
 alias emacs="emacs -nw"
-alias code="code-insiders"
+#alias code="code-insiders"
 alias tmux="tmux -u"
 alias htop="TERM=screen htop"
 alias gl="git log --graph --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'"
@@ -20,6 +20,7 @@ alias loadnvm='[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.s
 alias loadpyenv='pyenv init -'
 alias loadtravis='[ -f $HOME/.travis/travis.sh ] && . "$HOME/.travis/travis.sh"'
 alias brewup='brew update && brew upgrade && brew cu -ay'
+alias brewfile='rm ~/dotfiles/Brewfile && cd ~/dotfiles && brew bundle dump'
 
 function emacs_session_name(){
     TMUX_SESSION=$(tmux display-message -p '#S')
