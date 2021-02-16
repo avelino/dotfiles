@@ -4,6 +4,7 @@ alias vim=nvim
 alias v=nvim
 alias e=emacs_open
 alias es=emacs_start
+alias idea="open -na \"IntelliJ IDEA.app\" --args \"$@\""
 # alias es="emacs --eval '(setq server-name \"avelino\")' --daemon"
 alias ex=emacsx_start
 # alias ex="emacsclient -cnfs --socket-name avelino"
