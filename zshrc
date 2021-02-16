@@ -10,7 +10,7 @@ if [[ -n "$INSIDE_EMACS" ]]; then
     ZSH_THEME="simple"
 else
     ZSH_THEME="dracula-pro"
-    plugins=(my-aliases git osx zsh-autosuggestions zsh-syntax-highlighting)
+    plugins=(my-aliases git osx zsh-autosuggestions zsh-syntax-highlighting env)
 fi
 
 
@@ -49,10 +49,11 @@ export PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
 
 # Python
 # export PATH="/usr/local/opt/python@3.7/bin:$PATH"
-export PATH="/usr/local/opt/python3/bin:$PATH"
+export PYTHON_PATH_BIN="/usr/local/opt/python3/bin:$PATH"
+export PATH="$PYTHON_PATH_BIN:$PATH"
 ## virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python@3.7/bin/python
+export VIRTUALENVWRAPPER_PYTHON="$PYTHON_PATH_BIN/python"
 
 export PROJECT_HOME=$PROJECT_PATH/src
 export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
@@ -71,10 +72,10 @@ export NVM_DIR="$HOME/.nvm"
 export PATH=$PROJECT_PATH/flutter/bin:$PATH
 
 # Java
-export JAVA_HOME=/usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home
+export JAVA_HOME="/usr/local/opt/openjdk@11/libexec/openjdk.jdk/Contents/Home"
 export M2_HOME=/usr/local/opt/maven/libexec
 export M2=${M2_HOME}/bin
-export PATH=${PATH}:${M2_HOME}/bin:/usr/local/opt/openjdk/bin
+export PATH="${PATH}:${M2_HOME}/bin:/usr/local/opt/openjdk@11/bin"
 
 source $(brew --prefix)/share/antigen/antigen.zsh
 
