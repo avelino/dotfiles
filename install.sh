@@ -10,6 +10,7 @@ cp ~/dotfiles/npmrc ~/.npmrc
 cp ~/dotfiles/htoprc ~/.htoprc
 cp ~/dotfiles/curlrc ~/.curlrc
 cp ~/dotfiles/antigenrc ~/.antigenrc
+cp -rf ~/dotfiles/clojure ~/.clojure
 # cp ~/dotfiles/dotfiles/LauchAgents/*.plist ~/Library/LaunchAgents/
 
 ## emacs
