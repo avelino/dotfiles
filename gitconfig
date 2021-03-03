@@ -64,8 +64,10 @@
 	autocorrect = 1
 [init]
 	templatedir = ~/dotfiles/git-templates
-        defaultBranch = main
+    defaultBranch = main
 [http]
 	cookiefile = ~/dotfiles/gitcookies
 [url "https://github.com/"]
 	insteadOf = git://github.com/
+[pull]
+	rebase = true
