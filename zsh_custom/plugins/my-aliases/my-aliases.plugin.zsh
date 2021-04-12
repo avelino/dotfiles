@@ -21,7 +21,7 @@ alias loadnvm='[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.s
 alias loadpyenv='pyenv init -'
 alias loadtravis='[ -f $HOME/.travis/travis.sh ] && . "$HOME/.travis/travis.sh"'
 alias brewup='brew update && brew upgrade && brew cu -ay'
-alias brewfile='rm ~/dotfiles/Brewfile && cd ~/dotfiles && brew bundle dump'
+alias brewbkp='rm ~/dotfiles/Brewfile && cd ~/dotfiles && brew bundle dump'
 
 function emacs_session_name(){
     TMUX_SESSION=$(tmux display-message -p '#S')
