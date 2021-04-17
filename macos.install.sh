@@ -12,13 +12,15 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until `.macos` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
+xcode-select --install
+
 # install homebrew
 if ! [ -x "$(command -v brew)" ]; then
     # install packages for macOS
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    cd ~/dotfiles
-    brew bundle
 fi
+cd ~/dotfiles
+brew bundle
 
 ###############################################################################
 # General UI/UX                                                               #
@@ -26,6 +28,10 @@ fi
 
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
+
+# Menu bar: show remaining battery time (on pre-10.8); hide percentage
+defaults write com.apple.menuextra.battery ShowPercent -string "NO"
+defaults write com.apple.menuextra.battery ShowTime -string "YES"
 
 # Disable transparency in the menu bar and elsewhere on Yosemite
 defaults write com.apple.universalaccess reduceTransparency -bool true
