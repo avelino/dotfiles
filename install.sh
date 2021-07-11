@@ -4,6 +4,7 @@
 cp ~/dotfiles/gitconfig ~/.gitconfig
 cp ~/dotfiles/tmux.conf ~/.tmux.conf
 cp ~/dotfiles/zshrc ~/.zshrc
+cp ~/dotfiles/hyper.js ~/.hyper.js
 cp ~/dotfiles/fzf.zsh ~/.fzf.zsh
 cp ~/dotfiles/gitignore_global ~/.gitignore_global
 cp ~/dotfiles/npmrc ~/.npmrc
