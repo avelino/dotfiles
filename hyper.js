@@ -82,7 +82,8 @@ module.exports = {
   },
   plugins: [
     "hyper-font-smoothing",
-    "hyper-search"
+    "hyper-search",
+    "hyper-dracula"
   ],
   localPlugins: [],
   keymaps: {},
