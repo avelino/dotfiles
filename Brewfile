@@ -46,7 +46,7 @@ brew "direnv"
 brew "docker", link: false
 brew "docker-compose", link: false
 brew "drafter"
-brew "wxmac"
+brew "wxwidgets"
 brew "elixir"
 brew "libogg"
 brew "libvorbis"
@@ -83,14 +83,14 @@ brew "libxml2"
 brew "lnav"
 brew "lua@5.1", link: false
 brew "mas"
-brew "maven", link: false
+brew "maven"
 brew "memcached"
 brew "mercurial"
 brew "micro"
 brew "mosh"
 brew "msmtp"
 brew "multimarkdown"
-brew "mvnvm"
+brew "mvnvm", link: false
 brew "mysql"
 brew "mysql-client"
 brew "neomutt"
@@ -118,6 +118,7 @@ brew "python@3.7"
 brew "python@3.8"
 brew "rbenv"
 brew "rclone"
+brew "reattach-to-user-namespace"
 brew "redis", restart_service: true
 brew "rust"
 brew "sbcl"
@@ -145,10 +146,11 @@ brew "heroku/brew/heroku"
 brew "jeroenknoops/tap/gitin"
 brew "johanhaleby/kubetail/kubetail"
 brew "mongodb/brew/mongodb-community"
-brew "mongodb/brew/mongodb-community-shell"
+brew "mongodb/brew/mongodb-community-shell", link: false
 brew "puma/puma/puma-dev"
 brew "railwaycat/emacsmacport/emacs-mac"
 brew "ravenac95/sudolikeaboss/sudolikeaboss"
+cask "1password-cli"
 cask "adoptopenjdk"
 cask "alfred"
 cask "android-ndk"
@@ -166,6 +168,7 @@ cask "datagrip"
 cask "deepl"
 cask "discord"
 cask "docker-edge"
+cask "fantastical"
 cask "figma"
 cask "firefox-developer-edition"
 cask "firefox-nightly"
@@ -194,8 +197,8 @@ cask "mailspring"
 cask "miro"
 cask "ngrok"
 cask "notion"
+cask "obsidian"
 cask "opera-developer"
-cask "parallels-toolbox"
 cask "pocket-casts"
 cask "postico"
 cask "postman"
@@ -209,7 +212,6 @@ cask "slack"
 cask "spotify"
 cask "superhuman"
 cask "tableplus"
-cask "telegram"
 cask "virtualbox"
 cask "visual-studio-code"
 cask "vlc"
@@ -218,10 +220,12 @@ cask "xquartz"
 cask "zoom"
 cask "zwift"
 mas "1Password 7", id: 1333542190
+mas "Accelerate", id: 1459809092
 mas "Bear", id: 1091189122
 mas "GarageBand", id: 682658836
 mas "GravitDesigner", id: 1207744923
 mas "iMovie", id: 408981434
+mas "JSONPeep", id: 1458969831
 mas "Keynote", id: 409183694
 mas "LanguageTool", id: 1534275760
 mas "Magnet", id: 441258766
@@ -230,9 +234,9 @@ mas "Pages", id: 409201541
 mas "Pixelmator", id: 407963104
 mas "Pocket", id: 568494494
 mas "Save to Pocket", id: 1477385213
+mas "Spark", id: 1176895641
 mas "Tab Suspender", id: 1495356253
 mas "The Unarchiver", id: 425424353
 mas "Todoist", id: 585829637
 mas "Wappalyzer", id: 1520333300
-mas "WhatsApp", id: 1147396723
 mas "Xcode", id: 497799835

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+brew bundle
+
 ## copy files
 cp ~/dotfiles/gitconfig ~/.gitconfig
 cp ~/dotfiles/tmux.conf ~/.tmux.conf
