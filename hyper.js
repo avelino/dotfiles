@@ -13,27 +13,27 @@ const brightBlack = '#999999'
 const brightWhite = '#ffffff'
 
 module.exports = {
-  config: {
-    updateChannel: 'stable',
-    fontSize: 22,
-    fontFamily: '"Fira Code"',
-    fontWeight: 'bold',
-    fontWeightBold: 'bold',
-    lineHeight: 1,
-    letterSpacing: 0,
-    cursorAccentColor: '#e51c98',
-    cursorShape: 'BLOCK',
-    cursorBlink: false,
-    foregroundColor: foregroundColor,
-    // terminal background color
-    // opacity is only supported on macOS
-    backgroundColor: backgroundColor,
-    // terminal selection color
-    selectionColor: 'rgba(248,28,229,0.3)',
-    // border color (window, tabs)
-    borderColor: selection,
-    cursorColor: magenta,
-    css: `
+    config: {
+        updateChannel: 'stable',
+        fontSize: 22,
+        fontFamily: '"Fira Code"',
+        fontWeight: 'bold',
+        fontWeightBold: 'bold',
+        lineHeight: 1,
+        letterSpacing: 0,
+        cursorAccentColor: '#e51c98',
+        cursorShape: 'BLOCK',
+        cursorBlink: false,
+        foregroundColor: foregroundColor,
+        // terminal background color
+        // opacity is only supported on macOS
+        backgroundColor: backgroundColor,
+        // terminal selection color
+        selectionColor: 'rgba(248,28,229,0.3)',
+        // border color (window, tabs)
+        borderColor: selection,
+        cursorColor: magenta,
+        css: `
       .hyper_main {
         border-color: #22212C !important;
       }
@@ -45,46 +45,47 @@ module.exports = {
       }
     `,
 
-    termCSS: '',
-    workingDirectory: '~/projects/',
-    showHamburgerMenu: '',
-    showWindowControls: '',
-    padding: '0px 0px 10px 8px',
-    colors: [
-      selection,
-      red,
-      green,
-      yellow,
-      comment,
-      magenta,
-      cyan,
-      gray,
-      brightBlack,
-      red,
-      green,
-      yellow,
-      comment,
-      magenta,
-      cyan,
-      brightWhite
+        termCSS: '',
+        workingDirectory: '~/projects/',
+        showHamburgerMenu: '',
+        showWindowControls: '',
+        padding: '0px 0px 10px 8px',
+        colors: [
+            selection,
+            red,
+            green,
+            yellow,
+            comment,
+            magenta,
+            cyan,
+            gray,
+            brightBlack,
+            red,
+            green,
+            yellow,
+            comment,
+            magenta,
+            cyan,
+            brightWhite
+        ],
+        shell: '/usr/local/bin/zsh',
+        shellArgs: ['--login'],
+        env: {},
+        bell: 'SOUND',
+        copyOnSelect: true,
+        defaultSSHApp: true,
+        quickEdit: false,
+        macOptionSelectionMode: 'vertical',
+        webGLRenderer: false,
+        webLinksActivationKey: '',
+        disableLigatures: true,
+    },
+    plugins: [
+        "hyper-font-smoothing",
+        "hyper-search"
     ],
-    shell: '/usr/local/bin/zsh',
-    shellArgs: ['--login'],
-    env: {},
-    bell: 'SOUND',
-    copyOnSelect: true,
-    defaultSSHApp: true,
-    quickEdit: false,
-    macOptionSelectionMode: 'vertical',
-    webGLRenderer: false,
-    webLinksActivationKey: '',
-    disableLigatures: true,
-  },
-  plugins: [
-    "hyper-font-smoothing",
-    "hyper-search",
-    "hyper-dracula"
-  ],
-  localPlugins: [],
-  keymaps: {},
+    localPlugins: [
+        "dracula-pro"
+    ],
+    keymaps: {},
 };
