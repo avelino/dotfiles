@@ -28,12 +28,12 @@ packages=(
     "github.com/cweill/gotests/..."
     "github.com/haya14busa/goplay/cmd/goplay"
     "github.com/godoctor/godoctor"
-    "github.com/go-delve/delve/cmd/dlv"
-    "github.com/sqs/goreturns"
+    "github.com/go-delve/delve/cmd/dlv@latest"
+    "github.com/sqs/goreturns@latest"
 )
 
 for package in "${packages[@]}"
 do
     echo "Install/Upgrade ${package}"
-    go get -v -u $package && go install $package
+    go install $package
 done
