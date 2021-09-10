@@ -5,20 +5,16 @@ export TERM=xterm-256color
 export LC_ALL="en_US.UTF-8"
 
 # ZSH_THEME="yan"
-if [[ -n "$INSIDE_EMACS" ]]; then
-    plugins=(my-aliases git)
-    ZSH_THEME="simple"
-else
-    ZSH_THEME="dracula-pro"
-    plugins=(my-aliases git osx zsh-autosuggestions zsh-syntax-highlighting env)
-fi
+ZSH_THEME="dracula-pro"
+plugins=(my-aliases git osx zsh-autosuggestions zsh-syntax-highlighting env)
 
-
+export TERM="xterm-256color"
 source $ZSH/oh-my-zsh.sh
+source $ZSH_CUSTOM/themes/zsh-syntax-highlighting/zsh-syntax-highlighting.sh
 
 # Avelino's Custom
 export KEYTIMEOUT=1
-export EDITOR=e
+export EDITOR="code --wait"
 
 # timezone/location
 TZ='America/Sao_Paulo'; export TZ
@@ -76,6 +72,7 @@ export JAVA_HOME="/usr/local/opt/openjdk@11/libexec/openjdk.jdk/Contents/Home"
 export M2_HOME=/usr/local/opt/maven/libexec
 export M2=${M2_HOME}/bin
 export PATH="${PATH}:${M2_HOME}/bin:/usr/local/opt/openjdk@11/bin"
+export CPPFLAGS="-I/usr/local/opt/openjdk@11/include"
 
 source $(brew --prefix)/share/antigen/antigen.zsh
 
