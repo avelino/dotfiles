@@ -18,6 +18,7 @@ cp ~/dotfiles/htoprc ~/.htoprc
 cp ~/dotfiles/curlrc ~/.curlrc
 cp ~/dotfiles/antigenrc ~/.antigenrc
 cp -rf ~/dotfiles/clojure ~/.clojure
+cp -rf ~/dotfiles/gh ~/.config/gh
 # cp ~/dotfiles/dotfiles/LauchAgents/*.plist ~/Library/LaunchAgents/
 
 ## emacs
