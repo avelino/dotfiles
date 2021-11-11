@@ -1,3 +1,8 @@
+
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the start of this file.
+[ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
+#### END FIG ENV VARIABLES ####
 # OHMYZSH Load
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_CUSTOM=$HOME/dotfiles/zsh_custom
@@ -5,12 +10,16 @@ export TERM=xterm-256color
 export LC_ALL="en_US.UTF-8"
 
 # ZSH_THEME="yan"
-ZSH_THEME="dracula-pro"
-plugins=(my-aliases git osx zsh-autosuggestions zsh-syntax-highlighting env)
+if [[ -n "$INSIDE_EMACS" ]]; then
+    plugins=(my-aliases git)
+    ZSH_THEME="simple"
+else
+    ZSH_THEME="dracula-pro"
+    plugins=(my-aliases git macos zsh-autosuggestions zsh-syntax-highlighting env)
+fi
 
-export TERM="xterm-256color"
+
 source $ZSH/oh-my-zsh.sh
-source $ZSH_CUSTOM/themes/zsh-syntax-highlighting/zsh-syntax-highlighting.sh
 
 # Avelino's Custom
 export KEYTIMEOUT=1
@@ -72,7 +81,6 @@ export JAVA_HOME="/usr/local/opt/openjdk@11/libexec/openjdk.jdk/Contents/Home"
 export M2_HOME=/usr/local/opt/maven/libexec
 export M2=${M2_HOME}/bin
 export PATH="${PATH}:${M2_HOME}/bin:/usr/local/opt/openjdk@11/bin"
-export CPPFLAGS="-I/usr/local/opt/openjdk@11/include"
 
 source $(brew --prefix)/share/antigen/antigen.zsh
 
@@ -90,3 +98,8 @@ cd ~/
 
 # added by travis gem
 [ ! -s /Users/avelino/.travis/travis.sh ] || source /Users/avelino/.travis/travis.sh
+
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the end of this file.
+[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
+#### END FIG ENV VARIABLES ####
