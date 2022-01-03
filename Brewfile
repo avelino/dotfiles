@@ -98,6 +98,7 @@ brew "nginx", restart_service: true
 brew "nim"
 brew "nnn"
 brew "node"
+brew "node-sass"
 brew "node@10"
 brew "node@12"
 brew "nvm"
@@ -196,6 +197,7 @@ cask "microsoft-auto-update"
 cask "ngrok"
 cask "notion"
 cask "openvpn-connect"
+cask "paw"
 cask "pocket-casts"
 cask "postman"
 cask "pycharm"
@@ -213,6 +215,7 @@ cask "xquartz"
 cask "yubico-yubikey-manager"
 cask "zoom"
 cask "zwift"
+mas "1Password for Safari", id: 1569813296
 mas "Accelerate", id: 1459809092
 mas "Bear", id: 1091189122
 mas "GarageBand", id: 682658836
@@ -224,6 +227,7 @@ mas "Magnet", id: 441258766
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Pixelmator", id: 407963104
+mas "Pixelmator Pro", id: 1289583905
 mas "Pocket", id: 568494494
 mas "Save to Pocket", id: 1477385213
 mas "Tab Suspender", id: 1495356253
