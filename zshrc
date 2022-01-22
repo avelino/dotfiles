@@ -15,9 +15,8 @@ if [[ -n "$INSIDE_EMACS" ]]; then
     ZSH_THEME="simple"
 else
     ZSH_THEME="dracula-pro"
-    plugins=(my-aliases git macos zsh-autosuggestions zsh-syntax-highlighting env)
+    plugins=(my-aliases git macos env zsh-syntax-highlighting zsh-autosuggestions)
 fi
-
 
 source $ZSH/oh-my-zsh.sh
 
@@ -33,11 +32,9 @@ export LC_ALL=
 # PATH
 export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
 
-if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
-    source ~/.gnupg/.gpg-agent-info
-    export GPG_AGENT_INFO
-else
+if ! [[ -n "$(pgrep gpg-agent)" ]]; then
     eval $(gpg-agent --daemon ~/.gnupg/.gpg-agent-info)
+    export SSH_AUTH_SOCK=/Users/avelino/.gnupg/S.gpg-agent.ssh
 fi
 export GPG_TTY=$(tty)
 
@@ -82,8 +79,6 @@ export M2_HOME=/usr/local/opt/maven/libexec
 export M2=${M2_HOME}/bin
 export PATH="${PATH}:${M2_HOME}/bin:/usr/local/opt/openjdk@11/bin"
 
-source $(brew --prefix)/share/antigen/antigen.zsh
-
 eval "$(direnv hook zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 stty sane
@@ -95,9 +90,6 @@ if [ -f '/Users/avelino/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/avelino
 if [ -f '/Users/avelino/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/avelino/google-cloud-sdk/completion.zsh.inc'; fi
 
 cd ~/
-
-# added by travis gem
-[ ! -s /Users/avelino/.travis/travis.sh ] || source /Users/avelino/.travis/travis.sh
 
 #### FIG ENV VARIABLES ####
 # Please make sure this block is at the end of this file.
