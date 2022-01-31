@@ -3,6 +3,11 @@
 # Please make sure this block is at the start of this file.
 [ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
 #### END FIG ENV VARIABLES ####
+
+
+
+
+#### End FIG ENV VARIABLES ####
 # OHMYZSH Load
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_CUSTOM=$HOME/dotfiles/zsh_custom
@@ -44,10 +49,10 @@ eval $(keychain --agents ssh --eval id_rsa)
 export PROJECT_PATH=~/projects
 
 # Go
-export GOROOT=/usr/local/opt/go/libexec
+export GOROOT=/opt/homebrew/opt/go/libexec
 export GOPATH=$PROJECT_PATH
 export GOCACHE=$GOPATH/cache
-export PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
+export PATH=/usr/local/opt/go/bin:$GOPATH/bin:$PATH
 
 # Python
 # export PATH="/usr/local/opt/python@3.7/bin:$PATH"
@@ -67,8 +72,8 @@ export PATH=$PYENV_ROOT/bin:$PATH
 # Node
 export PATH=/usr/local/opt/node@10/bin:$PATH
 export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # Flutter
 export PATH=$PROJECT_PATH/flutter/bin:$PATH
@@ -90,6 +95,11 @@ if [ -f '/Users/avelino/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/avelino
 if [ -f '/Users/avelino/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/avelino/google-cloud-sdk/completion.zsh.inc'; fi
 
 cd ~/
+
+
+
+
+
 
 #### FIG ENV VARIABLES ####
 # Please make sure this block is at the end of this file.
