@@ -7,6 +7,7 @@ tap "d12frosted/emacs-plus"
 tap "dart-lang/dart"
 tap "gabrie30/utils"
 tap "github/gh"
+tap "graalvm/tap"
 tap "heroku/brew"
 tap "homebrew/autoupdate"
 tap "homebrew/bundle"
@@ -186,6 +187,7 @@ cask "google-chrome"
 cask "google-cloud-sdk"
 cask "google-drive"
 cask "gpg-suite"
+cask "graalvm-ce-java11"
 cask "hyper"
 cask "intellij-idea"
 cask "itau"
@@ -223,6 +225,7 @@ mas "Pages", id: 409201541
 mas "Pixelmator", id: 407963104
 mas "Pixelmator Pro", id: 1289583905
 mas "Pocket", id: 568494494
+mas "Revue Browser Extension", id: 1562822822
 mas "Save to Pocket", id: 1477385213
 mas "Tab Suspender", id: 1495356253
 mas "The Unarchiver", id: 425424353
