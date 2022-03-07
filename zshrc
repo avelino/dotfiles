@@ -30,7 +30,7 @@ export LANG=en_US.UTF-8
 export LC_ALL=
 
 # PATH
-export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.local/bin:/opt/homebrew/bin:/usr/local/bin:$PATH
 
 if ! [[ -n "$(pgrep gpg-agent)" ]]; then
     eval $(gpg-agent --daemon ~/.gnupg/.gpg-agent-info)
