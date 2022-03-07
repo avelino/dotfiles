@@ -13,11 +13,12 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 xcode-select --install
+softwareupdate --install -a
 
 # install homebrew
 if ! [ -x "$(command -v brew)" ]; then
     # install packages for macOS
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 cd ~/dotfiles
 brew bundle
