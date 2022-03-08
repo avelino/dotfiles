@@ -162,7 +162,6 @@ cask "bartender"
 cask "battle-net"
 cask "bluestacks"
 cask "bose-updater"
-cask "brave-browser"
 cask "calibre"
 cask "chromedriver"
 cask "cron"
@@ -170,13 +169,9 @@ cask "daisydisk"
 cask "deepl"
 cask "discord"
 cask "docker"
-cask "docker-edge"
-cask "drawio"
-cask "emacs-mac"
 cask "fig"
 cask "figma"
 cask "firefox-developer-edition"
-cask "fluid"
 cask "flutter"
 cask "font-awesome-terminal-fonts"
 cask "font-fira-code"
@@ -197,10 +192,8 @@ cask "ngrok"
 cask "notion"
 cask "paw"
 cask "pocket-casts"
-cask "pycharm"
 cask "quitter"
 cask "raycast"
-cask "safari-technology-preview"
 cask "slack"
 cask "spotify"
 cask "superhuman"
@@ -225,9 +218,9 @@ mas "Pages", id: 409201541
 mas "Pixelmator", id: 407963104
 mas "Pixelmator Pro", id: 1289583905
 mas "Pocket", id: 568494494
-mas "Revue Browser Extension", id: 1562822822
 mas "Save to Pocket", id: 1477385213
 mas "Tab Suspender", id: 1495356253
 mas "The Unarchiver", id: 425424353
 mas "Todoist", id: 585829637
 mas "Wappalyzer", id: 1520333300
+mas "Xcode", id: 497799835
