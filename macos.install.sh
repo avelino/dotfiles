@@ -14,6 +14,9 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 xcode-select --install
 softwareupdate --install -a
+if [[ $(uname -m) == 'arm64' ]]; then
+    softwareupdate --install-rosetta
+fi
 
 # install homebrew
 if ! [ -x "$(command -v brew)" ]; then
