@@ -60,6 +60,7 @@ brew "tesseract"
 brew "ffmpeg"
 brew "fzf"
 brew "geckodriver"
+brew "geos"
 brew "gh"
 brew "git"
 brew "glew"
@@ -81,6 +82,7 @@ brew "kubernetes-cli"
 brew "languagetool"
 brew "leiningen"
 brew "less"
+brew "libmemcached"
 brew "libxml2"
 brew "lnav"
 brew "lua@5.1", link: false
@@ -112,7 +114,7 @@ brew "physfs"
 brew "pinentry-mac"
 brew "pipenv"
 brew "poppler"
-brew "postgresql"
+brew "postgresql", restart_service: true
 brew "prestd"
 brew "python@3.8"
 brew "rbenv"
@@ -140,6 +142,8 @@ brew "yarn"
 brew "youtube-dl"
 brew "zlib"
 brew "zsh"
+brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
 brew "borkdude/brew/clj-kondo"
 brew "bukalapak/packages/snowboard"
 brew "clojure-lsp/brew/clojure-lsp-native"
@@ -169,6 +173,9 @@ cask "daisydisk"
 cask "deepl"
 cask "discord"
 cask "docker"
+cask "docker-edge"
+cask "drawio"
+cask "emacs-mac"
 cask "fig"
 cask "figma"
 cask "firefox-developer-edition"
@@ -218,6 +225,7 @@ mas "Pages", id: 409201541
 mas "Pixelmator", id: 407963104
 mas "Pixelmator Pro", id: 1289583905
 mas "Pocket", id: 568494494
+mas "Revue Browser Extension", id: 1562822822
 mas "Save to Pocket", id: 1477385213
 mas "Tab Suspender", id: 1495356253
 mas "The Unarchiver", id: 425424353
