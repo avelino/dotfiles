@@ -17,7 +17,7 @@ cp ~/dotfiles/npmrc ~/.npmrc
 cp ~/dotfiles/htoprc ~/.htoprc
 cp ~/dotfiles/curlrc ~/.curlrc
 cp ~/dotfiles/antigenrc ~/.antigenrc
-cp -rf ~/dotfiles/clojure ~/.clojure
+git clone git@github.com:practicalli/clojure-deps-edn.git ~/.clojure
 cp -rf ~/dotfiles/gh ~/.config/gh
 # cp ~/dotfiles/dotfiles/LauchAgents/*.plist ~/Library/LaunchAgents/
 
