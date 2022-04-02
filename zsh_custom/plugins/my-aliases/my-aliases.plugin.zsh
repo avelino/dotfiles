@@ -11,6 +11,7 @@ alias ex=emacsx_start
 alias esk=emacs_kill
 # alias esk="killall emacs"
 alias emacs="emacs -nw"
+alias eopen="emacsclient -n"
 #alias code="code-insiders"
 alias tmux="tmux -u"
 alias htop="TERM=screen htop"
@@ -20,7 +21,7 @@ alias loadrvm='[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"'
 alias loadnvm='[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh" && [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"'
 alias loadpyenv='pyenv init -'
 alias loadtravis='[ -f $HOME/.travis/travis.sh ] && . "$HOME/.travis/travis.sh"'
-alias brewup='brew update && brew upgrade && brew cu -ay'
+alias brewup='brew update && brew upgrade && brew cu -ay --cleanup'
 alias brewbkp='rm ~/dotfiles/Brewfile && cd ~/dotfiles && brew bundle dump'
 
 function emacs_session_name(){
