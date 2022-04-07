@@ -1,3 +1,0 @@
-deb http://packages.cloud.google.com/apt cloud-sdk-bullseye main
-deb http://packages.cloud.google.com/apt google-compute-engine-bullseye-stable main
-deb http://packages.cloud.google.com/apt google-cloud-packages-archive-keyring-bullseye main
