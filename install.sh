@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
 ## oh-my-zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 ## copy files
 cp ~/dotfiles/gitconfig ~/.gitconfig
 cp ~/dotfiles/tmux.conf ~/.tmux.conf
-rm ~/.zshrc && \
-    cp ~/dotfiles/zshrc ~/.zshrc
+# rm ~/.zshrc && cp ~/dotfiles/zshrc ~/.zshrc
+cp -rf ~/dotfiles/fish ~/.config/fish
 cp ~/dotfiles/hyper.js ~/.hyper.js
-cp ~/dotfiles/fzf.zsh ~/.fzf.zsh
+# cp ~/dotfiles/fzf.zsh ~/.fzf.zsh
 cp ~/dotfiles/gitignore_global ~/.gitignore_global
 cp ~/dotfiles/npmrc ~/.npmrc
 cp ~/dotfiles/htoprc ~/.htoprc
@@ -20,7 +20,7 @@ cp -rf ~/dotfiles/gh ~/.config/gh
 # cp ~/dotfiles/dotfiles/LauchAgents/*.plist ~/Library/LaunchAgents/
 
 ## emacs
-git clone git://github.com/avelino/.emacs.git ~/.emacs.d
+# git clone git://github.com/avelino/.emacs.git ~/.emacs.d
 
 ## vim
 mkdir -p ~/.config/nvim && \
@@ -32,6 +32,6 @@ mkdir -p ~/.config/nvim && \
 ./dotfiles/golang.sh
 
 ## zsh plugins
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+#git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+#git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+#git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
