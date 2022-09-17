@@ -11,6 +11,9 @@ alias ag='ag --follow --hidden -W (math $COLUMNS - 11)'
 alias d docker
 alias k kubectl
 
+alias vim nvim
+alias vi nvim
+
 # wget sucks with certificates. Let's keep it simple.
 alias wget="curl -O"
 

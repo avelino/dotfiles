@@ -1,13 +1,10 @@
 #!/usr/bin/env bash
 
-## oh-my-zsh
-# sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
 ## copy files
 cp ~/dotfiles/gitconfig ~/.gitconfig
 cp ~/dotfiles/tmux.conf ~/.tmux.conf
-# rm ~/.zshrc && cp ~/dotfiles/zshrc ~/.zshrc
-cp -rf ~/dotfiles/fish ~/.config/fish
+rm -rf ~/.config/fish && \
+	ln -s ~/dotfiles/fish ~/.config/fish
 cp ~/dotfiles/hyper.js ~/.hyper.js
 # cp ~/dotfiles/fzf.zsh ~/.fzf.zsh
 cp ~/dotfiles/gitignore_global ~/.gitignore_global
@@ -30,8 +27,3 @@ mkdir -p ~/.config/nvim && \
 
 ## golang install bins
 ./dotfiles/golang.sh
-
-## zsh plugins
-#git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-#git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-#git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
