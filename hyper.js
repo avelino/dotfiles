@@ -14,10 +14,9 @@ const brightWhite = '#ffffff'
 
 module.exports = {
     config: {
-	modifierKeys: { altIsMeta: true },
         updateChannel: 'stable',
         fontSize: 22,
-        fontFamily: '"MesloLGS NF"',
+        fontFamily: '"Fira Code"',
         fontWeight: 'bold',
         fontWeightBold: 'bold',
         lineHeight: 1,
@@ -25,7 +24,6 @@ module.exports = {
         cursorAccentColor: '#e51c98',
         cursorShape: 'BLOCK',
         cursorBlink: false,
-	    cursorColor: '#e51c98',
         foregroundColor: foregroundColor,
         // terminal background color
         // opacity is only supported on macOS
@@ -34,6 +32,7 @@ module.exports = {
         selectionColor: 'rgba(248,28,229,0.3)',
         // border color (window, tabs)
         borderColor: selection,
+        cursorColor: magenta,
         css: `
       .hyper_main {
         border-color: #22212C !important;
@@ -69,7 +68,7 @@ module.exports = {
             cyan,
             brightWhite
         ],
-        shell: '/opt/homebrew/bin/zsh',
+        shell: '/opt/homebrew/bin/fish',
         shellArgs: ['--login'],
         env: {},
         bell: 'SOUND',
@@ -80,10 +79,17 @@ module.exports = {
         webGLRenderer: false,
         webLinksActivationKey: '',
         disableLigatures: true,
+        modifierKeys: {
+            altIsMeta: true
+        },
     },
-    plugins: ["hyper-font-smoothing", "hyper-search", "hyper-dracula"],
+    plugins: [
+        "hyper-font-smoothing",
+        "hyper-search",
+        "xi-hyper",
+        "hyper-solarized-light"
+    ],
     localPlugins: [
-  "fig-hyper-integration",
     ],
     keymaps: {},
 };
