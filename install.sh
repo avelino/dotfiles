@@ -2,7 +2,7 @@
 
 ## copy files
 cp ~/dotfiles/gitconfig ~/.gitconfig
-cp ~/dotfiles/tmux.conf ~/.tmux.conf
+ln -s ~/dotfiles/tmux.conf ~/.config/tmux.conf
 rm -rf ~/.config/fish && \
 	ln -s ~/dotfiles/fish ~/.config/fish
 cp ~/dotfiles/hyper.js ~/.hyper.js
@@ -14,6 +14,8 @@ cp ~/dotfiles/curlrc ~/.curlrc
 cp ~/dotfiles/antigenrc ~/.antigenrc
 git clone git@github.com:practicalli/clojure-deps-edn.git ~/.clojure
 cp -rf ~/dotfiles/gh ~/.config/gh
+ln -s ~/dotfiles/skhdrc ~/.skhdrc
+ln -s ~/dotfiles/yabairc ~/.yabairc
 # cp ~/dotfiles/dotfiles/LauchAgents/*.plist ~/Library/LaunchAgents/
 
 ## emacs
