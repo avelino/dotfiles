@@ -191,7 +191,6 @@ mas "Bear", id: 1091189122
 mas "GarageBand", id: 682658836
 mas "Keynote", id: 409183694
 mas "LanguageTool", id: 1534275760
-mas "Magnet", id: 441258766
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Simplify for Gmail", id: 1544668450
