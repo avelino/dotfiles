@@ -3,6 +3,7 @@
 ## copy files
 cp ~/dotfiles/gitconfig ~/.gitconfig
 ln -s ~/dotfiles/tmux.conf ~/.config/tmux.conf
+ln -s ~/dotfiles/spacemacs ~/.spacemacs
 rm -rf ~/.config/fish && \
 	ln -s ~/dotfiles/fish ~/.config/fish
 cp ~/dotfiles/hyper.js ~/.hyper.js
