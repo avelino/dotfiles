@@ -39,10 +39,10 @@ yabai -m rule --add app='^System Information$' manage=off
 yabai -m rule --add app='^System Preferences$' manage=off
 yabai -m rule --add title='Preferences$' manage=off
 yabai -m rule --add title='Settings$' manage=off
-yabai -m rule --add title='1Password' manage=off
-yabai -m rule --add title='DeepL' manage=off
-yabai -m rule --add title='LanguageTool' manage=off
-yabai -m rule --add title='Raycast' manage=off
-yabai -m rule --add title='Cron' manage=on
+yabai -m rule --add app='1Password' manage=off
+yabai -m rule --add app='DeepL' manage=off
+yabai -m rule --add app='LanguageTool' manage=off
+yabai -m rule --add app='Raycast' manage=off
+yabai -m rule --add app='Cron' manage=on
 
 echo "yabai configuration loaded.."
