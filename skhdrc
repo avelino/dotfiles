@@ -52,9 +52,9 @@ ctrl + alt - 2 :yabai -m query --spaces --space 2 | jq -r '.windows[0] // empty'
 ctrl + alt - 3 :yabai -m query --spaces --space 3 | jq -r '.windows[0] // empty' | xargs yabai -m window --focus
 
 # Toggle float
-ctrl - f : yabai -m window --toggle float
+# ctrl - f : yabai -m window --toggle float
 
-#kRestart yabai
+# Restart yabai
 cmd + lctrl - r : \
     /usr/bin/env osascript <<< \
         "display notification \"Restarting Yabai\" with title \"Yabai\""; \
