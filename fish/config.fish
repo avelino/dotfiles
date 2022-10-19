@@ -3,4 +3,5 @@ if status is-interactive
     source ~/.config/fish/aliases.fish
     set -gx GPG_TTY (tty)
     keychain --agents ssh --eval id_rsa | source
+    set EDITOR "e" 
 end
