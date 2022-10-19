@@ -1,4 +1,5 @@
 ;; -*- mode: emacs-lisp; lexical-binding: t -*-
+;; -*- mode: dotspacemacs -*-
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
@@ -6,7 +7,7 @@
   "Layer configuration:
 This function should only modify configuration layer settings."
   (setq-default
-   multi-term-program "/usr/bin/zsh"
+   multi-term-program "/usr/bin/fish"
 
    ;; Base distribution to use. This is a layer contained in the directory
    ;; `+distribution'. For now available distributions are `spacemacs-base'
@@ -36,10 +37,14 @@ This function should only modify configuration layer settings."
    dotspacemacs-configuration-layers
    '(yaml
      (clojure :variables
+              clojure-backend 'cider ;; use cider and disable lsp
               clojure-enable-linters 'clj-kondo
               clojure-enable-fancify-symbols nil
               clojure-enable-sayid t
-              clojure-enable-clj-refactor t)
+              clojure-enable-clj-refactor t
+              clojure-indent-style 'align-arguments
+              clojure-align-forms-automatically t)
+     cider
      java
      racket
      sql
@@ -50,7 +55,10 @@ This function should only modify configuration layer settings."
      python
      docker
      shell-scripts
-     markdown
+
+     (markdown :variables
+               markdown-live-preview-engine 'vmd)
+
      html
      themes-megapack
      emacs-lisp
@@ -63,13 +71,20 @@ This function should only modify configuration layer settings."
                       version-control-global-margin t)
      helm
      multiple-cursors
-     lsp
+     ;; Language server protocol with minimal visual impact
+     ;; https://practical.li/spacemacs/install-spacemacs/clojure-lsp/
+     (lsp :variables
+          lsp-ui-doc-enable nil       ;; disable all doc popups
+          lsp-ui-sideline-enable nil  ;; disable sideline bar for less distraction
+          treemacs-space-between-root-nodes nil  ;; no spacing in treemacs views
+          )
      (auto-completion :variables
                       auto-completion-enable-sort-by-usage t
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-help-tooltip t)
      syntax-checking
      (shell :variables
+            shell-default-shell 'eshell
             shell-default-height 30
             shell-default-position 'bottom)
      (osx :variables osx-command-as       'hyper
@@ -261,7 +276,8 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-light)
+   ;; dotspacemacs-themes '(spacemacs-light)
+   dotspacemacs-themes '(monotropic)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
@@ -465,7 +481,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil, start an Emacs server if one is not already running.
    ;; (default nil)
-   dotspacemacs-enable-server nil
+   dotspacemacs-enable-server t
 
    ;; Set the emacs server socket location.
    ;; If nil, uses whatever the Emacs default is, otherwise a directory path
@@ -481,7 +497,7 @@ It should only modify the values of Spacemacs settings."
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `rg', `ag', `pt', `ack' and `grep'.
    ;; (default '("rg" "ag" "pt" "ack" "grep"))
-   dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
+   dotspacemacs-search-tools '("ag")
 
    ;; Format specification for setting the frame title.
    ;; %a - the `abbreviated-file-name', or `buffer-name'
