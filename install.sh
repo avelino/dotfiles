@@ -3,7 +3,11 @@
 ## copy files
 cp ~/dotfiles/gitconfig ~/.gitconfig
 ln -s ~/dotfiles/tmux.conf ~/.config/tmux.conf
-ln -s ~/dotfiles/spacemacs ~/.spacemacs
+#git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d && \
+#    ln -s ~/dotfiles/spacemacs ~/.spacemacs
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d && \
+    ln -s ~/dotfiles/doom.d ~/.doom.d && \
+    ~/.emacs.d/bin/doom install
 rm -rf ~/.config/fish && \
 	ln -s ~/dotfiles/fish ~/.config/fish
 cp ~/dotfiles/hyper.js ~/.hyper.js
