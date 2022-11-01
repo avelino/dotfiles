@@ -14,36 +14,15 @@
 	indentHeuristic = true
 	algorithm = histogram
 	meta = yellow bold
-	frag = magenta bold # line info
-	old = red # deletions
-	new = green # additions
-[color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
+	frag = magenta bold
+	new = green bold
 [core]
-	# Use custom `.gitignore`
 	excludesfile = ~/dotfiles/gitignore_global
-    # editor = nvim
-    editor = "code --wait"
-    # editor = "emacs -nw"
+	# editor = "code --wait"
+	editor = "emacs -nw"
     autocrlf = input
-	# Treat spaces before tabs and all kinds of trailing whitespace as an error.
-	# [default] trailing-space: looks for spaces at the end of a line
-	# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
-	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
-	# Make `git rebase` safer on macOS.
-	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
-	trustctime = false
-	# Prevent showing files whose names contain non-ASCII symbols as unversioned.
-	# http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
-	precomposeunicode = false
-	# Speed up commands involving untracked files such as `git status`.
-	# https://git-scm.com/docs/git-update-index#_untracked_cache
-	untrackedCache = true
 [difftool]
     prompt = true
-	renames = copies
 [diff]
     tool = nvimdiff
 [difftool "nvimdiff"]
@@ -53,26 +32,9 @@
 [mergetool "ediff"]
 	cmd = emacsclient -c -a \"\" --eval \"(ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" nil \\\"$MERGED\\\")\"
 [alias]
-	# View the current working tree status using the short format.
 	st = status -sb
-	s = status -sb
-	# Pull in remote changes for the current repository and all its submodules
-	p = pull --recurse-submodules
-	# Clone a repository including all submodules
-	c = clone --recursive
-	# Commit all changes
-	ca = !git add -A && git commit -av
-	# Show verbose output about tags, branches or remotes
-	tags = tag -l
-	branches = branch --all
-	remotes = remote --verbose
-	# List aliases.
-	aliases = config --get-regexp alias
-	# List contributors with number of commits.
-	contributors = shortlog --summary --numbered
-	# Commint verbose by default
+	ci = commit -v -s
 	commit = commit -v -s
-	ci = commit
 	up = pull --ff-only --all -p
 	who = blame
 	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
@@ -80,7 +42,6 @@
 	di = "!d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
 	url = ! bash -c 'git config --get remote.origin.url | sed -E s/.+:\\(.+\\)\\.git$/https:\\\\/\\\\/github\\\\.com\\\\/\\\\1/g'
 	lg = log --pretty=format:'%C(yellow)%h%C(reset) %s %C(cyan)%cI%C(reset) %C(blue)%an%C(reset) %C(green)%d%C(reset)' --graph
-	l = log --pretty=oneline -n 20 --graph --abbrev-commit
 	review = log --summary --patch --stat=100 --dirstat --ignore-all-space --reverse --decorate --find-renames=33 --find-copies-harder --cc
 	ignored = ls-files --others -i --exclude-standard
 	change = codereview change
@@ -91,8 +52,6 @@
 	sync = codereview sync
 [push]
 	default = current
-	# Make `git push` push relevant annotated tags when pushing branches out.
-	followTags = true
 [status]
 	color = true
 	submodulesummary = true
@@ -107,8 +66,6 @@
 	verbose = true
 [branch]
 	autosetuprebase = always
-	# Show most recently changed branches first.
-	sort = -committerdate
 [help]
 	autocorrect = 1
 [init]
