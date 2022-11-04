@@ -84,3 +84,9 @@
 ;; text mode
 (add-hook! 'markdown-mode-hook #'doom-disable-line-numbers-h)
 (add-hook! 'org-mode-hook #'doom-disable-line-numbers-h)
+
+;; python
+(use-package! python-black
+  :demand t
+  :after python
+  :hook (python-mode . python-black-on-save-mode-enable-dwim))

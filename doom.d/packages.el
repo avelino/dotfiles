@@ -50,9 +50,4 @@
 ;(unpin! t)
 
 ;; python
-(package! virtualenvwrapper)
-(after! virtualenvwrapper
-  (setq venv-location "~/.virtualenvs/"))
-(use-package! python-black
-  :after python
-  :hook (python-mode . python-black-on-save-mode-enable-dwim))
+(package! python-black)
