@@ -43,6 +43,6 @@ yabai -m rule --add app='1Password' manage=off
 yabai -m rule --add app='DeepL' manage=off
 yabai -m rule --add app='LanguageTool' manage=off
 yabai -m rule --add app='Raycast' manage=off
-yabai -m rule --add app='Cron' manage=on
+yabai -m rule --add app='Cron' manage=off
 
 echo "yabai configuration loaded.."
