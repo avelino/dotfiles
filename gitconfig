@@ -59,7 +59,7 @@
 [apply]
 	whitespace = fix
 [gpg]
-	program = gpg
+	program = /usr/local/bin/gpg
 [commit]
 	template = ~/dotfiles/gitcommittemplate
  	gpgsign = true
