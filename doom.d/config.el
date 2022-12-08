@@ -48,6 +48,8 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 
+(setq auto-save--timer t)
+
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -90,3 +92,12 @@
   :demand t
   :after python
   :hook (python-mode . python-black-on-save-mode-enable-dwim))
+
+;; json
+;; To enable jsonian to work with flycheck
+(after! (jsonian flycheck) (jsonian-enable-flycheck))
+;; To diasable so-long mode overrides
+(after! (jsonian so-long) (jsonian-no-so-long-mode))
+
+;; ui
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)

@@ -51,3 +51,10 @@
 
 ;; python
 (package! python-black)
+
+;; json
+(package! jsonian :recipe (:host github :repo "iwahbe/jsonian"))
+(package! json-mode :disable t)
+
+;; ui
+(package! rainbow-delimiters)
