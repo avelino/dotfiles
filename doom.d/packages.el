@@ -58,3 +58,9 @@
 
 ;; ui
 (package! rainbow-delimiters)
+(package! fish-mode)
+
+;; check
+(package! languagetool)
+(package! copilot
+  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))

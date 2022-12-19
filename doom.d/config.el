@@ -101,3 +101,20 @@
 
 ;; ui
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+;; no title bar and round corners
+(add-to-list 'default-frame-alist '(undecorated-round . t))
+
+;; check
+(setq languagetool-api-key (getenv "LANGUAGETOOL_KEY")
+      languagetool-username "avelinorun@gmail.com"
+      languagetool-console-command "/usr/local/bin/languagetool"
+      languagetool-server-command "/usr/local/bin/languagetool-server")
+
+;; accept completion from copilot and fallback to company
+(use-package! copilot
+  :hook (prog-mode . copilot-mode)
+  :bind (("C-TAB" . 'copilot-accept-completion-by-word)
+         ("C-<tab>" . 'copilot-accept-completion-by-word)
+         :map copilot-completion-map
+         ("<tab>" . 'copilot-accept-completion)
+         ("TAB" . 'copilot-accept-completion)))
