@@ -1,9 +1,10 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
     source ~/.config/fish/aliases.fish
+    source ~/.config/private-env.fish
     set -gx GPG_TTY (tty)
     keychain --agents ssh --eval id_rsa | source
-    set EDITOR "e"
+    set EDITOR e
     set MACPREFS_BACKUP_DIR "~/Google Drive/My Drive/config/macprefs"
 
     if test -z (pgrep ssh-agent)
