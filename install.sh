@@ -2,14 +2,21 @@
 
 ## copy files
 cp ~/dotfiles/gitconfig ~/.gitconfig
-ln -s ~/dotfiles/tmux.conf ~/.config/tmux.conf
-#git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d && \
-#    ln -s ~/dotfiles/spacemacs ~/.spacemacs
+
+## tmux config
+mkdir -p ~/.tmux/plugins && \
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && \
+    cp ~/dotfiles/tmux.conf ~/.tmux.conf
+
+## emacs config
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d && \
     ln -s ~/dotfiles/doom.d ~/.doom.d && \
     ~/.emacs.d/bin/doom install
+
+## fish shell
 rm -rf ~/.config/fish && \
 	ln -s ~/dotfiles/fish ~/.config/fish
+
 cp ~/dotfiles/hyper.js ~/.hyper.js
 # cp ~/dotfiles/fzf.zsh ~/.fzf.zsh
 cp ~/dotfiles/gitignore_global ~/.gitignore_global
@@ -23,10 +30,7 @@ ln -s ~/dotfiles/skhdrc ~/.skhdrc
 ln -s ~/dotfiles/yabairc ~/.yabairc
 # cp ~/dotfiles/dotfiles/LauchAgents/*.plist ~/Library/LaunchAgents/
 
-## emacs
-# git clone git://github.com/avelino/.emacs.git ~/.emacs.d
-
-## vim
+## vim config (by vim-bootstrap.com)
 mkdir -p ~/.config/nvim && \
     curl -X POST 'https://vim-bootstrap.com/generate.vim' \
     --data 'langs=javascript&langs=typescript&langs=html&langs=python&langs=go&langs=lua&theme=dracula&editor=nvim' \
