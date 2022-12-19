@@ -11,6 +11,7 @@ mkdir -p ~/.tmux/plugins && \
 ## emacs config
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d && \
     ln -s ~/dotfiles/doom.d ~/.doom.d && \
+    ~/.emacs.d/bin/doom env && \
     ~/.emacs.d/bin/doom install
 
 ## fish shell

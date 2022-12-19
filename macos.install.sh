@@ -26,6 +26,9 @@ fi
 cd ~/dotfiles
 brew bundle
 
+# private config
+cp ~/Google\ Drive/My\ Drive/config/private-env.fish ~/.config/private-env.fish
+
 ###############################################################################
 # General UI/UX                                                               #
 ###############################################################################
