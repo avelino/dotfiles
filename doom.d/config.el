@@ -118,3 +118,6 @@
          :map copilot-completion-map
          ("<tab>" . 'copilot-accept-completion)
          ("TAB" . 'copilot-accept-completion)))
+
+;; fish to default shell
+ '(explicit-shell-file-name "/usr/local/bin/fish")
