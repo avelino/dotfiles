@@ -29,6 +29,9 @@ brew bundle
 # private config
 cp ~/Google\ Drive/My\ Drive/config/private-env.fish ~/.config/private-env.fish
 
+# brew services enable on login
+ln -sfv ~/Library/LaunchAgents/homebrew.mxcl.emacs-plus@29.plist ~/Library/LaunchAgents
+
 ###############################################################################
 # General UI/UX                                                               #
 ###############################################################################
