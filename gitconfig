@@ -18,8 +18,10 @@
 	new = green bold
 [core]
 	excludesfile = ~/dotfiles/gitignore_global
+	## do not set editor, use environment variable `$EDITOR`
 	# editor = "code --wait"
-	editor = "emacs -nw"
+	# editor = "emacs -nw"
+	# editor = "e"
     autocrlf = input
 [difftool]
     prompt = true
