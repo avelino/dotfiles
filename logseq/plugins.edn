@@ -1,0 +1,26 @@
+{:logseq-bullet-threading {:version "v1.1.1", :repo "pengx17/logseq-plugin-bullet-threading", :effect false, :theme false}
+ :logseq-markdown-table {:version "v1.7.0", :repo "haydenull/logseq-plugin-markdown-table", :effect false, :theme false}
+ :logseq-link-preview {:version "v2.2.9", :repo "pengx17/logseq-plugin-link-preview", :effect true, :theme false}
+ :logseq-pdf-export-plugin {:version "2.2.7", :repo "sawhney17/logseq-pdf-export", :effect true, :theme false}
+ :logseq-todo-plugin {:version "v1.14.1", :repo "ahonn/logseq-plugin-todo", :effect true, :theme false}
+ :logseq-focus-mode {:version "v1.0.3", :repo "sethfair/logseq-focus-mode", :effect false, :theme false}
+ :logseq-smartblocks {:version "3.51", :repo "sawhney17/logseq-smartblocks", :effect false, :theme false}
+ :logtools {:version "0.1.1", :repo "cannibalox/logtools", :effect false, :theme false}
+ :logseq-datenlp-plugin {:version "3.13.6", :repo "hkgnp/logseq-datenlp-plugin", :effect true, :theme false}
+ :logseq-reference-styles {:version "v0.0.3", :repo "benjaffe/logseq-reference-styles", :effect false, :theme false}
+ :logseq-emoji-picker-fork {:version "v0.0.2", :repo "walsvid/logseq-emoji-picker-fork", :effect false, :theme false}
+ :logseq-diagrams-as-code {:version "0.0.19", :repo "npgrosser/logseq-diagrams-as-code", :effect false, :theme false}
+ :logseq-media-controls {:version "0.3.1", :repo "stefanbuck/logseq-media-controls", :effect true, :theme false}
+ :logseq-move-block {:version "v0.0.13", :repo "vipzhicheng/logseq-plugin-move-block", :effect true, :theme false}
+ :logseq-awesome-styler {:version "v3.4.2", :repo "yoyurec/logseq-awesome-styler", :effect true, :theme false}
+ :logseq-awesome-links {:version "v1.14.3", :repo "yoyurec/logseq-awesome-links", :effect true, :theme false}
+ :logseq-awesome-ui {:version "v1.6.16", :repo "yoyurec/logseq-awesome-ui", :effect true, :theme false}
+ :logseq-plugin-gpt3-openai {:version "v1.6.1", :repo "briansunter/logseq-plugin-gpt3-openai", :effect true, :theme false}
+ :logseq-sticky-headers {:version "v1.4.3", :repo "yoyurec/logseq-sticky-headers", :effect true, :theme false}
+ :logseq-plugin-highlights-extractor {:version "0.0.1", :repo "renatocaliari/logseq-plugin-highlights-extractor", :effect false, :theme false}
+ :logseq-bear-theme {:version "v0.0.37", :repo "rcvd/logseq-bear-theme", :effect false, :theme true}
+ :logseq-heatmap {:version "v2.4.3", :repo "pengx17/logseq-plugin-heatmap", :effect true, :theme false}
+ :logseq-bonofix-theme {:version "v3.8.3", :repo "sansui233/logseq-bonofix-theme", :effect false, :theme true}
+ :logseq-block-to-page {:version "v1.3.0", :repo "hyrijk/logseq-plugin-block-to-page", :effect false, :theme false}
+ :logseq-agenda {:version "v2.13.1", :repo "haydenull/logseq-plugin-agenda", :effect true, :theme false}
+ :logseq-awesome-props {:version "v1.4.4", :repo "yoyurec/logseq-awesome-props", :effect true, :theme false}}

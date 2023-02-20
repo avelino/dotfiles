@@ -57,8 +57,13 @@
 (package! json-mode :disable t)
 
 ;; ui
+(package! vterm-toggle)
 (package! rainbow-delimiters)
 (package! fish-mode)
+(package! with-editor)
+(package! d2-mode)
+(package! company-fuzzy)
+;; (package! flx)
 
 ;; check
 (package! languagetool)
