@@ -1,14 +1,18 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
+    set -U fish_user_paths /opt/homebrew/bin $fish_user_paths
     source ~/.config/fish/aliases.fish
-    source ~/.config/private-env.fish
+    # source ~/.config/private-env.fish
     set -gx GPG_TTY (tty)
     keychain --agents ssh --eval id_rsa | source
     set EDITOR e
-    set MACPREFS_BACKUP_DIR "~/Google Drive/My Drive/config/macprefs"
+    set MACPREFS_BACKUP_DIR '/Users/avelino/Library/CloudStorage/GoogleDrive-avelinorun@gmail.com/My Drive/config/macprefs'
 
-    if test -z (pgrep ssh-agent)
-        eval (ssh-agent -c)
+    # if test -z (pgrep ssh-agent)
+    if ps -p $SSH_AGENT_PID > /dev/null
+        echo "ssh-agent is already running"
+    else
+        eval (ssh-agent -s)
         set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
         set -Ux SSH_AGENT_PID $SSH_AGENT_PID
         set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK

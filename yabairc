@@ -47,5 +47,7 @@ yabai -m rule --add app='LanguageTool' manage=off
 yabai -m rule --add app='Raycast' manage=off
 yabai -m rule --add app='Cron' manage=off
 yabai -m rule --add app='Logseq' manage=off
+yabai -m rule --add title='Logseq' manage=off
+yabai -m rule --add title='Messages' manage=off
 
 echo "yabai configuration loaded.."
