@@ -160,10 +160,10 @@
       (call-interactively fn)))
   (advice-add 'company-complete-selection :around #'jcs--company-complete-selection--advice-around))
 
-(use-package! company-fuzzy
-  :hook (company-mode . company-fuzzy-mode)
-  :init
-  (setq
-        ;; company-fuzzy-sorting-backend 'flx
-        company-fuzzy-prefix-on-top nil
-        company-fuzzy-trigger-symbols '("." "->" "<" "\"" "'" "@")))
+;; (use-package! company-fuzzy
+;;   :hook (company-mode . company-fuzzy-mode)
+;;   :init
+;;   (setq
+;;         ;; company-fuzzy-sorting-backend 'flx
+;;         company-fuzzy-prefix-on-top nil
+;;         company-fuzzy-trigger-symbols '("." "->" "<" "\"" "'" "@")))
