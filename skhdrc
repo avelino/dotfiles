@@ -5,10 +5,10 @@ cmd + shift - return : open --new -a /Applications/Hyper.app/Contents/MacOS/Hype
 cmd - m: yabai -m window --minimize && yabai -m window --focus prev || yabai -m window --focus first
 
 # Send move panels in window/monitors
-cmd + shift - h : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west)
-cmd + shift - j : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south)
-cmd + shift - k : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north)
-cmd + shift - l : yabai -m window --swap east || $(yabai -m window --display east; yabai -m display --focus east)
+# cmd + shift - h : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west)
+# cmd + shift - j : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south)
+# cmd + shift - k : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north)
+# cmd + shift - l : yabai -m window --swap east || $(yabai -m window --display east; yabai -m display --focus east)
 
 # Change tilling layout
 
@@ -28,12 +28,12 @@ cmd - j : yabai -m window --focus stack.next || \
 #                                           jq 'map(select(.visible == 1)) | sort_by(.frame.x, .frame.y) | last | .id') || \
 #                 yabai -m display --focus north
 
-cmd - h : yabai -m window --focus west || \
+cmd - [ : yabai -m window --focus west || \
                  yabai -m window --focus $(yabai -m query --windows --display west | \
                                            jq 'map(select(.visible == 1)) | sort_by(.frame.x, .frame.y) | last | .id') || \
                  yabai -m display --focus west
 
-cmd - l : yabai -m window --focus east || \
+cmd - ] : yabai -m window --focus east || \
                  yabai -m window --focus $(yabai -m query --windows --display east | \
                                            jq 'map(select(.visible == 1)) | sort_by(.frame.x, .frame.y) | first | .id') || \
                  yabai -m display --focus east

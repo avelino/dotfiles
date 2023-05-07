@@ -7,7 +7,8 @@
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
 (setq user-full-name "Avelino"
-      user-mail-address "avelinorun@gmail.com")
+      user-mail-address "avelinorun@gmail.com"
+      user-real-login-name "avelino")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -22,13 +23,14 @@
 ;; accept. For example:
 ;;
 (setq doom-font (font-spec
-                 :family "Source Code Pro"
-                 :size 18
+                 ;; :family "Source Code Pro"
+                 :family "Cascadia Code"
+                 :size 20
                  :weight 'semi-light
                  :width 'normal)
       doom-variable-pitch-font (font-spec
-                                :family "Source Code Pro"
-                                :size 18))
+                                :family "Cascadia Code"
+                                :size 20))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -39,17 +41,18 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-ayu-light)
+;; (setq doom-theme 'doom-dracula)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type 'relative)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 
-(setq auto-save--timer t)
-
+(setq auto-save--timer t
+      auto-save-default t)
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -106,7 +109,6 @@
 
 ;; check
 (use-package! languagetool
-  :ensure t
   :defer t
   :commands (languagetool-check
              languagetool-clear-suggestions
@@ -137,14 +139,19 @@
 
 ;; vterm
 (use-package! vterm-toggle
-  :bind (("C-<escape>" . vterm-toggle))
+  :bind (("C-<escape>" . '+vterm/toggle))
   :config
-  (set-popup-rule! "*doom:vterm-popup:main" :size 0.25 :vslot -4 :select t :quit nil :ttl 0)
+  (set-popup-rule! "*doom:vterm-popup:main" :size 0.45 :vslot -4 :select t :quit nil :ttl 0)
   (add-hook 'vterm-mode-hook  'with-editor-export-editor)
-  (setq vterm-toggle-reset-window-configration-after-exit t))
+  (setq ;; vterm-toggle-reset-window-configration-after-exit t
+        vterm-shell (executable-find "fish")
+        vterm-max-scrollback 10000
+        ))
 
 ;; d2
-(setq d2-location "~/go/bin/d2")
+(use-package! d2-mode
+  :config
+  (setq d2-location "~/go/bin/d2"))
 
 (use-package! company
   :init
@@ -167,3 +174,8 @@
 ;;         ;; company-fuzzy-sorting-backend 'flx
 ;;         company-fuzzy-prefix-on-top nil
 ;;         company-fuzzy-trigger-symbols '("." "->" "<" "\"" "'" "@")))
+
+;; clojure
+(use-package! clojure-mode
+  :config
+  (require 'flycheck-clj-kondo))

@@ -69,3 +69,6 @@
 (package! languagetool)
 (package! copilot
   :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
+
+;; clojure
+(package! flycheck-clj-kondo)
