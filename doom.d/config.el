@@ -40,12 +40,13 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-ayu-light)
+;; (setq doom-theme 'doom-ayu-light)
+(setq doom-theme 'doom-solarized-light)
 ;; (setq doom-theme 'doom-dracula)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type 'relative)
+(setq display-line-numbers-type 'visual)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -145,8 +146,7 @@
   (add-hook 'vterm-mode-hook  'with-editor-export-editor)
   (setq ;; vterm-toggle-reset-window-configration-after-exit t
         vterm-shell (executable-find "fish")
-        vterm-max-scrollback 10000
-        ))
+        vterm-max-scrollback 10000))
 
 ;; d2
 (use-package! d2-mode
@@ -176,6 +176,25 @@
 ;;         company-fuzzy-trigger-symbols '("." "->" "<" "\"" "'" "@")))
 
 ;; clojure
-(use-package! clojure-mode
+(use-package! clojure-mode)
+(use-package! cider
+  :after (clojure-mode)
+  :init
+  (setq cider-repl-history-file "~/.emacs.d/cider-history")
+  (setq cider-repl-wrap-history t)
+  (setq cider-annotate-completion-candidates nil)
+  (add-hook 'cider-mode-hook 'eldoc-mode))
+(use-package! flycheck-clj-kondo
+  :after (clojure-mode))
+(use-package! clj-refactor
+  :after (clojure-mode))
+(use-package! rainbow-delimiters
+  :after (clojure-mode)
   :config
-  (require 'flycheck-clj-kondo))
+  (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode))
+(use-package! paredit
+  :after (clojure-mode)
+  :config
+  (add-hook 'clojure-mode-hook 'enable-paredit-mode)
+  (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
+  (add-hook 'cider-repl-mode-hook 'enable-paredit-mode))

@@ -72,3 +72,8 @@
 
 ;; clojure
 (package! flycheck-clj-kondo)
+(package! cider)
+(package! flycheck-clj-kondo)
+(package! clj-refactor)
+(package! rainbow-delimiters)
+(package! paredit)
