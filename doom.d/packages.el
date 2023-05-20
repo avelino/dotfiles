@@ -49,6 +49,9 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
+
+(package! lsp-treemacs)
+
 ;; python
 (package! python-black)
 
@@ -56,14 +59,17 @@
 (package! jsonian :recipe (:host github :repo "iwahbe/jsonian"))
 (package! json-mode :disable t)
 
-;; ui
+;; term
 (package! vterm-toggle)
-(package! rainbow-delimiters)
 (package! fish-mode)
+
+;; ui
+(package! rainbow-delimiters)
 (package! with-editor)
 (package! d2-mode)
 (package! company-fuzzy)
 ;; (package! flx)
+(package! ef-themes)
 
 ;; check
 (package! languagetool)
@@ -71,6 +77,9 @@
   :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
 
 ;; clojure
+;; Use the latest available packages for Clojure
+;; - cider, clojure-mode
+(unpin! (:lang clojure))
 (package! flycheck-clj-kondo)
 (package! cider)
 (package! flycheck-clj-kondo)

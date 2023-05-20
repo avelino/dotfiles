@@ -41,19 +41,19 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'doom-ayu-light)
-(setq doom-theme 'doom-solarized-light)
+;; (setq doom-theme 'ef-duo-light)
+(setq doom-theme 'ef-day)
 ;; (setq doom-theme 'doom-dracula)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type 'visual)
+(setq display-line-numbers-type `nil)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 
-(setq auto-save--timer t
-      auto-save-default t)
+(setq auto-save-default t)
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -88,7 +88,6 @@
 ;; they are implemented.
 
 ;; text mode
-(add-hook! 'markdown-mode-hook #'doom-disable-line-numbers-h)
 (add-hook! 'org-mode-hook #'doom-disable-line-numbers-h)
 
 ;; python
@@ -103,98 +102,26 @@
 ;; To diasable so-long mode overrides
 (after! (jsonian so-long) (jsonian-no-so-long-mode))
 
-;; ui
-(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-;; no title bar and round corners
-(add-to-list 'default-frame-alist '(undecorated-round . t))
-
-;; check
-(use-package! languagetool
-  :defer t
-  :commands (languagetool-check
-             languagetool-clear-suggestions
-             languagetool-correct-at-point
-             languagetool-correct-buffer
-             languagetool-set-language
-             languagetool-server-mode
-             languagetool-server-start
-             languagetool-server-stop)
-  :config
-  (setq languagetool-api-key (getenv "LANGUAGETOOL_KEY")
-        languagetool-username "avelinorun@gmail.com"
-        languagetool-java-arguments '("-Dfile.encoding=UTF-8")
-        languagetool-console-command "/usr/local/Cellar/languagetool/6.0/libexec/languagetool.jar"
-        languagetool-server-command "/usr/local/Cellar/languagetool/6.0/libexec/languagetool-server.jar"))
-
-;; accept completion from copilot and fallback to company
-(use-package! copilot
-  :hook (prog-mode . copilot-mode)
-  :bind (("C-TAB" . 'copilot-accept-completion-by-word)
-         ("C-<tab>" . 'copilot-accept-completion-by-word)
-         :map copilot-completion-map
-         ("<tab>" . 'copilot-accept-completion)
-         ("TAB" . 'copilot-accept-completion)))
-
-;; fish to default shell
-'(explicit-shell-file-name "/usr/local/bin/fish")
-
-;; vterm
-(use-package! vterm-toggle
-  :bind (("C-<escape>" . '+vterm/toggle))
-  :config
-  (set-popup-rule! "*doom:vterm-popup:main" :size 0.45 :vslot -4 :select t :quit nil :ttl 0)
-  (add-hook 'vterm-mode-hook  'with-editor-export-editor)
-  (setq ;; vterm-toggle-reset-window-configration-after-exit t
-        vterm-shell (executable-find "fish")
-        vterm-max-scrollback 10000))
 
 ;; d2
 (use-package! d2-mode
   :config
   (setq d2-location "~/go/bin/d2"))
 
-(use-package! company
-  :init
-  (setq company-require-match nil            ; Don't require match, so you can still move your cursor as expected.
-        company-tooltip-align-annotations t  ; Align annotation to the right side.
-        company-eclim-auto-save nil          ; Stop eclim auto save.
-        company-dabbrev-downcase nil)        ; No downcase when completion.
-  :config
-  ;; Enable downcase only when completing the completion.
-  (defun jcs--company-complete-selection--advice-around (fn)
-    "Advice execute around `company-complete-selection' command."
-    (let ((company-dabbrev-downcase t))
-      (call-interactively fn)))
-  (advice-add 'company-complete-selection :around #'jcs--company-complete-selection--advice-around))
+;; Clojure mode & Cider Configuration + key bindings
+(load! "+clojure")
 
-;; (use-package! company-fuzzy
-;;   :hook (company-mode . company-fuzzy-mode)
-;;   :init
-;;   (setq
-;;         ;; company-fuzzy-sorting-backend 'flx
-;;         company-fuzzy-prefix-on-top nil
-;;         company-fuzzy-trigger-symbols '("." "->" "<" "\"" "'" "@")))
+;; LSP Configuration
+(load! "+lsp")
 
-;; clojure
-(use-package! clojure-mode)
-(use-package! cider
-  :after (clojure-mode)
-  :init
-  (setq cider-repl-history-file "~/.emacs.d/cider-history")
-  (setq cider-repl-wrap-history t)
-  (setq cider-annotate-completion-candidates nil)
-  (add-hook 'cider-mode-hook 'eldoc-mode))
-(use-package! flycheck-clj-kondo
-  :after (clojure-mode))
-(use-package! clj-refactor
-  :after (clojure-mode))
-(use-package! rainbow-delimiters
-  :after (clojure-mode)
-  :config
-  (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode))
-(use-package! paredit
-  :after (clojure-mode)
-  :config
-  (add-hook 'clojure-mode-hook 'enable-paredit-mode)
-  (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
-  (add-hook 'cider-repl-mode-hook 'enable-paredit-mode))
+;; Structural Editing - Smartparens
+(load! "+smartparens")
+
+;; Markdown mode
+(load! "+md")
+
+;; Term  mode
+(load! "+term")
+
+;; UI
+(load! "+ui")

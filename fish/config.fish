@@ -1,3 +1,4 @@
+string match -q "$TERM_PROGRAM" vscode and . (code --locate-shell-integration-path fish)
 if status is-interactive
     # Commands to run in interactive sessions can go here
     set -U fish_user_paths /opt/homebrew/bin $fish_user_paths
@@ -11,7 +12,7 @@ if status is-interactive
     set -gx DOCKER_HOST ssh://ws.avelino:22
 
     # if test -z (pgrep ssh-agent)
-    if ps -p $SSH_AGENT_PID > /dev/null
+    if ps -p $SSH_AGENT_PID >/dev/null
         echo "ssh-agent is already running"
     else
         eval (ssh-agent -s)
