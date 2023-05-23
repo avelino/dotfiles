@@ -19,6 +19,8 @@ rm -rf ~/.config/fish && \
 	ln -s ~/dotfiles/fish ~/.config/fish
 
 cp ~/dotfiles/hyper.js ~/.hyper.js
+mkdir ~/.rio && \
+    cp ~/dotfiles/rio.toml ~/.rio/config.toml
 # cp ~/dotfiles/fzf.zsh ~/.fzf.zsh
 cp ~/dotfiles/gitignore_global ~/.gitignore_global
 cp ~/dotfiles/npmrc ~/.npmrc
