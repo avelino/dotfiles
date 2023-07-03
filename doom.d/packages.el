@@ -70,6 +70,8 @@
 (package! company-fuzzy)
 ;; (package! flx)
 (package! ef-themes)
+(package! moody)
+(package! face-remap)
 
 ;; check
 (package! languagetool)

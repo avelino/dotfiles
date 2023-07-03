@@ -8,7 +8,8 @@
 ;; clients, file templates and snippets. It is optional.
 (setq user-full-name "Avelino"
       user-mail-address "avelinorun@gmail.com"
-      user-real-login-name "avelino")
+      user-real-login-name "avelino"
+      github-user-name "avelino")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -42,8 +43,8 @@
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'doom-ayu-light)
 ;; (setq doom-theme 'ef-duo-light)
-(setq doom-theme 'ef-day)
-;; (setq doom-theme 'doom-dracula)
+;; (setq doom-theme 'ef-day)
+(setq doom-theme 'doom-dracula)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -115,7 +116,7 @@
 (load! "+lsp")
 
 ;; Structural Editing - Smartparens
-(load! "+smartparens")
+;; (load! "+smartparens")
 
 ;; Markdown mode
 (load! "+md")
