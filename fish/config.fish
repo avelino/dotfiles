@@ -9,7 +9,7 @@ if status is-interactive
     set EDITOR e
     set MACPREFS_BACKUP_DIR '/Users/avelino/Library/CloudStorage/GoogleDrive-avelinorun@gmail.com/My Drive/config/macprefs'
     # set -gx DOCKER_HOST tcp://ws.avelino:2375
-    set -gx DOCKER_HOST ssh://ws.avelino:22
+    # set -gx DOCKER_HOST ssh://ws.avelino:22
 
     # if test -z (pgrep ssh-agent)
     if ps -p $SSH_AGENT_PID >/dev/null
