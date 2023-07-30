@@ -17,6 +17,7 @@
       (vterm-send-return))))
 (use-package! vterm-toggle
   :bind (("C-<escape>" . '+vterm/toggle)
+         ("C-<dead-grave>" . '+vterm/toggle)
          ("C-t" . '+vterm/toggle))
   :config
   (set-popup-rule! "*doom:vterm-popup:*" :size 0.45 :vslot -4 :select t :quit nil :ttl 0)
