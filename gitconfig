@@ -18,10 +18,9 @@
 	new = green bold
 [core]
 	excludesfile = ~/dotfiles/gitignore_global
-	## do not set editor, use environment variable `$EDITOR`
 	# editor = "code --wait"
-	# editor = "emacs -nw"
-	# editor = "e"
+	#editor = "emacs -nw"
+	editor = "emacsclient -c"
     autocrlf = input
 [difftool]
     prompt = true
@@ -32,7 +31,7 @@
 [merge]
 	log = true
 [mergetool "ediff"]
-	cmd = emacsclient -c -a \"\" --eval \"(ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" nil \\\"$MERGED\\\")\"
+	cmd = emacsclient -c --eval \"(ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" nil \\\"$MERGED\\\")\"
 [alias]
 	st = status -sb
 	ci = commit -v -s
