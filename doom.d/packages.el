@@ -66,6 +66,7 @@
 ;; ui
 (package! rainbow-delimiters)
 (package! with-editor)
+(package! easy-hugo)
 (package! d2-mode)
 (package! company-fuzzy)
 ;; (package! flx)

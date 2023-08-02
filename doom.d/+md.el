@@ -25,3 +25,7 @@
        :desc "Markup hiding"     "m" #'markdown-toggle-markup-hiding
        :desc "Wiki links"        "w" #'markdown-toggle-wiki-links
        :desc "GFM checkbox"      "x" #'markdown-toggle-gfm-checkbox))
+
+(use-package! easy-hugo
+  :bind ("C-c C-k" . easy-hugo-menu)
+  :config (easy-hugo-enable-menu))
