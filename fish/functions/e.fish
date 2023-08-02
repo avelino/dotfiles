@@ -2,5 +2,5 @@
 function e
     # use emacsclient if we have a running server
     # emacs -nw $argv
-    emacsclient -c $argv
+    emacsclient -n -c -a "" $argv
 end
