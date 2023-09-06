@@ -162,7 +162,6 @@ brew "borkdude/brew/babashka"
 brew "borkdude/brew/clj-kondo"
 brew "borkdude/brew/jet"
 brew "clojure-lsp/brew/clojure-lsp-native"
-brew "d12frosted/emacs-plus/emacs-plus@28", args: ["with-modern-doom3-icon", "with-native-comp", "with-no-titlebar-and-round-corners"], link: false
 brew "d12frosted/emacs-plus/emacs-plus@29"
 brew "heroku/brew/heroku"
 brew "int128/kubelogin/kubelogin"
