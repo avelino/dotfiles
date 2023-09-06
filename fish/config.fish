@@ -1,13 +1,14 @@
 string match -q "$TERM_PROGRAM" vscode and . (code --locate-shell-integration-path fish)
 if status is-interactive
     # Commands to run in interactive sessions can go here
-    set -U fish_user_paths /opt/homebrew/bin $fish_user_paths
+    # set -U fish_user_paths /opt/homebrew/bin $fish_user_paths
+    set -U fish_user_paths ~/.emacs.d/bin $fish_user_paths
     source ~/.config/fish/aliases.fish
     # source ~/.config/private-env.fish
     set -gx GPG_TTY (tty)
     keychain --agents ssh --eval id_rsa | source
     set EDITOR e
-    set MACPREFS_BACKUP_DIR '/Users/avelino/Library/CloudStorage/GoogleDrive-avelinorun@gmail.com/My Drive/config/macprefs'
+    # set MACPREFS_BACKUP_DIR '/Users/avelino/Library/CloudStorage/GoogleDrive-avelinorun@gmail.com/My Drive/config/macprefs'
     # set -gx DOCKER_HOST tcp://ws.avelino:2375
     # set -gx DOCKER_HOST ssh://ws.avelino:22
 
