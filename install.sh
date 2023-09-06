@@ -38,4 +38,4 @@ mkdir -p ~/.config/nvim && \
     > ~/.config/nvim/init.vim
 
 ## golang install bins
-./dotfiles/golang.sh
+~/dotfiles/golang.sh
