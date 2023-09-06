@@ -1,0 +1,42 @@
+performance = "High"
+height = 438
+width = 662
+env-vars = ['A', 'RIO=13']
+shell = { program = "/opt/homebrew/bin/fish", args = ["--login"] }
+
+# theme = "dracula"
+theme = "rose-pine-dawn"
+
+[fonts]
+# family = "Monaco"
+family = "Cascadia Code"
+size = 22
+
+[colors]
+# Default
+#background = "#BBBD64"
+#foreground = "#040400"
+#cursor = "#242805"
+# tabs-active = "#F8A145"
+#blue = "#454A12"
+
+# Modern
+# background = "#282828"
+# tabs-active = "#F3AFCF"
+
+# Lucario
+# background = "#2b3e50"
+# tabs-active = "#E6DB74"
+
+# monotropic coffee
+background = "#fffffa"
+foreground = "#593e2c"
+cyan = "#593e2c"
+green = "#745b4b"
+red = "#593e2c"
+magenta = "#593e2c"
+yellow = "#c6bab3"
+
+[developer]
+enable-fps-counter = true
+log-level = 'OFF'

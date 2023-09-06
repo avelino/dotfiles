@@ -18,9 +18,7 @@ git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d && \
 rm -rf ~/.config/fish && \
 	ln -s ~/dotfiles/fish ~/.config/fish
 
-cp ~/dotfiles/hyper.js ~/.hyper.js
-mkdir ~/.rio && \
-    cp ~/dotfiles/rio.toml ~/.rio/config.toml
+ln -s ~/dotfiles/rio ~/.config/rio
 # cp ~/dotfiles/fzf.zsh ~/.fzf.zsh
 cp ~/dotfiles/gitignore_global ~/.gitignore_global
 cp ~/dotfiles/npmrc ~/.npmrc
