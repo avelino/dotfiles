@@ -3,6 +3,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
     # set -U fish_user_paths /opt/homebrew/bin $fish_user_paths
     set -U fish_user_paths ~/.emacs.d/bin $fish_user_paths
+    set -U fish_user_paths ~/.cargo/bin $fish_user_paths
     source ~/.config/fish/aliases.fish
     # source ~/.config/private-env.fish
     set -gx GPG_TTY (tty)

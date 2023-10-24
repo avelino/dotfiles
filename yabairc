@@ -43,13 +43,9 @@ yabai -m rule --add title='Settings$' manage=off
 yabai -m rule --add app='Settings$' manage=off
 yabai -m rule --add app='1Password' manage=off
 yabai -m rule --add app='DeepL' manage=off
-yabai -m rule --add app='LanguageTool' manage=off
 yabai -m rule --add app='Raycast' manage=off
-yabai -m rule --add app='Cron' manage=off
-# yabai -m rule --add app='Logseq' manage=off
-# yabai -m rule --add title='Logseq' manage=off
+yabai -m rule --add app='Calendar' manage=off
 yabai -m rule --add title='Messages' manage=off
-yabai -m rule --add title='^Signal' manage=off
 yabai -m rule --add app='Simulator' manage=off
 
 echo "yabai configuration loaded.."

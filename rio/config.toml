@@ -2,7 +2,7 @@ performance = "High"
 height = 438
 width = 662
 env-vars = ['A', 'RIO=13']
-shell = { program = "/opt/homebrew/bin/fish", args = ["--login"] }
+shell = { program = "/usr/local/bin/fish", args = ["--login"] }
 
 # theme = "dracula"
 theme = "rose-pine-dawn"
@@ -39,4 +39,4 @@ yellow = "#c6bab3"
 
 [developer]
 enable-fps-counter = true
-log-level = 'OFF'
+log-level = 'INFO'

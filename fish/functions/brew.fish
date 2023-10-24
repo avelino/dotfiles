@@ -1,13 +1,13 @@
 function brew --description 'brew shortcut with new functions'
     switch $argv[1]
         case bkp
-            rm ~/dotfiles/Brewfile && cd ~/dotfiles && brew bundle dump --force
+            rm ~/dotfiles/Brewfile && cd ~/dotfiles && brew bundle dump --force && defaults export NSGlobalDomain ~/dotfiles/macos/nsglobaldomain.plist
         case up
             brew update && brew upgrade && brew cu -ay --cleanup && brew clean
         case clean
             brew cleanup --prune=all -s -n
         case emacs
-            brew services $argv[2] d12frosted/emacs-plus/emacs-plus@28
+            brew services $argv[2] d12frosted/emacs-plus/emacs-plus@29
         case skhd
             skhd --$argv[2]-service
         case yabai

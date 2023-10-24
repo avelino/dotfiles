@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [[$(uname) == 'Darwin']]; then
+    bash ~/dotfiles/macos/install.sh
+fi
+
 ## copy files
 cp ~/dotfiles/gitconfig ~/.gitconfig
 
@@ -19,7 +23,6 @@ rm -rf ~/.config/fish && \
 	ln -s ~/dotfiles/fish ~/.config/fish
 
 ln -s ~/dotfiles/rio ~/.config/rio
-# cp ~/dotfiles/fzf.zsh ~/.fzf.zsh
 cp ~/dotfiles/gitignore_global ~/.gitignore_global
 cp ~/dotfiles/npmrc ~/.npmrc
 cp ~/dotfiles/htoprc ~/.htoprc

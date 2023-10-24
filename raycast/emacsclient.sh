@@ -15,6 +15,6 @@
 
 
 if ! brew services list | ag homebrew | ag emacs &>/dev/null; then
-    brew services start d12frosted/emacs-plus/emacs-plus@28
+    brew services start d12frosted/emacs-plus/emacs-plus@29
 fi
 emacsclient -n -c -a ""

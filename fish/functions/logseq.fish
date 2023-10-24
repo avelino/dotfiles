@@ -4,7 +4,7 @@ function logseq --description 'logseq shortcut with new functions'
             rsync -aP -q --exclude=.git --delete \
                 --exclude="logseq/*/" \
                 --exclude="logseq/.recycle/" \
-                ~/logseq/* ~/notes/ && cd ~/logseq.git && g st && g add . && g ci -am "$(date '+%Y-%m-%d %H:%M'): sync logseq" && g push && cd -
+                ~/logseq/* ~/notes/ && cd ~/notes && g st && g add . && g ci -am "$(date '+%Y-%m-%d %H:%M'): sync logseq" && g push && cd -
         case '*' # default
             echo "logseq method not fund"
     end
