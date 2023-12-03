@@ -10,6 +10,9 @@ theme = "rose-pine"
 family = "Maple Mono"
 size = 22
 
+[navigation]
+mode = "Plain"
+
 [developer]
 enable-fps-counter = false
 log-level = 'INFO'
