@@ -1,6 +1,6 @@
 [user]
 	name = Avelino
-    email = hey@avelino.run
+    email = "31996+avelino@users.noreply.github.com"
 	signingkey = B345B4D52E98180A
 [github]
 	user = avelino
@@ -18,9 +18,9 @@
 	new = green bold
 [core]
 	excludesfile = ~/dotfiles/gitignore_global
-	# editor = "code --wait"
-	#editor = "emacs -nw"
-	editor = "emacsclient -c"
+	# editor = "emacs -nw"
+	# editor = "emacsclient -c"
+	editor = "code --wait"
     autocrlf = input
 [difftool]
     prompt = true
@@ -45,6 +45,7 @@
 	lg = log --pretty=format:'%C(yellow)%h%C(reset) %s %C(cyan)%cI%C(reset) %C(blue)%an%C(reset) %C(green)%d%C(reset)' --graph
 	review = log --summary --patch --stat=100 --dirstat --ignore-all-space --reverse --decorate --find-renames=33 --find-copies-harder --cc
 	ignored = ls-files --others -i --exclude-standard
+	# golang/core alias
 	change = codereview change
 	gofmt = codereview gofmt
 	mail = codereview mail

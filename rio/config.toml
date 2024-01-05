@@ -3,15 +3,17 @@ height = 438
 width = 662
 # env-vars = ['A', 'RIO=13']
 shell = { program = "/usr/local/bin/fish", args = ["--login"] }
+editor = 'code'
 
+# theme = "dracula"
 theme = "rose-pine"
+
+[navigation]
+mode = "Plain"
 
 [fonts]
 family = "Maple Mono"
 size = 22
-
-[navigation]
-mode = "Plain"
 
 [developer]
 enable-fps-counter = false
