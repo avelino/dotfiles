@@ -1,5 +1,5 @@
 # Open alacritty
-cmd + shift - return : open --new -a /Applications/Hyper.app/Contents/MacOS/Hyper
+cmd + shift - return : open --new -a /Applications/Rio.app/Contents/MacOS/rio
 
 # Minimize window
 cmd - m: yabai -m window --minimize && yabai -m window --focus prev || yabai -m window --focus first
@@ -62,3 +62,4 @@ cmd + lctrl - r : \
 
 ctrl + alt - n : yabai -m space --focus next
 ctrl + alt - p : yabai -m space --focus previous
+
