@@ -1,0 +1,15 @@
+theme = "rose_pine"
+
+[editor]
+auto-save = true
+mouse = false
+bufferline = "multiple"
+
+[editor.cursor-shape]
+insert = "bar"
+
+[editor.lsp]
+display-messages = true
+
+[keys.normal]
+esc = ["collapse_selection", "keep_primary_selection"]

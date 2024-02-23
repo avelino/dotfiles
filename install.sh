@@ -23,6 +23,7 @@ rm -rf ~/.config/fish && \
 	ln -s ~/dotfiles/fish ~/.config/fish
 
 ln -s ~/dotfiles/rio ~/.config/rio
+mkdir -p ~/.config/helix && ln -s ~/dotfiles/helix.toml ~/.config/helix/config.toml
 cp ~/dotfiles/gitignore_global ~/.gitignore_global
 cp ~/dotfiles/npmrc ~/.npmrc
 cp ~/dotfiles/htoprc ~/.htoprc
