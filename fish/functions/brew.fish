@@ -3,7 +3,7 @@ function brew --description 'brew shortcut with new functions'
         case bkp
             rm ~/dotfiles/Brewfile && cd ~/dotfiles && brew bundle dump --force && defaults export NSGlobalDomain ~/dotfiles/macos/nsglobaldomain.plist
         case up
-            brew update && brew upgrade && brew cu -ay --cleanup && brew clean
+            brew update && brew upgrade && brew cu -ay --cleanup && brew clean && brew cleanup
         case clean
             brew cleanup --prune=all -s -n
         case emacs
