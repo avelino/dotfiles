@@ -45,6 +45,7 @@ yabai -m rule --add app='1Password' manage=off
 yabai -m rule --add app='DeepL' manage=off
 yabai -m rule --add app='Raycast' manage=off
 yabai -m rule --add app='Fantastical' manage=off
+yabai -m rule --add app='Morgen' manage=off
 yabai -m rule --add app='Messages' manage=off
 yabai -m rule --add app='Simulator' manage=off
 
