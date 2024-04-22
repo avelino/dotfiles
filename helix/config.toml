@@ -2,6 +2,7 @@ theme = "rose_pine"
 
 [editor]
 auto-save = true
+color-modes = true
 mouse = false
 bufferline = "multiple"
 
