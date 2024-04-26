@@ -12,3 +12,8 @@ language-servers = [
     "ts",
     "gpt"
 ]
+
+[[language]]
+name = "clojure"
+auto-format = true
+# formatter = { command = "clojure-lsp" , args = ["format", ">", "~/lero.log"] }
