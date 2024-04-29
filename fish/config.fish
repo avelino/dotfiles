@@ -1,4 +1,3 @@
-string match -q "$TERM_PROGRAM" vscode and . (code --locate-shell-integration-path fish)
 if status is-interactive
     # Commands to run in interactive sessions can go here
     # set -U fish_user_paths /opt/homebrew/bin $fish_user_paths
@@ -8,10 +7,17 @@ if status is-interactive
     # source ~/.config/private-env.fish
     set -gx GPG_TTY (tty)
     keychain --agents ssh --eval id_rsa | source
-    set EDITOR e
+    set -gx EDITOR nvim
+
     # set MACPREFS_BACKUP_DIR '/Users/avelino/Library/CloudStorage/GoogleDrive-avelinorun@gmail.com/My Drive/config/macprefs'
     # set -gx DOCKER_HOST tcp://ws.avelino:2375
     # set -gx DOCKER_HOST ssh://ws.avelino:22
+
+    # lang en_US UTF8
+    set -gx LANGUAGE "en_US.UTF-8"
+    set -gx LC_ALL
+    set -gx LC_CTYPE "en_US.UTF-8"
+    set -gx LANG "en_US.UTF-8"
 
     # if test -z (pgrep ssh-agent)
     if ps -p $SSH_AGENT_PID >/dev/null
