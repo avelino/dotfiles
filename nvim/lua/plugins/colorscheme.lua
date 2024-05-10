@@ -25,7 +25,7 @@ return {
   },
   config = function(_, opts)
     require("rose-pine").setup(opts)
-    vim.cmd.colorscheme("rose-pine-dawn")
+    vim.cmd.colorscheme("rose-pine-main")
     ColorMyPencils()
   end,
 }

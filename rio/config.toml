@@ -6,7 +6,7 @@ shell = { program = "/usr/local/bin/fish", args = ["--login"] }
 editor = 'code'
 
 # theme = "dracula"
-theme = "rose-pine-dawn"
+theme = "rose-pine"
 
 [navigation]
 mode = "Plain"
