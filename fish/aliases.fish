@@ -21,6 +21,7 @@ alias grep=rg
 alias ag=rg
 
 ## docker / k8s
+alias docker podman
 alias d docker
 alias k kubectl
 
