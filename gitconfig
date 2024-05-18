@@ -20,7 +20,7 @@
 	excludesfile = ~/dotfiles/gitignore_global
 	# editor = "emacs -nw"
 	# editor = "emacsclient -c"
-	editor = "code --wait"
+	editor = "nvim"
     autocrlf = input
 [difftool]
     prompt = true
