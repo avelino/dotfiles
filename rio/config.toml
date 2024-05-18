@@ -2,11 +2,15 @@ performance = "High"
 height = 438
 width = 662
 # env-vars = ['A', 'RIO=13']
-shell = { program = "/usr/local/bin/fish", args = ["--login"] }
 editor = 'code'
 
 # theme = "dracula"
 theme = "rose-pine"
+
+[shell]
+# shell = { program = "/opt/homebrew/bin/fish", args = ["--login"] }
+program = "/opt/homebrew/bin/fish"
+args = ["--login"]
 
 [navigation]
 mode = "Plain"
