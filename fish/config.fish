@@ -1,6 +1,7 @@
 if status is-interactive
+    export SHELL=fish
     # Commands to run in interactive sessions can go here
-    # set -U fish_user_paths /opt/homebrew/bin $fish_user_paths
+    set -U fish_user_paths /opt/homebrew/bin $fish_user_paths
     set -U fish_user_paths ~/.emacs.d/bin $fish_user_paths
     set -U fish_user_paths ~/.cargo/bin $fish_user_paths
     source ~/.config/fish/aliases.fish
@@ -20,7 +21,7 @@ if status is-interactive
     set -gx LANG "en_US.UTF-8"
 
     # if test -z (pgrep ssh-agent)
-    if ps -p $SSH_AGENT_PID >/dev/null
+    if ps -p "$SSH_AGENT_PID" >/dev/null
         echo "ssh-agent is already running"
     else
         eval (ssh-agent -s)
