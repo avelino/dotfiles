@@ -47,6 +47,8 @@ yabai -m rule --add app='Raycast' manage=off
 yabai -m rule --add app='Fantastical' manage=off
 yabai -m rule --add app='Morgen' manage=off
 yabai -m rule --add app='Messages' manage=off
+yabai -m rule --add app='FaceTime' manage=off
 yabai -m rule --add app='Simulator' manage=off
+yabai -m rule --add app='App Store' manage=off
 
 echo "yabai configuration loaded.."
