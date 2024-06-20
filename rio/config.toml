@@ -2,7 +2,7 @@ performance = "High"
 height = 438
 width = 662
 # env-vars = ['A', 'RIO=13']
-editor = 'code'
+editor = 'nvim'
 
 # theme = "dracula"
 theme = "rose-pine"
