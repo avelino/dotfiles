@@ -2,6 +2,7 @@ if status is-interactive
     export SHELL=fish
     # Commands to run in interactive sessions can go here
     set -U fish_user_paths /opt/homebrew/bin $fish_user_paths
+    set -U fish_user_paths ~/dotfiles/bin $fish_user_paths
     set -U fish_user_paths ~/.emacs.d/bin $fish_user_paths
     set -U fish_user_paths ~/.cargo/bin $fish_user_paths
     source ~/.config/fish/aliases.fish
@@ -10,7 +11,6 @@ if status is-interactive
     keychain --agents ssh --eval id_rsa | source
     set -gx EDITOR nvim
 
-    # set MACPREFS_BACKUP_DIR '/Users/avelino/Library/CloudStorage/GoogleDrive-avelinorun@gmail.com/My Drive/config/macprefs'
     # set -gx DOCKER_HOST tcp://ws.avelino:2375
     # set -gx DOCKER_HOST ssh://ws.avelino:22
 
