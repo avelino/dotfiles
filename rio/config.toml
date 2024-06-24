@@ -2,7 +2,9 @@ performance = "High"
 height = 438
 width = 662
 # env-vars = ['A', 'RIO=13']
-editor = 'nvim'
+editor = 'code'
+padding-x = 10
+
 
 # theme = "dracula"
 theme = "rose-pine"
@@ -18,6 +20,11 @@ mode = "Plain"
 [fonts]
 family = "Maple Mono"
 size = 22
+
+[renderer]
+performance = "High"
+backend = "GL" # Automatic
+disable-unfocused-render = false
 
 [developer]
 enable-fps-counter = false
