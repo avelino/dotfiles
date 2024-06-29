@@ -1,36 +1,20 @@
 {
   "extras": [
-    "lazyvim.plugins.extras.coding.codeium",
-    "lazyvim.plugins.extras.coding.luasnip",
-    "lazyvim.plugins.extras.editor.dial",
-    "lazyvim.plugins.extras.editor.fzf",
-    "lazyvim.plugins.extras.editor.refactoring",
-    "lazyvim.plugins.extras.formatting.black",
-    "lazyvim.plugins.extras.lang.clangd",
+    "lazyvim.plugins.extras.coding.copilot",
     "lazyvim.plugins.extras.lang.clojure",
-    "lazyvim.plugins.extras.lang.cmake",
     "lazyvim.plugins.extras.lang.docker",
-    "lazyvim.plugins.extras.lang.git",
     "lazyvim.plugins.extras.lang.go",
-    "lazyvim.plugins.extras.lang.java",
     "lazyvim.plugins.extras.lang.json",
-    "lazyvim.plugins.extras.lang.markdown",
-    "lazyvim.plugins.extras.lang.python",
-    "lazyvim.plugins.extras.lang.scala",
-    "lazyvim.plugins.extras.lang.sql",
-    "lazyvim.plugins.extras.lang.tailwind",
     "lazyvim.plugins.extras.lang.toml",
-    "lazyvim.plugins.extras.lang.typescript",
-    "lazyvim.plugins.extras.lang.vue",
-    "lazyvim.plugins.extras.lang.yaml",
-    "lazyvim.plugins.extras.linting.eslint",
-    "lazyvim.plugins.extras.lsp.neoconf",
-    "lazyvim.plugins.extras.ui.edgy",
-    "lazyvim.plugins.extras.ui.mini-animate",
-    "lazyvim.plugins.extras.util.startuptime"
+    "plugins.extras.coding.editorconfig",
+    "plugins.extras.lang.go",
+    "plugins.extras.lang.markdown",
+    "plugins.extras.lang.python",
+    "plugins.extras.lang.tmux",
+    "plugins.extras.ui.illuminate"
   ],
-  "news": {
-    "NEWS.md": "6077"
-  },
+  "news": [
+
+  ],
   "version": 6
 }

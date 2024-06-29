@@ -1,4 +1,3 @@
-# 💤 LazyVim
+# [Rafael Bodill's fork Neovim](https://github.com/rafi/vim-config) Config
 
-A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
-Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
+This Neovim configuration is a fork of Rafi's (he did a great job). I made some customizations by editing his work.
