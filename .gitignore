@@ -1,3 +1,9 @@
 .clj-kondo/
 .lsp/
 fish/fish_variables
+
+# zed editor
+zed/.tmp*
+zed/*.mdb
+zed/embeddings
+zed/prompts

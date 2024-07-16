@@ -1,0 +1,82 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+
+  // Tweaks
+  "remove_trailing_whitespace_on_save": true,
+  "ensure_final_newline_on_save": true,
+
+  // UI/UX
+  "theme": "Rosé Pine",
+  "buffer_font_size": 20,
+  "buffer_font_family": "Maple Mono",
+  // "ui_font_size": 20,
+  "ui_font_family": "Maple Mono",
+  "relative_line_numbers": true,
+  "tabs": {
+    // https://zed.dev/docs/configuring-zed#editor-tabs
+    "show_icons": true,
+    "git_status": true,
+    "close_position": "right"
+  },
+
+  // Features
+  "features": {
+    "copilot": true
+  },
+  "show_copilot_suggestions": true,
+  "git": {
+    // https://zed.dev/docs/configuring-zed#git
+    "git_gutter": "tracked_files",
+    "inline_blame": {
+      "enabled": true,
+      "position": "right"
+    }
+  },
+
+  // Panels
+  "project_panel": {
+    // https://zed.dev/docs/configuring-zed#project-panel
+    "default_width": 225,
+    "button": true,
+    "dock": "left",
+    "git_status": true
+  },
+  "terminal": {
+    "shell": "zsh",
+    "shell_args": ["--login"],
+    "font_size": 22,
+    "font_family": "Maple Mono",
+    "copy_on_select": true,
+    "toolbar": {
+      "enabled": false
+    },
+    "shell_env": {
+      "TERM": "xterm-256color"
+    }
+  },
+  "autosave": "on_focus_change",
+  "vim_mode": true,
+  "cursor_blink": false,
+  "auto_update": true,
+  "gutter": {
+    "line_numbers": true
+  },
+  "collaboration_panel": {
+    "button": false
+  },
+  "assistant": {
+    "enabled": false,
+    "provider": "copilot"
+  }
+}
