@@ -1,5 +1,5 @@
 [language-server.gpt]
-command = "helix-gpt --handler copilot"
+command = "~/dotfiles/bin/helix-gpt --handler copilot"
 
 [language-server.ts]
 command = "typescript-language-server"
@@ -17,3 +17,24 @@ language-servers = [
 name = "clojure"
 auto-format = true
 # formatter = { command = "clojure-lsp" , args = ["format", ">", "~/lero.log"] }
+language-servers = [
+    "clojure-lsp",
+    "gpt"
+]
+
+[[language]]
+name = "toml"
+auto-format = true
+language-servers = [
+  "taplo",
+  "gpt",
+]
+
+[[language]]
+name = "markdown"
+auto-format = true
+formatter = { command = 'prettier', args = ["--print-width=79", "--prose-wrap=always", "--parser", "markdown"] }
+language-servers = [
+  "marksman",
+  "gpt",
+]
