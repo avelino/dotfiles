@@ -14,6 +14,7 @@ if status is-interactive
     # set -gx DOCKER_HOST tcp://ws.avelino:2375
     # set -gx DOCKER_HOST ssh://ws.avelino:22
 
+    set -gx DOCKER_DEFAULT_PLATFORM linux/amd64
     # lang en_US UTF8
     set -gx LANGUAGE "en_US.UTF-8"
     set -gx LC_ALL
@@ -30,3 +31,7 @@ if status is-interactive
         set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
     end
 end
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
