@@ -16,6 +16,18 @@
   "remove_trailing_whitespace_on_save": true,
   "ensure_final_newline_on_save": true,
 
+  // Editor
+  "autosave": "on_focus_change",
+  "vim_mode": true,
+  "auto_update_extensions": {
+    "enabled": true
+  },
+  "cursor_blink": false,
+  "auto_update": true,
+  "gutter": {
+    "line_numbers": true
+  },
+
   // UI/UX
   "theme": "Rosé Pine",
   "buffer_font_size": 20,
@@ -27,7 +39,8 @@
     // https://zed.dev/docs/configuring-zed#editor-tabs
     "show_icons": true,
     "git_status": true,
-    "close_position": "right"
+    "close_position": "right",
+    "close_button": false
   },
 
   // Features
@@ -65,17 +78,11 @@
       "TERM": "xterm-256color"
     }
   },
-  "autosave": "on_focus_change",
-  "vim_mode": true,
-  "cursor_blink": false,
-  "auto_update": true,
-  "gutter": {
-    "line_numbers": true
-  },
   "collaboration_panel": {
     "button": false
   },
   "assistant": {
+    "version": "1",
     "enabled": false,
     "provider": "copilot"
   }
