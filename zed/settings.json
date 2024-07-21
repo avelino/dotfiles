@@ -34,7 +34,7 @@
   "buffer_font_family": "Maple Mono",
   // "ui_font_size": 20,
   "ui_font_family": "Maple Mono",
-  "relative_line_numbers": true,
+  "relative_line_numbers": false,
   "tabs": {
     // https://zed.dev/docs/configuring-zed#editor-tabs
     "show_icons": true,
@@ -62,7 +62,8 @@
     // https://zed.dev/docs/configuring-zed#project-panel
     "default_width": 225,
     "button": true,
-    "dock": "left",
+    // "dock": "left",
+    "dock": "right", // remap to cmd-b
     "git_status": true
   },
   "terminal": {
