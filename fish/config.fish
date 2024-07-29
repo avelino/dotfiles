@@ -6,6 +6,7 @@ if status is-interactive
     set -U fish_user_paths ~/.emacs.d/bin $fish_user_paths
     set -U fish_user_paths ~/.cargo/bin $fish_user_paths
     source ~/.config/fish/aliases.fish
+    source "$HOME/.cargo/env.fish"
     # source ~/.config/private-env.fish
     set -gx GPG_TTY (tty)
     keychain --agents ssh --eval id_rsa | source
