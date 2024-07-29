@@ -20,6 +20,11 @@
   // Editor
   "autosave": "on_focus_change",
   "vim_mode": true,
+  "vim": {
+    "use_multiline_find": true,
+    "use_smartcase_find": true,
+    "use_system_clipboard": "always"
+  },
   "auto_update_extensions": {
     "enabled": true
   },

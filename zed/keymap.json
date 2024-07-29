@@ -1,10 +1,18 @@
 [
   {
-    "context": "Workspace",
+    // "context": "Workspace",
     "bindings": {
-      "cmd-r": "workspace::ToggleLeftDock",
-      "cmd-b": "workspace::ToggleRightDock",
+      "crtl-`": "workspace::ToggleBottomDock", // cmd-j
+      "cmd-j": "terminal_panel::ToggleFocus", // ctrl-`
+      "cmd-r": "workspace::ToggleLeftDock", // cmd-b
+      "cmd-b": "workspace::ToggleRightDock", // cmd-r
       "cmd-k": "command_palette::Toggle"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-x ctrl-f": "file_finder::Toggle"
     }
   }
 ]
