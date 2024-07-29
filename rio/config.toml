@@ -10,7 +10,6 @@ padding-x = 10
 theme = "rose-pine"
 
 [shell]
-# shell = { program = "/opt/homebrew/bin/fish", args = ["--login"] }
 program = "/opt/homebrew/bin/fish"
 args = ["--login"]
 
@@ -23,7 +22,6 @@ size = 22
 
 [renderer]
 performance = "High"
-backend = "GL" # Automatic
 disable-unfocused-render = false
 
 [developer]
