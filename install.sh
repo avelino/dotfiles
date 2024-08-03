@@ -34,7 +34,6 @@ git clone git@github.com:practicalli/clojure-deps-edn.git ~/.clojure
 cp -rf ~/dotfiles/gh ~/.config/gh
 ln -s ~/dotfiles/skhdrc ~/.skhdrc
 ln -s ~/dotfiles/yabairc ~/.yabairc
-# cp ~/dotfiles/dotfiles/LauchAgents/*.plist ~/Library/LaunchAgents/
 
 ## vim config (LazyVim)
 # mkdir -p ~/.config/nvim && \
@@ -45,3 +44,6 @@ ln -s ~/dotfiles/nvim ~/.config/nvim
 
 ## golang install bins
 ~/dotfiles/golang.sh
+
+## install rust, avoid installing via homebrew
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
