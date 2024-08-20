@@ -1,5 +1,26 @@
 [
   {
+    "context": "Dock || Terminal || Editor",
+    "bindings": {
+      "ctrl-h": [
+        "workspace::ActivatePaneInDirection",
+        "Left"
+      ],
+      "ctrl-l": [
+        "workspace::ActivatePaneInDirection",
+        "Right"
+      ],
+      "ctrl-k": [
+        "workspace::ActivatePaneInDirection",
+        "Up"
+      ],
+      "ctrl-j": [
+        "workspace::ActivatePaneInDirection",
+        "Down"
+      ]
+    }
+  },
+  {
     // "context": "Workspace",
     "bindings": {
       "crtl-`": "workspace::ToggleBottomDock", // cmd-j
@@ -7,6 +28,12 @@
       "cmd-r": "workspace::ToggleLeftDock", // cmd-b
       "cmd-b": "workspace::ToggleRightDock", // cmd-r
       "cmd-k": "command_palette::Toggle"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "cmd-t": "workspace::NewTerminal"
     }
   },
   {

@@ -12,11 +12,33 @@
     "diagnostics": false,
     "metrics": false
   },
-
+  "language_models": {
+    "anthropic": {
+      "version": "1"
+    }
+  },
+  // custom testing
+  "always_treat_brackets_as_autoclosed": true,
+  "auto_install_extensions": {
+    "enabled": true
+  },
+  "auto_signature_help": true,
+  "chat_panel": {
+    "button": false
+  },
+  "journal": {
+    "enabled": true,
+    "path": "~/logseq/journals"
+  },
+  "load_direnv": "shell_hook",
+  "prettier": {
+    "enabled": true,
+    "format_on_save": true
+  },
+  // custom testing
   // Tweaks
   "remove_trailing_whitespace_on_save": true,
   "ensure_final_newline_on_save": true,
-
   // Editor
   "autosave": "on_focus_change",
   "vim_mode": true,
@@ -33,7 +55,6 @@
   "gutter": {
     "line_numbers": true
   },
-
   // UI/UX
   "theme": "Rosé Pine",
   "buffer_font_size": 20,
@@ -41,6 +62,10 @@
   // "ui_font_size": 20,
   "ui_font_family": "Maple Mono",
   "relative_line_numbers": false,
+  "scrollbar": {
+    "show": "never"
+  },
+  "vertical_scroll_margin": 0,
   "tabs": {
     // https://zed.dev/docs/configuring-zed#editor-tabs
     "show_icons": true,
@@ -48,10 +73,24 @@
     "close_position": "right",
     "close_button": false
   },
-
+  "tab_bar": {
+    "show": false
+  },
+  "preferred_line_length": 90,
+  "soft_wrap": "preferred_line_length",
+  "use_autoclose": false,
   // Features
   "features": {
     "copilot": true
+  },
+  "copilot": {
+    "enabled": true,
+    "key": "Tab"
+  },
+  "formatter": {
+    "language_server": {
+      "name": "biome"
+    }
   },
   "show_copilot_suggestions": true,
   "git": {
@@ -62,7 +101,6 @@
       "position": "right"
     }
   },
-
   // Panels
   "project_panel": {
     // https://zed.dev/docs/configuring-zed#project-panel
@@ -73,12 +111,21 @@
     "git_status": true
   },
   "terminal": {
+    "alternate_scroll": "off",
+    "blinking": "terminal_controlled",
+    "line_height": "standard",
     "shell": "zsh",
-    "shell_args": ["--login"],
+    "shell_args": [
+      "--login"
+    ],
     "font_size": 22,
     "font_family": "Maple Mono",
     "copy_on_select": true,
     "toolbar": {
+      "title": true,
+      "breadcrumbs": true,
+      "quick_actions": false,
+      "working_directory": "current_project_directory",
       "enabled": false
     },
     "shell_env": {
@@ -89,7 +136,11 @@
     "button": false
   },
   "assistant": {
-    "version": "1",
+    "default_model": {
+      "provider": "openai",
+      "model": "gpt-4o"
+    },
+    "version": "2",
     "enabled": false,
     "provider": "copilot"
   }
