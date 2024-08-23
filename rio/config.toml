@@ -2,12 +2,14 @@ performance = "High"
 height = 438
 width = 662
 # env-vars = ['A', 'RIO=13']
-editor = 'code'
 padding-x = 10
-
 
 # theme = "dracula"
 theme = "rose-pine"
+
+[editor]
+program = "zed"
+args = []
 
 [shell]
 program = "/opt/homebrew/bin/fish"
