@@ -19,9 +19,6 @@
   },
   // custom testing
   "always_treat_brackets_as_autoclosed": true,
-  "auto_install_extensions": {
-    "enabled": true
-  },
   "auto_signature_help": true,
   "chat_panel": {
     "button": false
@@ -87,12 +84,12 @@
     "enabled": true,
     "key": "Tab"
   },
+  "show_copilot_suggestions": true,
   "formatter": {
     "language_server": {
       "name": "biome"
     }
   },
-  "show_copilot_suggestions": true,
   "git": {
     // https://zed.dev/docs/configuring-zed#git
     "git_gutter": "tracked_files",
@@ -135,13 +132,28 @@
   "collaboration_panel": {
     "button": false
   },
+  "auto_install_extensions": {
+    "enabled": true,
+    "clojure": true,
+    "python": true,
+    "java": true,
+    "javascript": true,
+    "typescript": true,
+    "go": true,
+    "rust": true,
+    "racket": true,
+    "ruby": true
+  },
   "assistant": {
     "default_model": {
-      "provider": "openai",
-      "model": "gpt-4o"
+      "provider": "anthropic",
+      "model": "claude-3-5-sonnet-20240620"
+      // "provider": "openai",
+      // "model": "gpt-4o"
     },
     "version": "2",
     "enabled": false,
-    "provider": "copilot"
+    // "provider": "copilot"
+    "provider": "anthropic"
   }
 }
