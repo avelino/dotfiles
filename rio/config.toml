@@ -11,6 +11,10 @@ theme = "rose-pine"
 program = "zed"
 args = []
 
+[keyboard]
+use-kitty-keyboard-protocol = false
+disable-ctlseqs-alt = false
+
 [shell]
 program = "/opt/homebrew/bin/fish"
 args = ["--login"]
