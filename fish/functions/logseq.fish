@@ -3,10 +3,11 @@ function logseq --description 'logseq shortcut with new functions'
         case sync
             echo "logseq: sync with git..."
             logseq icloud
+            cd ~/notes && g pull -f
             rsync -aP -q --exclude=.git --delete \
                 --exclude="logseq/*/" \
                 --exclude="logseq/.recycle/" \
-                ~/logseq/* ~/notes/ && cd ~/notes && g st && g add . && g ci -am "$(date '+%Y-%m-%d %H:%M'): sync logseq" && g push && cd -
+                ~/logseq/* ~/notes/ && g st && g add . && g ci -am "$(date '+%Y-%m-%d %H:%M'): sync logseq" && g push && cd -
         case icloud
             echo "logseq: icloud sync..."
             cat ~/logseq/journals/$(date +%Y-%m-%d).md 1>/dev/null
