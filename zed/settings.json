@@ -103,15 +103,15 @@
     // https://zed.dev/docs/configuring-zed#project-panel
     "default_width": 225,
     "button": true,
-    // "dock": "left",
-    "dock": "right", // remap to cmd-b
+    "dock": "left",
+    // "dock": "right", // remap to cmd-b
     "git_status": true
   },
   "terminal": {
     "alternate_scroll": "off",
     "blinking": "terminal_controlled",
     "line_height": "standard",
-    "shell": "zsh",
+    "shell": "system",
     "shell_args": [
       "--login"
     ],
@@ -146,14 +146,11 @@
   },
   "assistant": {
     "default_model": {
-      "provider": "anthropic",
-      "model": "claude-3-5-sonnet-20240620"
-      // "provider": "openai",
-      // "model": "gpt-4o"
+      "provider": "openai",
+      "model": "gpt-4o"
     },
     "version": "2",
     "enabled": false,
-    // "provider": "copilot"
-    "provider": "anthropic"
+    "provider": "copilot"
   }
 }
