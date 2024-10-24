@@ -1,70 +1,56 @@
-// Zed settings
-//
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
-//
-// To see all of Zed's default settings without changing your
-// custom settings, run the `open default settings` command
-// from the command palette or from `Zed` application menu.
 {
-  // zed: disable telemetry, not send feedback to zed server
+  // Configurações do sistema
   "telemetry": {
-    "diagnostics": false,
-    "metrics": false
+    "diagnostics": true,
+    "metrics": true
   },
-  "language_models": {
-    "anthropic": {
-      "version": "1"
+  "auto_update": true,
+  "load_direnv": "shell_hook",
+  // Editor
+  "editor": {
+    "sticky_headers": true,
+    "show_breadcrumbs": true,
+    "highlight_matching_brackets": true,
+    "suggest": {
+      "snippets": true,
+      "show_word_suggestions": true
     }
   },
-  // custom testing
   "always_treat_brackets_as_autoclosed": true,
   "auto_signature_help": true,
-  "chat_panel": {
-    "button": false
-  },
-  "journal": {
-    "enabled": true,
-    "path": "~/logseq/journals"
-  },
-  "load_direnv": "shell_hook",
+  "cursor_blink": false,
+  "preferred_line_length": 90,
+  "soft_wrap": "preferred_line_length",
+  "use_autoclose": false,
+  "vertical_scroll_margin": 0,
+  "active_pane_magnification": 0,
+  // Salvamento e formatação
+  "autosave": "on_focus_change",
+  "remove_trailing_whitespace_on_save": true,
+  "ensure_final_newline_on_save": true,
   "prettier": {
     "enabled": true,
     "format_on_save": true
   },
-  // custom testing
-  // Tweaks
-  "remove_trailing_whitespace_on_save": true,
-  "ensure_final_newline_on_save": true,
-  // Editor
-  "autosave": "on_focus_change",
-  "vim_mode": true,
-  "vim": {
-    "use_multiline_find": true,
-    "use_smartcase_find": true,
-    "use_system_clipboard": "always"
-  },
-  "auto_update_extensions": {
-    "enabled": true
-  },
-  "cursor_blink": false,
-  "auto_update": true,
-  "gutter": {
-    "line_numbers": true
+  "formatter": {
+    "language_server": {
+      "name": "biome"
+    }
   },
   // UI/UX
   "theme": "Rosé Pine",
   "buffer_font_size": 20,
   "buffer_font_family": "Maple Mono",
-  // "ui_font_size": 20,
   "ui_font_family": "Maple Mono",
+  "gutter": {
+    "line_numbers": true
+  },
   "relative_line_numbers": false,
   "scrollbar": {
     "show": "never"
   },
-  "vertical_scroll_margin": 0,
+  // Tabs e painéis
   "tabs": {
-    // https://zed.dev/docs/configuring-zed#editor-tabs
     "show_icons": true,
     "git_status": true,
     "close_position": "right",
@@ -73,40 +59,19 @@
   "tab_bar": {
     "show": false
   },
-  "preferred_line_length": 90,
-  "soft_wrap": "preferred_line_length",
-  "use_autoclose": false,
-  // Features
-  "features": {
-    "copilot": true
-  },
-  "copilot": {
-    "enabled": true,
-    "key": "Tab"
-  },
-  "show_copilot_suggestions": true,
-  "formatter": {
-    "language_server": {
-      "name": "biome"
-    }
-  },
-  "git": {
-    // https://zed.dev/docs/configuring-zed#git
-    "git_gutter": "tracked_files",
-    "inline_blame": {
-      "enabled": true,
-      "position": "right"
-    }
-  },
-  // Panels
   "project_panel": {
-    // https://zed.dev/docs/configuring-zed#project-panel
     "default_width": 225,
     "button": true,
     "dock": "left",
-    // "dock": "right", // remap to cmd-b
     "git_status": true
   },
+  "chat_panel": {
+    "button": false
+  },
+  "collaboration_panel": {
+    "button": false
+  },
+  // Terminal
   "terminal": {
     "alternate_scroll": "off",
     "blinking": "terminal_controlled",
@@ -129,8 +94,56 @@
       "TERM": "xterm-256color"
     }
   },
-  "collaboration_panel": {
-    "button": false
+  // Vim
+  "vim_mode": true,
+  "vim": {
+    "use_multiline_find": true,
+    "use_smartcase_find": true,
+    "use_system_clipboard": "always"
+  },
+  // Git
+  "git": {
+    "git_gutter": "tracked_files",
+    "inline_blame": {
+      "enabled": true,
+      "position": "right"
+    }
+  },
+  // AI e Copilot
+  "assistant": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-20240620"
+    },
+    "version": "2",
+    "enabled": true,
+    "provider": "zed"
+  },
+  "copilot": {
+    "enabled": true,
+    "key": "Tab"
+  },
+  "show_copilot_suggestions": true,
+  "features": {
+    "copilot": true
+  },
+  // Debug e LSP
+  "debug": {
+    "toolbar": {
+      "breakpoints": true,
+      "watches": true
+    }
+  },
+  "lsp": {
+    "diagnostics": {
+      "show_gutter_indicators": true,
+      "show_in_status_bar": true
+    }
+  },
+  "show_call_status_icon": true,
+  // Extensões e plugins
+  "auto_update_extensions": {
+    "enabled": true
   },
   "auto_install_extensions": {
     "enabled": true,
@@ -142,15 +155,52 @@
     "go": true,
     "rust": true,
     "racket": true,
-    "ruby": true
+    "ruby": true,
+    "markdown": true,
+    "yaml": true,
+    "json": true,
+    "docker": true,
+    "html": true,
+    "css": true
   },
-  "assistant": {
-    "default_model": {
-      "provider": "openai",
-      "model": "gpt-4o"
-    },
-    "version": "2",
-    "enabled": false,
-    "provider": "copilot"
+  // Markdown
+  "markdown": {
+    "preview": {
+      "auto_open": true,
+      "theme": "auto"
+    }
+  },
+  // Busca e diff
+  "search": {
+    "ignore": {
+      "hidden": true,
+      "git": true,
+      "patterns": [
+        "node_modules",
+        "dist",
+        "build",
+        ".git"
+      ]
+    }
+  },
+  "diff": {
+    "max_file_size": 100000,
+    "warning_file_size": 50000
+  },
+  // Status bar
+  "status_bar": {
+    "show": true,
+    "items": [
+      "mode",
+      "diagnostics",
+      "position",
+      "file_path",
+      "grammar"
+    ]
+  },
+  // Journal
+  "journal": {
+    "enabled": true,
+    "path": "~/logseq/journals"
   }
 }

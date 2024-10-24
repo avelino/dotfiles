@@ -26,6 +26,7 @@ alias k kubectl
 
 alias vim nvim
 alias vi nvim
+alias zed zed-preview
 
 ## htop requires root privileges to correctly display all running processes, so you will need to run `sudo htop`
 alias htop "sudo htop"

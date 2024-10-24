@@ -7,3 +7,4 @@ zed/.tmp*
 zed/*.mdb
 zed/embeddings
 zed/prompts
+zed/conversations
