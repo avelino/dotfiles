@@ -5,11 +5,14 @@ sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
 # global settings
+yabai -m config debug_output off
 yabai -m config mouse_follows_focus on
 yabai -m config focus_follows_mouse autofocus
+yabai -m config window_origin_display cursor
 yabai -m config window_placement second_child
+yabai -m config window_zoom_persist off
 yabai -m config window_topmost off
-yabai -m config window_shadow off
+yabai -m config window_shadow float
 yabai -m config window_opacity on
 yabai -m config window_opacity_duration 0.0
 yabai -m config active_window_opacity 1.0
@@ -33,6 +36,13 @@ yabai -m config bottom_padding 10
 yabai -m config left_padding 10
 yabai -m config right_padding 10
 yabai -m config window_gap 05
+yabai -m config external_bar all:$(spacebar -m config height):0
+
+# space settings
+yabai -m rule --add app="^Arc|Zen Browser|Google Chrome|Firefox$" space=1
+yabai -m rule --add app="^(Zed|Zed Preview|Code|RStudio)$" space=2
+yabai -m rule --add app="^(Rio)$" space=2
+yabai -m rule --add app="^(Spotify)$" space=3
 
 # apps to not manage (ignore)
 yabai -m rule --add app='^System Information$' manage=off
