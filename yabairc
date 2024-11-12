@@ -36,7 +36,8 @@ yabai -m config bottom_padding 10
 yabai -m config left_padding 10
 yabai -m config right_padding 10
 yabai -m config window_gap 05
-yabai -m config external_bar all:$(spacebar -m config height):0
+# yabai -m config external_bar all:$(spacebar -m config height):0
+yabai -m config external_bar all:26:0
 
 # space settings
 yabai -m rule --add app="^Arc|Zen Browser|Google Chrome|Firefox$" space=1
@@ -57,6 +58,7 @@ yabai -m rule --add app='Raycast' manage=off
 yabai -m rule --add app='Fantastical' manage=off
 yabai -m rule --add app='Morgen' manage=off
 yabai -m rule --add app='Messages' manage=off
+yabai -m rule --add app='^Signal' manage=off
 yabai -m rule --add app='FaceTime' manage=off
 yabai -m rule --add app='Simulator' manage=off
 yabai -m rule --add app='App Store' manage=off
