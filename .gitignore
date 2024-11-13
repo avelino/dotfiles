@@ -2,6 +2,10 @@
 .lsp/
 fish/fish_variables
 
+# emacs
+*emacs.d/straight
+*emacs.d/var
+
 # zed editor
 zed/.tmp*
 zed/*.mdb
