@@ -29,3 +29,8 @@
 (use-package! easy-hugo
   :bind ("C-c C-k" . easy-hugo-menu)
   :config (easy-hugo-enable-menu))
+
+;; d2
+(use-package! d2-mode
+  :config
+  (setq d2-location "/opt/homebrew/bin/d2"))

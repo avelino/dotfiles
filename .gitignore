@@ -5,6 +5,7 @@ fish/fish_variables
 # emacs
 *emacs.d/straight
 *emacs.d/var
+*emacs.d/elpa
 
 # zed editor
 zed/.tmp*

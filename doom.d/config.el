@@ -7,7 +7,7 @@
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
 (setq user-full-name "Avelino"
-      user-mail-address "avelinorun@gmail.com"
+      user-mail-address "31996+avelino@users.noreply.github.com"
       user-real-login-name "avelino"
       github-user-name "avelino")
 
@@ -22,15 +22,14 @@
 ;;
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
-;;
 (setq doom-font (font-spec
                  ;; :family "Source Code Pro"
-                 :family "Cascadia Code"
+                 :family "Maple Mono"
                  :size 20
                  :weight 'semi-light
                  :width 'normal)
       doom-variable-pitch-font (font-spec
-                                :family "Cascadia Code"
+                                :family "Maple Mono"
                                 :size 20))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
@@ -45,7 +44,8 @@
 ;; (setq doom-theme 'ef-duo-light)
 ;; (setq doom-theme 'ef-day)
 ;; (setq doom-theme 'doom-dracula)
-(setq doom-theme 'doom-rose-pine)
+;; (setq doom-theme 'doom-rose-pine)
+(setq doom-theme 'doom-tokyo-night)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -103,12 +103,6 @@
 (after! (jsonian flycheck) (jsonian-enable-flycheck))
 ;; To diasable so-long mode overrides
 (after! (jsonian so-long) (jsonian-no-so-long-mode))
-
-
-;; d2
-(use-package! d2-mode
-  :config
-  (setq d2-location "~/go/bin/d2"))
 
 ;; Clojure mode & Cider Configuration + key bindings
 (load! "+clojure")

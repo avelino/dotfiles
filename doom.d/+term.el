@@ -1,7 +1,7 @@
 ;;; ../dotfiles/doom.d/+term.el -*- lexical-binding: t; -*-
 
 ;; fish to default shell
-'(explicit-shell-file-name "/usr/local/bin/fish")
+'(explicit-shell-file-name "/opt/homebrew/bin/fish")
 
 ;; vterm
 (defvar vterm-compile-dedicated-buffer nil)
