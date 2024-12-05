@@ -29,7 +29,7 @@ spacebar -m config spaces_for_all_displays     on
 spacebar -m config clock_icon                  
 spacebar -m config dnd_icon                    
 spacebar -m config clock_format                "%Y-%m-%d %R"
-spacebar -m config right_shell                 on
+spacebar -m config right_shell                 off
 spacebar -m config right_shell_icon            
 spacebar -m config right_shell_command         "whoami"
 

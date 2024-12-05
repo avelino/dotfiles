@@ -23,7 +23,6 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 (setq doom-font (font-spec
-                 ;; :family "Source Code Pro"
                  :family "Maple Mono"
                  :size 20
                  :weight 'semi-light
@@ -103,6 +102,11 @@
 (after! (jsonian flycheck) (jsonian-enable-flycheck))
 ;; To diasable so-long mode overrides
 (after! (jsonian so-long) (jsonian-no-so-long-mode))
+
+;; d2
+(use-package! d2-mode
+  :config
+  (setq d2-location "/opt/homebrew/bin/d2"))
 
 ;; Clojure mode & Cider Configuration + key bindings
 (load! "+clojure")
