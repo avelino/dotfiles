@@ -30,6 +30,8 @@
   :bind ("C-c C-k" . easy-hugo-menu)
   :config (easy-hugo-enable-menu))
 
+(use-package! markdownfmt)
+
 ;; d2
 (use-package! d2-mode
   :config

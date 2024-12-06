@@ -40,11 +40,10 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'doom-ayu-light)
-;; (setq doom-theme 'ef-duo-light)
-;; (setq doom-theme 'ef-day)
-;; (setq doom-theme 'doom-dracula)
-;; (setq doom-theme 'doom-rose-pine)
-(setq doom-theme 'doom-tokyo-night)
+;; (setq doom-theme 'doom-tokyo-night)
+(package! spacemacs-theme)
+
+(setq doom-theme 'doom-moonlight)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -55,6 +54,15 @@
 (setq org-directory "~/org/")
 
 (setq auto-save-default t)
+
+(setq confirm-kill-emacs nil)
+
+(setq doom-modeline-enable-word-count t)
+
+;; evil
+(setq evil-normal-state-cursor '(box "light blue")
+      evil-insert-state-cursor '(bar "medium sea green")
+      evil-visual-state-cursor '(hollow "orange"))
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -87,6 +95,10 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+
+(package! package-lint)
+(package! dockerfile-mode)
 
 ;; text mode
 (add-hook! 'org-mode-hook #'doom-disable-line-numbers-h)
