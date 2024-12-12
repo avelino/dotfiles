@@ -25,9 +25,15 @@ function brew --description 'brew shortcut with new functions'
         case spacebar
             brew services $argv[2] cmacrae/formulae/spacebar
         case i3
-            brew yabai $argv[2] && \
-            brew skhd $argv[2] && \
-            brew spacebar $argv[2]
+            switch $argv[2]
+                case restart
+                    brew i3 stop && \
+                    brew i3 start
+                case "*"
+                    brew yabai $argv[2] && \
+                    brew skhd $argv[2] && \
+                    brew spacebar $argv[2]
+            end
         case '*' # default
             command brew $argv
     end
