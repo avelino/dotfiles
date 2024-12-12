@@ -40,10 +40,8 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'doom-ayu-light)
-;; (setq doom-theme 'doom-tokyo-night)
-(package! spacemacs-theme)
-
-(setq doom-theme 'doom-moonlight)
+(setq doom-theme 'doom-tokyo-night)
+;; (setq doom-theme 'doom-moonlight)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -96,10 +94,6 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-
-(package! package-lint)
-(package! dockerfile-mode)
-
 ;; text mode
 (add-hook! 'org-mode-hook #'doom-disable-line-numbers-h)
 
@@ -109,16 +103,22 @@
   :after python
   :hook (python-mode . python-black-on-save-mode-enable-dwim))
 
+(use-package! copilot-chat
+  :after (request org markdown-mode shell-maker))
+
+(use-package! copilot
+  :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("<tab>" . 'copilot-accept-completion)
+              ("TAB" . 'copilot-accept-completion)
+              ("C-TAB" . 'copilot-accept-completion-by-word)
+              ("C-<tab>" . 'copilot-accept-completion-by-word)))
+
 ;; json
 ;; To enable jsonian to work with flycheck
 (after! (jsonian flycheck) (jsonian-enable-flycheck))
 ;; To diasable so-long mode overrides
 (after! (jsonian so-long) (jsonian-no-so-long-mode))
-
-;; d2
-(use-package! d2-mode
-  :config
-  (setq d2-location "/opt/homebrew/bin/d2"))
 
 ;; Clojure mode & Cider Configuration + key bindings
 (load! "+clojure")

@@ -46,20 +46,19 @@
       (call-interactively fn)))
   (advice-add 'company-complete-selection :around #'jcs--company-complete-selection--advice-around))
 
-(use-package! moody
-  :config
-  (setq x-underline-at-descent-line t)
-
-  (setq-default mode-line-format
-                '(" "
-                  mode-line-front-space
-                  mode-line-client
-                  mode-line-frame-identification
-                  mode-line-buffer-identification " " mode-line-position
-                  (vc-mode vc-mode)
-                  (multiple-cursors-mode mc/mode-line)
-                  " " mode-line-modes
-                  mode-line-end-spaces)))
+;; (use-package! moody
+;;   :config
+;;   (setq x-underline-at-descent-line t)
+;;   (setq-default mode-line-format
+;;                 '(" "
+;;                   mode-line-front-space
+;;                   mode-line-client
+;;                   mode-line-frame-identification
+;;                   mode-line-buffer-identification " " mode-line-position
+;;                   (vc-mode vc-mode)
+;;                   (multiple-cursors-mode mc/mode-line)
+;;                   " " mode-line-modes
+;;                   mode-line-end-spaces)))
 
 (use-package! face-remap
   :bind(("C-+" . text-scale-increase)

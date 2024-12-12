@@ -33,6 +33,6 @@
 (use-package! markdownfmt)
 
 ;; d2
-(use-package! d2-mode
-  :config
-  (setq d2-location "/opt/homebrew/bin/d2"))
+;; (use-package! d2-mode
+;;   :config
+;;   (setq d2-location "/opt/homebrew/bin/d2"))

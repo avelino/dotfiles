@@ -51,6 +51,8 @@
 
 
 (package! lsp-treemacs)
+(package! package-lint)
+(package! dockerfile-mode)
 
 ;; python
 (package! python-black)
@@ -78,6 +80,7 @@
 (package! languagetool)
 (package! copilot
   :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
+(package! copilot-chat)
 
 ;; clojure
 ;; Use the latest available packages for Clojure
