@@ -32,6 +32,13 @@
 
 (use-package! markdownfmt)
 
+;; text mode
+(add-hook! 'org-mode-hook #'doom-disable-line-numbers-h)
+
+;; If you use `org' and don't want your org files in the default location below,
+;; change `org-directory'. It must be set before org loads!
+(setq org-directory "~/org/")
+
 ;; d2
 ;; (use-package! d2-mode
 ;;   :config
