@@ -68,8 +68,6 @@
 ;; ui
 (package! rainbow-delimiters)
 (package! with-editor)
-(package! easy-hugo)
-(package! d2-mode)
 (package! company-fuzzy)
 ;; (package! flx)
 (package! ef-themes)
@@ -79,7 +77,7 @@
 ;; check
 (package! languagetool)
 (package! copilot
-  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
+  :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el")))
 (package! copilot-chat)
 
 ;; clojure
@@ -92,3 +90,7 @@
 (package! clj-refactor)
 (package! rainbow-delimiters)
 (package! paredit)
+
+;; writer
+(package! markdownfmt)
+(package! easy-hugo)
