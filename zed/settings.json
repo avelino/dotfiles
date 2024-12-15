@@ -38,7 +38,7 @@
     }
   },
   // UI/UX
-  "theme": "Rosé Pine",
+  "theme": "Tokyo Night",
   "buffer_font_size": 20,
   "buffer_font_family": "Maple Mono",
   "ui_font_family": "Maple Mono",
@@ -112,8 +112,8 @@
   // AI e Copilot
   "assistant": {
     "default_model": {
-      "provider": "copilot_chat",
-      "model": "gpt-4o"
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-latest"
     },
     "version": "2",
     "enabled": true,
