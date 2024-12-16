@@ -70,3 +70,6 @@
 
 ;; UI
 (load! "+ui")
+
+;; AI
+(load! "+ai")
