@@ -1,8 +1,8 @@
 {
   // Configurações do sistema
   "telemetry": {
-    "diagnostics": true,
-    "metrics": true
+    "diagnostics": false,
+    "metrics": false
   },
   "auto_update": true,
   "load_direnv": "shell_hook",
@@ -12,9 +12,18 @@
     "show_breadcrumbs": true,
     "highlight_matching_brackets": true,
     "suggest": {
+      "preview": true, // Preview de sugestões
+      "detail": true,
+      "documentation": true,
+      "filter_word": true,
+      "match_mode": "prefix",
+      "match_similar": true,
       "snippets": true,
       "show_word_suggestions": true
-    }
+    },
+    "smooth_scrolling": true, // Scrolling mais suave
+    "cursor_surrogate_pair": true, // Melhor suporte a emoji/unicode
+    "bracket_pair_colorization": true // Colorização de pares de parênteses
   },
   "always_treat_brackets_as_autoclosed": true,
   "auto_signature_help": true,
@@ -46,18 +55,16 @@
     "line_numbers": true
   },
   "relative_line_numbers": false,
-  "scrollbar": {
-    "show": "never"
-  },
   // Tabs e painéis
   "tabs": {
     "show_icons": true,
     "git_status": true,
+    "show_diagnostics": "all",
     "close_position": "right",
     "close_button": false
   },
   "tab_bar": {
-    "show": false
+    "show": true
   },
   "project_panel": {
     "default_width": 225,
@@ -73,6 +80,8 @@
   },
   // Terminal
   "terminal": {
+    "integrated_tabs": true, // Tabs integrados no terminal
+    "minimum_contrast_ratio": 4.5, // Melhor legibilidade
     "alternate_scroll": "off",
     "blinking": "terminal_controlled",
     "line_height": "standard",
@@ -92,7 +101,10 @@
     },
     "shell_env": {
       "TERM": "xterm-256color"
-    }
+    },
+    "cursor_style": "block", // Estilo do cursor
+    "cursor_blink": true,
+    "confirm_on_exit": true
   },
   // Vim
   "vim_mode": true,
@@ -104,6 +116,10 @@
   // Git
   "git": {
     "git_gutter": "tracked_files",
+    "autofetch": true,
+    "confirm_sync": true,
+    "smart_commit_changes": true,
+    "blame_line_highlighting": true,
     "inline_blame": {
       "enabled": true,
       "position": "right"
@@ -112,7 +128,7 @@
   // AI e Copilot
   "assistant": {
     "default_model": {
-      "provider": "zed.dev",
+      "provider": "anthropic",
       "model": "claude-3-5-sonnet-latest"
     },
     "version": "2",
@@ -137,7 +153,13 @@
   "lsp": {
     "diagnostics": {
       "show_gutter_indicators": true,
-      "show_in_status_bar": true
+      "show_in_status_bar": true,
+      "delay": 200, // Menor delay para diagnósticos
+      "enable_code_lens": true
+    },
+    "signature_help": {
+      "enabled": true,
+      "documentation": true
     }
   },
   "show_call_status_icon": true,
@@ -170,8 +192,18 @@
       "theme": "auto"
     }
   },
+  // files
+  "files": {
+    "max_memory_for_open_files": 4096,
+    "watch_exclude": {
+      "**/.git/objects/**": true,
+      "**/node_modules/**": true
+    }
+  },
   // Busca e diff
   "search": {
+    "smart_case": true,
+    "use_ignore_files": true,
     "ignore": {
       "hidden": true,
       "git": true,
