@@ -47,29 +47,13 @@
   :after python
   :hook (python-mode . python-black-on-save-mode-enable-dwim))
 
-;; json
-;; To enable jsonian to work with flycheck
-(after! (jsonian flycheck) (jsonian-enable-flycheck))
-;; To diasable so-long mode overrides
-(after! (jsonian so-long) (jsonian-no-so-long-mode))
-
-;; Clojure mode & Cider Configuration + key bindings
+(load! "+data")
 (load! "+clojure")
-
-;; LSP Configuration
 (load! "+lsp")
+(load! "+md")
+(load! "+term")
+(load! "+ui")
+(load! "+ai")
 
 ;; Structural Editing - Smartparens
 ;; (load! "+smartparens")
-
-;; Markdown mode
-(load! "+md")
-
-;; Term  mode
-(load! "+term")
-
-;; UI
-(load! "+ui")
-
-;; AI
-(load! "+ai")

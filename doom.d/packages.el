@@ -7,7 +7,7 @@
 
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
-; (package! some-package)
+                                        ; (package! some-package)
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
@@ -49,7 +49,6 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
                                         ;(unpin! t)
 
-
 (package! lsp-treemacs)
 (package! package-lint)
 (package! dockerfile-mode)
@@ -57,41 +56,9 @@
 ;; python
 (package! python-black)
 
-;; json
-(package! jsonian :recipe (:host github :repo "iwahbe/jsonian"))
-(package! json-mode :disable t)
-
-;; term
-(package! vterm-toggle)
-(package! fish-mode)
-
-;; ui
-(package! rainbow-delimiters)
-(package! with-editor)
-(package! company-fuzzy)
-;; (package! flx)
-(package! ef-themes)
-(package! moody)
-(package! face-remap)
-
-;; check
-(package! languagetool)
-(package! copilot
-  :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el")))
-(package! copilot-chat)
-(package! gptel)
-
-;; clojure
-;; Use the latest available packages for Clojure
-;; - cider, clojure-mode
-(unpin! (:lang clojure))
-(package! flycheck-clj-kondo)
-(package! cider)
-(package! flycheck-clj-kondo)
-(package! clj-refactor)
-(package! rainbow-delimiters)
-(package! paredit)
-
-;; writer
-(package! markdownfmt)
-(package! easy-hugo)
+(load! "packages/term")
+(load! "packages/data")
+(load! "packages/ui")
+(load! "packages/ai")
+(load! "packages/clojure")
+(load! "packages/md")
