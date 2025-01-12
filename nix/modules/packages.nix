@@ -8,9 +8,10 @@
     tree
     htop
     bat
-    exa
+    eza
     delta
     gh
+    nixfmt
 
     # Languages and tools
     go

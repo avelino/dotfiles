@@ -1,1 +1,0 @@
-set -g -x HOMEBREW_NO_INSTALL_CLEANUP true

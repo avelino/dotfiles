@@ -1,61 +1,79 @@
-{ pkgs, ... }: {
+{ pkgs, ... }: let
+  fishConfigFile = pkgs.writeText "config.fish" (builtins.readFile ../../fish/config.fish);
+in {
+  # Enable all shells for better compatibility
+  programs.bash.enable = true;
+  programs.zsh.enable = true;
   programs.fish = {
     enable = true;
-    interactiveShellInit = ''
-      set fish_greeting # Disable greeting
-      
-      # Configure environment variables
-      set -gx EDITOR nvim
-      set -gx VISUAL $EDITOR
-      set -gx LANG en_US.UTF-8
-      set -gx LC_ALL en_US.UTF-8
-      
-      # Go configuration
-      set -gx GOPATH $HOME/go
-      set -gx PATH $GOPATH/bin $PATH
-      
-      # Rust configuration
-      set -gx PATH $HOME/.cargo/bin $PATH
-    '';
-    plugins = [
-      {
-        name = "z";
-        src = pkgs.fetchFromGitHub {
-          owner = "jethrokuan";
-          repo = "z";
-          rev = "85f863f20f24faf675827fb00f3a4e15c7838d76";
-          sha256 = "+FUBM7CodtZrYKqU542fQD+ZDGrd2438trKM0tIESs0=";
-        };
-      }
-    ];
+    
+    # Import existing fish configurations
+    # shellInit = ''
+    #   source ${fishConfigFile}
+    # '';
+
     shellAliases = {
-      g = "git";
-      gc = "git commit";
-      gp = "git push";
-      gpl = "git pull";
-      gst = "git status";
+      # Navigation
+      ".." = "cd ..";
+      "..." = "cd ../..";
+      "...." = "cd ../../..";
+      "....." = "cd ../../../..";
       
-      cat = "bat";
-      ls = "exa";
-      ll = "exa -la";
-      tree = "exa --tree";
+      # Common commands
+      chmox = "chmod +x";
       
-      dev = "cd ~/Development";
-      dots = "cd ~/dotfiles";
+      # Modern ls replacement with eza
+      ls = "eza";
+      ll = "eza -la";
+      lt = "eza --tree";
+      la = "eza -a";
+      l = "eza -l";
       
+      # Replace grep with ripgrep
+      rg = "rg --hidden --no-heading --smart-case --color=always --line-number";
+      grep = "rg";
+      ag = "rg";
+      
+      # Docker and Kubernetes
       d = "docker";
-      dc = "docker-compose";
+      k = "kubectl";
       
+      # Editors
       vim = "nvim";
       vi = "nvim";
-      
+      v = "nvim";
+      zed = "zed-preview";
+      e = "emacs";
       c = "cursor";
+      
+      # System tools
+      htop = "sudo htop";
+      wget = "curl -O";
     };
   };
+
+  # Global environment variables
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+    LANG = "en_US.UTF-8";
+    LC_ALL = "en_US.UTF-8";
+  };
+
+  # Add directories to PATH
+  home.sessionPath = [
+    "$HOME/go/bin"
+    "$HOME/.cargo/bin"
+    "$HOME/.local/bin"
+    "$HOME/bin"
+    "$HOME/dotfiles/bin"
+  ];
 
   programs.starship = {
     enable = true;
     enableFishIntegration = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
     settings = {
       add_newline = false;
       character = {
@@ -71,7 +89,6 @@
 
   programs.direnv = {
     enable = true;
-    enableFishIntegration = true;
     nix-direnv.enable = true;
   };
 } 
