@@ -76,6 +76,7 @@ in {
     "$HOME/dotfiles/bin"
     "$HOME/.nix-profile/bin"
     "/nix/var/nix/profiles/default/bin"
+    "/etc/profiles/per-user/avelino/bin"
   ];
 
   programs.starship = {

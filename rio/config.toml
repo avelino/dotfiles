@@ -17,9 +17,9 @@ use-kitty-keyboard-protocol = false
 disable-ctlseqs-alt = false
 
 [shell]
-#program = "/opt/homebrew/bin/fish"
+#program = "/bin/bash"
 #args = ["--login"]
-program = "/opt/homebrew/bin/tmux"
+program = "/etc/profiles/per-user/avelino/bin/tmux"
 args = ["new-session", "-c", "/Users/avelino"]
 
 [navigation]
