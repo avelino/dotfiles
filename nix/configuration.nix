@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ config, pkgs, lib, ... }: {
   # System configuration
   system.defaults.dock = {
     autohide = true;

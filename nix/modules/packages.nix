@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
-    # Development tools
+    # CLI Tools & Utilities
     ripgrep
     fd
     jq
@@ -11,26 +11,91 @@
     eza
     delta
     gh
-    nixfmt
-    
-    # Nix tools
-    nix
-    nix-prefetch
-    nix-prefetch-git
-    nix-index
-    
-    # Languages and tools
-    go
-    rustup
-    nodejs
-    yarn
-    python3
-    python3Packages.pip
-    python3Packages.ipython
+    coreutils
+    wget
+    curl
+    parallel
+    watch
+    tmux
+    p7zip
+    less
+    gawk
+    inetutils
+    mosh
 
-    # Cloud tools
+    # Development Tools
+    git
+    lazygit
+    direnv
+    cmake
+    gcc
+    ctop
+    docker-buildx
+    act
+    hub
+
+    # Languages & Runtime
+    go
+    gopls
+    rustup
+    nodejs_latest
+    yarn
+    python311
+    python311Packages.pip
+    python311Packages.ipython
+    elixir
+    nim
+    sbcl
+    clojure
+    leiningen
+    babashka
+    
+    # Language Servers & Linters
+    marksman
+    yaml-language-server
+    nodePackages.eslint
+    nodePackages.prettier
+    taplo
+
+    # Cloud & Infrastructure
     awscli2
     docker
     docker-compose
+    kubectl
+    kubectx
+    helmfile
+    kompose
+
+    # Text Editors & IDEs
+    helix
+    micro
+
+    # Media Tools
+    ffmpeg
+    imagemagick
+    yt-dlp
+
+    # Database Tools
+    mysql-client
+    redis
+
+    # Security Tools
+    pinentry_mac
+    gnupg
+
+    # Nix Tools
+    nix
+    nix-prefetch-git
+    nix-index
+    nixfmt-classic
+
+    # Version Control
+    mercurial
+    subversion
+
+    # Build Tools
+    autoconf
+    automake
+    cmake
   ];
 } 
