@@ -1,23 +1,22 @@
 {
   "nodes": {
-    "nix-casks": {
+    "home-manager": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1736640115,
-        "narHash": "sha256-7NZogp7FR40/7glkeE8PVJ7dXyYDBTLK+gQCcpsdmOQ=",
-        "owner": "atahanyorganci",
-        "repo": "nix-casks",
-        "rev": "cf23640f3e7146d8b25ac857a983d50885452904",
+        "lastModified": 1736508663,
+        "narHash": "sha256-ZOaGwa+WnB7Zn3YXimqjmIugAnHePdXCmNu+AHkq808=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "2532b500c3ed2b8940e831039dcec5a5ea093afc",
         "type": "github"
       },
       "original": {
-        "owner": "atahanyorganci",
-        "ref": "archive",
-        "repo": "nix-casks",
+        "owner": "nix-community",
+        "repo": "home-manager",
         "type": "github"
       }
     },
@@ -59,7 +58,7 @@
     },
     "root": {
       "inputs": {
-        "nix-casks": "nix-casks",
+        "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs"
       }
