@@ -1,8 +1,4 @@
-{ pkgs, ... }: {
-  home.username = "avelino";
-  home.homeDirectory = "/Users/avelino";
-  home.stateVersion = "23.11";
-
+{ pkgs, lib, ... }: {
   # Let Home Manager install and manage itself
   programs.home-manager.enable = true;
 

@@ -12,7 +12,13 @@
     delta
     gh
     nixfmt
-
+    
+    # Nix tools
+    nix
+    nix-prefetch
+    nix-prefetch-git
+    nix-index
+    
     # Languages and tools
     go
     rustup

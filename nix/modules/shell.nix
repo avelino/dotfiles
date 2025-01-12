@@ -49,6 +49,13 @@ in {
       # System tools
       htop = "sudo htop";
       wget = "curl -O";
+
+      # git
+      g = "git";
+      # Nix related
+      ni = "nix-instantiate";
+      nix-repl = "nix repl";
+      nix-shell = "nix-shell --command fish";
     };
   };
 
