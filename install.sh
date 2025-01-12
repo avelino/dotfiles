@@ -34,6 +34,7 @@ git clone git@github.com:practicalli/clojure-deps-edn.git ~/.clojure
 cp -rf ~/dotfiles/gh ~/.config/gh
 ln -s ~/dotfiles/skhdrc ~/.skhdrc
 ln -s ~/dotfiles/yabairc ~/.yabairc
+ln -s ~/dotfiles/nix ~/.config/nix-darwin
 
 ## vim config (LazyVim)
 # mkdir -p ~/.config/nvim && \
