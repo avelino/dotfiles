@@ -133,15 +133,12 @@
       "clojure-lsp/brew/clojure-lsp-native"
     ];
     casks = [
-      { name = "arc"; greedy = true; }
       { name = "raycast"; greedy = true; }
       { name = "zed@preview"; greedy = true; }
       { name = "1password"; greedy = true; }
       { name = "orbstack"; greedy = true; }
       { name = "visual-studio-code"; greedy = true; }
-      { name = "slack"; greedy = true; }
       { name = "spotify"; greedy = true; }
-      { name = "zoom"; greedy = true; }
       { name = "cursor"; greedy = true; }
       { name = "appcleaner"; greedy = true; }
       { name = "daisydisk"; greedy = true; }
@@ -156,11 +153,10 @@
       { name = "google-chrome"; greedy = true; }
       { name = "google-drive"; greedy = true; }
       { name = "chromedriver"; greedy = true; }
-      { name = "gpg-suite"; greedy = true; }
+      # { name = "gpg-suite"; greedy = true; }
       { name = "keepingyouawake"; greedy = true; }
-      { name = "logseq"; greedy = true; }
+      # { name = "logseq"; greedy = true; }
       { name = "morgen"; greedy = true; }
-      { name = "quitter"; greedy = true; }
       { name = "rio"; greedy = true; }
       { name = "sf-symbols"; greedy = true; }
       { name = "signal@beta"; greedy = true; }
@@ -169,6 +165,7 @@
       { name = "vlc"; greedy = true; }
       { name = "xquartz"; greedy = true; }
       { name = "zen-browser"; greedy = true; }
+      { name = "languagetool"; greedy = true; }
     ];
     masApps = {};
   };
