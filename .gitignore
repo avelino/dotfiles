@@ -16,3 +16,6 @@ zed/conversations
 
 *.backup/
 *.backup
+
+.DS_Store
+*.log
