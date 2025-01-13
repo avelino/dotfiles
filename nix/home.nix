@@ -6,6 +6,13 @@
   # Let Home Manager install and manage itself
   programs.home-manager.enable = true;
 
+  # Ensure ~/.logseq directory exists
+  home.file.".logseq/.keep".text = "";
+  # Symbolic links
+  home.file = {
+    ".logseq/config".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/notes/logseq";
+  };
+
   # Import modules
   imports = [
     ./modules/shell.nix
