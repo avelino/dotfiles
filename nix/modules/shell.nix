@@ -1,16 +1,9 @@
-{ pkgs, ... }: let
-  fishConfigFile = pkgs.writeText "config.fish" (builtins.readFile ../../fish/config.fish);
-in {
-  # Enable all shells for better compatibility
-  programs.bash.enable = true;
-  programs.zsh.enable = true;
+{ pkgs, ... }: {
   programs.fish = {
     enable = true;
-    
-    # Import existing fish configurations
-    # shellInit = ''
-    #   source ${fishConfigFile}
-    # '';
+    interactiveShellInit = ''
+      set fish_greeting # Disable greeting
+    '';
 
     shellAliases = {
       # Navigation

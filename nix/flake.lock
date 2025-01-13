@@ -81,22 +81,6 @@
         "type": "github"
       }
     },
-    "clojure-lsp-brew": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1731346821,
-        "narHash": "sha256-bF7muaksZdyiulCdNcQV+pNIGZSM98V7Qa7fh1tZoSc=",
-        "owner": "clojure-lsp",
-        "repo": "homebrew-brew",
-        "rev": "d5f01c7add31672b54835f7d75af12b19f982b2b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "clojure-lsp",
-        "repo": "homebrew-brew",
-        "type": "github"
-      }
-    },
     "cmacrae-formulae": {
       "flake": false,
       "locked": {
@@ -594,7 +578,6 @@
         "borkdude-brew": "borkdude-brew",
         "bukalapak-packages": "bukalapak-packages",
         "buo-cask-upgrade": "buo-cask-upgrade",
-        "clojure-lsp-brew": "clojure-lsp-brew",
         "cmacrae-formulae": "cmacrae-formulae",
         "d12frosted-emacs-plus": "d12frosted-emacs-plus",
         "dart-lang-dart": "dart-lang-dart",

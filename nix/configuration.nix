@@ -1,7 +1,7 @@
 { config, pkgs, lib, nix-homebrew, homebrew-core, homebrew-cask, homebrew-bundle,
   homebrew-services, homebrew-cask-fonts, homebrew-autoupdate,
   adoptopenjdk-openjdk, borkdude-brew, bukalapak-packages,
-  buo-cask-upgrade, clojure-lsp-brew, cmacrae-formulae,
+  buo-cask-upgrade, cmacrae-formulae,
   d12frosted-emacs-plus, dart-lang-dart, gabrie30-utils,
   github-gh, graalvm-tap, heroku-brew, int128-kubelogin,
   jeroenknoops-tap, johanhaleby-kubetail, koekeishiya-formulae,
@@ -28,8 +28,8 @@
     keep-derivations = true
   '';
 
-  # Create /etc/zshrc that loads the nix-darwin environment.
-  programs.zsh.enable = true;
+  # Shell configuration
+  environment.shells = with pkgs; [ fish ];
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
@@ -66,14 +66,15 @@
   # Fix Homebrew permissions on activation
   system.activationScripts.extraActivation.text = ''
     echo "setting up homebrew directories..."
-    if [ ! -d "/opt/homebrew" ]; then
-      sudo mkdir -p /opt/homebrew
-    fi
+    sudo rm -rf /opt/homebrew
+    sudo mkdir -p /opt/homebrew
+    sudo mkdir -p /opt/homebrew/Library
+    sudo mkdir -p /opt/homebrew/Library/Taps
+    sudo mkdir -p /opt/homebrew/Library/Taps/clojure-lsp
+    
+    # Set permissions for all Homebrew directories
+    sudo chmod -R 777 /opt/homebrew
     sudo chown -R ${config.nix-homebrew.user}:admin /opt/homebrew
-    if [ ! -d "/opt/homebrew/Library/Taps" ]; then
-      sudo mkdir -p /opt/homebrew/Library/Taps
-    fi
-    sudo chown -R ${config.nix-homebrew.user}:admin /opt/homebrew/Library/Taps
   '';
 
   # Nix Homebrew Configuration
@@ -81,8 +82,8 @@
     enable = true;
     enableRosetta = true;
     user = "avelino";
-    autoMigrate = false;
-    mutableTaps = false;
+    autoMigrate = true;
+    mutableTaps = true;
     taps = {
       "homebrew/homebrew-core" = homebrew-core;
       "homebrew/homebrew-cask" = homebrew-cask;
@@ -94,7 +95,6 @@
       "borkdude/brew" = borkdude-brew;
       "bukalapak/packages" = bukalapak-packages;
       "buo/cask-upgrade" = buo-cask-upgrade;
-      "clojure-lsp/brew" = clojure-lsp-brew;
       "cmacrae/formulae" = cmacrae-formulae;
       "d12frosted/emacs-plus" = d12frosted-emacs-plus;
       "dart-lang/dart" = dart-lang-dart;
@@ -126,8 +126,12 @@
       brewfile = true;
       lockfiles = false;
     };
-    taps = [];
-    brews = [];
+    taps = [
+      "clojure-lsp/brew"
+    ];
+    brews = [
+      "clojure-lsp/brew/clojure-lsp-native"
+    ];
     casks = [
       { name = "arc"; greedy = true; }
       { name = "raycast"; greedy = true; }
@@ -165,14 +169,6 @@
       { name = "vlc"; greedy = true; }
       { name = "xquartz"; greedy = true; }
       { name = "zen-browser"; greedy = true; }
-      { name = "clojure-lsp/brew/clojure-lsp-native"; greedy = true; }
-      { name = "font-cascadia-code"; greedy = true; }
-      { name = "font-fira-code"; greedy = true; }
-      { name = "font-fontawesome"; greedy = true; }
-      { name = "font-hack-nerd-font"; greedy = true; }
-      { name = "font-maple"; greedy = true; }
-      { name = "font-source-code-pro"; greedy = true; }
-      # { name = "neovim"; greedy = true; }
     ];
     masApps = {};
   };

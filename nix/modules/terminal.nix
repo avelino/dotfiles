@@ -1,15 +1,28 @@
 { pkgs, ... }: {
   programs.tmux = {
     enable = true;
-    shell = "${pkgs.fish}/bin/fish";
+    # shell = "${pkgs.fish}/bin/fish";  # Comentando temporariamente
     prefix = "C-q";
     baseIndex = 1;
     escapeTime = 0;
     historyLimit = 1000000;
     keyMode = "vi";
-    mouse = false;
-    terminal = "tmux-256color";
+    mouse = true;  # Habilitando mouse para debug
+    terminal = "screen-256color";  # Mudando para screen-256color
     extraConfig = ''
+      # Default shell
+      set-option -g default-shell ${pkgs.fish}/bin/fish
+
+      # Terminal settings
+      set -g default-terminal "screen-256color"
+      set -ga terminal-overrides ",xterm-256color:Tc"
+      set -g status-interval 1
+
+      # Basic settings
+      set -g base-index 1
+      setw -g pane-base-index 1
+      set -g renumber-windows on
+
       # re-number windows when one is closed
       set -g renumber-windows on
 

@@ -13,3 +13,6 @@ zed/*.mdb
 zed/embeddings
 zed/prompts
 zed/conversations
+
+*.backup/
+*.backup

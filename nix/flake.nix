@@ -27,7 +27,7 @@
     borkdude-brew = { url = "github:borkdude/homebrew-brew"; flake = false; };
     bukalapak-packages = { url = "github:bukalapak/homebrew-packages"; flake = false; };
     buo-cask-upgrade = { url = "github:buo/homebrew-cask-upgrade"; flake = false; };
-    clojure-lsp-brew = { url = "github:clojure-lsp/homebrew-brew"; flake = false; };
+    # clojure-lsp-brew = { url = "github:clojure-lsp/homebrew-brew"; flake = false; };
     cmacrae-formulae = { url = "github:cmacrae/homebrew-formulae"; flake = false; };
     d12frosted-emacs-plus = { url = "github:d12frosted/homebrew-emacs-plus"; flake = false; };
     dart-lang-dart = { url = "github:dart-lang/homebrew-dart"; flake = false; };
@@ -49,7 +49,7 @@
   outputs = { self, nixpkgs, nixpkgs-stable, nixpkgs-master, home-manager, darwin, nix-homebrew,
     homebrew-core, homebrew-cask, homebrew-bundle, homebrew-services, homebrew-cask-fonts,
     homebrew-autoupdate, adoptopenjdk-openjdk, borkdude-brew, bukalapak-packages,
-    buo-cask-upgrade, clojure-lsp-brew, cmacrae-formulae, d12frosted-emacs-plus,
+    buo-cask-upgrade, cmacrae-formulae, d12frosted-emacs-plus,
     dart-lang-dart, gabrie30-utils, github-gh, graalvm-tap, heroku-brew,
     int128-kubelogin, jeroenknoops-tap, johanhaleby-kubetail, koekeishiya-formulae,
     mongodb-brew, pritunl-tap, puma-puma, ravenac95-sudolikeaboss, screenplaydev-tap }: 
@@ -60,7 +60,7 @@
         inherit nix-homebrew homebrew-core homebrew-cask homebrew-bundle
         homebrew-services homebrew-cask-fonts homebrew-autoupdate
         adoptopenjdk-openjdk borkdude-brew bukalapak-packages
-        buo-cask-upgrade clojure-lsp-brew cmacrae-formulae
+        buo-cask-upgrade cmacrae-formulae
         d12frosted-emacs-plus dart-lang-dart gabrie30-utils
         github-gh graalvm-tap heroku-brew int128-kubelogin
         jeroenknoops-tap johanhaleby-kubetail koekeishiya-formulae
@@ -68,9 +68,19 @@
         screenplaydev-tap;
       };
     in {
-      darwinConfigurations.system = darwin.lib.darwinSystem {
+      darwinConfigurations."darwin" = darwin.lib.darwinSystem {
         inherit system specialArgs;
         modules = [
+          {
+            nixpkgs.config = {
+              allowUnfree = true;
+              allowUnsupportedSystem = true;
+              allowBroken = true;
+              permittedInsecurePackages = [
+                "openssl-1.1.1w"
+              ];
+            };
+          }
           ./configuration.nix
           home-manager.darwinModules.home-manager
           nix-homebrew.darwinModules.nix-homebrew

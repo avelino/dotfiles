@@ -4,9 +4,8 @@
     userName = "Avelino";
     userEmail = "31996+avelino@users.noreply.github.com";
     signing = {
-      key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5OfVvY6xmZdtw5pYJMECnfRfMm7zWMytg+IL9AyNhbu8UdBmGdT6wUiBBBw9CTcdnmDYj08n8gWXV6Jz2eazl7fC27HQr9BzJb35FM1LpnXncSDNxn5Itj89ROIgY70d2obp35K9+I+muFkAYuYJEHjtrGr7KIlC1oM+v+K43Jla4SotoBleLNbec0GwtyeYBB7bL9yhGhpEje+dtpLJFd5H/bDBuvjDg/tPHeAnflg0QfUeYfNDC44psY/uJQGBrob3eLcOdJSIV418JS+z1inC9Iljg+xkHGwWg3TSS2lD4ufZcKumBpc2S7T9XSVVB0KDeFTgyQHNDkCtG5xRb";
       signByDefault = true;
-      gpgPath = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJFqfbhZBqRVZXvKHQjRvqg0I+FBrYzR1VXwtUkHqxBz";
     };
     extraConfig = {
       init.defaultBranch = "main";
@@ -70,11 +69,16 @@
 
       gpg = {
         format = "ssh";
+        ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
       };
 
       commit = {
         gpgsign = true;
         verbose = true;
+      };
+
+      user = {
+        signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJFqfbhZBqRVZXvKHQjRvqg0I+FBrYzR1VXwtUkHqxBz";
       };
 
       branch = {

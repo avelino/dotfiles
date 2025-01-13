@@ -1,4 +1,8 @@
-{ pkgs, lib, ... }: {
+{ config, pkgs, lib, ... }: {
+  # Ensure programs are using ~/.config rather than
+  # /Users/<username>/Library/whatever
+  xdg.enable = true;
+
   # Let Home Manager install and manage itself
   programs.home-manager.enable = true;
 
@@ -10,8 +14,11 @@
     ./modules/terminal.nix
   ];
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  services.gpg-agent = {
+    enable = true;
+    defaultCacheTtl = 1800;
+    enableSshSupport = true;
+  };
 
   # CLI packages
   home.packages = with pkgs; [
@@ -36,6 +43,7 @@
     gawk
     inetutils
     mosh
+    ncurses
 
     # Development Tools
     git
@@ -83,7 +91,6 @@
     micro
 
     # Media Tools
-    ffmpeg
     imagemagick
     yt-dlp
 
@@ -110,15 +117,7 @@
     automake
     cmake
 
-    fzf
-    htop
-    jq
-    hugo
-    imagemagick
-    ffmpeg
-    yt-dlp
-    xclip
-    yarn
+    # GUI Apps
     logseq
   ];
 } 
