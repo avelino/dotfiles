@@ -7,18 +7,26 @@
   jeroenknoops-tap, johanhaleby-kubetail, koekeishiya-formulae,
   mongodb-brew, pritunl-tap, puma-puma, ravenac95-sudolikeaboss,
   screenplaydev-tap, ... }: {
+
+  # Import modules
+  imports = [
+    #./modules/yabai.nix
+    #./modules/skhd.nix
+  ];
+
   # Nix configuration ------------------------------------------------------------------------------
 
   nix.settings.substituters = [
-    "https://cache.nixos.org/"
+    "https://cache.nixos.org"
   ];
   nix.settings.trusted-public-keys = [
     "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
   ];
   nix.settings.trusted-users = [
     "@admin"
+    "root"
+    "avelino"
   ];
-  nix.configureBuildUsers = true;
 
   # Enable experimental nix command and flakes
   nix.package = pkgs.nixVersions.latest;
@@ -32,7 +40,21 @@
   environment.shells = with pkgs; [ fish ];
 
   # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
+  services = {
+    # FIXME: driver issues
+    karabiner-elements.enable = false;
+    nix-daemon.enable = true;
+    # TODO: review and testing
+    sketchybar = {
+      enable = false;
+      extraPackages = with pkgs; [ jq gh ];
+    };
+  };
+
+  networking = {
+    knownNetworkServices = [ "Wi-Fi" "Thunderbolt Bridge" ];
+    dns = [ "9.9.9.9" "1.1.1.1" "8.8.8.8" ];
+  };
 
   # Apps
   # `home-manager` currently has issues adding them to `~/Applications`
@@ -44,6 +66,8 @@
   # https://github.com/nix-community/home-manager/issues/423
   environment.variables = {
     TERMINFO_DIRS = lib.mkForce "${pkgs.kitty.terminfo.outPath}/share/terminfo";
+    EDITOR = "cursor";
+    VISUAL = "cursor";
   };
   programs.nix-index.enable = true;
 
@@ -61,7 +85,7 @@
   security.pam.enableSudoTouchIdAuth = true;
 
   # System state version
-  system.stateVersion = 5;
+  system.stateVersion = 4;
 
   # Fix Homebrew permissions on activation
   system.activationScripts.extraActivation.text = ''
@@ -169,4 +193,7 @@
     ];
     masApps = {};
   };
+
+  nix.settings.max-jobs = "auto";
+  nix.settings.cores = 0;
 } 

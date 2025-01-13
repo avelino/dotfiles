@@ -13,6 +13,11 @@
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     
     # Homebrew taps
@@ -47,12 +52,12 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, nixpkgs-master, home-manager, darwin, nix-homebrew,
-    homebrew-core, homebrew-cask, homebrew-bundle, homebrew-services, homebrew-cask-fonts,
+    nix-index-database, homebrew-core, homebrew-cask, homebrew-bundle, homebrew-services, homebrew-cask-fonts,
     homebrew-autoupdate, adoptopenjdk-openjdk, borkdude-brew, bukalapak-packages,
     buo-cask-upgrade, cmacrae-formulae, d12frosted-emacs-plus,
     dart-lang-dart, gabrie30-utils, github-gh, graalvm-tap, heroku-brew,
     int128-kubelogin, jeroenknoops-tap, johanhaleby-kubetail, koekeishiya-formulae,
-    mongodb-brew, pritunl-tap, puma-puma, ravenac95-sudolikeaboss, screenplaydev-tap }: 
+    mongodb-brew, pritunl-tap, puma-puma, ravenac95-sudolikeaboss, screenplaydev-tap }@inputs: 
     let
       system = "aarch64-darwin";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -71,6 +76,7 @@
       darwinConfigurations."darwin" = darwin.lib.darwinSystem {
         inherit system specialArgs;
         modules = [
+          inputs.nix-index-database.darwinModules.nix-index
           {
             nixpkgs.config = {
               allowUnfree = true;
@@ -79,6 +85,10 @@
               permittedInsecurePackages = [
                 "openssl-1.1.1w"
               ];
+            };
+            nix.gc = {
+              automatic = true;
+              options = "--delete-older-than 30d";
             };
           }
           ./configuration.nix
