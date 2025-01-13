@@ -86,10 +86,6 @@
                 "openssl-1.1.1w"
               ];
             };
-            nix.gc = {
-              automatic = true;
-              options = "--delete-older-than 30d";
-            };
           }
           ./configuration.nix
           home-manager.darwinModules.home-manager

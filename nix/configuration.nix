@@ -196,4 +196,9 @@
 
   nix.settings.max-jobs = "auto";
   nix.settings.cores = 0;
+
+  nix.gc = {
+    automatic = true;
+    options = "--delete-older-than 30d";
+  };
 } 
