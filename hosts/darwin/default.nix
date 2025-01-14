@@ -7,6 +7,7 @@
     ../../modules/git.nix
     ../../modules/tmux.nix
     ../../modules/rio.nix
+    ../../modules/logseq.nix
   ];
 
   # DNS configuration for macOS
@@ -83,7 +84,7 @@
     argocd
 
     # Applications
-    logseq
+    # logseq
     spotify
 
     # Language Servers and Development Tools
