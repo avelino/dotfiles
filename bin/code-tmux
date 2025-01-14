@@ -1,3 +1,0 @@
-#!/bin/zsh
-## open tmux on vscode
-tmux at

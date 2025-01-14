@@ -1,3 +1,0 @@
-antigen theme dracula/zsh dracula
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-syntax-highlighting

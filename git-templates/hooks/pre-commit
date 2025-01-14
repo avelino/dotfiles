@@ -1,8 +1,0 @@
-#!/bin/sh
-
-branch="$(git rev-parse --abbrev-ref HEAD)"
-branchs=(main master)
-if ((branchs[(Ie)$branch])); then
-  echo "Avoid creating commits directly on the master branch, or force with --no-verify"
-  exit 1
-fi
