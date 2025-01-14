@@ -15,7 +15,7 @@ in
     padding-x = 10
 
     # theme = "dracula"
-    theme = "rose-pine"
+    # theme = "rose-pine"
     option-as-alt = 'both'
 
     [editor]
