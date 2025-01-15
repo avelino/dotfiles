@@ -5,7 +5,7 @@ configuration for macOS and NixOS
 # install
 
 ```bash
-sh <(curl -L https://nixos.org/nix/install)
+bash <(curl -L https://nixos.org/nix/install) --daemon
 echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
 
 # install homebrew (macOS)
