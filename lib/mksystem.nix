@@ -9,7 +9,11 @@ if isDarwin then
       home-manager.darwinModules.home-manager
       {
         nixpkgs.config.allowUnfree = true;
-        networking.hostName = hostname;
+        networking = {
+          computerName = hostname;
+          hostName = hostname;
+          localHostName = hostname;
+        };
       }
       ../hosts/darwin
     ];

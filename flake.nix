@@ -21,9 +21,10 @@
           allowUnsupportedSystem = true;
         };
       };
+      hostname = "avelino-${builtins.substring 0 6 (builtins.hashString "md5" "some-unique-string")}";
     in
     {
-      darwinConfigurations."default" = mkSystem "darwin" "aarch64-darwin" inputs;
+      darwinConfigurations."default" = mkSystem hostname "aarch64-darwin" inputs;
       nixosConfigurations."nixos" = mkSystem "nixos" "x86_64-linux" inputs;
     };
 } 
