@@ -1,6 +1,7 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 
 {
+  # Dock settings
   system.defaults.dock = {
     # Auto-hide and show behavior
     autohide = true;
@@ -75,4 +76,4 @@
     # Restart Dock to apply changes
     killall Dock
   '';
-}
+} 
