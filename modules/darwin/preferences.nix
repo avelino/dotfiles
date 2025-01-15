@@ -35,8 +35,10 @@
       AppleShowAllExtensions = true;
       _FXShowPosixPathInTitle = true;
       FXEnableExtensionChangeWarning = false;
+      CreateDesktop = false;
     };
     
+    # Basic trackpad settings (nix-darwin supported options)
     trackpad = {
       Clicking = true;
       TrackpadRightClick = true;
@@ -88,5 +90,45 @@
     defaults write NSGlobalDomain "com.apple.springing.enabled" -bool true
     defaults write NSGlobalDomain "com.apple.springing.delay" -float 0
     defaults write NSGlobalDomain "com.apple.sound.beep.flash" -bool false
+
+    # Advanced trackpad settings
+    defaults write com.apple.AppleMultitouchTrackpad TrackpadCornerSecondaryClick -int 2
+    defaults write com.apple.AppleMultitouchTrackpad TrackpadFiveFingerPinchGesture -int 2
+    defaults write com.apple.AppleMultitouchTrackpad TrackpadFourFingerHorizSwipeGesture -int 2
+    defaults write com.apple.AppleMultitouchTrackpad TrackpadFourFingerPinchGesture -int 2
+    defaults write com.apple.AppleMultitouchTrackpad TrackpadFourFingerVertSwipeGesture -int 2
+    defaults write com.apple.AppleMultitouchTrackpad TrackpadHandResting -bool true
+    defaults write com.apple.AppleMultitouchTrackpad TrackpadHorizScroll -bool true
+    defaults write com.apple.AppleMultitouchTrackpad TrackpadMomentumScroll -bool true
+    defaults write com.apple.AppleMultitouchTrackpad TrackpadPinch -bool true
+    defaults write com.apple.AppleMultitouchTrackpad TrackpadRotate -bool true
+    defaults write com.apple.AppleMultitouchTrackpad TrackpadScroll -bool true
+    defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerHorizSwipeGesture -int 2
+    defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerTapGesture -bool false
+    defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerVertSwipeGesture -int 2
+    defaults write com.apple.AppleMultitouchTrackpad TrackpadTwoFingerDoubleTapGesture -bool true
+    defaults write com.apple.AppleMultitouchTrackpad TrackpadTwoFingerFromRightEdgeSwipeGesture -int 3
+    defaults write com.apple.AppleMultitouchTrackpad FirstClickThreshold -int 1
+    defaults write com.apple.AppleMultitouchTrackpad SecondClickThreshold -int 1
+
+    # Bluetooth trackpad settings
+    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
+    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadFiveFingerPinchGesture -int 2
+    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadFourFingerHorizSwipeGesture -int 2
+    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadFourFingerPinchGesture -int 2
+    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadFourFingerVertSwipeGesture -int 2
+    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadHandResting -bool true
+    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadHorizScroll -bool true
+    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadMomentumScroll -bool true
+    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadPinch -bool true
+    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRotate -bool true
+    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadScroll -bool true
+    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerHorizSwipeGesture -int 2
+    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerTapGesture -bool false
+    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerVertSwipeGesture -int 2
+    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadTwoFingerDoubleTapGesture -bool true
+    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadTwoFingerFromRightEdgeSwipeGesture -int 3
+    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad FirstClickThreshold -int 1
+    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad SecondClickThreshold -int 1
   '';
 } 
