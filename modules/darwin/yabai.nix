@@ -57,7 +57,7 @@
       yabai -m rule --add title='Preferences$' manage=off
       yabai -m rule --add title='Settings$' manage=off
       yabai -m rule --add app='Settings$' manage=off
-      yabai -m rule --add app='1Password' manage=off
+      yabai -m rule --add app='1Password' manage=off sticky=on
       yabai -m rule --add app='Raycast' manage=off
       yabai -m rule --add app='Morgen' manage=off
       yabai -m rule --add app='^Signal' manage=off

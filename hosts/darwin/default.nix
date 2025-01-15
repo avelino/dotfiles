@@ -18,6 +18,17 @@
   # Define system state version (required)
   system.stateVersion = 5;
 
+  # Ensure 1Password is always running
+  launchd.user.agents."1password" = {
+    serviceConfig = {
+      Program = "/Applications/1Password.app/Contents/MacOS/1Password";
+      KeepAlive = true;
+      RunAtLoad = true;
+      StandardOutPath = "/tmp/1password.out.log";
+      StandardErrorPath = "/tmp/1password.err.log";
+    };
+  };
+
   # System packages
   environment.systemPackages = with pkgs; [
     # environment
