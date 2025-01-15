@@ -6,7 +6,8 @@ configuration for macOS and NixOS
 
 ```bash
 bash <(curl -L https://nixos.org/nix/install) --daemon
-echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
+mkdir -p ~/.config/nix && \
+    echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
 
 # install homebrew (macOS)
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
