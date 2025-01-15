@@ -190,8 +190,6 @@
       brewfile = true;
       lockfiles = true;
     };
-
-    taps = ["homebrew/cask"];
     
     casks = [
       "cursor"
