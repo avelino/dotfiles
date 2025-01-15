@@ -7,6 +7,7 @@
     ../../modules/darwin/dock.nix
     ../../modules/darwin/system.nix
     ../../modules/darwin/homebrew.nix
+    ../../modules/darwin/yabai.nix
     ../../modules/shell.nix
     ../../modules/git.nix
     ../../modules/tmux.nix
@@ -19,6 +20,10 @@
 
   # System packages
   environment.systemPackages = with pkgs; [
+    # environment
+    yabai
+    skhd
+
     # Terminal and Shell utilities
     eza
     rio
