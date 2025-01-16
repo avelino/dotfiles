@@ -13,6 +13,8 @@
     ../../modules/tmux.nix
     ../../modules/rio.nix
     ../../modules/logseq.nix
+    ../../modules/curl.nix
+    ../../modules/clojure.nix
   ];
 
   # Define system state version (required)
@@ -81,14 +83,11 @@
     cargo
     rustfmt
     rust-analyzer
-    clojure
     zig
 
     ## Development Tools
     jq
     d2
-    babashka
-    clj-kondo
 
     # Kubernetes and Cloud
     kubectl
@@ -103,7 +102,6 @@
     # Language Servers and Development Tools
     bash-language-server
     clang-tools # clangd lsp
-    clojure-lsp
     delve
     dockerfile-language-server-nodejs
     gofumpt
