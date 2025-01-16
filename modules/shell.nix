@@ -18,7 +18,7 @@ in
       lt = "eza --tree";
       l = "eza -l";
       tree = "eza --tree";
-      
+
       # Git aliases
       g = "git";
       ga = "git add";
@@ -42,10 +42,10 @@ in
     shellInit = ''
       # Fish configuration
       set fish_greeting
-      
+
       # Set specific path for universal variables
       set -g fish_universal_variables_path $HOME/.config/fish/fish_variables
-      
+
       # Set XDG default variables
       set -gx XDG_DATA_HOME $HOME/.local/share
       set -gx XDG_CONFIG_HOME $HOME/.config
@@ -60,6 +60,30 @@ in
       mkdir -p $HOME/.local/share/fish
       mkdir -p $HOME/.config/fish
       mkdir -p $HOME/.cache/fish
+
+      # Define logseq function
+      function logseq --description 'logseq shortcut with new functions'
+        switch $argv[1]
+          case sync
+            echo "logseq: sync with git..."
+            logseq cloud
+            cd ~/notes && g pull -f
+            rsync -aP -q --exclude=.git --delete \
+              --exclude="logseq/*/" \
+              --exclude="logseq/.recycle/" \
+              ~/logseq-avelino/* ~/notes/ && \
+              git st && \
+              git add . && \
+              git ci -am "$(date '+%Y-%m-%d %H:%M'): sync logseq" && \
+              git push && \
+              cd -
+          case cloud
+            echo "logseq: journal day init..."
+            cat ~/logseq-avelino/journals/$(date +%Y-%m-%d).md 1>/dev/null
+          case '*'
+            echo "logseq: method not fund"
+        end
+      end
 
       # Check if 1Password agent is running
       if test -e $HOME/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
@@ -94,4 +118,4 @@ in
       deps = [];
     };
   };
-} 
+}
