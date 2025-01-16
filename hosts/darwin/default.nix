@@ -3,6 +3,7 @@
 {
   # Import modules
   imports = [
+    ../../modules/nix.nix
     ../../modules/darwin/preferences.nix
     ../../modules/darwin/dock.nix
     ../../modules/darwin/system.nix
@@ -129,4 +130,4 @@
     maple-mono
     font-awesome
   ];
-} 
+}

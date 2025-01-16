@@ -27,4 +27,4 @@
       darwinConfigurations."default" = mkSystem hostname "aarch64-darwin" inputs;
       nixosConfigurations."nixos" = mkSystem "nixos" "x86_64-linux" inputs;
     };
-} 
+}

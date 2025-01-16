@@ -29,4 +29,4 @@ else
       }
       ../hosts/nixos
     ];
-  } 
+  }

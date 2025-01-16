@@ -5,6 +5,7 @@
   imports = [
     ../../modules/shell.nix
     ../../modules/git.nix
+    ../../modules/nix.nix
   ];
 
   # DNS configuration for NixOS
@@ -36,4 +37,4 @@
 
   # System state version
   system.stateVersion = "23.11";
-} 
+}
