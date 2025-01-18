@@ -46,19 +46,17 @@ let
     init.defaultBranch = "main";
     pull.rebase = true;
     url."https://github.com/".insteadOf = "git://github.com/";
-  };
-
-  # Git aliases for common operations
-  gitAliases = {
-    st = "status -sb";
-    ci = "commit -v -s";
-    commit = "commit -v -s";
-    up = "pull --ff-only --all -p";
-    who = "blame";
-    d = "!git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat";
-    di = "!d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d";
-    lg = "log --pretty=format:'%C(yellow)%h%C(reset) %s %C(cyan)%cI%C(reset) %C(blue)%an%C(reset) %C(green)%d%C(reset)' --graph";
-    ignored = "ls-files --others -i --exclude-standard";
+    alias = {
+      st = "status -sb";
+      ci = "commit -v -s";
+      commit = "commit -v -s";
+      up = "pull --ff-only --all -p";
+      who = "blame";
+      d = "!git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat";
+      di = "!d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d";
+      lg = "log --pretty=format:'%C(yellow)%h%C(reset) %s %C(cyan)%cI%C(reset) %C(blue)%an%C(reset) %C(green)%d%C(reset)' --graph";
+      ignored = "ls-files --others -i --exclude-standard";
+    };
   };
 in
 {
@@ -68,6 +66,15 @@ in
   # Create global git configuration files
   environment.etc = {
     "gitconfig".text = lib.generators.toGitINI gitConfig;
-    "gitconfig-aliases".text = lib.generators.toGitINI { alias = gitAliases; };
   };
-} 
+
+  # Create symbolic links in user's home directory
+  system.activationScripts.postActivation.text = ''
+    # Create symbolic links for git configuration
+    echo "Creating symbolic links for git configuration..."
+    USER_HOME=/Users/avelino
+    mkdir -p $USER_HOME
+    ln -sf /etc/gitconfig $USER_HOME/.gitconfig
+    chown avelino:staff $USER_HOME/.gitconfig
+  '';
+}
