@@ -1,52 +1,59 @@
-{ pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
-let
-  # Git configuration
-  gitConfig = {
-    user = {
-      name = "Avelino";
-      email = "31996+avelino@users.noreply.github.com";
-      signingkey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5OfVvY6xmZdtw5pYJMECnfRfMm7zWMytg+IL9AyNhbu8UdBmGdT6wUiBBBw9CTcdnmDYj08n8gWXV6Jz2eazl7fC27HQr9BzJb35FM1LpnXncSDNxn5Itj89ROIgY70d2obp35K9+I+muFkAYuYJEHjtrGr7KIlC1oM+v+K43Jla4SotoBleLNbec0GwtyeYBB7bL9yhGhpEje+dtpLJFd5H/bDBuvjDg/tPHeAnflg0QfUeYfNDC44psY/uJQGBrob3eLcOdJSIV418JS+z1inC9Iljg+xkHGwWg3TSS2lD4ufZcKumBpc2S7T9XSVVB0KDeFTgyQHNDkCtG5xRb";
+{
+  programs.git = {
+    enable = true;
+    package = pkgs.git;
+
+    userName = "Avelino";
+    userEmail = "31996+avelino@users.noreply.github.com";
+
+    signing = {
+      key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5OfVvY6xmZdtw5pYJMECnfRfMm7zWMytg+IL9AyNhbu8UdBmGdT6wUiBBBw9CTcdnmDYj08n8gWXV6Jz2eazl7fC27HQr9BzJb35FM1LpnXncSDNxn5Itj89ROIgY70d2obp35K9+I+muFkAYuYJEHjtrGr7KIlC1oM+v+K43Jla4SotoBleLNbec0GwtyeYBB7bL9yhGhpEje+dtpLJFd5H/bDBuvjDg/tPHeAnflg0QfUeYfNDC44psY/uJQGBrob3eLcOdJSIV418JS+z1inC9Iljg+xkHGwWg3TSS2lD4ufZcKumBpc2S7T9XSVVB0KDeFTgyQHNDkCtG5xRb";
+      signByDefault = true;
     };
-    github.user = "avelino";
-    core = {
-      editor = "cursor --wait";
-      autocrlf = "input";
-    };
-    color = {
-      ui = "auto";
-      diff = {
-        indentHeuristic = true;
-        algorithm = "histogram";
-        meta = "yellow bold";
-        frag = "magenta bold";
-        new = "green bold";
+
+    extraConfig = {
+      github.user = "avelino";
+      core = {
+        editor = "cursor --wait";
+        autocrlf = "input";
       };
+      color = {
+        ui = "auto";
+        diff = {
+          indentHeuristic = true;
+          algorithm = "histogram";
+          meta = "yellow bold";
+          frag = "magenta bold";
+          new = "green bold";
+        };
+      };
+      diff.tool = "cursor";
+      difftool = {
+        prompt = true;
+        cursor.cmd = "cursor -d \"$LOCAL\" \"$REMOTE\"";
+      };
+      merge.log = true;
+      push.default = "current";
+      status = {
+        color = true;
+        submodulesummary = true;
+        showUntrackedFiles = "all";
+      };
+      gpg.format = "ssh";
+      "gpg \"ssh\"".program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+      commit = {
+        verbose = true;
+      };
+      branch.autosetuprebase = "always";
+      help.autocorrect = 1;
+      init.defaultBranch = "main";
+      pull.rebase = true;
+      url."https://github.com/".insteadOf = "git://github.com/";
     };
-    diff.tool = "cursor";
-    difftool = {
-      prompt = true;
-      cursor.cmd = "cursor -d \"$LOCAL\" \"$REMOTE\"";
-    };
-    merge.log = true;
-    push.default = "current";
-    status = {
-      color = true;
-      submodulesummary = true;
-      showUntrackedFiles = "all";
-    };
-    gpg.format = "ssh";
-    "gpg \"ssh\"".program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
-    commit = {
-      gpgsign = true;
-      verbose = true;
-    };
-    branch.autosetuprebase = "always";
-    help.autocorrect = 1;
-    init.defaultBranch = "main";
-    pull.rebase = true;
-    url."https://github.com/".insteadOf = "git://github.com/";
-    alias = {
+
+    aliases = {
       st = "status -sb";
       ci = "commit -v -s";
       commit = "commit -v -s";
@@ -58,23 +65,4 @@ let
       ignored = "ls-files --others -i --exclude-standard";
     };
   };
-in
-{
-  # Install git package
-  environment.systemPackages = [ pkgs.git ];
-
-  # Create global git configuration files
-  environment.etc = {
-    "gitconfig".text = lib.generators.toGitINI gitConfig;
-  };
-
-  # Create symbolic links in user's home directory
-  system.activationScripts.postActivation.text = ''
-    # Create symbolic links for git configuration
-    echo "Creating symbolic links for git configuration..."
-    USER_HOME=/Users/avelino
-    mkdir -p $USER_HOME
-    ln -sf /etc/gitconfig $USER_HOME/.gitconfig
-    chown avelino:staff $USER_HOME/.gitconfig
-  '';
 }

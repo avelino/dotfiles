@@ -14,13 +14,15 @@ mkdir -p ~/.config/nix && \
 ```
 
 ## macOS
+
 ```bash
-nix build .#darwinConfigurations.default.system
-./result/sw/bin/darwin-rebuild switch --flake .#default
+nix build .#darwinConfigurations.$(hostname -s).system --extra-experimental-features "nix-command flakes" && \
+    ./result/sw/bin/darwin-rebuild switch --flake .
 ```
 
 ## NixOS
+
 ```bash
-nix build .#nixosConfigurations.nixos.system
-./result/sw/bin/nixos-rebuild switch --flake .#nixos
+nix build .#nixosConfigurations.nixos.system && \
+    ./result/sw/bin/nixos-rebuild switch --flake .#nixos
 ```

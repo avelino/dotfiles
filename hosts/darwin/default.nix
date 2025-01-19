@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  config,
+  pkgs,
+  username,
+  ...
+}:
 
 {
   # Import modules
@@ -9,17 +14,50 @@
     ../../modules/darwin/system.nix
     ../../modules/darwin/homebrew.nix
     ../../modules/darwin/yabai.nix
-    ../../modules/shell.nix
-    ../../modules/git.nix
-    ../../modules/tmux.nix
-    ../../modules/rio.nix
-    ../../modules/logseq.nix
-    ../../modules/curl.nix
-    ../../modules/clojure.nix
   ];
 
   # Define system state version (required)
   system.stateVersion = 5;
+
+  # Configure home-manager
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = { inherit username; };
+    backupFileExtension = "backup";
+    users.${username} =
+      { pkgs, ... }:
+      {
+        home = {
+          stateVersion = "23.11";
+          username = username;
+          homeDirectory = "/Users/${username}";
+
+          packages = with pkgs; [
+            # Applications
+            spotify
+          ];
+        };
+
+        programs = {
+          home-manager.enable = true;
+          direnv = {
+            enable = true;
+            nix-direnv.enable = true;
+          };
+        };
+
+        imports = [
+          ../../modules/shell.nix
+          ../../modules/git.nix
+          ../../modules/tmux.nix
+          ../../modules/rio.nix
+          ../../modules/logseq.nix
+          ../../modules/curl.nix
+          ../../modules/clojure.nix
+        ];
+      };
+  };
 
   # Ensure 1Password is always running
   launchd.user.agents."1password" = {
@@ -34,59 +72,40 @@
 
   # System packages
   environment.systemPackages = with pkgs; [
+    # System utilities
+    eza
+    btop
+    htop
+    tmux
+    bat
+    delta
+    direnv
+    fzf
+    ripgrep
+    fd
+    jq
+    yq
+
+    # Development tools
+    git
+    gh
+    neovim
+
+    # Languages and runtimes
+    go
+    nodejs
+    yarn
+    rustup
+    clojure
+    babashka
+    clj-kondo
+    clojure-lsp
+
     # environment
     yabai
     skhd
 
-    # Terminal and Shell utilities
-    eza
-    rio
-    direnv
-    curl
-    fzf
-    htop
-    less
-    mosh
-    xclip
-
-    # System and File utilities
-    age
-    comma
-    cosign
-    entr
-    fd
-    gnumake
-    go-task
-    graphviz
-    httpstat
-    hyperfine
-    moreutils
-    ncdu
-    netcat-gnu
-    nmap
-    onefetch
-    p7zip
-    ripgrep
-    scc
-    sqlite
-    tldr
-    unixtools.watch
-    unrar
-    vegeta
-    wget
-
-    # Development
-    ## Languages and Runtimes
-    go
-    nodejs
-    yarn
-    rustc
-    cargo
-    rustfmt
-    rust-analyzer
-    zig
-
-    ## Development Tools
+    # Development Tools
     jq
     d2
 
@@ -95,10 +114,6 @@
     kubectx
     stern
     argocd
-
-    # Applications
-    # logseq
-    spotify
 
     # Language Servers and Development Tools
     bash-language-server

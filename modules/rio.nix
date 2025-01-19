@@ -1,14 +1,9 @@
-{ pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
-let
-  home = if pkgs.stdenv.isDarwin then "/Users/avelino" else "/home/avelino";
-in
 {
-  # Install Rio terminal
-  environment.systemPackages = [ pkgs.rio ];
+  home.packages = [ pkgs.rio ];
 
-  # Create Rio configuration directory and file
-  environment.etc."rio/config.toml".text = ''
+  home.file.".config/rio/config.toml".text = ''
     performance = "High"
     height = 438
     width = 662
@@ -28,7 +23,7 @@ in
 
     [shell]
     program = "${pkgs.tmux}/bin/tmux"
-    args = ["new-session", "-c", "${home}"]
+    args = ["new-session", "-c", "$HOME"]
 
     [navigation]
     mode = "Plain"
@@ -45,19 +40,4 @@ in
     enable-fps-counter = false
     log-level = 'INFO'
   '';
-
-  # Create Rio config directory and link configuration
-  system.activationScripts.postActivation.text = ''
-    echo "Setting up Rio configuration..."
-    
-    # Create Rio config directory
-    mkdir -p ${home}/.config/rio
-    
-    # Link configuration file
-    rm -f ${home}/.config/rio/config.toml
-    ln -sf /etc/rio/config.toml ${home}/.config/rio/config.toml
-    
-    # Set correct permissions
-    chown -R avelino:staff ${home}/.config/rio
-  '';
-} 
+}

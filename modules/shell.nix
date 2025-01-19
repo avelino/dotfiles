@@ -1,42 +1,26 @@
-{ pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
-let
-  home = if pkgs.stdenv.isDarwin then "/Users/avelino" else "/home/avelino";
-in
 {
-  # Fish shell configuration
   programs.fish = {
     enable = true;
-    useBabelfish = true;
-    babelfishPackage = pkgs.babelfish;
 
-    shellAliases = {
-      # File listing aliases
-      ls = "eza";
-      ll = "eza -l";
-      la = "eza -la";
-      lt = "eza --tree";
-      l = "eza -l";
-      tree = "eza --tree";
+    functions = {
+      ls = "command eza $argv";
+      ll = "command eza -l $argv";
+      la = "command eza -la $argv";
+      lt = "command eza --tree $argv";
+      l = "command eza -l $argv";
+      tree = "command eza --tree $argv";
 
-      # Git aliases
-      g = "git";
-      ga = "git add";
-      gc = "git commit";
-      gp = "git push";
-      gpl = "git pull";
-      gs = "git status";
-      gd = "git diff";
-      gl = "git log";
-
-      # editor aliases
-      c = "cursor";
-      v = "nvim";
-      vi = "nvim";
-      vim = "nvim";
-      e = "emacs";
-      em = "emacs";
-      ems = "emacs";
+      # Git functions
+      g = "command git $argv";
+      ga = "command git add $argv";
+      gc = "command git commit $argv";
+      gp = "command git push $argv";
+      gpl = "command git pull $argv";
+      gs = "command git status $argv";
+      gd = "command git diff $argv";
+      gl = "command git log $argv";
     };
 
     shellInit = ''
@@ -53,12 +37,25 @@ in
 
       # Setup 1Password SSH agent
       set -gx SSH_AUTH_SOCK $HOME/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+
+      # Set up Nix paths
+      set -gx NIX_PATH $HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/$USER/channels
+      set -gx NIX_PROFILES "/nix/var/nix/profiles/default $HOME/.nix-profile"
+      set -gx NIX_SSL_CERT_FILE /nix/var/nix/profiles/default/etc/ssl/certs/ca-bundle.crt
+
+      # Set up PATH with Nix and Homebrew paths
+      set -gx PATH $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin /run/current-system/sw/bin /opt/homebrew/bin $PATH
+
+      # Source nix setup if it exists
+      if test -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish'
+        source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish'
+      end
     '';
 
     interactiveShellInit = ''
       # Create required directories if they don't exist
       mkdir -p $HOME/.local/share/fish
-      mkdir -p $HOME/.config/fish
+      mkdir -p $HOME/.config/fish/functions
       mkdir -p $HOME/.cache/fish
 
       # Define logseq function
@@ -94,28 +91,19 @@ in
     '';
   };
 
-  # General shell configuration
-  environment.shells = [ pkgs.fish ];
-  users.users.avelino.shell = pkgs.fish;
-  environment.variables = {
-    SHELL = "${pkgs.fish}/bin/fish";
-    EDITOR = "cursor";
-    VISUAL = "cursor";
-    # Add 1Password SSH agent environment variable
-    SSH_AUTH_SOCK = "${home}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
-  };
+  home = {
+    sessionVariables = {
+      SHELL = "${pkgs.fish}/bin/fish";
+      EDITOR = "cursor";
+      VISUAL = "cursor";
+      PAGER = "less -FirSwX";
+      MANPAGER = "less -FirSwX";
+      SSH_AUTH_SOCK = "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
+    };
 
-  # Configure Fish directories permissions during system activation
-  system.activationScripts = {
-    fishSetup = {
-      text = ''
-        echo "Setting up Fish directories..."
-        install -d -m 755 -o avelino -g staff ${home}/.config/fish
-        touch ${home}/.config/fish/fish_variables
-        chown avelino:staff ${home}/.config/fish/fish_variables
-        chmod 644 ${home}/.config/fish/fish_variables
-      '';
-      deps = [];
+    # Create Fish directories
+    file = {
+      ".config/fish/.keep".text = "";
     };
   };
 }
