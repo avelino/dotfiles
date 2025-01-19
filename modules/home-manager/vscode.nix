@@ -27,12 +27,110 @@
           "--load-plugins=pylint_pydantic"
         ];
       };
-      "accessibility.signals.chatRequestSent.sound" = "off";
-      "accessibility.signals.chatResponseReceived.sound" = "off";
-      "accessibility.signals.error.sound" = "off";
-      "accessibility.signals.info.sound" = "off";
-      "accessibility.signals.warning.sound" = "off";
-      "accessibility.signals.progress.sound" = "off";
+      "accessibility.signals.chatRequestSent" = {
+        "sound" = "off";
+      };
+      "accessibility.signals.chatResponseReceived" = {
+        "sound" = "off";
+      };
+      "accessibility.signals.error" = {
+        "sound" = "off";
+      };
+      "accessibility.signals.info" = {
+        "sound" = "off";
+      };
+      "accessibility.signals.warning" = {
+        "sound" = "off";
+      };
+      "accessibility.signals.progress" = {
+        "sound" = "off";
+      };
+      "accessibility.signals.lineHasBreakpoint" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.clear" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.onDebugBreak" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.diffLineDeleted" = {
+        "sound" = "off";
+      };
+      "accessibility.signals.diffLineInserted" = {
+        "sound" = "off";
+      };
+      "accessibility.signals.diffLineModified" = {
+        "sound" = "off";
+      };
+      "accessibility.signals.positionHasError" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.lineHasError" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.lineHasFoldedArea" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.lineHasInlineSuggestion" = {
+        "sound" = "off";
+      };
+      "accessibility.signals.noInlayHints" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.notebookCellCompleted" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.notebookCellFailed" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.taskCompleted" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.taskFailed" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.terminalBell" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.terminalCommandFailed" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.terminalCommandSucceeded" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.terminalQuickFix" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.voiceRecordingStarted" = {
+        "sound" = "off";
+      };
+      "accessibility.signals.voiceRecordingStopped" = {
+        "sound" = "off";
+      };
+      "accessibility.signals.positionHasWarning" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.lineHasWarning" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
       "autoDocstring.docstringFormat" = "google";
       "autoDocstring.startOnNewLine" = true;
       "calva.autoConnect" = true;
@@ -208,6 +306,6 @@
   };
 
   # Create settings.json for Cursor
-  home.file.".config/Cursor/User/settings.json".text =
+  home.file."Library/Application Support/Cursor/User/settings.json".text =
     builtins.toJSON config.programs.vscode.userSettings;
 }
