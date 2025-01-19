@@ -58,6 +58,7 @@
           ../../modules/home-manager/logseq.nix
           ../../modules/home-manager/curl.nix
           ../../modules/home-manager/clojure.nix
+          ../../modules/home-manager/neovim.nix
         ];
       };
   };
