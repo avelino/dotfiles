@@ -21,6 +21,10 @@
       gs = "command git status $argv";
       gd = "command git diff $argv";
       gl = "command git log $argv";
+
+      # editor
+      c = "command cursor $argv";
+      v = "command nvim $argv";
     };
 
     shellInit = ''
