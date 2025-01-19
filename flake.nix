@@ -34,6 +34,6 @@
     {
       darwinConfigurations."${username}-igloo" = mkSystem "${username}-igloo" "aarch64-darwin" inputs;
       darwinConfigurations."${username}-kazoo" = mkSystem "${username}-kazoo" "aarch64-darwin" inputs;
-      nixosConfigurations."nixos" = mkSystem "nixos" "x86_64-linux" inputs;
+      nixosConfigurations."${username}-zentoo" = mkSystem "${username}-zentoo" "x86_64-linux" inputs;
     };
 }

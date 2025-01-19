@@ -1,6 +1,6 @@
-# nix configuration by Avelino
+# Nix configuration by Avelino
 
-configuration for macOS and NixOS
+Nix configuration for *macOS and NixOS*, all laptops have nomenclature ending in `oo` *(igloo, kazoo, zentoo)* to remember the hidden passion for **gentoo**.
 
 # install
 
@@ -15,14 +15,19 @@ mkdir -p ~/.config/nix && \
 
 ## macOS
 
+* `igloo` is m1 personal laptop
+* `kazoo` is m3 business laptop
+
 ```bash
 darwin-rebuild switch --flake .#avelino-igloo # or .#avelino-kazoo
 ./result/sw/bin/darwin-rebuild switch --flake .
 ```
 
-## NixOS
+## NixOS (linux)
+
+* `zentoo` is thinkpad x1 laptop
 
 ```bash
-nix build .#nixosConfigurations.nixos.system && \
-    ./result/sw/bin/nixos-rebuild switch --flake .#nixos
+nix build .#nixosConfigurations.avelino-zentoo.system
+./result/sw/bin/nixos-rebuild switch --flake .#avelino-zentoo
 ```
