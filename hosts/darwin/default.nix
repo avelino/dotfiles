@@ -45,16 +45,19 @@
             enable = true;
             nix-direnv.enable = true;
           };
+          # vscode.enable = true; # Enable VSCode configuration
         };
 
         imports = [
-          ../../modules/shell.nix
-          ../../modules/git.nix
-          ../../modules/tmux.nix
-          ../../modules/rio.nix
-          ../../modules/logseq.nix
-          ../../modules/curl.nix
-          ../../modules/clojure.nix
+          ../../modules/home-manager/shell.nix
+          ../../modules/home-manager/vscode.nix
+          ../../modules/home-manager/git.nix
+          ../../modules/home-manager/tmux.nix
+          ../../modules/home-manager/ssh.nix
+          ../../modules/home-manager/rio.nix
+          ../../modules/home-manager/logseq.nix
+          ../../modules/home-manager/curl.nix
+          ../../modules/home-manager/clojure.nix
         ];
       };
   };

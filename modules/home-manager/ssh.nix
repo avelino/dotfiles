@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 
 let
   home = if pkgs.stdenv.isDarwin then "/Users/avelino" else "/home/avelino";
@@ -7,7 +7,7 @@ in
   # SSH Configuration
   programs.ssh = {
     enable = true;
-    
+
     # Include external configurations
     includes = [
       "${home}/.orbstack/ssh/config"
@@ -102,18 +102,18 @@ in
   };
 
   # Ensure SSH directory exists with correct permissions
-  system.activationScripts = {
+  home.activation = {
     sshSetup = {
-      text = ''
+      after = [ "writeBoundary" ];
+      before = [ ];
+      data = ''
         echo "Setting up SSH configuration..."
-        install -d -m 700 -o avelino -g staff ${home}/.ssh
-        
+        install -d -m 700 ~/.ssh
+
         # Setup certificate files
-        touch ${home}/.ssh/bast-cert00.pub ${home}/.ssh/bast-cert01.pub
-        chmod 600 ${home}/.ssh/bast-cert00.pub ${home}/.ssh/bast-cert01.pub
-        chown avelino:staff ${home}/.ssh/bast-cert00.pub ${home}/.ssh/bast-cert01.pub
+        touch ~/.ssh/bast-cert00.pub ~/.ssh/bast-cert01.pub
+        chmod 600 ~/.ssh/bast-cert00.pub ~/.ssh/bast-cert01.pub
       '';
-      deps = [];
     };
   };
-} 
+}
