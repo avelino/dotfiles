@@ -13,7 +13,14 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, darwin, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      darwin,
+      ...
+    }@inputs:
     let
       mkSystem = import ./lib/mksystem.nix;
       nixpkgsConfig = {
@@ -23,10 +30,10 @@
         };
       };
       username = "avelino";
-      hostname = "avelino-${builtins.substring 0 6 (builtins.hashString "md5" "some-unique-string")}";
     in
     {
-      darwinConfigurations.${hostname} = mkSystem hostname "aarch64-darwin" inputs;
+      darwinConfigurations."${username}-igloo" = mkSystem "${username}-igloo" "aarch64-darwin" inputs;
+      darwinConfigurations."${username}-kazoo" = mkSystem "${username}-kazoo" "aarch64-darwin" inputs;
       nixosConfigurations."nixos" = mkSystem "nixos" "x86_64-linux" inputs;
     };
 }

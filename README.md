@@ -16,8 +16,8 @@ mkdir -p ~/.config/nix && \
 ## macOS
 
 ```bash
-nix build .#darwinConfigurations.$(hostname -s).system --extra-experimental-features "nix-command flakes" && \
-    ./result/sw/bin/darwin-rebuild switch --flake .
+darwin-rebuild switch --flake .#avelino-igloo # or .#avelino-kazoo
+./result/sw/bin/darwin-rebuild switch --flake .
 ```
 
 ## NixOS
