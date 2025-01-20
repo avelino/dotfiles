@@ -1,5 +1,8 @@
 { pkgs, ... }:
 
+let
+  home = if pkgs.stdenv.isDarwin then "/Users/avelino" else "/home/avelino";
+in
 {
   system.defaults.NSGlobalDomain = {
     # Keyboard and Input
@@ -37,7 +40,7 @@
       FXEnableExtensionChangeWarning = false;
       CreateDesktop = false;
     };
-    
+
     # Basic trackpad settings (nix-darwin supported options)
     trackpad = {
       Clicking = true;
@@ -49,13 +52,19 @@
 
   # Language and region settings via activation script
   system.activationScripts.extraUserSettings.text = ''
+    # Setting up wallpaper directory and wallpaper
+    mkdir -p ${home}/dotfiles/wallpapers
+    if [ -f "${home}/dotfiles/wallpapers/sunrise.png" ]; then
+      osascript -e 'tell application "Finder" to set desktop picture to POSIX file "${home}/dotfiles/wallpapers/sunrise.png"'
+    fi
+
     # Setting language and region
     defaults write NSGlobalDomain AppleLanguages -array "en-BR"
     defaults write NSGlobalDomain AppleLocale -string "en_BR"
     defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
     defaults write NSGlobalDomain AppleMetricUnits -bool true
     defaults write NSGlobalDomain AppleTemperatureUnit -string "Celsius"
-    
+
     # Setting text replacement items
     defaults write NSGlobalDomain NSUserDictionaryReplacementItems -array \
       '{"on" = 1; "replace" = "sjc"; "with" = "SJC";}' \
@@ -131,4 +140,4 @@
     defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad FirstClickThreshold -int 1
     defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad SecondClickThreshold -int 1
   '';
-} 
+}

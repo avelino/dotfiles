@@ -9,12 +9,12 @@
       cleanup = "zap";
       upgrade = true;
     };
-    
+
     global = {
       brewfile = true;
       lockfiles = true;
     };
-    
+
     casks = [
       "cursor"
       "morgen"
@@ -26,4 +26,4 @@
       "font-maple-mono"
     ];
   };
-} 
+}
