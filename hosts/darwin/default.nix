@@ -59,6 +59,7 @@
           ../../modules/home-manager/curl.nix
           ../../modules/home-manager/clojure.nix
           ../../modules/home-manager/neovim.nix
+          ../../modules/home-manager/zed.nix
         ];
       };
   };

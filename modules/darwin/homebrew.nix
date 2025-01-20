@@ -24,6 +24,7 @@
       "1password"
       "1password-cli"
       "font-maple-mono"
+      "zed"
     ];
   };
 }
