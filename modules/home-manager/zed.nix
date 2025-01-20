@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   home.file.".config/zed/settings.json".text = builtins.toJSON ({
     vim_mode = true;
@@ -20,5 +20,13 @@
     };
     enable_experimental_live_diffs = true;
     button = true;
+    terminal = {
+      shell = "${pkgs.fish}/bin/fish";
+      shell_args = ["-l"];
+      shell_env = {
+        LANG = "en_US.UTF-8";
+        LC_ALL = "en_US.UTF-8";
+      };
+    };
   });
 }
