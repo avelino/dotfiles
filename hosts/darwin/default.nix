@@ -26,11 +26,11 @@
         username = username;
         homeDirectory = "/Users/${username}";
 
-        packages = with pkgs;
-          [
-            # Applications
-            spotify
-          ];
+        packages = with pkgs; [
+          # Applications
+          spotify
+          signal-desktop
+        ];
       };
 
       programs = {
