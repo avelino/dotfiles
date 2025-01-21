@@ -23,7 +23,7 @@
 
     [shell]
     program = "${pkgs.tmux}/bin/tmux"
-    args = ["new-session", "-c", "$HOME"]
+    args = ["new-session", "-A", "-s", "main", "-c", "$HOME"]
 
     [navigation]
     mode = "Plain"
