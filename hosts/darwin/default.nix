@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  username,
-  ...
-}:
+{ config, pkgs, username, ... }:
 
 {
   # Import modules
@@ -25,43 +20,42 @@
     useUserPackages = true;
     extraSpecialArgs = { inherit username; };
     backupFileExtension = "backup";
-    users.${username} =
-      { pkgs, ... }:
-      {
-        home = {
-          stateVersion = "23.11";
-          username = username;
-          homeDirectory = "/Users/${username}";
+    users.${username} = { pkgs, ... }: {
+      home = {
+        stateVersion = "23.11";
+        username = username;
+        homeDirectory = "/Users/${username}";
 
-          packages = with pkgs; [
+        packages = with pkgs;
+          [
             # Applications
             spotify
           ];
-        };
-
-        programs = {
-          home-manager.enable = true;
-          direnv = {
-            enable = true;
-            nix-direnv.enable = true;
-          };
-          # vscode.enable = true; # Enable VSCode configuration
-        };
-
-        imports = [
-          ../../modules/home-manager/shell.nix
-          ../../modules/home-manager/vscode.nix
-          ../../modules/home-manager/git.nix
-          ../../modules/home-manager/tmux.nix
-          ../../modules/home-manager/ssh.nix
-          ../../modules/home-manager/rio.nix
-          ../../modules/home-manager/logseq.nix
-          ../../modules/home-manager/curl.nix
-          ../../modules/home-manager/clojure.nix
-          ../../modules/home-manager/neovim.nix
-          ../../modules/home-manager/zed.nix
-        ];
       };
+
+      programs = {
+        home-manager.enable = true;
+        direnv = {
+          enable = true;
+          nix-direnv.enable = true;
+        };
+        # vscode.enable = true; # Enable VSCode configuration
+      };
+
+      imports = [
+        ../../modules/home-manager/shell.nix
+        ../../modules/home-manager/vscode.nix
+        ../../modules/home-manager/git.nix
+        ../../modules/home-manager/tmux.nix
+        ../../modules/home-manager/ssh.nix
+        ../../modules/home-manager/rio.nix
+        ../../modules/home-manager/logseq.nix
+        ../../modules/home-manager/curl.nix
+        ../../modules/home-manager/clojure.nix
+        ../../modules/home-manager/neovim.nix
+        ../../modules/home-manager/zed.nix
+      ];
+    };
   };
 
   # Ensure 1Password is always running
@@ -90,7 +84,7 @@
     fd
     jq
     yq
-
+    silver-searcher
     # Development tools
     git
     gh
@@ -128,7 +122,7 @@
     gofumpt
     htmx-lsp
     nil # nix lsp
-    nixfmt-rfc-style
+    nixfmt-classic
     pgformatter
     rustup
     shellcheck
@@ -150,4 +144,7 @@
     maple-mono
     font-awesome
   ];
+
+  # Configuração correta do 1Password para Darwin
+  security.pam.enableSudoTouchIdAuth = true;
 }
