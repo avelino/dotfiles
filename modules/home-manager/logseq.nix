@@ -4,8 +4,9 @@
   home.packages = [ pkgs.logseq ];
 
   home.activation = {
-    logseqSetup = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    logseqSetup = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       echo >&2 "setting up logseq..."
+      mkdir -p "$HOME/logseq-avelino"
 
       if [ ! -d "$HOME/notes" ]; then
         git clone git@github.com:avelino/notes.git "$HOME/notes"
