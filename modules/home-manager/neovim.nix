@@ -30,7 +30,7 @@
       black
       ruff
       ruff-lsp
-      nixfmt
+      nixfmt-classic
       rustfmt
     ];
   };
