@@ -1,9 +1,7 @@
 { pkgs, ... }:
 
-let
-  home = if pkgs.stdenv.isDarwin then "/Users/avelino" else "/home/avelino";
-in
-{
+let home = if pkgs.stdenv.isDarwin then "/Users/avelino" else "/home/avelino";
+in {
   # SSH Configuration
   programs.ssh = {
     enable = true;
@@ -23,13 +21,17 @@ in
       VisualHostKey yes
       Forwardagent yes
       KexAlgorithms curve25519-sha256,ecdh-sha2-nistp521
-
-      Host *
-        IdentityAgent "${home}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
     '';
 
     # Host-specific configurations
     matchBlocks = {
+      "*" = {
+        extraOptions = {
+          IdentityAgent =
+            "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
+        };
+      };
+
       "ws.avelino" = {
         hostname = "138.197.3.1";
         port = 22;
@@ -67,36 +69,22 @@ in
       };
 
       # Pritunl Zero configurations
-      "172.22.*.*" = {
-        proxyJump = "bastion@bastohio.buser.com.br:9800";
-      };
+      "172.22.*.*" = { proxyJump = "bastion@bastohio.buser.com.br:9800"; };
 
-      "172.28.*.*" = {
-        proxyJump = "bastion@bastohio.buser.com.br:9800";
-      };
+      "172.28.*.*" = { proxyJump = "bastion@bastohio.buser.com.br:9800"; };
 
-      "172.43.*.*" = {
-        proxyJump = "bastion@bastohio.buser.com.br:9800";
-      };
+      "172.43.*.*" = { proxyJump = "bastion@bastohio.buser.com.br:9800"; };
 
       "bastohio.buser.com.br" = {
-        extraOptions = {
-          "StrictHostKeyChecking" = "yes";
-        };
+        extraOptions = { "StrictHostKeyChecking" = "yes"; };
       };
 
-      "172.31.*.*" = {
-        proxyJump = "bastion@bastsp.buser.com.br:9800";
-      };
+      "172.31.*.*" = { proxyJump = "bastion@bastsp.buser.com.br:9800"; };
 
-      "172.90.*.*" = {
-        proxyJump = "bastion@bastsp.buser.com.br:9800";
-      };
+      "172.90.*.*" = { proxyJump = "bastion@bastsp.buser.com.br:9800"; };
 
       "bastsp.buser.com.br" = {
-        extraOptions = {
-          "StrictHostKeyChecking" = "yes";
-        };
+        extraOptions = { "StrictHostKeyChecking" = "yes"; };
       };
     };
   };
