@@ -54,6 +54,7 @@
         ../../modules/home-manager/clojure.nix
         ../../modules/home-manager/neovim.nix
         ../../modules/home-manager/zed.nix
+        ../../modules/home-manager/dev.nix
       ];
     };
   };
