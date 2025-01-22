@@ -21,16 +21,12 @@ in {
       VisualHostKey yes
       Forwardagent yes
       KexAlgorithms curve25519-sha256,ecdh-sha2-nistp521
+      IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
     '';
 
     # Host-specific configurations
     matchBlocks = {
-      "*" = {
-        extraOptions = {
-          IdentityAgent =
-            "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
-        };
-      };
+      "*" = { };
 
       "ws.avelino" = {
         hostname = "138.197.3.1";
