@@ -3,7 +3,9 @@
 {
   home.packages = [ pkgs.rio ];
 
-  home.file.".config/rio/config.toml".text = ''
+  home.file.".config/rio/config.toml".text = let
+    colors = import ./colors.nix;
+  in ''
     performance = "High"
     height = 438
     width = 662
@@ -28,6 +30,14 @@
     [navigation]
     mode = "Plain"
 
+    [window]
+    height = 438
+    width = 662
+    mode = "Windowed"
+    opacity = 1.0
+    blur = false
+    decorations = "Buttonless"
+
     [fonts]
     family = "Maple Mono"
     size = 22
@@ -39,5 +49,9 @@
     [developer]
     enable-fps-counter = false
     log-level = 'INFO'
+
+    [colors]
+    background = "${colors.background}"
+    foreground = "${colors.foreground}"
   '';
 }

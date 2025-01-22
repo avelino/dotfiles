@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }:
 
-{
+let colors = import ./colors.nix;
+in {
   programs.tmux = {
     enable = true;
     shell = "${pkgs.fish}/bin/fish";
@@ -12,6 +13,10 @@
     mouse = false;
     prefix = "C-q";
     extraConfig = ''
+      # Set default config file path
+      set-environment -g TMUX_CONFIG_DIR ~/.config/tmux
+      set-environment -g XDG_CONFIG_HOME ~/.config
+
       # Terminal settings
       set -ga terminal-overrides ",xterm-256color:Tc"
 
@@ -72,19 +77,12 @@
       # Window switching with Shift+Arrow
       bind-key -n S-Left previous-window
       bind-key -n S-Right next-window
+
+      # colors
+      set -g status-bg "${colors.foreground}"
+      set -g status-fg "${colors.background}"
     '';
 
-    plugins = with pkgs.tmuxPlugins; [
-      sensible
-      resurrect
-      sidebar
-      {
-        plugin = rose-pine;
-        extraConfig = ''
-          set -g @rose_pine_variant 'main'
-          set -g @rose_pine_bar_bg_disable 'on'
-        '';
-      }
-    ];
+    plugins = with pkgs.tmuxPlugins; [ sensible resurrect sidebar ];
   };
 }
