@@ -213,6 +213,20 @@
       "sync.quietSync" = true;
       "terminal.integrated.fontFamily" = "Maple Mono";
       "terminal.integrated.fontSize" = 20;
+      "terminal.integrated.defaultProfile.linux" = "fish";
+      "terminal.integrated.defaultProfile.osx" = "fish";
+      "terminal.integrated.profiles.osx" = {
+        "fish" = {
+          "path" = "${pkgs.fish}/bin/fish";
+          "args" = [ "--login" ];
+        };
+      };
+      "terminal.integrated.profiles.linux" = {
+        "fish" = {
+          "path" = "${pkgs.fish}/bin/fish";
+          "args" = [ "--login" ];
+        };
+      };
       "window.commandCenter" = 1;
       "workbench.colorTheme" = "Bearded Theme Arc Blueberry";
       "workbench.iconTheme" = "bearded-icons";
