@@ -25,6 +25,7 @@
       "1password-cli"
       "font-maple-mono"
       "zed"
+      "orion" # browser by webkit
     ];
   };
 }

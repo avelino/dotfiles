@@ -50,23 +50,23 @@
     # Clear all persistent apps first
     defaults write com.apple.dock persistent-apps -array
 
+    # Add Orion
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>file:///Applications/Orion.app/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Orion</string><key>bundle-identifier</key><string>com.kagi.kagimacOS</string></dict></dict>'
+
     # Add Zen Browser
     defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>file:///Applications/Zen%20Browser.app/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Zen Browser</string><key>bundle-identifier</key><string>app.zen-browser.zen</string></dict></dict>'
-
-    # Add Logseq
-    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>file:///nix/store/rc2gq0kbf9h6k9v500b474kk4jc0npfa-logseq-0.10.9/Applications/Logseq.app/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Logseq</string><key>bundle-identifier</key><string>com.electron.logseq</string></dict></dict>'
-
-    # Add Cursor
-    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>file:///Applications/Cursor.app/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Cursor</string><key>bundle-identifier</key><string>com.todesktop.230313mzl4w4u92</string></dict></dict>'
-
-    # Add Rio
-    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>file:///nix/store/j32iiw21g2ns168c19l7cl9ir65b4ir3-rio-0.1.17/Applications/Rio.app/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Rio</string><key>bundle-identifier</key><string>com.raphaelamorim.rio</string></dict></dict>'
 
     # Add Morgen
     defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>file:///Applications/Morgen.app/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Morgen</string><key>bundle-identifier</key><string>com.todesktop.210203cqcj00tw1</string></dict></dict>'
 
-    # Add Signal
-    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>file:///nix/store/7hvzylc359pkpyznxmql8c13giqja48d-signal-desktop-7.37.0/Applications/Signal.app/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Signal</string><key>bundle-identifier</key><string>org.whispersystems.signal-desktop</string></dict></dict>'
+    # Add Logseq
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>file:///nix/store/rc2gq0kbf9h6k9v500b474kk4jc0npfa-logseq-0.10.9/Applications/Logseq.app/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Logseq</string><key>bundle-identifier</key><string>com.electron.logseq</string></dict></dict>'
+
+    # Add Rio
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>file:///nix/store/j32iiw21g2ns168c19l7cl9ir65b4ir3-rio-0.1.17/Applications/Rio.app/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Rio</string><key>bundle-identifier</key><string>com.raphaelamorim.rio</string></dict></dict>'
+
+    # Add Cursor
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>file:///Applications/Cursor.app/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Cursor</string><key>bundle-identifier</key><string>com.todesktop.230313mzl4w4u92</string></dict></dict>'
 
     # Clear all persistent others first
     defaults write com.apple.dock persistent-others -array
