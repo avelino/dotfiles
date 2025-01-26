@@ -322,4 +322,77 @@
   # Create settings.json for Cursor
   home.file."Library/Application Support/Cursor/User/settings.json".text =
     builtins.toJSON config.programs.vscode.userSettings;
+
+  home.file.".cursorrc".text =
+    builtins.toJSON {
+      ai = {
+        provider = "anthropic";
+        model = "claude-3-opus";
+        systemPrompt = ''
+          You are a helpful AI programming assistant (very experienced).
+          You will help me write clean, maintainable, and efficient code.
+          You will provide clear explanations and suggestions.
+          You will follow best practices and design patterns.
+          You will help identify potential issues and improvements.
+          Write simple, efficient, readable and testable functions/classes/methods.
+          All content generated in the project will be in EN.
+          All content generated in chat will be in pt-BR.
+          All content generated in composer will be in pt-BR.
+        '';
+      };
+    };
+
+  # Create Cursor rules file
+  home.file.".cursor/rules".text = ''
+    # Cursor Rules Configuration
+
+    # Editor Rules
+    editor.fontFamily = "Maple Mono"
+    editor.fontSize = 20
+    editor.theme = "Bearded Theme Arc Blueberry"
+    editor.minimap = false
+    editor.scrollbar = false
+    editor.formatOnSave = true
+    editor.formatOnPaste = true
+    editor.bracketPairColorization = true
+    editor.smoothScrolling = true
+
+    # Terminal Rules
+    terminal.shell = "${pkgs.fish}/bin/fish"
+    terminal.fontFamily = "Maple Mono"
+    terminal.fontSize = 20
+
+    # AI Assistant Rules
+    ai.model = "claude-3-sonnet"
+    ai.temperature = 0.7
+    ai.maxTokens = 4096
+    # ai.systemPrompt = "You are a helpful AI programming assistant."
+
+    # File Explorer Rules
+    explorer.compactFolders = true
+    explorer.autoReveal = true
+
+    # Search Rules
+    search.smartCase = true
+    search.useGlobalIgnoreFiles = true
+
+    # Git Rules
+    git.enableSmartCommit = true
+    git.autofetch = true
+    git.confirmSync = false
+
+    # Language Specific Rules
+    [python]
+    editor.tabSize = 4
+    editor.rulers = [88]
+    editor.formatOnSave = true
+
+    [nix]
+    editor.tabSize = 2
+    editor.formatOnSave = true
+
+    [clojure]
+    editor.tabSize = 2
+    editor.formatOnSave = true
+  '';
 }
