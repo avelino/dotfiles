@@ -7,15 +7,15 @@
     buffer_font_size = 16;
     theme = {
       mode = "dark";
-      light = "Rosé Pine Dawn";
-      dark = "Rosé Pine";
+      light = "Tokio Night Light";
+      dark = "Tokio Night";
     };
     assistant = {
       default_model = {
         provider = "anthropic";
         model = "claude-3-5-sonnet-20240620";
       };
-      provider = "anthropic";
+      # provider = "anthropic";
       version = "1";
       dock = "right";
       enabled = true;
@@ -31,8 +31,8 @@
     button = true;
     terminal = {
       # shell = "${pkgs.fish}/bin/fish";
-      shell = "system";
-      shell_args = [ "-l" ];
+      # shell = "system";
+      # shell_args = [ "-l" ];
       shell_env = {
         LANG = "en_US.UTF-8";
         LC_ALL = "en_US.UTF-8";
