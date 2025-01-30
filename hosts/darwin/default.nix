@@ -30,6 +30,7 @@
           # Applications
           spotify
           signal-desktop
+          unnaturalscrollwheels
         ];
       };
 
@@ -86,6 +87,7 @@
     jq
     yq
     silver-searcher
+
     # Development tools
     git
     gh
