@@ -16,8 +16,8 @@
     extraConfig = {
       github.user = "avelino";
       core = {
-        # editor = "cursor --wait";
-        editor = "zed --wait";
+        editor = "cursor --wait";
+        # editor = "zed --wait";
         autocrlf = "input";
       };
       color = {

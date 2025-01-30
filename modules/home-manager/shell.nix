@@ -86,6 +86,44 @@
         end
       end
 
+      # Define nix-cmd function for environment management
+      function nix-cmd --description 'nix and homebrew environment management'
+        switch $argv[1]
+          case upgrade
+            echo "Upgrading Nix packages..."
+            nix-env -u
+            echo "Upgrading Homebrew packages..."
+            brew upgrade
+          case update
+            echo "Updating Nix channels..."
+            nix-channel --update
+            echo "Updating Homebrew..."
+            brew update
+          case search
+            if test (count $argv) -lt 2
+              echo "Usage: nix-cmd search PACKAGE-NAME"
+              return 1
+            end
+            echo "Searching in Nix packages..."
+            nix-env -qaP $argv[2]
+            echo "Searching in Homebrew packages..."
+            brew search $argv[2]
+          case install
+            if test (count $argv) -lt 2
+              echo "Usage: nix-cmd install PACKAGE-NAME"
+              return 1
+            end
+            echo "Attempting to install via Nix..."
+            nix-env -iA nixpkgs.$argv[2]
+          case '*'
+            echo "Usage: nix-cmd [upgrade|update|search|install] [PACKAGE-NAME]"
+            echo "  upgrade: Upgrade all packages"
+            echo "  update: Update package lists"
+            echo "  search PACKAGE-NAME: Search for a package"
+            echo "  install PACKAGE-NAME: Install a package"
+        end
+      end
+
       # Check if 1Password agent is running
       if test -e $HOME/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
         echo "1Password SSH agent is available"
