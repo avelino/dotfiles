@@ -28,6 +28,7 @@
 
         packages = with pkgs; [
           # Applications
+          arc-browser
           spotify
           signal-desktop
           unnaturalscrollwheels
