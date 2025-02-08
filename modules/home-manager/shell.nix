@@ -92,6 +92,7 @@
           case upgrade
             echo "Upgrading Nix packages..."
             nix-env -u
+            cd ~/dotfiles && nix flake update && cd ~
             nix-env --delete-generations
             echo "Upgrading Homebrew packages..."
             brew upgrade
@@ -116,6 +117,14 @@
             end
             echo "Attempting to install via Nix..."
             nix-env -iA nixpkgs.$argv[2]
+          case clear
+            if test (count $argv) -lt 2
+              echo "Usage: nix-cmd clear PACKAGE-NAME"
+              return 1
+            end
+            echo "Attempting to clear via Nix..."
+            nix-env --delete-generations
+            nix-store --gc
           case '*'
             echo "Usage: nix-cmd [upgrade|update|search|install] [PACKAGE-NAME]"
             echo "  upgrade: Upgrade all packages"

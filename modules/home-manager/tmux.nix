@@ -12,6 +12,15 @@ in {
     keyMode = "vi";
     mouse = false;
     prefix = "C-q";
+    plugins = with pkgs.tmuxPlugins; [
+      {
+        plugin = continuum;
+        extraConfig = ''
+          set -g @continuum-restore 'on'
+          set -g @continuum-save-interval '10'
+        '';
+      }
+    ];
     extraConfig = ''
       # Set default config file path
       set-environment -g TMUX_CONFIG_DIR ~/.config/tmux
@@ -82,7 +91,5 @@ in {
       set -g status-bg "${colors.foreground}"
       set -g status-fg "${colors.background}"
     '';
-
-    plugins = with pkgs.tmuxPlugins; [ sensible resurrect sidebar ];
   };
 }

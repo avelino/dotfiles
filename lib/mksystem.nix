@@ -10,7 +10,6 @@ if isDarwin then
     modules = [
       home-manager.darwinModules.home-manager
       {
-        nixpkgs.config.allowUnfree = true;
         networking = {
           computerName = hostname;
           hostName = hostname;
@@ -33,7 +32,6 @@ else
     modules = [
       home-manager.nixosModules.home-manager
       {
-        nixpkgs.config.allowUnfree = true;
         networking.hostName = hostname;
 
         # Add user
