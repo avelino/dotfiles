@@ -92,6 +92,7 @@
           case upgrade
             echo "Upgrading Nix packages..."
             nix-env -u
+            nix-env --delete-generations
             echo "Upgrading Homebrew packages..."
             brew upgrade
           case update
