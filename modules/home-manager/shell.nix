@@ -4,6 +4,18 @@
   programs.fish = {
     enable = true;
 
+    plugins = [
+      {
+        name = "fzf-fish";
+        src = pkgs.fetchFromGitHub {
+          owner = "PatrickF1";
+          repo = "fzf.fish";
+          rev = "v9.8";
+          sha256 = "sha256-xWaMd5POCDeeFTsGtHbIvsPelIp+GZPC1X1CseCo3BA=";
+        };
+      }
+    ];
+
     functions = {
       ls = "command eza $argv";
       ll = "command eza -l $argv";
@@ -54,6 +66,15 @@
       if test -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish'
         source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish'
       end
+
+      # fzf configuration
+      set -gx FZF_DEFAULT_OPTS "--height 40% --layout=reverse --border --cycle --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+      set -gx FZF_DEFAULT_COMMAND "fd --type f --hidden --follow --exclude .git"
+      set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
+      set -gx FZF_ALT_C_COMMAND "fd --type d --hidden --follow --exclude .git"
+
+      # Enable fzf key bindings
+      fzf_configure_bindings --directory=\cf --git_log=\cg --git_status=\cs --processes=\cp --variables=\cv
     '';
 
     interactiveShellInit = ''
@@ -152,6 +173,12 @@
       MANPAGER = "less -FirSwX";
       SSH_AUTH_SOCK = "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
     };
+
+    packages = with pkgs; [
+      fzf
+      fd
+      bat
+    ];
 
     # Create Fish directories
     file = {
