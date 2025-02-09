@@ -16,6 +16,13 @@
       }
     ];
 
+    # Custom completions
+    shellAbbrs = {
+      g = "git";
+      v = "nvim";
+      c = "cursor";
+    };
+
     functions = {
       ls = "command eza $argv";
       ll = "command eza -l $argv";
@@ -37,6 +44,84 @@
       # editor
       c = "command cursor $argv";
       v = "command nvim $argv";
+
+      # Define logseq function
+      logseq = {
+        description = "logseq shortcut with new functions";
+        body = ''
+          switch $argv[1]
+            case sync
+              echo "logseq: sync with git..."
+              logseq cloud
+              cd ~/notes && g pull -f
+              rsync -aP -q --exclude=.git --delete \
+                --exclude="logseq/*/" \
+                --exclude="logseq/.recycle/" \
+                ~/logseq-avelino/* ~/notes/ && \
+                git st && \
+                git add . && \
+                git ci -am "$(date '+%Y-%m-%d %H:%M'): sync logseq" && \
+                git push && \
+                cd -
+            case cloud
+              echo "logseq: journal day init..."
+              cat ~/logseq-avelino/journals/$(date +%Y-%m-%d).md 1>/dev/null
+            case '*'
+              echo "logseq: method not fund"
+          end
+        '';
+      };
+
+      # Define nix-cmd function
+      nix-cmd = {
+        description = "nix and homebrew environment management";
+        body = ''
+          switch $argv[1]
+            case upgrade
+              echo "Upgrading Nix packages..."
+              nix-env -u
+              cd ~/dotfiles && nix flake update && cd ~
+              nix-env --delete-generations
+              echo "Upgrading Homebrew packages..."
+              brew upgrade
+            case update
+              echo "Updating Nix channels..."
+              nix-channel --update
+              echo "Updating Homebrew..."
+              brew update
+            case search
+              if test (count $argv) -lt 2
+                echo "Usage: nix-cmd search PACKAGE-NAME"
+                return 1
+              end
+              echo "Searching in Nix packages..."
+              nix-env -qaP $argv[2]
+              echo "Searching in Homebrew packages..."
+              brew search $argv[2]
+            case install
+              if test (count $argv) -lt 2
+                echo "Usage: nix-cmd install PACKAGE-NAME"
+                return 1
+              end
+              echo "Attempting to install via Nix..."
+              nix-env -iA nixpkgs.$argv[2]
+            case clear
+              if test (count $argv) -lt 2
+                echo "Usage: nix-cmd clear PACKAGE-NAME"
+                return 1
+              end
+              echo "Attempting to clear via Nix..."
+              nix-env --delete-generations
+              nix-store --gc
+            case '*'
+              echo "Usage: nix-cmd [upgrade|update|search|install] [PACKAGE-NAME]"
+              echo "  upgrade: Upgrade all packages"
+              echo "  update: Update package lists"
+              echo "  search PACKAGE-NAME: Search for a package"
+              echo "  install PACKAGE-NAME: Install a package"
+          end
+        '';
+      };
     };
 
     shellInit = ''
@@ -81,79 +166,33 @@
       # Create required directories if they don't exist
       mkdir -p $HOME/.local/share/fish
       mkdir -p $HOME/.config/fish/functions
+      mkdir -p $HOME/.config/fish/completions
       mkdir -p $HOME/.cache/fish
 
-      # Define logseq function
-      function logseq --description 'logseq shortcut with new functions'
-        switch $argv[1]
-          case sync
-            echo "logseq: sync with git..."
-            logseq cloud
-            cd ~/notes && g pull -f
-            rsync -aP -q --exclude=.git --delete \
-              --exclude="logseq/*/" \
-              --exclude="logseq/.recycle/" \
-              ~/logseq-avelino/* ~/notes/ && \
-              git st && \
-              git add . && \
-              git ci -am "$(date '+%Y-%m-%d %H:%M'): sync logseq" && \
-              git push && \
-              cd -
-          case cloud
-            echo "logseq: journal day init..."
-            cat ~/logseq-avelino/journals/$(date +%Y-%m-%d).md 1>/dev/null
-          case '*'
-            echo "logseq: method not fund"
-        end
-      end
+      # Completion for nix-cmd
+      complete -c nix-cmd -f -n "__fish_use_subcommand" -a "upgrade" -d "Upgrade all packages"
+      complete -c nix-cmd -f -n "__fish_use_subcommand" -a "update" -d "Update package lists"
+      complete -c nix-cmd -f -n "__fish_use_subcommand" -a "search" -d "Search for a package"
+      complete -c nix-cmd -f -n "__fish_use_subcommand" -a "install" -d "Install a package"
+      complete -c nix-cmd -f -n "__fish_use_subcommand" -a "clear" -d "Clear nix store"
 
-      # Define nix-cmd function for environment management
-      function nix-cmd --description 'nix and homebrew environment management'
-        switch $argv[1]
-          case upgrade
-            echo "Upgrading Nix packages..."
-            nix-env -u
-            cd ~/dotfiles && nix flake update && cd ~
-            nix-env --delete-generations
-            echo "Upgrading Homebrew packages..."
-            brew upgrade
-          case update
-            echo "Updating Nix channels..."
-            nix-channel --update
-            echo "Updating Homebrew..."
-            brew update
-          case search
-            if test (count $argv) -lt 2
-              echo "Usage: nix-cmd search PACKAGE-NAME"
-              return 1
-            end
-            echo "Searching in Nix packages..."
-            nix-env -qaP $argv[2]
-            echo "Searching in Homebrew packages..."
-            brew search $argv[2]
-          case install
-            if test (count $argv) -lt 2
-              echo "Usage: nix-cmd install PACKAGE-NAME"
-              return 1
-            end
-            echo "Attempting to install via Nix..."
-            nix-env -iA nixpkgs.$argv[2]
-          case clear
-            if test (count $argv) -lt 2
-              echo "Usage: nix-cmd clear PACKAGE-NAME"
-              return 1
-            end
-            echo "Attempting to clear via Nix..."
-            nix-env --delete-generations
-            nix-store --gc
-          case '*'
-            echo "Usage: nix-cmd [upgrade|update|search|install] [PACKAGE-NAME]"
-            echo "  upgrade: Upgrade all packages"
-            echo "  update: Update package lists"
-            echo "  search PACKAGE-NAME: Search for a package"
-            echo "  install PACKAGE-NAME: Install a package"
-        end
-      end
+      # Completion for logseq
+      complete -c logseq -f -n "__fish_use_subcommand" -a "sync" -d "Sync logseq with git"
+      complete -c logseq -f -n "__fish_use_subcommand" -a "cloud" -d "Initialize journal day"
+
+      # Git completions with better descriptions
+      complete -c g -w git
+      complete -c ga -w "git add"
+      complete -c gc -w "git commit"
+      complete -c gp -w "git push"
+      complete -c gpl -w "git pull"
+      complete -c gs -w "git status"
+      complete -c gd -w "git diff"
+      complete -c gl -w "git log"
+
+      # Editor completions
+      complete -c v -w nvim
+      complete -c c -w cursor
 
       # Check if 1Password agent is running
       if test -e $HOME/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
