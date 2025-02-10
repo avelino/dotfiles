@@ -50,11 +50,8 @@
     # Clear all persistent apps first
     defaults write com.apple.dock persistent-apps -array
 
-    # Add Orion
-    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>file:///Applications/Orion.app/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Orion</string><key>bundle-identifier</key><string>com.kagi.kagimacOS</string></dict></dict>'
-
-    # Add Zen Browser
-    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>file:///Applications/Zen%20Browser.app/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Zen Browser</string><key>bundle-identifier</key><string>app.zen-browser.zen</string></dict></dict>'
+    # Add Arc Browser
+    defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>file:///nix/store/g9hm4sccxcwwnk58hd5kf0jkndffr7l4-arc-browser-1.77.0-57419/Applications/Arc.app/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Arc</string><key>bundle-identifier</key><string>company.thebrowser.Browser</string></dict></dict>'
 
     # Add Morgen
     defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>file:///Applications/Morgen.app/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-label</key><string>Morgen</string><key>bundle-identifier</key><string>com.todesktop.210203cqcj00tw1</string></dict></dict>'

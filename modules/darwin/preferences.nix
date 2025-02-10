@@ -65,6 +65,16 @@ in
     defaults write NSGlobalDomain AppleMetricUnits -bool true
     defaults write NSGlobalDomain AppleTemperatureUnit -string "Celsius"
 
+    # Night Shift settings
+    defaults write com.apple.CoreBrightness.plist CBUser-0.CBBlueReductionStatus.AutoBlueReductionEnabled -bool true
+    defaults write com.apple.CoreBrightness.plist CBUser-0.CBBlueReductionStatus.BlueReductionEnabled -bool true
+    defaults write com.apple.CoreBrightness.plist CBUser-0.CBBlueReductionStatus.BlueReductionMode -int 2
+    defaults write com.apple.CoreBrightness.plist CBUser-0.CBBlueReductionStatus.BlueLightReductionSchedule.DayStartHour -int 7
+    defaults write com.apple.CoreBrightness.plist CBUser-0.CBBlueReductionStatus.BlueLightReductionSchedule.DayStartMinute -int 0
+    defaults write com.apple.CoreBrightness.plist CBUser-0.CBBlueReductionStatus.BlueLightReductionSchedule.NightStartHour -int 22
+    defaults write com.apple.CoreBrightness.plist CBUser-0.CBBlueReductionStatus.BlueLightReductionSchedule.NightStartMinute -int 0
+    defaults write com.apple.CoreBrightness.plist CBUser-0.CBBlueLightReductionCCTTargetRaw -float 3458.715
+
     # Setting text replacement items
     defaults write NSGlobalDomain NSUserDictionaryReplacementItems -array \
       '{"on" = 1; "replace" = "sjc"; "with" = "SJC";}' \
