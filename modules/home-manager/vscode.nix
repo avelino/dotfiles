@@ -231,6 +231,7 @@
       "workbench.colorTheme" = "Bearded Theme Arc Blueberry";
       "workbench.iconTheme" = "bearded-icons";
       "workbench.list.smoothScrolling" = true;
+      "workbench.sideBar.location" = "right";
       "redhat.telemetry.enabled" = true;
       "[nix]" = {
         "editor.defaultFormatter" = "brettm12345.nixfmt-vscode";
