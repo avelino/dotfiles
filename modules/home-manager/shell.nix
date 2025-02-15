@@ -78,6 +78,7 @@
         body = ''
           switch $argv[1]
             case upgrade
+              nix-cmd update
               echo "Upgrading Nix packages..."
               nix-env -u
               cd ~/dotfiles && nix flake update && cd ~
