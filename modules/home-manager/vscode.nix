@@ -327,6 +327,18 @@
           version = "0.27.1";
           sha256 = "sha256-5XhPaxwr0yvIX0wSKDiDm+1iG947s84ULaWpxfpRcAU=";
         }
+        {
+          name = "hugo-utils";
+          publisher = "kofuk";
+          version = "0.3.3";
+          sha256 = "sha256-fyP0mgqkyj1RY8qPVX68Hte7j9r5NB1PqfmA1jAu+vE=";
+        }
+        {
+          name = "package-json-upgrade";
+          publisher = "codeandstuff";
+          version = "3.1.0";
+          sha256 = "sha256-2HU3XoQY/LUm9xPeftZYYrPIDRoqG7c8d8mtslUbC0o=g";
+        }
       ];
   };
 
