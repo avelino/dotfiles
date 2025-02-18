@@ -13,3 +13,6 @@ result-*
 *.njsproj
 *.sln
 *.sw?
+
+# nix
+flake.lock
