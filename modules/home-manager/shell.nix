@@ -51,21 +51,78 @@
         body = ''
           switch $argv[1]
             case sync
-              echo "logseq: sync with git..."
+              echo "logseq: starting sync process..."
+
+              # Ensure we're working with the latest cloud version
               logseq cloud
-              cd ~/notes && g pull -f
-              rsync -aP -q --exclude=.git --delete \
+
+              # Save current directory
+              set -l current_dir (pwd)
+
+              # Sync with git repository
+              if not cd ~/notes
+                echo "Error: Could not access notes directory"
+                return 1
+              end
+
+              # Fetch and pull changes, showing any errors
+              if not git pull --ff-only
+                echo "Warning: Git pull failed, manual intervention may be needed"
+                return 1
+              end
+
+              # Perform rsync with error checking
+              if not rsync -aP -q \
+                --exclude=".git/" \
                 --exclude="logseq/*/" \
                 --exclude="logseq/.recycle/" \
-                ~/logseq-avelino/* ~/notes/ && \
-                git st && \
-                git add . && \
-                git ci -am "$(date '+%Y-%m-%d %H:%M'): sync logseq" && \
-                git push && \
-                cd -
+                --exclude=".trash/" \
+                --delete \
+                ~/logseq-avelino/* ~/notes/
+
+                echo "Error: rsync failed"
+                return 1
+              end
+
+              # Check if there are any changes to commit
+              if git status --porcelain | grep -q .
+                git add .
+                git commit -m "sync(logseq): $(date '+%Y-%m-%d %H:%M')"
+
+                if not git push
+                  echo "Error: Failed to push changes"
+                  return 1
+                end
+                echo "logseq: sync completed successfully"
+              else
+                echo "logseq: no changes to sync"
+              end
+
+              # Return to original directory
+              cd $current_dir
             case cloud
-              echo "logseq: journal day init..."
-              cat ~/logseq-avelino/journals/$(date +%Y-%m-%d).md 1>/dev/null
+              echo "logseq: initializing journal for today..."
+              set -l journal_path ~/logseq-avelino/journals/$(date +%Y-%m-%d).md
+
+              # Check if journals directory exists
+              if not test -d ~/logseq-avelino/journals
+                echo "Error: Journals directory not found"
+                return 1
+              end
+
+              # Create journal file if it doesn't exist
+              if not test -f $journal_path
+                echo "- Creating new journal for $(date '+%A, %B %d, %Y')" > $journal_path
+                echo "Journal created: $journal_path"
+              else
+                # Verify file is readable
+                if test -r $journal_path
+                  echo "Journal exists: $journal_path"
+                else
+                  echo "Error: Cannot read journal file"
+                  return 1
+                end
+              end
             case '*'
               echo "logseq: method not fund"
           end
