@@ -4,6 +4,19 @@
   pkgs,
   ...
 }:
+let
+  systemPrompt = ''
+    You are a helpful AI programming assistant (very experienced).
+    You will help me write clean, maintainable, and efficient code.
+    You will provide clear explanations and suggestions.
+    You will follow best practices and design patterns.
+    You will help identify potential issues and improvements.
+    Write simple, efficient, readable and testable functions/classes/methods.
+    All content generated in the project will be in EN.
+    All content generated in chat will be in pt-BR.
+    All content generated in composer will be in pt-BR.
+  '';
+in
 {
   programs.vscode = {
     enable = true;
@@ -26,110 +39,6 @@
           "--disable=C0111"
           "--load-plugins=pylint_pydantic"
         ];
-      };
-      "accessibility.signals.chatRequestSent" = {
-        "sound" = "off";
-      };
-      "accessibility.signals.chatResponseReceived" = {
-        "sound" = "off";
-      };
-      "accessibility.signals.error" = {
-        "sound" = "off";
-      };
-      "accessibility.signals.info" = {
-        "sound" = "off";
-      };
-      "accessibility.signals.warning" = {
-        "sound" = "off";
-      };
-      "accessibility.signals.progress" = {
-        "sound" = "off";
-      };
-      "accessibility.signals.lineHasBreakpoint" = {
-        "sound" = "off";
-        "announcement" = "auto";
-      };
-      "accessibility.signals.clear" = {
-        "sound" = "off";
-        "announcement" = "auto";
-      };
-      "accessibility.signals.onDebugBreak" = {
-        "sound" = "off";
-        "announcement" = "auto";
-      };
-      "accessibility.signals.diffLineDeleted" = {
-        "sound" = "off";
-      };
-      "accessibility.signals.diffLineInserted" = {
-        "sound" = "off";
-      };
-      "accessibility.signals.diffLineModified" = {
-        "sound" = "off";
-      };
-      "accessibility.signals.positionHasError" = {
-        "sound" = "off";
-        "announcement" = "auto";
-      };
-      "accessibility.signals.lineHasError" = {
-        "sound" = "off";
-        "announcement" = "auto";
-      };
-      "accessibility.signals.lineHasFoldedArea" = {
-        "sound" = "off";
-        "announcement" = "auto";
-      };
-      "accessibility.signals.lineHasInlineSuggestion" = {
-        "sound" = "off";
-      };
-      "accessibility.signals.noInlayHints" = {
-        "sound" = "off";
-        "announcement" = "auto";
-      };
-      "accessibility.signals.notebookCellCompleted" = {
-        "sound" = "off";
-        "announcement" = "auto";
-      };
-      "accessibility.signals.notebookCellFailed" = {
-        "sound" = "off";
-        "announcement" = "auto";
-      };
-      "accessibility.signals.taskCompleted" = {
-        "sound" = "off";
-        "announcement" = "auto";
-      };
-      "accessibility.signals.taskFailed" = {
-        "sound" = "off";
-        "announcement" = "auto";
-      };
-      "accessibility.signals.terminalBell" = {
-        "sound" = "off";
-        "announcement" = "auto";
-      };
-      "accessibility.signals.terminalCommandFailed" = {
-        "sound" = "off";
-        "announcement" = "auto";
-      };
-      "accessibility.signals.terminalCommandSucceeded" = {
-        "sound" = "off";
-        "announcement" = "auto";
-      };
-      "accessibility.signals.terminalQuickFix" = {
-        "sound" = "off";
-        "announcement" = "auto";
-      };
-      "accessibility.signals.voiceRecordingStarted" = {
-        "sound" = "off";
-      };
-      "accessibility.signals.voiceRecordingStopped" = {
-        "sound" = "off";
-      };
-      "accessibility.signals.positionHasWarning" = {
-        "sound" = "off";
-        "announcement" = "auto";
-      };
-      "accessibility.signals.lineHasWarning" = {
-        "sound" = "off";
-        "announcement" = "auto";
       };
       "autoDocstring.docstringFormat" = "google";
       "autoDocstring.startOnNewLine" = true;
@@ -342,26 +251,126 @@
       ];
   };
 
+  # Create settings.json for Windsurf
+  home.file."Library/Application Support/Windsurf/User/settings.json".text =
+    builtins.toJSON config.programs.vscode.userSettings;
+  home.file.".codeium/windsurf/memories/global_rules.md".text = systemPrompt;
+
   # Create settings.json for Cursor
   home.file."Library/Application Support/Cursor/User/settings.json".text =
-    builtins.toJSON config.programs.vscode.userSettings;
+    builtins.toJSON (config.programs.vscode.userSettings // {
+      "accessibility.signals.chatRequestSent" = {
+        "sound" = "off";
+      };
+      "accessibility.signals.chatResponseReceived" = {
+        "sound" = "off";
+      };
+      "accessibility.signals.error" = {
+        "sound" = "off";
+      };
+      "accessibility.signals.info" = {
+        "sound" = "off";
+      };
+      "accessibility.signals.warning" = {
+        "sound" = "off";
+      };
+      "accessibility.signals.progress" = {
+        "sound" = "off";
+      };
+      "accessibility.signals.lineHasBreakpoint" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.clear" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.onDebugBreak" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.diffLineDeleted" = {
+        "sound" = "off";
+      };
+      "accessibility.signals.diffLineInserted" = {
+        "sound" = "off";
+      };
+      "accessibility.signals.diffLineModified" = {
+        "sound" = "off";
+      };
+      "accessibility.signals.positionHasError" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.lineHasError" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.lineHasFoldedArea" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.lineHasInlineSuggestion" = {
+        "sound" = "off";
+      };
+      "accessibility.signals.noInlayHints" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.notebookCellCompleted" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.notebookCellFailed" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.taskCompleted" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.taskFailed" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.terminalBell" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.terminalCommandFailed" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.terminalCommandSucceeded" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.terminalQuickFix" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.voiceRecordingStarted" = {
+        "sound" = "off";
+      };
+      "accessibility.signals.voiceRecordingStopped" = {
+        "sound" = "off";
+      };
+      "accessibility.signals.positionHasWarning" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+      "accessibility.signals.lineHasWarning" = {
+        "sound" = "off";
+        "announcement" = "auto";
+      };
+    });
 
   home.file.".cursorrc".text =
     builtins.toJSON {
       ai = {
         provider = "anthropic";
         model = "claude-3-opus";
-        systemPrompt = ''
-          You are a helpful AI programming assistant (very experienced).
-          You will help me write clean, maintainable, and efficient code.
-          You will provide clear explanations and suggestions.
-          You will follow best practices and design patterns.
-          You will help identify potential issues and improvements.
-          Write simple, efficient, readable and testable functions/classes/methods.
-          All content generated in the project will be in EN.
-          All content generated in chat will be in pt-BR.
-          All content generated in composer will be in pt-BR.
-        '';
+        systemPrompt = systemPrompt;
       };
     };
 

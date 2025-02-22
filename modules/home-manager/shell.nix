@@ -21,6 +21,7 @@
       g = "git";
       v = "nvim";
       c = "cursor";
+      wi = "windsurf";
     };
 
     functions = {
@@ -43,6 +44,7 @@
 
       # editor
       c = "command cursor $argv";
+      wi = "command windsurf $argv";
       v = "command nvim $argv";
 
       # Define logseq function
@@ -251,6 +253,7 @@
       # Editor completions
       complete -c v -w nvim
       complete -c c -w cursor
+      complete -c c -w windsurf
 
       # Check if 1Password agent is running
       if test -e $HOME/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
@@ -264,8 +267,8 @@
   home = {
     sessionVariables = {
       SHELL = "${pkgs.fish}/bin/fish";
-      EDITOR = "cursor";
-      VISUAL = "cursor";
+      EDITOR = "windsurf";
+      VISUAL = "windsurf";
       PAGER = "less -FirSwX";
       MANPAGER = "less -FirSwX";
       SSH_AUTH_SOCK = "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";

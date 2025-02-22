@@ -17,6 +17,7 @@
 
     casks = [
       "cursor"
+      "windsurf"
       "morgen"
       "orbstack"
       "raycast"

@@ -9,7 +9,7 @@ let
       signingkey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5OfVvY6xmZdtw5pYJMECnfRfMm7zWMytg+IL9AyNhbu8UdBmGdT6wUiBBBw9CTcdnmDYj08n8gWXV6Jz2eazl7fC27HQr9BzJb35FM1LpnXncSDNxn5Itj89ROIgY70d2obp35K9+I+muFkAYuYJEHjtrGr7KIlC1oM+v+K43Jla4SotoBleLNbec0GwtyeYBB7bL9yhGhpEje+dtpLJFd5H/bDBuvjDg/tPHeAnflg0QfUeYfNDC44psY/uJQGBrob3eLcOdJSIV418JS+z1inC9Iljg+xkHGwWg3TSS2lD4ufZcKumBpc2S7T9XSVVB0KDeFTgyQHNDkCtG5xRb";
     };
     core = {
-      editor = "cursor --wait";
+      editor = "windsurf --wait";
       # editor = "zed --wait";
       autocrlf = "input";
     };
@@ -23,10 +23,10 @@ let
         new = "green bold";
       };
     };
-    diff.tool = "cursor";
+    diff.tool = "windsurf";
     difftool = {
       prompt = true;
-      cursor.cmd = "cursor -d \"$LOCAL\" \"$REMOTE\"";
+      windsurf.cmd = "windsurf -d \"$LOCAL\" \"$REMOTE\"";
     };
     merge.log = true;
     push.default = "current";
