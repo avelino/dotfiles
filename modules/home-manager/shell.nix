@@ -1,5 +1,14 @@
 { config, pkgs, lib, ... }:
 
+let
+  # Definições centralizadas para fácil manutenção
+  defaultEditor = "zed";
+  defaultPager = "less -FirSwX";
+  logseqPaths = {
+    notes = "~/notes";
+    cloud = "~/logseq-avelino";
+  };
+in
 {
   programs.fish = {
     enable = true;
@@ -62,7 +71,7 @@
               set -l current_dir (pwd)
 
               # Sync with git repository
-              if not cd ~/notes
+              if not cd ${logseqPaths.notes}
                 echo "Error: Could not access notes directory"
                 return 1
               end
@@ -80,7 +89,7 @@
                 --exclude="logseq/.recycle/" \
                 --exclude=".trash/" \
                 --delete \
-                ~/logseq-avelino/* ~/notes/
+                ${logseqPaths.cloud}/* ${logseqPaths.notes}/
 
                 echo "Error: rsync failed"
                 return 1
@@ -104,10 +113,10 @@
               cd $current_dir
             case cloud
               echo "logseq: initializing journal for today..."
-              set -l journal_path ~/logseq-avelino/journals/$(date +%Y-%m-%d).md
+              set -l journal_path ${logseqPaths.cloud}/journals/$(date +%Y-%m-%d).md
 
               # Check if journals directory exists
-              if not test -d ~/logseq-avelino/journals
+              if not test -d ${logseqPaths.cloud}/journals
                 echo "Error: Journals directory not found"
                 return 1
               end
@@ -294,10 +303,10 @@
   home = {
     sessionVariables = {
       SHELL = "${pkgs.fish}/bin/fish";
-      EDITOR = "windsurf";
-      VISUAL = "windsurf";
-      PAGER = "less -FirSwX";
-      MANPAGER = "less -FirSwX";
+      EDITOR = defaultEditor;
+      VISUAL = defaultEditor;
+      PAGER = defaultPager;
+      MANPAGER = defaultPager;
       SSH_AUTH_SOCK = "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
     };
 
