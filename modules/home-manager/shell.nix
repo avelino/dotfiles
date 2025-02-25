@@ -182,6 +182,33 @@
           end
         '';
       };
+
+      # Define yabai function
+      yabai = {
+        description = "yabai environment management";
+        body = ''
+          switch $argv[1]
+            case start
+              command yabai --start-service
+            case stop
+              command yabai --stop-service
+            case restart
+              command yabai --restart-service
+            case version
+              command yabai --version
+            case install
+              command yabai --install-service
+            case uninstall
+              command yabai --uninstall-service
+            case load
+              command yabai --load-sa
+            case unload
+              command yabai --unload-sa
+            case '*'
+              command yabai $argv
+          end
+        '';
+      };
     };
 
     shellInit = ''
