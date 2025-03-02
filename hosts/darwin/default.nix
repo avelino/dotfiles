@@ -99,6 +99,7 @@
     git
     gh
     neovim
+    act
 
     # Languages and runtimes
     go
