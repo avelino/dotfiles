@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let
-  defaultEditor = "zed";
+  defaultEditor = "cursor";
   gitConfig = {
     github.user = "avelino";
     user = {

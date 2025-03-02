@@ -2,7 +2,7 @@
 
 let
   # Definições centralizadas para fácil manutenção
-  defaultEditor = "zed";
+  defaultEditor = "cursor";
   defaultPager = "less -FirSwX";
   logseqPaths = {
     notes = "~/notes";
