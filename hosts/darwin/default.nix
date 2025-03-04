@@ -100,6 +100,7 @@
     gh
     neovim
     act
+    hugo
 
     # Languages and runtimes
     go
