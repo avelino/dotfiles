@@ -27,6 +27,7 @@
       "font-maple-mono"
       "zed"
       "orion" # browser by webkit
+      "domzilla-caffeine"
     ];
   };
 }

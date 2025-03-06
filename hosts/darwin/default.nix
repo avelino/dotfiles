@@ -101,6 +101,7 @@
     neovim
     act
     hugo
+    graalvm-oracle
 
     # Languages and runtimes
     go
