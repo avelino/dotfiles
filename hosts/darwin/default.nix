@@ -63,7 +63,7 @@
         ../../modules/home-manager/neovim.nix
         #../../modules/home-manager/zed.nix
         ../../modules/home-manager/dev.nix
-        #../../modules/home-manager/aerospace.nix
+        ../../modules/home-manager/aerospace.nix
       ];
     };
   };
@@ -115,8 +115,8 @@
     clojure-lsp
 
     # environment
-    yabai
-    skhd
+    # yabai
+    # skhd
 
     # Development Tools
     jq
