@@ -21,6 +21,7 @@
       "morgen"
       "orbstack"
       "raycast"
+      "logseq"
       "zen-browser"
       "1password"
       "1password-cli"

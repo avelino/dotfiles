@@ -8,7 +8,7 @@
     ../../modules/darwin/dock.nix
     ../../modules/darwin/system.nix
     ../../modules/darwin/homebrew.nix
-    ../../modules/darwin/yabai.nix
+    # ../../modules/darwin/yabai.nix
   ];
 
   # Define system state version (required)
@@ -63,6 +63,7 @@
         ../../modules/home-manager/neovim.nix
         #../../modules/home-manager/zed.nix
         ../../modules/home-manager/dev.nix
+        #../../modules/home-manager/aerospace.nix
       ];
     };
   };

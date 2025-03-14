@@ -1,8 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  home.packages = [ pkgs.logseq ];
-
+  # install logseq from homebrew
   home.activation = {
     logseqSetup = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       echo >&2 "setting up logseq..."
