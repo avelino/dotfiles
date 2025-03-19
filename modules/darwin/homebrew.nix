@@ -27,8 +27,9 @@
       "1password-cli"
       "font-maple-mono"
       "zed"
-      "orion" # browser by webkit
       "domzilla-caffeine"
+      "safari-technology-preview"
+      "vivaldi"
     ];
   };
 }
