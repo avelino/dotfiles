@@ -95,6 +95,7 @@
     jq
     yq
     silver-searcher
+    cmake
 
     # Development tools
     git
@@ -155,7 +156,7 @@
     zls # zig lsp
 
     # Fonts
-    maple-mono
+    maple-mono.NF
     font-awesome
   ];
 

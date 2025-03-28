@@ -1,0 +1,231 @@
+---
+description: Nix development guidelines and best practices
+globs: *.nix,flake.nix,flake.lock
+alwaysApply: false
+---
+# Nix Development Guidelines
+
+## Table of Contents
+- [Project Structure](mdc:#project-structure)
+- [Module Organization](mdc:#module-organization)
+- [Package Management](mdc:#package-management)
+- [Development Environment](mdc:#development-environment)
+- [Home Manager](mdc:#home-manager)
+- [Best Practices](mdc:#best-practices)
+
+## Project Structure
+
+### Basic Structure
+```
+.
+├── flake.nix           # Main flake definition
+├── flake.lock         # Lock file for dependencies
+├── hosts/             # Host-specific configurations
+│   ├── darwin/       # macOS configurations
+│   └── linux/        # Linux configurations
+├── modules/          # Reusable modules
+│   ├── darwin/      # macOS-specific modules
+│   ├── home-manager/ # Home manager modules
+│   └── nix/         # Nix-specific modules
+└── overlays/         # Package overlays
+```
+
+### Flake Structure
+```nix
+{
+  description = "Personal NixOS configuration";
+
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+
+  outputs = { self, nixpkgs, home-manager }@inputs:
+    let
+      system = "x86_64-darwin";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+    {
+      darwinConfigurations."hostname" = darwin.lib.darwinSystem {
+        inherit system;
+        modules = [
+          ./hosts/darwin
+          home-manager.darwinModules.home-manager
+        ];
+        specialArgs = { inherit inputs; };
+      };
+    };
+}
+```
+
+## Module Organization
+
+### Module Structure
+```nix
+{ config, lib, pkgs, ... }:
+
+{
+  # Module options
+  options = {
+    myModule.enable = lib.mkEnableOption "my module";
+  };
+
+  # Module configuration
+  config = lib.mkIf config.myModule.enable {
+    # Module configuration
+  };
+}
+```
+
+### Module Best Practices
+- Use `lib.mkEnableOption` for feature flags
+- Use `lib.mkIf` for conditional configuration
+- Use `lib.mkMerge` for combining configurations
+- Use `lib.mkDefault` for default values
+- Use `lib.mkForce` sparingly
+
+## Package Management
+
+### Package Declarations
+```nix
+# In home-manager configuration
+home.packages = with pkgs; [
+  # Development tools
+  git
+  neovim
+  tmux
+
+  # Language tools
+  nodejs
+  python3
+  rustup
+
+  # System tools
+  ripgrep
+  fd
+  bat
+];
+```
+
+### Package Overrides
+```nix
+# Package overrides
+home.packages = with pkgs; [
+  (signal-desktop.overrideAttrs (oldAttrs: {
+    version = "7.42.0";
+    src = pkgs.fetchurl {
+      url = "https://updates.signal.org/desktop/signal-desktop-mac-universal-7.42.0.dmg";
+      sha256 = "sha256-N/BgLpEvpcl29+AN0zZDBGBwkYqYqjW953jfdwm5+/4=";
+    };
+  }))
+];
+```
+
+## Development Environment
+
+### Environment Variables
+```nix
+# Set environment variables
+home.sessionVariables = {
+  EDITOR = "cursor";
+  VISUAL = "cursor";
+  PAGER = "less -FirSwX";
+  PROJECTS_DIR = "~/projects";
+};
+```
+
+### Shell Configuration
+```nix
+# Shell configuration
+programs.fish = {
+  enable = true;
+  plugins = [
+    {
+      name = "fzf-fish";
+      src = pkgs.fetchFromGitHub {
+        owner = "PatrickF1";
+        repo = "fzf.fish";
+        rev = "v9.8";
+      };
+    }
+  ];
+};
+```
+
+## Home Manager
+
+### Home Manager Configuration
+```nix
+# Home Manager configuration
+home-manager = {
+  useGlobalPkgs = true;
+  useUserPackages = true;
+  users.${username} = { pkgs, ... }: {
+    home = {
+      stateVersion = "23.11";
+      username = username;
+      homeDirectory = "/Users/${username}";
+    };
+  };
+};
+```
+
+### Program Configuration
+```nix
+# Program configuration
+programs = {
+  git = {
+    enable = true;
+    userName = "Avelino";
+    userEmail = "31996+avelino@users.noreply.github.com";
+  };
+
+  tmux = {
+    enable = true;
+    keyMode = "vi";
+    mouse = false;
+    prefix = "C-q";
+  };
+};
+```
+
+## Best Practices
+
+### Version Management
+- Use `flake.lock` for dependency versions
+- Keep `nixpkgs` up to date
+- Use specific versions for critical packages
+- Document version requirements
+
+### Security
+- Use secure package sources
+- Validate package hashes
+- Keep sensitive data out of configuration
+- Use appropriate file permissions
+
+### Performance
+- Minimize package installations
+- Use appropriate package options
+- Optimize build times
+- Cache build results
+
+### Maintenance
+- Regular updates
+- Clean unused generations
+- Monitor disk usage
+- Backup configurations
+
+### Testing
+- Test configurations in isolation
+- Validate module options
+- Check for conflicts
+- Test on different systems
+
+### Documentation
+- Document module options
+- Include usage examples
+- Maintain changelog
+- Keep README updated

@@ -1,0 +1,214 @@
+---
+description: Fish shell scripting guidelines and best practices
+globs: *.fish,*.fishrc
+alwaysApply: false
+---
+# Fish Shell Guidelines
+
+## Table of Contents
+- [Shell Configuration](mdc:#shell-configuration)
+- [Functions](mdc:#functions)
+- [Aliases and Abbreviations](mdc:#aliases-and-abbreviations)
+- [Environment Variables](mdc:#environment-variables)
+- [Completions](mdc:#completions)
+- [Best Practices](mdc:#best-practices)
+
+## Shell Configuration
+
+### File Structure
+```fish
+# ~/.config/fish/config.fish
+# Main configuration file
+
+# ~/.config/fish/functions/
+# Custom functions directory
+
+# ~/.config/fish/completions/
+# Custom completions directory
+
+# ~/.config/fish/conf.d/
+# Additional configuration files
+```
+
+### Basic Configuration
+```fish
+# Set fish greeting
+set fish_greeting
+
+# Set universal variables path
+set -g fish_universal_variables_path $HOME/.config/fish/fish_variables
+
+# Set XDG variables
+set -gx XDG_DATA_HOME $HOME/.local/share
+set -gx XDG_CONFIG_HOME $HOME/.config
+set -gx XDG_CACHE_HOME $HOME/.cache
+
+# Set PATH
+set -gx PATH $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin /run/current-system/sw/bin /opt/homebrew/bin $PATH
+```
+
+## Functions
+
+### Function Structure
+```fish
+function function_name
+    # Function description
+    set -l description "Description of what the function does"
+
+    # Function body
+    command arg1 arg2
+
+    # Return value
+    return 0
+end
+```
+
+### Example Functions
+```fish
+# Git functions
+function g
+    command git $argv
+end
+
+function ga
+    command git add $argv
+end
+
+function gc
+    command git commit $argv
+end
+
+# Editor functions
+function c
+    command cursor $argv
+end
+
+function v
+    command nvim $argv
+end
+```
+
+### Function Best Practices
+- Use descriptive names
+- Include help text
+- Handle arguments properly
+- Return appropriate exit codes
+- Use local variables when possible
+
+## Aliases and Abbreviations
+
+### Abbreviations
+```fish
+# Git abbreviations
+abbr -a g git
+abbr -a ga "git add"
+abbr -a gc "git commit"
+abbr -a gp "git push"
+abbr -a gpl "git pull"
+abbr -a gs "git status"
+abbr -a gd "git diff"
+abbr -a gl "git log"
+
+# Editor abbreviations
+abbr -a c cursor
+abbr -a v nvim
+```
+
+### When to Use Abbreviations vs Functions
+- Use abbreviations for simple command aliases
+- Use functions for complex operations or when you need:
+  - Argument handling
+  - Error checking
+  - Multiple commands
+  - Local variables
+
+## Environment Variables
+
+### Setting Variables
+```fish
+# Universal variables (persist across sessions)
+set -U EDITOR cursor
+set -U VISUAL cursor
+
+# Global variables (current session)
+set -gx PROJECTS_DIR ~/projects
+
+# Local variables (current function)
+set -l temp_var "value"
+```
+
+### Common Environment Variables
+```fish
+# Editor settings
+set -gx EDITOR cursor
+set -gx VISUAL cursor
+set -gx PAGER "less -FirSwX"
+
+# SSH settings
+set -gx SSH_AUTH_SOCK $HOME/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+
+# Nix settings
+set -gx NIX_PATH $HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/$USER/channels
+set -gx NIX_PROFILES "/nix/var/nix/profiles/default $HOME/.nix-profile"
+```
+
+## Completions
+
+### Creating Completions
+```fish
+# Basic completion
+complete -c command_name -f -n "__fish_use_subcommand" -a "subcommand" -d "Description"
+
+# Example: nix-cmd completions
+complete -c nix-cmd -f -n "__fish_use_subcommand" -a "upgrade" -d "Upgrade all packages"
+complete -c nix-cmd -f -n "__fish_use_subcommand" -a "update" -d "Update package lists"
+complete -c nix-cmd -f -n "__fish_use_subcommand" -a "search" -d "Search for a package"
+```
+
+### Completion Best Practices
+- Provide clear descriptions
+- Use appropriate conditions
+- Group related completions
+- Handle arguments properly
+
+## Best Practices
+
+### Code Organization
+- Keep functions in separate files
+- Use consistent naming conventions
+- Document complex functions
+- Group related functions together
+
+### Error Handling
+```fish
+function safe_command
+    if not command -s required_tool >/dev/null 2>&1
+        echo "Error: required_tool is not installed"
+        return 1
+    end
+
+    # Command execution
+    if not command required_tool
+        echo "Error: command failed"
+        return 1
+    end
+end
+```
+
+### Performance
+- Use built-in commands when possible
+- Minimize external command calls
+- Cache frequently used values
+- Use appropriate variable scopes
+
+### Security
+- Validate user input
+- Use secure file operations
+- Handle sensitive data properly
+- Follow principle of least privilege
+
+### Testing
+- Test functions with various inputs
+- Handle edge cases
+- Verify error conditions
+- Document test cases

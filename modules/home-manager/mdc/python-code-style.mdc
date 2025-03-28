@@ -1,0 +1,297 @@
+---
+description: 
+globs: *.py
+alwaysApply: false
+---
+# Python Code Style Guide
+
+## Table of Contents
+- [General Guidelines](mdc:#general-guidelines)
+- [Code Layout](mdc:#code-layout)
+- [Naming Conventions](mdc:#naming-conventions)
+- [Documentation](mdc:#documentation)
+- [Code Quality](mdc:#code-quality)
+- [Best Practices](mdc:#best-practices)
+- [Tools and Linters](mdc:#tools-and-linters)
+
+## General Guidelines
+
+### Code Style
+- Follow PEP 8 style guide
+- Use 4 spaces for indentation (no tabs)
+- Maximum line length: 79 characters
+- Use blank lines to separate functions and classes
+- Use blank lines to separate logical sections within functions
+
+### Imports
+```python
+# Standard library imports
+import os
+import sys
+
+# Third-party imports
+import pandas as pd
+import numpy as np
+
+# Local application imports
+from .models import User
+from .utils import helper
+```
+
+## Code Layout
+
+### File Structure
+```python
+#!/usr/bin/env python3
+"""
+Module docstring explaining the purpose of the module.
+"""
+
+# Standard library imports
+import os
+import sys
+
+# Third-party imports
+import pandas as pd
+
+# Local imports
+from .models import User
+
+# Constants
+MAX_RETRIES = 3
+DEFAULT_TIMEOUT = 30
+
+# Global variables (avoid when possible)
+config = {}
+
+def main():
+    """Main function entry point."""
+    pass
+
+if __name__ == "__main__":
+    main()
+```
+
+### Function Definitions
+```python
+def calculate_average(numbers: list[float]) -> float:
+    """
+    Calculate the average of a list of numbers.
+
+    Args:
+        numbers: List of floating-point numbers
+
+    Returns:
+        float: The average of the numbers
+
+    Raises:
+        ValueError: If the input list is empty
+    """
+    if not numbers:
+        raise ValueError("Input list cannot be empty")
+    return sum(numbers) / len(numbers)
+```
+
+## Naming Conventions
+
+### Variables and Functions
+- Use lowercase with underscores for variables and functions
+- Use descriptive names that indicate purpose
+- Avoid single-letter variables (except in loops)
+
+```python
+# Good
+user_name = "John"
+def calculate_total_price():
+    pass
+
+# Bad
+u = "John"
+def calc():
+    pass
+```
+
+### Classes
+- Use CamelCase for class names
+- Use nouns for class names
+
+```python
+# Good
+class UserProfile:
+    pass
+
+# Bad
+class user_profile:
+    pass
+```
+
+### Constants
+- Use uppercase with underscores for constants
+
+```python
+# Good
+MAX_CONNECTIONS = 100
+API_VERSION = "v1"
+
+# Bad
+maxConnections = 100
+apiVersion = "v1"
+```
+
+## Documentation
+
+### Docstrings
+- Use triple quotes for docstrings
+- Follow Google style docstring format
+- Include type hints
+
+```python
+def process_data(data: dict[str, any]) -> list[dict]:
+    """
+    Process input data and return formatted results.
+
+    Args:
+        data: Dictionary containing input data
+
+    Returns:
+        List of processed dictionaries
+
+    Raises:
+        ValueError: If data format is invalid
+    """
+    pass
+```
+
+### Comments
+- Use comments to explain complex logic
+- Keep comments up to date
+- Avoid obvious comments
+
+```python
+# Good
+# Calculate the running average using exponential smoothing
+alpha = 0.3
+running_avg = alpha * new_value + (1 - alpha) * old_avg
+
+# Bad
+# Add 1 to counter
+counter += 1
+```
+
+## Code Quality
+
+### Error Handling
+```python
+# Good
+try:
+    result = process_data(data)
+except ValueError as e:
+    logger.error(f"Invalid data format: {e}")
+    raise
+except Exception as e:
+    logger.error(f"Unexpected error: {e}")
+    raise
+
+# Bad
+try:
+    result = process_data(data)
+except:
+    pass
+```
+
+### Type Hints
+```python
+from typing import List, Dict, Optional
+
+def get_user(user_id: int) -> Optional[Dict[str, str]]:
+    """
+    Retrieve user information by ID.
+
+    Args:
+        user_id: Unique identifier for the user
+
+    Returns:
+        Optional[Dict[str, str]]: User information if found, None otherwise
+    """
+    pass
+```
+
+## Best Practices
+
+### List Comprehensions
+```python
+# Good
+squares = [x**2 for x in range(10)]
+
+# Bad
+squares = []
+for x in range(10):
+    squares.append(x**2)
+```
+
+### Context Managers
+```python
+# Good
+with open('file.txt', 'r') as f:
+    content = f.read()
+
+# Bad
+f = open('file.txt', 'r')
+content = f.read()
+f.close()
+```
+
+### Default Arguments
+```python
+# Good
+def create_user(name: str, age: int = 18) -> dict:
+    return {"name": name, "age": age}
+
+# Bad
+def create_user(name: str, age: int = []) -> dict:
+    return {"name": name, "age": age}
+```
+
+## Tools and Linters
+
+### Recommended Tools
+- `black`: Code formatter
+- `flake8`: Style guide enforcement
+- `mypy`: Static type checker
+- `pylint`: Code analysis tool
+
+### Configuration Example
+```ini
+# setup.cfg
+[flake8]
+max-line-length = 79
+exclude = .git,__pycache__,build,dist
+ignore = E203, W503
+
+[mypy]
+python_version = 3.8
+warn_return_any = True
+warn_unused_configs = True
+```
+
+### Pre-commit Configuration
+```yaml
+# .pre-commit-config.yaml
+repos:
+-   repo: https://github.com/psf/black
+    rev: 23.3.0
+    hooks:
+    -   id: black
+        language_version: python3
+
+-   repo: https://github.com/pycqa/flake8
+    rev: 6.0.0
+    hooks:
+    -   id: flake8
+        additional_dependencies: [flake8-docstrings]
+```
+
+## Additional Resources
+- [PEP 8 Style Guide](mdc:https:/www.python.org/dev/peps/pep-0008)
+- [Google Python Style Guide](mdc:https:/google.github.io/styleguide/pyguide.html)
+- [Python Type Hints](mdc:https:/docs.python.org/3/library/typing.html)

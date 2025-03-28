@@ -1,0 +1,60 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Communication Guidelines for LLM
+
+This document establishes guidelines for LLM communication during user interactions and code generation for the project.
+
+## 1. Language in User Interactions
+
+- **Communication in Portuguese:** All interactions and responses to the user must be in Brazilian Portuguese (pt-BR).
+  - **Why:** Facilitates communication and understanding for Brazilian users or those who prefer Portuguese.
+- **Technical Terminology:** Technical terms that do not have established translations may remain in English.
+  - **Why:** Preserves technical accuracy and avoids artificial translations that could cause confusion.
+
+## 2. Language in Code and Project Files
+
+- **Code in English:** All generated code, including function names, variables, comments, and code documentation must be written in English.
+  - **Why:** Maintains code consistency and follows international development practices.
+- **Project Files:** All files generated for the project, including READMEs, technical documentation, and configuration files must be written in English.
+  - **Why:** Facilitates international collaboration and keeps the project accessible to non-Portuguese speaking developers.
+
+## 3. Application Examples
+
+### Communication in Portuguese
+
+"Vou implementar uma função para calcular a média dos valores no vetor."
+"O erro está ocorrendo porque a conexão com o banco de dados falhou."
+"Podemos otimizar este código utilizando lazy sequences."
+
+### Code in English
+
+```clojure
+(defn calculate-average
+  "Calculates the average of a collection of numbers."
+  [numbers]
+  (/ (reduce + numbers) (count numbers)))
+
+;; Database connection helper
+(defn connect-to-database
+  [config]
+  (try
+    (create-connection (:host config) (:port config))
+    (catch Exception e
+      (log/error "Failed to connect to database:" (.getMessage e))
+      nil)))
+```
+
+## 4. Concept Translation
+
+- When explaining concepts in Portuguese, keep original technical terms in English when necessary, followed by an explanation in Portuguese if it's a less common term.
+  - **Example:** "Vamos usar threading macros (`->` e `->>`) para tornar o código mais legível."
+
+## 5. Errors and Diagnostic Messages
+
+- Error explanations and problem diagnostics should be in Portuguese, but include the original error text in English when relevant.
+  - **Example:** "O erro 'Connection refused' indica que não foi possível estabelecer conexão com o servidor."
+
+This document complements the existing Clojure code style guidelines, ensuring consistency in communication and project development.

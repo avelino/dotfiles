@@ -30,6 +30,7 @@
       "domzilla-caffeine"
       "safari-technology-preview"
       "vivaldi"
+      "chatgpt"
     ];
   };
 }
