@@ -8,5 +8,7 @@
     '';
 
   # Variáveis de ambiente
-  home.sessionVariables = { PROJECTS_DIR = "~/projects"; };
+  home.sessionVariables = {
+    PROJECTS_DIR = "~/projects";
+  };
 }

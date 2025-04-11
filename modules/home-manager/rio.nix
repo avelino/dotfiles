@@ -10,6 +10,7 @@
     height = 438
     width = 662
     padding-x = 10
+    close-on-quit = true
 
     # theme = "dracula"
     # theme = "rose-pine"

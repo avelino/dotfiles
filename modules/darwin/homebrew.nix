@@ -15,6 +15,11 @@
       lockfiles = true;
     };
 
+    brews = [
+      "nvm"
+      "nodenv"
+    ];
+
     casks = [
       "cursor"
       "windsurf"
@@ -31,6 +36,11 @@
       "safari-technology-preview"
       "vivaldi"
       "chatgpt"
+      "slack"
+      "ngrok"
+      "tableplus"
+      "qobuz" # change spotify to hi-res audio
+      "cloudflare-warp@beta"
     ];
   };
 }

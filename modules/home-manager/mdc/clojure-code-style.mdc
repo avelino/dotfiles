@@ -198,6 +198,7 @@ This document outlines the coding style and conventions to be followed when deve
     *   **Why:** Exception handling prevents the application from crashing and allows for graceful recovery from errors.
 *   Use "assert" for validating input.
     *   **Why:** Assertions can help catch errors early in the development process.
+*   Cannot recur across try
 
     """clojure
     (defn divide

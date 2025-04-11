@@ -29,7 +29,6 @@
         packages = with pkgs; [
           # Applications
           arc-browser
-          spotify
           unnaturalscrollwheels
           (signal-desktop.overrideAttrs (oldAttrs: {
             version = "7.42.0";
