@@ -114,13 +114,11 @@ home.packages = with pkgs; [
 ```nix
 # Package overrides
 home.packages = with pkgs; [
-  (signal-desktop.overrideAttrs (oldAttrs: {
-    version = "7.42.0";
-    src = pkgs.fetchurl {
-      url = "https://updates.signal.org/desktop/signal-desktop-mac-universal-7.42.0.dmg";
-      sha256 = "sha256-N/BgLpEvpcl29+AN0zZDBGBwkYqYqjW953jfdwm5+/4=";
-    };
-  }))
+  (neovim.override {
+    withPython3 = true;
+    withNodeJs = true;
+    extraPython3Packages = ps: with ps; [ pynvim ];
+  })
 ];
 ```
 

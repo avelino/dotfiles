@@ -18,6 +18,8 @@
     brews = [
       "nvm"
       "nodenv"
+      "gnupg"
+      "python@3.13"
     ];
 
     casks = [

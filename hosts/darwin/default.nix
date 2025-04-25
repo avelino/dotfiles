@@ -19,7 +19,6 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs = { inherit username; };
-    backupFileExtension = "backup";
     users.${username} = { pkgs, ... }: {
       home = {
         stateVersion = "23.11";
@@ -30,13 +29,6 @@
           # Applications
           arc-browser
           unnaturalscrollwheels
-          (signal-desktop.overrideAttrs (oldAttrs: {
-            version = "7.42.0";
-            src = pkgs.fetchurl {
-              url = "https://updates.signal.org/desktop/signal-desktop-mac-universal-7.42.0.dmg";
-              sha256 = "sha256-N/BgLpEvpcl29+AN0zZDBGBwkYqYqjW953jfdwm5+/4=";
-            };
-          }))
         ];
       };
 

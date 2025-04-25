@@ -29,7 +29,7 @@
       # Formatters and linters
       black
       ruff
-      ruff-lsp
+      # ruff-lsp
       nixfmt-classic
       rustfmt
     ];
