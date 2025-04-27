@@ -87,6 +87,7 @@
     yq
     silver-searcher
     cmake
+    fish
 
     # Development tools
     git
@@ -153,4 +154,8 @@
 
   # Configuração correta do 1Password para Darwin
   security.pam.services.sudo_local.touchIdAuth = true;
+
+  # Configuração do fish para nix-darwin
+  programs.fish.enable = true;
+  environment.shells = with pkgs; [ bash zsh fish ];
 }

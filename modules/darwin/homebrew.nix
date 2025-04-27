@@ -33,7 +33,7 @@
       "1password"
       "1password-cli"
       "font-maple-mono"
-      "zed"
+      "zed@preview"
       "domzilla-caffeine"
       "safari-technology-preview"
       "vivaldi"
