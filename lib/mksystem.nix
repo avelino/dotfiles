@@ -21,6 +21,12 @@ if isDarwin then
           name = username;
           home = "/Users/${username}";
         };
+
+        # Configure home-manager
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.backupFileExtension = "backup";
+        home-manager.users.${username} = { ... }: { };
       }
       ../hosts/darwin
     ];
@@ -40,6 +46,12 @@ else
           home = "/home/${username}";
           extraGroups = [ "wheel" "docker" ];
         };
+
+        # Configure home-manager
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.backupFileExtension = "backup";
+        home-manager.users.${username} = { ... }: { };
       }
       ../hosts/nixos
     ];
