@@ -41,9 +41,9 @@
       "slack"
       "ngrok"
       "tableplus"
-      "qobuz" # change spotify to hi-res audio
-      "cloudflare-warp@beta"
+      "spotify"
       "firefox@nightly"
+      "tailscale"
     ];
   };
 }

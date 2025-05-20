@@ -48,9 +48,9 @@
       # Main mode bindings
       [mode.main.binding]
       # Launch applications
-      alt-shift-enter = '''exec-and-forget open -na ~/Applications/Home Manager Apps/Rio.app'''
-      alt-shift-b = '''exec-and-forget open -a ~/Applications/Home Manager Apps/Arc.app'''
-      alt-shift-f = '''exec-and-forget open -a Finder'''
+      alt-shift-enter = 'exec-and-forget open -na ~/Applications/Home Manager Apps/Rio.app'
+      alt-shift-b = 'exec-and-forget open -a ~/Applications/Home Manager Apps/Arc.app'
+      alt-shift-f = 'exec-and-forget open -a Finder'
 
       # Window management
       alt-q = "close"

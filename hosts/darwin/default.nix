@@ -14,6 +14,9 @@
   # Define system state version (required)
   system.stateVersion = 5;
 
+  # Define primary user for darwin configuration
+  system.primaryUser = username;
+
   # Configure home-manager
   home-manager = {
     useGlobalPkgs = true;
