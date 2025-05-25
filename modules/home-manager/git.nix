@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let
-  defaultEditor = "cursor";
+  defaultEditor = "zed-preview";
   gitConfig = {
     github.user = "avelino";
     user = {
@@ -11,7 +11,6 @@ let
     };
     core = {
       editor = "${defaultEditor} --wait";
-      # editor = "zed --wait";
       autocrlf = "input";
     };
     color = {

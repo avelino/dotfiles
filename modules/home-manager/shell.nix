@@ -2,7 +2,7 @@
 
 let
   # Definições centralizadas para fácil manutenção
-  defaultEditor = "cursor";
+  defaultEditor = "zed-preview";
   defaultPager = "less -FirSwX";
   logseqPaths = {
     notes = "~/notes";
@@ -31,6 +31,7 @@ in
       v = "nvim";
       c = "cursor";
       wi = "windsurf";
+      z = "zed-preview";
     };
 
     functions = {
@@ -55,6 +56,7 @@ in
       c = "command cursor $argv";
       wi = "command windsurf $argv";
       v = "command nvim $argv";
+      z = "command zed-preview $argv";
 
       # Define logseq function
       logseq = {
@@ -191,33 +193,6 @@ in
           end
         '';
       };
-
-      # Define yabai function
-      yabai = {
-        description = "yabai environment management";
-        body = ''
-          switch $argv[1]
-            case start
-              command yabai --start-service
-            case stop
-              command yabai --stop-service
-            case restart
-              command yabai --restart-service
-            case version
-              command yabai --version
-            case install
-              command yabai --install-service
-            case uninstall
-              command yabai --uninstall-service
-            case load
-              command yabai --load-sa
-            case unload
-              command yabai --unload-sa
-            case '*'
-              command yabai $argv
-          end
-        '';
-      };
     };
 
     shellInit = ''
@@ -289,7 +264,8 @@ in
       # Editor completions
       complete -c v -w nvim
       complete -c c -w cursor
-      complete -c c -w windsurf
+      complete -c w -w windsurf
+      complete -c z -w zed-preview
 
       # Check if 1Password agent is running
       if test -e $HOME/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
