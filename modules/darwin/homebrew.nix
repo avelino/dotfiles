@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   # Homebrew configuration
@@ -24,7 +24,6 @@
 
     casks = [
       "cursor"
-      "windsurf"
       "morgen"
       "orbstack"
       "raycast"
@@ -35,15 +34,12 @@
       "font-maple-mono"
       "zed@preview"
       "domzilla-caffeine"
-      "safari-technology-preview"
-      "vivaldi"
-      "chatgpt"
       "slack"
       "ngrok"
       "tableplus"
       "spotify"
-      "firefox@nightly"
       "tailscale"
+      "whatsapp"
     ];
   };
 }

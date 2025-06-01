@@ -19,7 +19,7 @@
       enable-normalization-opposite-orientation-for-nested-containers = true
 
       # Accordion layout settings
-      accordion-padding = 30
+      accordion-padding = 45
 
       # Default root container settings
       default-root-container-layout = 'tiles'
