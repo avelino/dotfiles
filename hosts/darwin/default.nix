@@ -46,6 +46,7 @@
       imports = [
         ../../modules/home-manager/shell.nix
         ../../modules/home-manager/vscode.nix
+        ../../modules/home-manager/zed.nix
         ../../modules/home-manager/git.nix
         ../../modules/home-manager/tmux.nix
         ../../modules/home-manager/ssh.nix

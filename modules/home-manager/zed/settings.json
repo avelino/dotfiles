@@ -1,0 +1,86 @@
+{
+  // zed config via nix
+  "context_servers": {
+    "github-activity-summarizer": {
+      "settings": {
+        "author": null,
+        "from_date": null,
+        "auth_type": null
+      }
+    }
+  },
+  "vim_mode": false,
+  "restore_on_startup": "last_session",
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 1000
+    }
+  },
+  "ui_font_size": 18,
+  "buffer_font_size": 18,
+  "ui_font_family": "Maple Mono",
+  "buffer_font_family": "Maple Mono",
+  "theme": {
+    "mode": "dark",
+    "light": "Flexoki Light",
+    "dark": "Tokyo Night"
+  },
+  "icon_theme": "Catppuccin Macchiato",
+  "agent": {
+    "default_profile": "write",
+    "play_sound_when_agent_done": true,
+    "always_allow_tool_actions": true,
+    "model_parameters": [],
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4"
+    },
+    "version": "2",
+    "dock": "right",
+    "default_view": "thread",
+    "enabled": true
+  },
+  "auto_indent": true,
+  "enabled": true,
+  "show_on_startup": true,
+  "default_model": {
+    "model": "en_core_web_sm",
+    "provider": "zed.dev"
+  },
+  "enable_experimental_live_diffs": true,
+  "button": true,
+  "terminal": {
+    // "shell": "${pkgs.fish}/bin/fish",
+    "shell_args": ["-l"],
+    "shell_env": {
+      "LANG": "en_US.UTF-8",
+      "LC_ALL": "en_US.UTF-8"
+    }
+  },
+  "auto_install_extensions": {
+    "html": true,
+    "dockerfile": true,
+    "docker-compose": true,
+    "markdown": true,
+    "toml": true,
+    "python": true,
+    "javascript": true,
+    "typescript": true,
+    "vue": true,
+    "scss": true,
+    "clojure": true,
+    "elisp": true,
+    "scheme": true,
+    "rust": true,
+    "go": true,
+    "pylsp": true,
+    "ruff": true,
+    "nix": true,
+    "sqruff": true,
+
+    // themes
+    "flexoki-themes": true,
+    "tokyo-night": true,
+    "catppuccin-icons": true
+  }
+}
