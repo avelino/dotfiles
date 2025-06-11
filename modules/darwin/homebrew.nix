@@ -20,6 +20,7 @@
       "nodenv"
       "gnupg"
       "python@3.13"
+      "cocoapods"
     ];
 
     casks = [
