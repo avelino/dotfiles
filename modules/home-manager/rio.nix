@@ -34,7 +34,7 @@
     [window]
     height = 438
     width = 662
-    mode = "Windowed"
+    mode = "Fullscreen"
     opacity = 1.0
     blur = false
     decorations = "Buttonless"

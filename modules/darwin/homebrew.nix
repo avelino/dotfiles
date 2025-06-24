@@ -41,6 +41,7 @@
       "spotify"
       "tailscale"
       "whatsapp"
+      "chatgpt"
     ];
   };
 }
