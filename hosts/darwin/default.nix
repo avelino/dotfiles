@@ -13,9 +13,6 @@
   # Define system state version (required)
   system.stateVersion = 5;
 
-  # Define primary user for darwin configuration
-  system.primaryUser = username;
-
   # Configure home-manager
   home-manager = {
     useGlobalPkgs = true;
@@ -97,7 +94,7 @@
     neovim
     act
     hugo
-    graalvm-oracle
+    graalvm-ce
 
     # Languages and runtimes
     go
@@ -150,12 +147,12 @@
     zls # zig lsp
 
     # Fonts
-    maple-mono.NF
+    maple-mono-NF
     font-awesome
   ];
 
-  # Configuração correta do 1Password para Darwin
-  security.pam.services.sudo_local.touchIdAuth = true;
+  # Enable TouchID for sudo authentication
+  security.pam.enableSudoTouchIdAuth = true;
 
   # Configuração do fish para nix-darwin
   programs.fish.enable = true;
