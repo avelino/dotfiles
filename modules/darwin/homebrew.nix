@@ -40,8 +40,7 @@
       "tableplus"
       "spotify"
       "tailscale"
-      "whatsapp"
-      "chatgpt"
+      "warp"
     ];
   };
 }
