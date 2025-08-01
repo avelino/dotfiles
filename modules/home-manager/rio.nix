@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  home.packages = [ pkgs.rio ];
+  # home.packages = [ pkgs.rio ];
 
   home.file.".config/rio/config.toml".text = let
     colors = import ./colors.nix;

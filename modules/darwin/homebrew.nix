@@ -40,6 +40,7 @@
       "tableplus"
       "spotify"
       "tailscale"
+      "rio"
       "warp"
     ];
   };
