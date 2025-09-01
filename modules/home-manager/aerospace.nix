@@ -49,8 +49,9 @@
       [mode.main.binding]
       # Launch applications
       alt-shift-enter = 'exec-and-forget open -na ~/Applications/Home Manager Apps/Rio.app'
-      alt-shift-b = 'exec-and-forget open -a ~/Applications/Home Manager Apps/Arc.app'
+      alt-shift-b = 'exec-and-forget open -a /Applications/Google Chrome.app'
       alt-shift-f = 'exec-and-forget open -a Finder'
+      ctrl-option-shift-r = "reload-config"
 
       # Window management
       alt-q = "close"
