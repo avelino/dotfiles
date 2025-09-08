@@ -15,6 +15,10 @@
       lockfiles = true;
     };
 
+    taps = [
+      "oven-sh/bun"
+    ];
+
     brews = [
       "nvm"
       "nodenv"
@@ -26,6 +30,8 @@
       "kubectl"
       "kubelogin"
       "poetry"
+      "oven-sh/bun/bun"
+      "awscli"
     ];
 
     casks = [
