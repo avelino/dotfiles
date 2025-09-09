@@ -23,17 +23,14 @@
     }@inputs:
     let
       mkSystem = import ./lib/mksystem.nix;
-      nixpkgsConfig = {
-        config = {
-          allowUnfree = true;
-          allowUnsupportedSystem = true;
-        };
-      };
       username = "avelino";
     in
     {
       darwinConfigurations."${username}-igloo" = mkSystem "${username}-igloo" "aarch64-darwin" inputs;
       darwinConfigurations."${username}-kazoo" = mkSystem "${username}-kazoo" "aarch64-darwin" inputs;
       nixosConfigurations."${username}-zentoo" = mkSystem "${username}-zentoo" "x86_64-linux" inputs;
+
+      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-classic;
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-classic;
     };
 }

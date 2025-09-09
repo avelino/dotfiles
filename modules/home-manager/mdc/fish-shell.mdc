@@ -6,6 +6,7 @@ alwaysApply: false
 # Fish Shell Guidelines
 
 ## Table of Contents
+
 - [Shell Configuration](mdc:#shell-configuration)
 - [Functions](mdc:#functions)
 - [Aliases and Abbreviations](mdc:#aliases-and-abbreviations)
@@ -16,6 +17,7 @@ alwaysApply: false
 ## Shell Configuration
 
 ### File Structure
+
 ```fish
 # ~/.config/fish/config.fish
 # Main configuration file
@@ -31,6 +33,7 @@ alwaysApply: false
 ```
 
 ### Basic Configuration
+
 ```fish
 # Set fish greeting
 set fish_greeting
@@ -50,6 +53,7 @@ set -gx PATH $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin /run/curre
 ## Functions
 
 ### Function Structure
+
 ```fish
 function function_name
     # Function description
@@ -64,6 +68,7 @@ end
 ```
 
 ### Example Functions
+
 ```fish
 # Git functions
 function g
@@ -89,6 +94,7 @@ end
 ```
 
 ### Function Best Practices
+
 - Use descriptive names
 - Include help text
 - Handle arguments properly
@@ -98,6 +104,7 @@ end
 ## Aliases and Abbreviations
 
 ### Abbreviations
+
 ```fish
 # Git abbreviations
 abbr -a g git
@@ -115,6 +122,7 @@ abbr -a v nvim
 ```
 
 ### When to Use Abbreviations vs Functions
+
 - Use abbreviations for simple command aliases
 - Use functions for complex operations or when you need:
   - Argument handling
@@ -125,6 +133,7 @@ abbr -a v nvim
 ## Environment Variables
 
 ### Setting Variables
+
 ```fish
 # Universal variables (persist across sessions)
 set -U EDITOR cursor
@@ -138,6 +147,7 @@ set -l temp_var "value"
 ```
 
 ### Common Environment Variables
+
 ```fish
 # Editor settings
 set -gx EDITOR cursor
@@ -155,6 +165,7 @@ set -gx NIX_PROFILES "/nix/var/nix/profiles/default $HOME/.nix-profile"
 ## Completions
 
 ### Creating Completions
+
 ```fish
 # Basic completion
 complete -c command_name -f -n "__fish_use_subcommand" -a "subcommand" -d "Description"
@@ -166,6 +177,7 @@ complete -c nix-cmd -f -n "__fish_use_subcommand" -a "search" -d "Search for a p
 ```
 
 ### Completion Best Practices
+
 - Provide clear descriptions
 - Use appropriate conditions
 - Group related completions
@@ -174,12 +186,14 @@ complete -c nix-cmd -f -n "__fish_use_subcommand" -a "search" -d "Search for a p
 ## Best Practices
 
 ### Code Organization
+
 - Keep functions in separate files
 - Use consistent naming conventions
 - Document complex functions
 - Group related functions together
 
 ### Error Handling
+
 ```fish
 function safe_command
     if not command -s required_tool >/dev/null 2>&1
@@ -196,18 +210,21 @@ end
 ```
 
 ### Performance
+
 - Use built-in commands when possible
 - Minimize external command calls
 - Cache frequently used values
 - Use appropriate variable scopes
 
 ### Security
+
 - Validate user input
 - Use secure file operations
 - Handle sensitive data properly
 - Follow principle of least privilege
 
 ### Testing
+
 - Test functions with various inputs
 - Handle edge cases
 - Verify error conditions

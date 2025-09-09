@@ -1,11 +1,12 @@
 ---
-description: 
+description: Use when user asks to create or update *.py files
 globs: *.py
 alwaysApply: false
 ---
 # Python Code Style Guide
 
 ## Table of Contents
+
 - [General Guidelines](mdc:#general-guidelines)
 - [Code Layout](mdc:#code-layout)
 - [Naming Conventions](mdc:#naming-conventions)
@@ -17,6 +18,7 @@ alwaysApply: false
 ## General Guidelines
 
 ### Code Style
+
 - Follow PEP 8 style guide
 - Use 4 spaces for indentation (no tabs)
 - Maximum line length: 79 characters
@@ -24,6 +26,7 @@ alwaysApply: false
 - Use blank lines to separate logical sections within functions
 
 ### Imports
+
 ```python
 # Standard library imports
 import os
@@ -41,6 +44,7 @@ from .utils import helper
 ## Code Layout
 
 ### File Structure
+
 ```python
 #!/usr/bin/env python3
 """
@@ -73,6 +77,7 @@ if __name__ == "__main__":
 ```
 
 ### Function Definitions
+
 ```python
 def calculate_average(numbers: list[float]) -> float:
     """
@@ -95,6 +100,7 @@ def calculate_average(numbers: list[float]) -> float:
 ## Naming Conventions
 
 ### Variables and Functions
+
 - Use lowercase with underscores for variables and functions
 - Use descriptive names that indicate purpose
 - Avoid single-letter variables (except in loops)
@@ -112,6 +118,7 @@ def calc():
 ```
 
 ### Classes
+
 - Use CamelCase for class names
 - Use nouns for class names
 
@@ -126,6 +133,7 @@ class user_profile:
 ```
 
 ### Constants
+
 - Use uppercase with underscores for constants
 
 ```python
@@ -141,6 +149,7 @@ apiVersion = "v1"
 ## Documentation
 
 ### Docstrings
+
 - Use triple quotes for docstrings
 - Follow Google style docstring format
 - Include type hints
@@ -163,6 +172,7 @@ def process_data(data: dict[str, any]) -> list[dict]:
 ```
 
 ### Comments
+
 - Use comments to explain complex logic
 - Keep comments up to date
 - Avoid obvious comments
@@ -181,6 +191,7 @@ counter += 1
 ## Code Quality
 
 ### Error Handling
+
 ```python
 # Good
 try:
@@ -200,6 +211,7 @@ except:
 ```
 
 ### Type Hints
+
 ```python
 from typing import List, Dict, Optional
 
@@ -219,6 +231,7 @@ def get_user(user_id: int) -> Optional[Dict[str, str]]:
 ## Best Practices
 
 ### List Comprehensions
+
 ```python
 # Good
 squares = [x**2 for x in range(10)]
@@ -230,6 +243,7 @@ for x in range(10):
 ```
 
 ### Context Managers
+
 ```python
 # Good
 with open('file.txt', 'r') as f:
@@ -242,6 +256,7 @@ f.close()
 ```
 
 ### Default Arguments
+
 ```python
 # Good
 def create_user(name: str, age: int = 18) -> dict:
@@ -255,12 +270,14 @@ def create_user(name: str, age: int = []) -> dict:
 ## Tools and Linters
 
 ### Recommended Tools
+
 - `black`: Code formatter
 - `flake8`: Style guide enforcement
 - `mypy`: Static type checker
 - `pylint`: Code analysis tool
 
 ### Configuration Example
+
 ```ini
 # setup.cfg
 [flake8]
@@ -275,6 +292,7 @@ warn_unused_configs = True
 ```
 
 ### Pre-commit Configuration
+
 ```yaml
 # .pre-commit-config.yaml
 repos:
@@ -292,6 +310,7 @@ repos:
 ```
 
 ## Additional Resources
+
 - [PEP 8 Style Guide](mdc:https:/www.python.org/dev/peps/pep-0008)
 - [Google Python Style Guide](mdc:https:/google.github.io/styleguide/pyguide.html)
 - [Python Type Hints](mdc:https:/docs.python.org/3/library/typing.html)

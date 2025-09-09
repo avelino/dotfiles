@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   nix = {
     optimise.automatic = true;
@@ -6,20 +6,20 @@
       extra-experimental-features = [ "nix-command" "flakes" ];
       warn-dirty = false;
       accept-flake-config = true;
-      sandbox = false; # Temporarily disable sandbox for macOS builds
       trusted-users = [ "root" "@admin" "@wheel" ];
       max-jobs = "auto";
       cores = 0;
-    };
-    gc = {
-      automatic = true;
-      interval = { Weekday = 0; Hour = 0; Minute = 0; }; # Run at midnight on Sundays
-      options = "--delete-older-than 30d";
-    };
+    } // (lib.optionalAttrs pkgs.stdenv.isDarwin { sandbox = false; });
+    gc =
+      {
+        automatic = true;
+        options = "--delete-older-than 30d";
+      }
+      // (lib.optionalAttrs pkgs.stdenv.isDarwin { interval = { Weekday = 0; Hour = 0; Minute = 0; }; })
+      // (lib.optionalAttrs pkgs.stdenv.isLinux { dates = "weekly"; });
     extraOptions = ''
       keep-outputs = true
       keep-derivations = true
-      experimental-features = nix-command flakes
       build-users-group = nixbld
     '';
   };

@@ -1,4 +1,4 @@
-{ config, pkgs, username, ... }:
+{ config, pkgs, username, hostname, ... }:
 
 {
   # Import modules
@@ -12,6 +12,18 @@
 
   # Define system state version (required)
   system.stateVersion = 5;
+
+  # Hostnames e usuário
+  networking = {
+    computerName = hostname;
+    hostName = hostname;
+    localHostName = hostname;
+  };
+
+  users.users.${username} = {
+    name = username;
+    home = "/Users/${username}";
+  };
 
   # Configure home-manager
   home-manager = {
@@ -28,6 +40,56 @@
           # Applications
           arc-browser
           unnaturalscrollwheels
+
+          # Development tools e linguagens
+          git
+          gh
+          neovim
+          act
+          hugo
+          graalvm-ce
+
+          go
+          nodejs
+          yarn
+          rustup
+          clojure
+          babashka
+          clj-kondo
+          clojure-lsp
+
+          # Dev tools
+          d2
+          jq
+          kubectl
+          kubectx
+          stern
+          argocd
+
+          # Language Servers and Dev Tools
+          bash-language-server
+          clang-tools
+          delve
+          dockerfile-language-server-nodejs
+          gofumpt
+          htmx-lsp
+          nil
+          nixfmt-classic
+          pgformatter
+          shellcheck
+          shfmt
+          stylua
+          lua-language-server
+          tailwindcss-language-server
+          taplo
+          terraform-ls
+          tflint
+          tree-sitter
+          typescript-language-server
+          vscode-langservers-extracted
+          yaml-language-server
+          yamllint
+          zls
         ];
       };
 
@@ -41,18 +103,7 @@
       };
 
       imports = [
-        ../../modules/home-manager/shell.nix
-        ../../modules/home-manager/vscode.nix
-        ../../modules/home-manager/zed.nix
-        ../../modules/home-manager/git.nix
-        ../../modules/home-manager/tmux.nix
-        ../../modules/home-manager/ssh.nix
-        ../../modules/home-manager/rio.nix
-        ../../modules/home-manager/logseq.nix
-        ../../modules/home-manager/curl.nix
-        ../../modules/home-manager/clojure.nix
-        ../../modules/home-manager/neovim.nix
-        ../../modules/home-manager/dev.nix
+        ../../modules/home-manager/default.nix
         ../../modules/home-manager/aerospace.nix
       ];
     };
@@ -69,84 +120,21 @@
     };
   };
 
-  # System packages
+  # System packages: manter apenas o essencial de sistema
   environment.systemPackages = with pkgs; [
-    # System utilities
     eza
     btop
     htop
-    tmux
     bat
     delta
     direnv
     fzf
     ripgrep
     fd
-    jq
     yq
     silver-searcher
     cmake
     fish
-
-    # Development tools
-    git
-    gh
-    neovim
-    act
-    hugo
-    graalvm-ce
-
-    # Languages and runtimes
-    go
-    nodejs
-    yarn
-    rustup
-    clojure
-    babashka
-    clj-kondo
-    clojure-lsp
-
-    # environment
-    # yabai
-    # skhd
-
-    # Development Tools
-    jq
-    d2
-
-    # Kubernetes and Cloud
-    kubectl
-    kubectx
-    stern
-    argocd
-
-    # Language Servers and Development Tools
-    bash-language-server
-    clang-tools # clangd lsp
-    delve
-    dockerfile-language-server-nodejs
-    gofumpt
-    htmx-lsp
-    nil # nix lsp
-    nixfmt-classic
-    pgformatter
-    rustup
-    shellcheck
-    shfmt
-    stylua
-    sumneko-lua-language-server
-    tailwindcss-language-server
-    taplo # toml lsp
-    terraform-ls
-    tflint
-    tree-sitter
-    typescript-language-server
-    vscode-langservers-extracted
-    yaml-language-server
-    yamllint
-    zls # zig lsp
-
-    # Fonts
     maple-mono-NF
     font-awesome
   ];

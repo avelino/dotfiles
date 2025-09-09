@@ -1,10 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 
 {
-  # Import modules
+  # Imports de sistema
   imports = [
-    ../../modules/shell.nix
-    ../../modules/git.nix
     ../../modules/nix.nix
   ];
 
@@ -24,16 +22,73 @@
   # Fish shell configuration
   programs.fish.enable = true;
   environment.shells = [ pkgs.fish ];
-  users.users.avelino = {
+  users.users.${username} = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
     shell = pkgs.fish;
   };
 
-  # System packages
-  environment.systemPackages = with pkgs; [
-    eza
-  ];
+  # Home Manager (unificado com Darwin)
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = { inherit username; };
+    users.${username} = { pkgs, ... }: {
+      home = {
+        stateVersion = "23.11";
+        username = username;
+        homeDirectory = "/home/${username}";
+        packages = with pkgs; [
+          git
+          gh
+          neovim
+          act
+          hugo
+
+          go
+          nodejs
+          yarn
+          clojure
+          babashka
+          clj-kondo
+          clojure-lsp
+
+          d2
+          jq
+          kubectl
+          kubectx
+          stern
+          argocd
+
+          bash-language-server
+          clang-tools
+          delve
+          dockerfile-language-server-nodejs
+          gofumpt
+          nil
+          nixfmt-classic
+          pgformatter
+          shellcheck
+          shfmt
+          stylua
+          lua-language-server
+          tailwindcss-language-server
+          taplo
+          terraform-ls
+          tflint
+          tree-sitter
+          typescript-language-server
+          vscode-langservers-extracted
+          yaml-language-server
+          yamllint
+        ];
+      };
+
+      imports = [
+        ../../modules/home-manager/default.nix
+      ];
+    };
+  };
 
   # System state version
   system.stateVersion = "23.11";

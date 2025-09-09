@@ -6,6 +6,7 @@ alwaysApply: false
 # Nix Development Guidelines
 
 ## Table of Contents
+
 - [Project Structure](mdc:#project-structure)
 - [Module Organization](mdc:#module-organization)
 - [Package Management](mdc:#package-management)
@@ -16,6 +17,7 @@ alwaysApply: false
 ## Project Structure
 
 ### Basic Structure
+
 ```
 .
 ├── flake.nix           # Main flake definition
@@ -31,6 +33,7 @@ alwaysApply: false
 ```
 
 ### Flake Structure
+
 ```nix
 {
   description = "Personal NixOS configuration";
@@ -64,6 +67,7 @@ alwaysApply: false
 ## Module Organization
 
 ### Module Structure
+
 ```nix
 { config, lib, pkgs, ... }:
 
@@ -81,6 +85,7 @@ alwaysApply: false
 ```
 
 ### Module Best Practices
+
 - Use `lib.mkEnableOption` for feature flags
 - Use `lib.mkIf` for conditional configuration
 - Use `lib.mkMerge` for combining configurations
@@ -90,6 +95,7 @@ alwaysApply: false
 ## Package Management
 
 ### Package Declarations
+
 ```nix
 # In home-manager configuration
 home.packages = with pkgs; [
@@ -111,6 +117,7 @@ home.packages = with pkgs; [
 ```
 
 ### Package Overrides
+
 ```nix
 # Package overrides
 home.packages = with pkgs; [
@@ -125,6 +132,7 @@ home.packages = with pkgs; [
 ## Development Environment
 
 ### Environment Variables
+
 ```nix
 # Set environment variables
 home.sessionVariables = {
@@ -136,6 +144,7 @@ home.sessionVariables = {
 ```
 
 ### Shell Configuration
+
 ```nix
 # Shell configuration
 programs.fish = {
@@ -156,6 +165,7 @@ programs.fish = {
 ## Home Manager
 
 ### Home Manager Configuration
+
 ```nix
 # Home Manager configuration
 home-manager = {
@@ -172,6 +182,7 @@ home-manager = {
 ```
 
 ### Program Configuration
+
 ```nix
 # Program configuration
 programs = {
@@ -193,36 +204,42 @@ programs = {
 ## Best Practices
 
 ### Version Management
+
 - Use `flake.lock` for dependency versions
 - Keep `nixpkgs` up to date
 - Use specific versions for critical packages
 - Document version requirements
 
 ### Security
+
 - Use secure package sources
 - Validate package hashes
 - Keep sensitive data out of configuration
 - Use appropriate file permissions
 
 ### Performance
+
 - Minimize package installations
 - Use appropriate package options
 - Optimize build times
 - Cache build results
 
 ### Maintenance
+
 - Regular updates
 - Clean unused generations
 - Monitor disk usage
 - Backup configurations
 
 ### Testing
+
 - Test configurations in isolation
 - Validate module options
 - Check for conflicts
 - Test on different systems
 
 ### Documentation
+
 - Document module options
 - Include usage examples
 - Maintain changelog

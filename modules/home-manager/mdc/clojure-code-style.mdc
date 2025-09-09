@@ -1,5 +1,5 @@
 ---
-description: 
+description:
 globs: *.clj,*.cljs
 alwaysApply: false
 ---
@@ -9,40 +9,40 @@ This document outlines the coding style and conventions to be followed when deve
 
 ## 1. General Principles
 
-*   **Consistency:** Maintain a consistent style throughout the codebase. Prefer using established idioms and patterns over inventing new ones.
-    *   **Why:** Consistent code is easier to understand and modify. It also reduces cognitive load for developers working on the project.
-*   **Readability:** Write code that is easy to read and understand. Prioritize clarity over brevity.
-    *   **Why:** Code is read much more often than it is written. Readable code reduces debugging time and makes it easier for new developers to join the project.
-*   **Simplicity:** Keep code as simple as possible. Avoid unnecessary complexity.
-    *   **Why:** Simple code is easier to reason about and less prone to errors. It also makes it easier to refactor and maintain the codebase.
-*   **Idempotence:** Functions should always return the same result if given the same arguments. Prefer immutable data structures to reduce side effects.
-    *   **Why:** Idempotent data structures promote easier reasoning about code.
-*   **Testability:** Design code that is easy to test. Use dependency injection and avoid tight coupling.
-    *   **Why:** Testable code is more reliable and easier to maintain. It also allows for more confident refactoring.
+* **Consistency:** Maintain a consistent style throughout the codebase. Prefer using established idioms and patterns over inventing new ones.
+  * **Why:** Consistent code is easier to understand and modify. It also reduces cognitive load for developers working on the project.
+* **Readability:** Write code that is easy to read and understand. Prioritize clarity over brevity.
+  * **Why:** Code is read much more often than it is written. Readable code reduces debugging time and makes it easier for new developers to join the project.
+* **Simplicity:** Keep code as simple as possible. Avoid unnecessary complexity.
+  * **Why:** Simple code is easier to reason about and less prone to errors. It also makes it easier to refactor and maintain the codebase.
+* **Idempotence:** Functions should always return the same result if given the same arguments. Prefer immutable data structures to reduce side effects.
+  * **Why:** Idempotent data structures promote easier reasoning about code.
+* **Testability:** Design code that is easy to test. Use dependency injection and avoid tight coupling.
+  * **Why:** Testable code is more reliable and easier to maintain. It also allows for more confident refactoring.
 
 ## 2. Formatting
 
 ### 2.1. Indentation
 
-*   Use 2 spaces for indentation. Avoid tabs.
-    *   **Why:** Consistent indentation makes code easier to read. Two spaces are a good balance between readability and line length.
-*   Align code vertically where appropriate.
-    *   **Why:** Vertical alignment highlights the structure of the code and makes it easier to scan.
-*   Use indentation to reflect the structure of the code.
+* Use 2 spaces for indentation. Avoid tabs.
+  * **Why:** Consistent indentation makes code easier to read. Two spaces are a good balance between readability and line length.
+* Align code vertically where appropriate.
+  * **Why:** Vertical alignment highlights the structure of the code and makes it easier to scan.
+* Use indentation to reflect the structure of the code.
 
     """clojure
     (defn calculate-total
       [price quantity discount]
-      (let [discounted-price (- price (* price discount))
+      (let [discounted-price (- price (*price discount))
             total-price      (* discounted-price quantity)]
         total-price))
     """
 
 ### 2.2. Line Length
 
-*   Limit lines to 80 characters. Consider breaking lines at logical points.
-    *   **Why:** Shorter lines are easier to read on a variety of screen sizes. They also make it easier to compare code side-by-side.
-*   When breaking lines, indent the continuation lines by 2 spaces.
+* Limit lines to 80 characters. Consider breaking lines at logical points.
+  * **Why:** Shorter lines are easier to read on a variety of screen sizes. They also make it easier to compare code side-by-side.
+* When breaking lines, indent the continuation lines by 2 spaces.
 
     """clojure
     (defn long-function-name
@@ -57,10 +57,10 @@ This document outlines the coding style and conventions to be followed when deve
 
 ### 2.3. Whitespace
 
-*   Use whitespace to separate logical sections of code.
-    *   **Why:** Whitespace improves readability and makes it easier to scan the code.
-*   Add a newline after each top-level form.
-    *   **Why:** Clear separation of forms improves understanding.
+* Use whitespace to separate logical sections of code.
+  * **Why:** Whitespace improves readability and makes it easier to scan the code.
+* Add a newline after each top-level form.
+  * **Why:** Clear separation of forms improves understanding.
 
     """clojure
     (ns my-project.core)
@@ -72,7 +72,7 @@ This document outlines the coding style and conventions to be followed when deve
     (hello "World")
     """
 
-*   Use a space after commas in collections.
+* Use a space after commas in collections.
 
     """clojure
     (def my-vector [1, 2, 3, 4]) ; Do this
@@ -81,21 +81,21 @@ This document outlines the coding style and conventions to be followed when deve
 
 ### 2.4. File Structure
 
-*   Place namespaces in directories that match the namespace name. For example, the namespace "my-project.core" should be in the file "src/my_project/core.clj".
-    *   **Why:** This makes it easy to find the source code for a given namespace.
-*   Keep related functions and data structures in the same namespace.
-    *   **Why:** This improves code organization and makes it easier to understand the dependencies between different parts of the application.
-*   Use "-main" function to start the application if needed.
+* Place namespaces in directories that match the namespace name. For example, the namespace "my-project.core" should be in the file "src/my_project/core.clj".
+  * **Why:** This makes it easy to find the source code for a given namespace.
+* Keep related functions and data structures in the same namespace.
+  * **Why:** This improves code organization and makes it easier to understand the dependencies between different parts of the application.
+* Use "-main" function to start the application if needed.
 
 ## 3. Naming Conventions
 
 ### 3.1. Namespaces
 
-*   Use lowercase letters and underscores for namespace names.
-    *   **Why:** This is the convention in the Clojure community.
-*   Use a hierarchical structure for namespace names (e.g., "com.example.my-project.core").
-    *   **Why:** This helps to organize code and avoid naming conflicts.
-*   Follow reverse domain name notation for the root namespace (e.g., "com.example.my-project").
+* Use lowercase letters and underscores for namespace names.
+  * **Why:** This is the convention in the Clojure community.
+* Use a hierarchical structure for namespace names (e.g., "com.example.my-project.core").
+  * **Why:** This helps to organize code and avoid naming conflicts.
+* Follow reverse domain name notation for the root namespace (e.g., "com.example.my-project").
 
     """clojure
     (ns com.example.my-project.core)
@@ -103,14 +103,14 @@ This document outlines the coding style and conventions to be followed when deve
 
 ### 3.2. Functions
 
-*   Use lowercase letters and hyphens for function names.
-    *   **Why:** This is the convention in the Clojure community.
-*   Use descriptive names that clearly indicate the function's purpose.
-    *   **Why:** Clear names make it easier to understand the code.
-*   Use verbs for function names.
-    *   **Why:** Verbs indicate that the function performs an action.
-*   When naming functions with side effects, end the name with an exclamation mark ("!").
-    *   **Why:** This alerts developers that the function has side effects. Avoid this in most cases, prefer immutable data structures.
+* Use lowercase letters and hyphens for function names.
+  * **Why:** This is the convention in the Clojure community.
+* Use descriptive names that clearly indicate the function's purpose.
+  * **Why:** Clear names make it easier to understand the code.
+* Use verbs for function names.
+  * **Why:** Verbs indicate that the function performs an action.
+* When naming functions with side effects, end the name with an exclamation mark ("!").
+  * **Why:** This alerts developers that the function has side effects. Avoid this in most cases, prefer immutable data structures.
 
     """clojure
     (defn calculate-sum
@@ -124,12 +124,12 @@ This document outlines the coding style and conventions to be followed when deve
 
 ### 3.3. Variables and Constants
 
-*   Use lowercase letters and hyphens for variable names.
-    *   **Why:** This is the convention in the Clojure community.
-*   Use descriptive names that clearly indicate the variable's purpose.
-    *   **Why:** Clear names make it easier to understand the code.
-*   Use "def" for constants and capitalize the name with underscores.
-    *   **Why:** Constants should be easily identifiable.
+* Use lowercase letters and hyphens for variable names.
+  * **Why:** This is the convention in the Clojure community.
+* Use descriptive names that clearly indicate the variable's purpose.
+  * **Why:** Clear names make it easier to understand the code.
+* Use "def" for constants and capitalize the name with underscores.
+  * **Why:** Constants should be easily identifiable.
 
     """clojure
     (def PI 3.14159)
@@ -138,8 +138,8 @@ This document outlines the coding style and conventions to be followed when deve
 
 ### 3.4. Keywords
 
-*   Use keywords for map keys.
-    *   **Why:** Keywords are interned, which makes them more efficient than strings. They also prevent naming conflicts.
+* Use keywords for map keys.
+  * **Why:** Keywords are interned, which makes them more efficient than strings. They also prevent naming conflicts.
 
     """clojure
     (def person {:name "John"
@@ -150,10 +150,10 @@ This document outlines the coding style and conventions to be followed when deve
 
 ### 4.1. Idiomatic Clojure
 
-*   Use Clojure's built-in functions and data structures whenever possible.
-    *   **Why:** Clojure's built-in functions are highly optimized. They also follow established conventions.
-*   Use "destructuring" to extract values from data structures.
-    *   **Why:** Destructuring makes code more concise and readable.
+* Use Clojure's built-in functions and data structures whenever possible.
+  * **Why:** Clojure's built-in functions are highly optimized. They also follow established conventions.
+* Use "destructuring" to extract values from data structures.
+  * **Why:** Destructuring makes code more concise and readable.
 
     """clojure
     (defn greet
@@ -163,8 +163,8 @@ This document outlines the coding style and conventions to be followed when deve
     (greet {:name "John" :age 30})
     """
 
-*   Use "->" and "->>" for threading operations.
-    *   **Why:** Threading macros make code more readable by chaining operations together.
+* Use "->" and "->>" for threading operations.
+  * **Why:** Threading macros make code more readable by chaining operations together.
 
     """clojure
     (defn process-data
@@ -175,15 +175,15 @@ This document outlines the coding style and conventions to be followed when deve
           (reduce +)))
     """
 
-*   Use Records and Types sparingly, opting for maps. While Records can provide performance benefits, the added complexity may outweigh the gains in many scenarios.
-    *   **Why:** Maps are more flexible data.
+* Use Records and Types sparingly, opting for maps. While Records can provide performance benefits, the added complexity may outweigh the gains in many scenarios.
+  * **Why:** Maps are more flexible data.
 
 ### 4.2. Immutability
 
-*   Use immutable data structures whenever possible.
-    *   **Why:** Immutable data structures prevent side effects and make code easier to reason about.
-*   Use "transient" to optimize operations that require modifying a data structure.
-    *   **Why:** Transients allow for in-place modification of data structures while still maintaining the illusion of immutability.
+* Use immutable data structures whenever possible.
+  * **Why:** Immutable data structures prevent side effects and make code easier to reason about.
+* Use "transient" to optimize operations that require modifying a data structure.
+  * **Why:** Transients allow for in-place modification of data structures while still maintaining the illusion of immutability.
 
     """clojure
     (defn update-vector
@@ -194,11 +194,11 @@ This document outlines the coding style and conventions to be followed when deve
 
 ### 4.3. Error Handling
 
-*   Use "try"/"catch"/"finally" for handling exceptions.
-    *   **Why:** Exception handling prevents the application from crashing and allows for graceful recovery from errors.
-*   Use "assert" for validating input.
-    *   **Why:** Assertions can help catch errors early in the development process.
-*   Cannot recur across try
+* Use "try"/"catch"/"finally" for handling exceptions.
+  * **Why:** Exception handling prevents the application from crashing and allows for graceful recovery from errors.
+* Use "assert" for validating input.
+  * **Why:** Assertions can help catch errors early in the development process.
+* Cannot recur across try
 
     """clojure
     (defn divide
@@ -214,10 +214,10 @@ This document outlines the coding style and conventions to be followed when deve
 
 ### 4.4 Comments
 
-*   Write meaningful comments. Explain the "why" not the "what".
-    *   **Why:** Code tells you what is happening, comments should explain why it is happening.
-*   Use docstrings to document functions and namespaces.
-    *   **Why:** Docstrings are the primary way to document Clojure code.
+* Write meaningful comments. Explain the "why" not the "what".
+  * **Why:** Code tells you what is happening, comments should explain why it is happening.
+* Use docstrings to document functions and namespaces.
+  * **Why:** Docstrings are the primary way to document Clojure code.
 
     """clojure
     (ns my-project.core
@@ -231,24 +231,24 @@ This document outlines the coding style and conventions to be followed when deve
 
 ### 4.5 Testing
 
-*   Write unit tests for all functions.
-    *   **Why:** Unit tests ensure that the code works as expected and prevent regressions.
-*   Use a testing framework such as "clojure.test" or "Midje".
-    *   **Why:** Testing frameworks provide a structured way to write and run tests.
-*   Write integration tests to verify that different parts of the application work together correctly.
-    *   **Why:** Integration tests ensure that the application as a whole works as expected.
+* Write unit tests for all functions.
+  * **Why:** Unit tests ensure that the code works as expected and prevent regressions.
+* Use a testing framework such as "clojure.test" or "Midje".
+  * **Why:** Testing frameworks provide a structured way to write and run tests.
+* Write integration tests to verify that different parts of the application work together correctly.
+  * **Why:** Integration tests ensure that the application as a whole works as expected.
 
 ## 5. Specific Anti-Patterns and Mistakes to Avoid
 
-*   **Over-commenting trivial code:** Avoid stating the obvious. Comments should explain *why* the code is written, not *what* it does (unless the what is obfuscated).
-*   **Using mutable state excessively:** Embrace Clojure's immutability. Minimize the use of "atoms", "refs", and "agents". For instance, if a function can be written without using an "atom", it generally *should* be.
-*   **Ignoring REPL-driven development:** Clojure excels with REPL-driven development. Use it! Don't just write code in files and then execute them. Interact with your code, test functions directly, and explore the data flow in real-time.
-*   **Premature optimization:** Don't optimize code before it's necessary. Focus on writing clear and correct code first. Profile before attempting any speed increases.
+* **Over-commenting trivial code:** Avoid stating the obvious. Comments should explain *why* the code is written, not *what* it does (unless the what is obfuscated).
+* **Using mutable state excessively:** Embrace Clojure's immutability. Minimize the use of "atoms", "refs", and "agents". For instance, if a function can be written without using an "atom", it generally *should* be.
+* **Ignoring REPL-driven development:** Clojure excels with REPL-driven development. Use it! Don't just write code in files and then execute them. Interact with your code, test functions directly, and explore the data flow in real-time.
+* **Premature optimization:** Don't optimize code before it's necessary. Focus on writing clear and correct code first. Profile before attempting any speed increases.
 
 ## 6. Modern Approaches and Patterns
 
-*   **Data-Oriented Programming (DOP):** DOP is a core concept in Clojure. Treat data as immutable and first-class. Functions transform data.
-    *   Example: Configuration Management
+* **Data-Oriented Programming (DOP):** DOP is a core concept in Clojure. Treat data as immutable and first-class. Functions transform data.
+  * Example: Configuration Management
 
     """clojure
     (def default-config
@@ -265,8 +265,8 @@ This document outlines the coding style and conventions to be followed when deve
                                     :cache-size 2000}))
     """
 
-*   **Component-Based Architecture:** Using libraries like "component" or "integrant" to manage the lifecycle of application components.
-    *   **Example (using Integrant):**
+* **Component-Based Architecture:** Using libraries like "component" or "integrant" to manage the lifecycle of application components.
+  * **Example (using Integrant):**
 
     """clojure
     (ns my-app.system
@@ -288,8 +288,8 @@ This document outlines the coding style and conventions to be followed when deve
       (ig/halt! system))
     """
 
-*   **Asynchronous Programming:** Using "core.async" for managing asynchronous operations and concurrency.
-    *   Example:
+* **Asynchronous Programming:** Using "core.async" for managing asynchronous operations and concurrency.
+  * Example:
 
     """clojure
     (ns my-app.async
@@ -319,7 +319,7 @@ This document outlines the coding style and conventions to be followed when deve
         (println (async/<!! output-chan)))) ; Prints "Processed: Item 2"
     """
 
-*   **Using Spec for Data Validation and Generation:** "clojure.spec.alpha" allows you to define specifications for your data and use these specifications for validation, data generation, and documentation.
+* **Using Spec for Data Validation and Generation:** "clojure.spec.alpha" allows you to define specifications for your data and use these specifications for validation, data generation, and documentation.
 
     """clojure
     (ns my-app.spec
@@ -340,7 +340,7 @@ This document outlines the coding style and conventions to be followed when deve
 
 ## 7. Performance Optimization Techniques
 
-*   **Use transients for mutable operations on persistent data structures:** Transients allow for in-place modification of persistent data structures, which can significantly improve performance. Convert back to a persistent data structure after the modifications are complete.
+* **Use transients for mutable operations on persistent data structures:** Transients allow for in-place modification of persistent data structures, which can significantly improve performance. Convert back to a persistent data structure after the modifications are complete.
 
     """clojure
     (defn modify-vector [v]
@@ -350,7 +350,7 @@ This document outlines the coding style and conventions to be followed when deve
         (persistent! t)))       ; Convert back to persistent vector
     """
 
-*   **Minimize reflection by using type hints:** Clojure uses reflection to determine the types of arguments at runtime. Type hints can help the compiler avoid reflection, which can improve performance.
+* **Minimize reflection by using type hints:** Clojure uses reflection to determine the types of arguments at runtime. Type hints can help the compiler avoid reflection, which can improve performance.
 
     """clojure
     (defn add
@@ -358,7 +358,7 @@ This document outlines the coding style and conventions to be followed when deve
       (+ x y))
     """
 
-*   **Use the "loop" and "recur" construct for tail-recursive functions:** Tail-recursive functions can be optimized by the compiler to avoid stack overflow errors.
+* **Use the "loop" and "recur" construct for tail-recursive functions:** Tail-recursive functions can be optimized by the compiler to avoid stack overflow errors.
 
     """clojure
     (defn factorial [n]
@@ -369,16 +369,16 @@ This document outlines the coding style and conventions to be followed when deve
           (recur (dec n) (* acc n)))))
     """
 
-*   **Leverage Java Interop Judiciously:** While Clojure promotes functional programming, leveraging well-optimized Java libraries (while maintaining Clojure style) can boost performance for specific tasks.
+* **Leverage Java Interop Judiciously:** While Clojure promotes functional programming, leveraging well-optimized Java libraries (while maintaining Clojure style) can boost performance for specific tasks.
 
 ## 8. Security Best Practices
 
-*   **Input Validation:** Always validate user input to prevent injection attacks (e.g., SQL injection, XSS). Use "clojure.spec.alpha" or other validation libraries to ensure that input data conforms to expected formats and values.
-*   **Output Encoding:** Properly encode output data to prevent XSS attacks. Use appropriate encoding functions for different output contexts (e.g., HTML, JavaScript, SQL).
-*   **Authentication and Authorization:** Implement robust authentication and authorization mechanisms to protect sensitive data and resources. Use established libraries and frameworks for authentication and authorization, such as "friend" or "buddy".
-*   **Dependency Management:** Keep dependencies up to date to address known security vulnerabilities. Regularly audit dependencies and update them to the latest versions.
-*   **Avoid Using "eval":** Using "eval" can introduce security vulnerabilities if the input is not carefully validated. Avoid using "eval" whenever possible. If you must use it, ensure that the input is from a trusted source and that it is properly validated.
-*   **Secrets Management:** Store secrets (e.g., passwords, API keys) securely and avoid hardcoding them in the codebase. Use environment variables or dedicated secrets management tools to store and manage secrets.
-*   **Secure Random Number Generation:** Use secure random number generators for generating cryptographic keys and other security-sensitive data. Use the "java.security.SecureRandom" class or a dedicated security library for generating random numbers.
+* **Input Validation:** Always validate user input to prevent injection attacks (e.g., SQL injection, XSS). Use "clojure.spec.alpha" or other validation libraries to ensure that input data conforms to expected formats and values.
+* **Output Encoding:** Properly encode output data to prevent XSS attacks. Use appropriate encoding functions for different output contexts (e.g., HTML, JavaScript, SQL).
+* **Authentication and Authorization:** Implement robust authentication and authorization mechanisms to protect sensitive data and resources. Use established libraries and frameworks for authentication and authorization, such as "friend" or "buddy".
+* **Dependency Management:** Keep dependencies up to date to address known security vulnerabilities. Regularly audit dependencies and update them to the latest versions.
+* **Avoid Using "eval":** Using "eval" can introduce security vulnerabilities if the input is not carefully validated. Avoid using "eval" whenever possible. If you must use it, ensure that the input is from a trusted source and that it is properly validated.
+* **Secrets Management:** Store secrets (e.g., passwords, API keys) securely and avoid hardcoding them in the codebase. Use environment variables or dedicated secrets management tools to store and manage secrets.
+* **Secure Random Number Generation:** Use secure random number generators for generating cryptographic keys and other security-sensitive data. Use the "java.security.SecureRandom" class or a dedicated security library for generating random numbers.
 
 This coding style and conventions document provides a comprehensive set of guidelines for developing Clojure code. By following these standards, developers can ensure that their code is readable, maintainable, and consistent. This leads to improved collaboration, reduced development time, and higher-quality software. Remember that these are guidelines, and there will be situations where it makes sense to deviate from them. Always use your best judgment and consider the specific context of the code you are writing.
