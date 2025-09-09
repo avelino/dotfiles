@@ -35,61 +35,6 @@
         stateVersion = "23.11";
         username = username;
         homeDirectory = "/Users/${username}";
-
-        packages = with pkgs; [
-          # Applications
-          arc-browser
-          unnaturalscrollwheels
-
-          # Development tools e linguagens
-          git
-          gh
-          act
-          hugo
-          graalvm-ce
-
-          go
-          nodejs
-          yarn
-          rustup
-          clojure
-          babashka
-          clj-kondo
-          clojure-lsp
-
-          # Dev tools
-          d2
-          jq
-          kubectl
-          kubectx
-          stern
-          argocd
-
-          # Language Servers and Dev Tools
-          bash-language-server
-          clang-tools
-          delve
-          dockerfile-language-server-nodejs
-          gofumpt
-          htmx-lsp
-          nil
-          nixfmt-classic
-          pgformatter
-          shellcheck
-          shfmt
-          stylua
-          lua-language-server
-          tailwindcss-language-server
-          taplo
-          terraform-ls
-          tflint
-          tree-sitter
-          typescript-language-server
-          vscode-langservers-extracted
-          yaml-language-server
-          yamllint
-          zls
-        ];
       };
 
       programs = {

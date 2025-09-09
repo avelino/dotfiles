@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./packages.nix
     ./shell.nix
     ./vscode.nix
     ./zed.nix

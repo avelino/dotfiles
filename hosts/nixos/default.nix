@@ -41,49 +41,6 @@
         stateVersion = "23.11";
         username = username;
         homeDirectory = "/home/${username}";
-        packages = with pkgs; [
-          git
-          gh
-          act
-          hugo
-
-          go
-          nodejs
-          yarn
-          clojure
-          babashka
-          clj-kondo
-          clojure-lsp
-
-          d2
-          jq
-          kubectl
-          kubectx
-          stern
-          argocd
-
-          bash-language-server
-          clang-tools
-          delve
-          dockerfile-language-server-nodejs
-          gofumpt
-          nil
-          nixfmt-classic
-          pgformatter
-          shellcheck
-          shfmt
-          stylua
-          lua-language-server
-          tailwindcss-language-server
-          taplo
-          terraform-ls
-          tflint
-          tree-sitter
-          typescript-language-server
-          vscode-langservers-extracted
-          yaml-language-server
-          yamllint
-        ];
       };
 
       imports = [
