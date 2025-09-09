@@ -6,6 +6,9 @@
     ../../modules/nix.nix
   ];
 
+  # Permitir avaliação sem requisitos de boot/partições
+  boot.isContainer = true;
+
   # DNS configuration for NixOS
   networking = {
     nameservers = [
