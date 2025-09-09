@@ -44,7 +44,6 @@
         packages = with pkgs; [
           git
           gh
-          neovim
           act
           hugo
 

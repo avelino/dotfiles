@@ -44,7 +44,6 @@
           # Development tools e linguagens
           git
           gh
-          neovim
           act
           hugo
           graalvm-ce
