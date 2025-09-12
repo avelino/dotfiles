@@ -5,6 +5,7 @@
 
   home.file.".config/rio/config.toml".text = let
     colors = import ./colors.nix;
+    mpr = colors.monokaiProRistretto;
   in ''
     performance = "High"
     height = 438
@@ -52,7 +53,15 @@
     log-level = 'INFO'
 
     [colors]
-    background = "${colors.background}"
-    foreground = "${colors.foreground}"
+    background = "${mpr.background}"
+    foreground = "${mpr.foreground}"
+    black = "${mpr.normal.black}"
+    red = "${mpr.normal.red}"
+    green = "${mpr.normal.green}"
+    yellow = "${mpr.normal.yellow}"
+    blue = "${mpr.normal.blue}"
+    magenta = "${mpr.normal.magenta}"
+    cyan = "${mpr.normal.cyan}"
+    white = "${mpr.normal.white}"
   '';
 }

@@ -284,6 +284,10 @@ in
       PAGER = defaultPager;
       MANPAGER = defaultPager;
       SSH_AUTH_SOCK = "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
+      # eza color theme aligned to Monokai Pro (Filter Ristretto)
+      # di (dir) = #FF955C (orange), ln (symlink) = #78DCE8, ex (exec) = #A9DC76
+      # fi (file) = #FCFCFA, or (orphan) = #FF6188
+      EZA_COLORS = "di=38;2;255;149;92:ln=38;2;120;220;232:ex=38;2;169;220;118:fi=38;2;252;252;250:or=38;2;255;97;136";
     };
 
     packages = with pkgs; [
