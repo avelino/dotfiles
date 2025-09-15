@@ -149,15 +149,27 @@ in
           switch $argv[1]
             case upgrade
               nix-cmd update
-              echo "Upgrading Nix packages..."
-              nix-env -u
-              cd ~/dotfiles && nix flake update && cd ~
-              nix-env --delete-generations
+              echo "Upgrading Nix flake inputs..."
+              if test -d ~/dotfiles
+                cd ~/dotfiles; and nix flake update; and cd ~
+              end
+              echo "Cleaning old generations..."
+              if type -q darwin-rebuild
+                sudo nix-collect-garbage -d
+                darwin-rebuild switch --flake ~/dotfiles#$USER-igloo; or true
+              else if type -q nixos-rebuild
+                sudo nix-collect-garbage -d
+                sudo nixos-rebuild switch --flake ~/dotfiles#$USER-zentoo; or true
+              else
+                echo "Note: system rebuild tool not found (darwin-rebuild/nixos-rebuild)."
+              end
               echo "Upgrading Homebrew packages..."
               brew upgrade
             case update
-              echo "Updating Nix channels..."
-              nix-channel --update
+              echo "Updating flake inputs..."
+              if test -d ~/dotfiles
+                cd ~/dotfiles; and nix flake update; and cd ~
+              end
               echo "Updating Homebrew..."
               brew update
             case search
@@ -166,7 +178,7 @@ in
                 return 1
               end
               echo "Searching in Nix packages..."
-              nix-env -qaP $argv[2]
+              nix search nixpkgs $argv[2]
               echo "Searching in Homebrew packages..."
               brew search $argv[2]
             case install
@@ -175,15 +187,27 @@ in
                 return 1
               end
               echo "Attempting to install via Nix..."
-              nix-env -iA nixpkgs.$argv[2]
+              nix profile install nixpkgs#$argv[2]
+            case rebuild
+              set -l host (scutil --get LocalHostName ^/dev/null)
+              if test -z "$host"
+                set host (hostname -s)
+              end
+              if type -q darwin-rebuild
+                darwin-rebuild switch --flake ~/dotfiles#$host; or true
+              else if type -q nixos-rebuild
+                sudo nixos-rebuild switch --flake ~/dotfiles#$host; or true
+              else
+                echo "System rebuild tool not found."
+              end
             case clear
               if test (count $argv) -lt 2
                 echo "Usage: nix-cmd clear PACKAGE-NAME"
                 return 1
               end
               echo "Attempting to clear via Nix..."
-              nix-env --delete-generations
-              nix-store --gc
+              nix-collect-garbage -d
+              nix store optimise
             case '*'
               echo "Usage: nix-cmd [upgrade|update|search|install] [PACKAGE-NAME]"
               echo "  upgrade: Upgrade all packages"
@@ -210,13 +234,16 @@ in
       # Setup 1Password SSH agent
       set -gx SSH_AUTH_SOCK $HOME/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
 
-      # Set up Nix paths
-      set -gx NIX_PATH $HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/$USER/channels
+      # Prefer flakes; avoid legacy channels/NIX_PATH
       set -gx NIX_PROFILES "/nix/var/nix/profiles/default $HOME/.nix-profile"
       set -gx NIX_SSL_CERT_FILE /nix/var/nix/profiles/default/etc/ssl/certs/ca-bundle.crt
 
       # Set up PATH with Nix and Homebrew paths
-      set -gx PATH $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin /run/current-system/sw/bin /opt/homebrew/bin $PATH
+      if test (uname) = "Darwin"
+        set -gx PATH $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin /opt/homebrew/bin $PATH
+      else
+        set -gx PATH $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin /run/current-system/sw/bin $PATH
+      end
 
       # Source nix setup if it exists
       if test -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish'

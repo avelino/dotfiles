@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, inputs, ... }:
 {
   nix = {
     optimise.automatic = true;
@@ -9,7 +9,8 @@
       trusted-users = [ "root" "@admin" "@wheel" ];
       max-jobs = "auto";
       cores = 0;
-    } // (lib.optionalAttrs pkgs.stdenv.isDarwin { sandbox = false; });
+    };
+    registry.nixpkgs.flake = inputs.nixpkgs;
     gc =
       {
         automatic = true;
