@@ -1,13 +1,13 @@
 { pkgs, lib, ... }:
 let
-  commonPackages = with pkgs; [
-    # Dev tools
+  devTools = with pkgs; [
     git
     gh
     act
     hugo
+  ];
 
-    # Languages and runtimes
+  languagesAndRuntimes = with pkgs; [
     go
     nodejs
     yarn
@@ -15,27 +15,24 @@ let
     babashka
     clj-kondo
     clojure-lsp
+  ];
 
-    # Utilities / CLIs
+  cliUtilities = with pkgs; [
     d2
     jq
     kubectl
     kubectx
     stern
     argocd
+  ];
 
-    # Language Servers and Development Tools
+  languageServers = with pkgs; [
     bash-language-server
     clang-tools
     delve
     dockerfile-language-server-nodejs
     gofumpt
     nil
-    nixfmt-classic
-    pgformatter
-    shellcheck
-    shfmt
-    stylua
     lua-language-server
     tailwindcss-language-server
     taplo
@@ -45,16 +42,21 @@ let
     typescript-language-server
     vscode-langservers-extracted
     yaml-language-server
-    yamllint
     zls
   ];
 
+  formattersAndLinters = with pkgs; [
+    nixfmt-classic
+    pgformatter
+    shellcheck
+    shfmt
+    stylua
+    yamllint
+  ];
+
   darwinExtra = with pkgs; [
-    # Apps específicos do macOS
     arc-browser
     unnaturalscrollwheels
-
-    # Runtimes específicos/úteis
     graalvm-ce
     rustup
   ];
@@ -62,11 +64,14 @@ let
   linuxExtra = with pkgs; [ ];
 in
 {
-  home.packages = commonPackages
+  home.packages = devTools
+    ++ languagesAndRuntimes
+    ++ cliUtilities
+    ++ languageServers
+    ++ formattersAndLinters
     ++ lib.optionals pkgs.stdenv.isDarwin darwinExtra
     ++ lib.optionals pkgs.stdenv.isLinux linuxExtra;
 }
-
 
 
 

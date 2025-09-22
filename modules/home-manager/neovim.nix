@@ -18,7 +18,7 @@
       pyright
       rust-analyzer
       nil # Nix LSP
-      nodePackages.bash-language-server
+      nodePackages_latest.bash-language-server
 
       # Tools
       ripgrep

@@ -62,7 +62,7 @@ in
       logseq = {
         description = "logseq shortcut with new functions";
         body = ''
-          switch $argv[1]
+          switch $action
             case sync
               echo "logseq: starting sync process..."
 
@@ -146,32 +146,79 @@ in
       nix-cmd = {
         description = "nix and homebrew environment management";
         body = ''
+          if test (count $argv) -eq 0
+            echo "Usage: nix-cmd [upgrade|update|search|install|rebuild|clear] [PACKAGE]"
+            return 1
+          end
+
+          set -l action $argv[1]
+          set -l repo ~/dotfiles
+          set -l host (hostname -s)
+          if test -z "$host"
+            if scutil --get LocalHostName 2>/dev/null >/dev/null
+              set host (scutil --get LocalHostName)
+            end
+          end
+          
+          set -l rebuild_cmd
+          set -l system_attr
+          if type -q darwin-rebuild
+            set rebuild_cmd "darwin-rebuild switch --flake $repo#$host --profile-name $host"
+            set system_attr "darwinConfigurations.$host.system"
+          else if type -q nixos-rebuild
+            set rebuild_cmd "sudo nixos-rebuild switch --flake $repo#$host --profile-name $host"
+            set system_attr "nixosConfigurations.$host.config.system.build.toplevel"
+          end
+
           switch $argv[1]
             case upgrade
               nix-cmd update
-              echo "Upgrading Nix flake inputs..."
-              if test -d ~/dotfiles
-                cd ~/dotfiles; and nix flake update; and cd ~
-              end
+              echo "Rebuilding system profile..."
               echo "Cleaning old generations..."
-              if type -q darwin-rebuild
-                sudo nix-collect-garbage -d
-                darwin-rebuild switch --flake ~/dotfiles#$USER-igloo; or true
-              else if type -q nixos-rebuild
-                sudo nix-collect-garbage -d
-                sudo nixos-rebuild switch --flake ~/dotfiles#$USER-zentoo; or true
+              nix-collect-garbage -d
+              if test -n "$rebuild_cmd"
+                eval $rebuild_cmd; or true
+                if test -n "$system_attr"; and nix eval $repo#$system_attr >/dev/null 2>/dev/null
+                  set -l suspects \
+                    nixpkgs#cudaPackages.cudaFlags \
+                    nixpkgs#cudaPackages.cudaVersion \
+                    nixpkgs#cudaPackages.cudatoolkit-legacy-runfile \
+                    nixpkgs#f3d_egl \
+                    nixpkgs#darwin.iproute2mac \
+                    nixpkgs#windows.mingw_w64_pthreads
+                  for suspect in $suspects
+                    if nix eval $suspect >/dev/null 2>/dev/null
+                      echo "Inspecting dependency on $suspect"
+                      nix why-depends $repo#$system_attr $suspect 2>/dev/null; or true
+                    end
+                  end
+                end
               else
                 echo "Note: system rebuild tool not found (darwin-rebuild/nixos-rebuild)."
               end
               echo "Upgrading Homebrew packages..."
-              brew upgrade
+              if type -q brew
+                brew upgrade
+              else
+                echo "Homebrew not found; skipping upgrade"
+              end
             case update
               echo "Updating flake inputs..."
-              if test -d ~/dotfiles
-                cd ~/dotfiles; and nix flake update; and cd ~
+              if test -d $repo
+                if pushd $repo >/dev/null
+                  if not nix flake update --commit-lock-file
+                    echo "nix flake update --commit-lock-file failed; retrying without auto-commit"
+                    nix flake update
+                  end
+                  popd >/dev/null
+                end
               end
               echo "Updating Homebrew..."
-              brew update
+              if type -q brew
+                brew update
+              else
+                echo "Homebrew not found; skipping update"
+              end
             case search
               if test (count $argv) -lt 2
                 echo "Usage: nix-cmd search PACKAGE-NAME"
@@ -189,31 +236,23 @@ in
               echo "Attempting to install via Nix..."
               nix profile install nixpkgs#$argv[2]
             case rebuild
-              set -l host (scutil --get LocalHostName ^/dev/null)
-              if test -z "$host"
-                set host (hostname -s)
-              end
-              if type -q darwin-rebuild
-                darwin-rebuild switch --flake ~/dotfiles#$host; or true
-              else if type -q nixos-rebuild
-                sudo nixos-rebuild switch --flake ~/dotfiles#$host; or true
+              if test -n "$rebuild_cmd"
+                eval $rebuild_cmd
               else
                 echo "System rebuild tool not found."
               end
             case clear
-              if test (count $argv) -lt 2
-                echo "Usage: nix-cmd clear PACKAGE-NAME"
-                return 1
-              end
               echo "Attempting to clear via Nix..."
               nix-collect-garbage -d
               nix store optimise
             case '*'
-              echo "Usage: nix-cmd [upgrade|update|search|install] [PACKAGE-NAME]"
-              echo "  upgrade: Upgrade all packages"
-              echo "  update: Update package lists"
-              echo "  search PACKAGE-NAME: Search for a package"
-              echo "  install PACKAGE-NAME: Install a package"
+              echo "Usage: nix-cmd [upgrade|update|search|install|rebuild|clear] [PACKAGE]"
+              echo "  upgrade: Update inputs, rebuild system, upgrade Homebrew"
+              echo "  update: Update inputs only"
+              echo "  search PACKAGE: Search in Nix and Homebrew"
+              echo "  install PACKAGE: Install via nix profile"
+              echo "  rebuild: Re-run system switch"
+              echo "  clear: Collect garbage and optimise store"
           end
         '';
       };
@@ -237,6 +276,7 @@ in
       # Prefer flakes; avoid legacy channels/NIX_PATH
       set -gx NIX_PROFILES "/nix/var/nix/profiles/default $HOME/.nix-profile"
       set -gx NIX_SSL_CERT_FILE /nix/var/nix/profiles/default/etc/ssl/certs/ca-bundle.crt
+      set -e NIX_PATH
 
       # Set up PATH with Nix and Homebrew paths
       if test (uname) = "Darwin"

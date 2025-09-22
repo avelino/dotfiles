@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    "nixpkgs-unstable".url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -23,23 +24,39 @@
     }@inputs:
     let
       mkSystem = import ./lib/mksystem.nix;
+      overlays = import ./lib/overlays.nix inputs;
       username = "avelino";
+      supportedSystems = [ "aarch64-darwin" "x86_64-linux" ];
+      forEachSystem = nixpkgs.lib.genAttrs supportedSystems;
+      mkPkgs = system:
+        import nixpkgs {
+          inherit system;
+          config = {
+            allowUnfree = true;
+            allowBroken = false;
+          };
+          overlays = [ overlays.unstableOverlay ];
+        };
     in
     {
       darwinConfigurations."${username}-igloo" = mkSystem "${username}-igloo" "aarch64-darwin" inputs;
       darwinConfigurations."${username}-kazoo" = mkSystem "${username}-kazoo" "aarch64-darwin" inputs;
       nixosConfigurations."${username}-zentoo" = mkSystem "${username}-zentoo" "x86_64-linux" inputs;
 
-      devShells = {
-        aarch64-darwin.default = nixpkgs.legacyPackages.aarch64-darwin.mkShell {
-          packages = with nixpkgs.legacyPackages.aarch64-darwin; [ nixd nixfmt-classic statix ];
-        };
-        x86_64-linux.default = nixpkgs.legacyPackages.x86_64-linux.mkShell {
-          packages = with nixpkgs.legacyPackages.x86_64-linux; [ nixd nixfmt-classic statix ];
-        };
-      };
+      devShells = forEachSystem (system:
+        let
+          pkgs = mkPkgs system;
+        in
+        {
+          default = pkgs.mkShell {
+            packages = with pkgs; [ nixd nixfmt-classic statix ];
+          };
+        });
 
-      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-classic;
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-classic;
+      formatter = forEachSystem (system:
+        let
+          pkgs = mkPkgs system;
+        in
+        pkgs.nixfmt-classic);
     };
 }
