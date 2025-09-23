@@ -62,6 +62,14 @@ in
       logseq = {
         description = "logseq shortcut with new functions";
         body = ''
+          # Determine action from first argument and validate
+          set -l action $argv[1]
+
+          if test -z "$action"
+            echo "Usage: logseq [sync|cloud]"
+            return 1
+          end
+
           switch $action
             case sync
               echo "logseq: starting sync process..."
@@ -137,7 +145,8 @@ in
                 end
               end
             case '*'
-              echo "logseq: method not fund"
+              echo "logseq: method not found"
+              echo "Usage: logseq [sync|cloud]"
           end
         '';
       };
@@ -159,7 +168,7 @@ in
               set host (scutil --get LocalHostName)
             end
           end
-          
+
           set -l rebuild_cmd
           set -l system_attr
           if type -q darwin-rebuild
