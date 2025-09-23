@@ -37,7 +37,7 @@
 
     casks = [
       "cursor"
-      "morgen"
+      # "morgen" # TODO: remove this, I'm not using anymore
       "orbstack"
       "raycast"
       "logseq"
@@ -47,12 +47,10 @@
       "zed@preview"
       "domzilla-caffeine"
       "slack"
-      "ngrok"
       "tableplus"
       "spotify"
-      "tailscale"
+      "ngrok"
       "rio"
-      "warp"
       "tor-browser"
       "google-chrome"
       "chatgpt"

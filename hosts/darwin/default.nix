@@ -89,4 +89,10 @@
   # Configuração do fish para nix-darwin
   programs.fish.enable = true;
   environment.shells = with pkgs; [ bash zsh fish ];
+
+  # Tailscale via nix-darwin service (evita reinstalação via Homebrew)
+  services.tailscale = {
+    enable = true;
+    package = pkgs.tailscale;
+  };
 }
