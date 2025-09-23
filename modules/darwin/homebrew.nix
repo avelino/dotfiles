@@ -30,6 +30,7 @@
       "kubectl"
       "kubelogin"
       "poetry"
+      "uv"
       "oven-sh/bun/bun"
       "awscli"
     ];
@@ -55,6 +56,8 @@
       "tor-browser"
       "google-chrome"
       "chatgpt"
+      "notion-mail"
+      "notion-calendar"
     ];
   };
 }
