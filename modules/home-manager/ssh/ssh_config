@@ -1,0 +1,9 @@
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+HashKnownHosts yes
+VisualHostKey yes
+Forwardagent yes
+KexAlgorithms curve25519-sha256,ecdh-sha2-nistp521
+IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+
+

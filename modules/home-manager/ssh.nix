@@ -14,15 +14,7 @@ in {
     ];
 
     # Global SSH settings
-    extraConfig = ''
-      PasswordAuthentication no
-      ChallengeResponseAuthentication no
-      HashKnownHosts yes
-      VisualHostKey yes
-      Forwardagent yes
-      KexAlgorithms curve25519-sha256,ecdh-sha2-nistp521
-      IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-    '';
+    extraConfig = builtins.readFile ./ssh/ssh_config;
 
     # Host-specific configurations
     matchBlocks = {
@@ -90,14 +82,7 @@ in {
     sshSetup = {
       after = [ "writeBoundary" ];
       before = [ ];
-      data = ''
-        echo "Setting up SSH configuration..."
-        install -d -m 700 ~/.ssh
-
-        # Setup certificate files
-        touch ~/.ssh/bast-cert00.pub ~/.ssh/bast-cert01.pub
-        chmod 600 ~/.ssh/bast-cert00.pub ~/.ssh/bast-cert01.pub
-      '';
+      data = builtins.readFile ./ssh/activation.sh;
     };
   };
 }

@@ -37,11 +37,7 @@
       )
       /* Run GC as the interactive user on single-user Darwin installs to avoid permission issues. */
       // lib.optionalAttrs (pkgs.stdenv.isDarwin && username != null) { user = username; };
-    extraOptions = ''
-      keep-outputs = true
-      keep-derivations = true
-      build-users-group = nixbld
-    '';
+    extraOptions = builtins.readFile ./nix/extraOptions.conf;
   };
 
   nixpkgs = {
