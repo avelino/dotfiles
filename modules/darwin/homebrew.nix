@@ -53,6 +53,7 @@
       "rio"
       "tor-browser"
       "google-chrome"
+      "brave-browser"
       "chatgpt"
       "notion-mail"
       "notion-calendar"

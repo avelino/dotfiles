@@ -13,3 +13,7 @@ result-*
 *.njsproj
 *.sln
 *.sw?
+
+.clj-kondo/.cache/
+.lsp/.cache/
+.nrepl-port

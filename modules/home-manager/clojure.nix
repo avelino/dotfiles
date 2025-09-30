@@ -8,5 +8,5 @@
     clojure-lsp
   ];
 
-  home.file.".clojure/deps.edn".source = ./clojure/deps.edn;
+  home.file.".config/clojure/deps.edn".source = ./clojure/deps.edn;
 }
