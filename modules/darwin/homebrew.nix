@@ -33,11 +33,11 @@
       "uv"
       "oven-sh/bun/bun"
       "awscli"
+      "mas"
     ];
 
     casks = [
       "cursor"
-      # "morgen" # TODO: remove this, I'm not using anymore
       "orbstack"
       "raycast"
       "logseq"
@@ -53,10 +53,21 @@
       "rio"
       "tor-browser"
       "google-chrome"
-      "brave-browser"
       "chatgpt"
-      "notion-mail"
       "notion-calendar"
+      "raindropio"
     ];
+
+    masApps = {
+      "1Blocker" = 1365531024;
+      "1Password for Safari" = 1569813296;
+      "Bitwarden" = 1352778147;
+      "Developer" = 640199958;
+      "Ghostery Privacy Ad Blocker" = 6504861501;
+      "LanguageTool" = 1534275760;
+      "Raycast Companion" = 6738274497;
+      "Simplify for Gmail" = 1544668450;
+      "Todoist" = 585829637;
+    };
   };
 }
