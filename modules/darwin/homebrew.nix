@@ -38,6 +38,7 @@
 
     casks = [
       "cursor"
+      "visual-studio-code@insiders"
       "orbstack"
       "raycast"
       "logseq"
@@ -56,6 +57,7 @@
       "chatgpt"
       "notion-calendar"
       "raindropio"
+      "rocket"
     ];
 
     masApps = {
