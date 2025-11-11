@@ -34,6 +34,8 @@
       "oven-sh/bun/bun"
       "awscli"
       "mas"
+      "sentry-cli"
+      "ruff"
     ];
 
     casks = [
@@ -58,6 +60,9 @@
       "notion-calendar"
       "raindropio"
       "rocket"
+      "figma"
+      "chatgpt-atlas"
+      "roam-research"
     ];
 
     masApps = {
