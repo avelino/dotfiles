@@ -14,21 +14,63 @@ end
 
 set -l rebuild_cmd
 set -l system_attr
-if type -q darwin-rebuild
-  set rebuild_cmd "darwin-rebuild switch --flake $repo#$host --profile-name $host"
-  set system_attr "darwinConfigurations.$host.system"
+set -l rebuild_note
+set -l kernel_name (uname -s)
+set -l darwin_rebuild_path "/run/current-system/sw/bin/darwin-rebuild"
+set -l needs_sudo 0
+if test "$kernel_name" = "Darwin"
+  if test (id -u) -ne 0
+    set needs_sudo 1
+  end
+end
+
+if test "$kernel_name" = "Darwin"
+  if type -q darwin-rebuild
+    set -l base_cmd "darwin-rebuild switch --flake $repo#$host --profile-name $host"
+    if test "$needs_sudo" -eq 1
+      set rebuild_cmd "sudo $base_cmd"
+    else
+      set rebuild_cmd $base_cmd
+    end
+    set system_attr "darwinConfigurations.$host.system"
+  else if test -x $darwin_rebuild_path
+    set -l base_cmd "$darwin_rebuild_path switch --flake $repo#$host --profile-name $host"
+    if test "$needs_sudo" -eq 1
+      set rebuild_cmd "sudo $base_cmd"
+    else
+      set rebuild_cmd $base_cmd
+    end
+    set system_attr "darwinConfigurations.$host.system"
+    set rebuild_note "Using darwin-rebuild from $darwin_rebuild_path because it is missing from PATH."
+  else if type -q nix
+    set -l base_cmd "nix run nix-darwin --extra-experimental-features 'nix-command flakes' -- switch --flake $repo#$host --profile-name $host"
+    if test "$needs_sudo" -eq 1
+      set rebuild_cmd "sudo $base_cmd"
+    else
+      set rebuild_cmd $base_cmd
+    end
+    set system_attr "darwinConfigurations.$host.system"
+    set rebuild_note "darwin-rebuild not found; falling back to nix run nix-darwin."
+  end
 else if type -q nixos-rebuild
   set rebuild_cmd "sudo nixos-rebuild switch --flake $repo#$host --profile-name $host"
   set system_attr "nixosConfigurations.$host.config.system.build.toplevel"
+else if type -q nix
+  set rebuild_cmd "sudo nix run nixpkgs#nixos-rebuild --extra-experimental-features 'nix-command flakes' -- switch --flake $repo#$host --profile-name $host"
+  set system_attr "nixosConfigurations.$host.config.system.build.toplevel"
+  set rebuild_note "nixos-rebuild not found; falling back to nix run nixpkgs#nixos-rebuild."
 end
 
-switch $argv[1]
+switch $action
   case upgrade
     nix-cmd update
     echo "Rebuilding system profile..."
     echo "Cleaning old generations..."
     nix-collect-garbage -d
     if test -n "$rebuild_cmd"
+      if test -n "$rebuild_note"
+        echo $rebuild_note
+      end
       eval $rebuild_cmd; or true
       if test -n "$system_attr"; and nix eval $repo#$system_attr >/dev/null 2>/dev/null
         set -l suspects \
@@ -89,6 +131,9 @@ switch $argv[1]
     nix profile install nixpkgs#$argv[2]
   case rebuild
     if test -n "$rebuild_cmd"
+      if test -n "$rebuild_note"
+        echo $rebuild_note
+      end
       eval $rebuild_cmd
     else
       echo "System rebuild tool not found."

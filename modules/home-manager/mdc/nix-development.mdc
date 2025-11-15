@@ -18,7 +18,7 @@ alwaysApply: false
 
 ### Basic Structure
 
-```
+```text
 .
 ├── flake.nix           # Main flake definition
 ├── flake.lock         # Lock file for dependencies
@@ -179,6 +179,53 @@ home-manager = {
     };
   };
 };
+```
+
+When applying a Home Manager flake output directly (without nix-darwin/NixOS), remember to pass a backup suffix so existing dotfiles are preserved automatically:
+
+```bash
+nix run home-manager/release-24.11 -- --flake .#avelino@avelino-igloo switch -b backup
+```
+
+### Flake Outputs for Home Manager
+
+Expose reusable Home Manager profiles through `homeConfigurations` so they can be applied independently from system rebuilds:
+
+```nix
+homeConfigurations."avelino@avelino-igloo" = home-manager.lib.homeManagerConfiguration {
+  pkgs = mkPkgs "aarch64-darwin";
+  extraSpecialArgs = { inherit inputs username hostname; };
+  modules = [
+    ./modules/home-manager/default.nix
+    ./modules/home-manager/aerospace.nix
+    {
+      home.username = username;
+      home.homeDirectory = "/Users/${username}";
+      home.stateVersion = "23.11";
+      programs.home-manager.enable = true;
+    }
+  ];
+};
+```
+
+Apply the profile locally with:
+
+```bash
+home-manager switch --flake .#avelino@avelino-igloo
+```
+
+### System Rebuilds on macOS
+
+Starting with nix-darwin 24.11 the activation step must run as root. Always prefix rebuild commands with `sudo` (or rely on helper scripts such as `nix-cmd`, which now injects `sudo` automatically):
+
+```bash
+sudo darwin-rebuild switch --flake .#avelino-igloo --profile-name avelino-igloo
+```
+
+If `darwin-rebuild` is unavailable, fall back to:
+
+```bash
+sudo nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake .#avelino-igloo --profile-name avelino-igloo
 ```
 
 ### Program Configuration

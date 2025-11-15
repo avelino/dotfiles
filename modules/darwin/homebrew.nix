@@ -63,6 +63,7 @@
       "figma"
       "chatgpt-atlas"
       "roam-research"
+      "cloudflare-warp"
     ];
 
     masApps = {
