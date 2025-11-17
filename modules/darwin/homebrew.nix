@@ -53,6 +53,7 @@
       "tableplus"
       "spotify"
       "ngrok"
+      "tailscale-app"
       "rio"
       "tor-browser"
       "google-chrome"
