@@ -1,7 +1,10 @@
 { config, pkgs, lib, ... }:
 
 {
-  home.packages = [ pkgs.curl ];
+  home.packages =
+    lib.optionals pkgs.stdenv.isLinux [
+      pkgs.curl
+    ];
 
   home.file.".curlrc".source = ./curl/.curlrc;
 }

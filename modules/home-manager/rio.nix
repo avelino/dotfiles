@@ -5,7 +5,7 @@
 
   home.file.".config/rio/config.toml".text = let
     colors = import ./colors.nix;
-    mpr = colors.monokaiProRistretto;
+    arc = if colors ? arcBlueberry then colors.arcBlueberry else colors;
   in ''
     performance = "High"
     height = 438
@@ -53,15 +53,15 @@
     log-level = 'INFO'
 
     [colors]
-    background = "${mpr.background}"
-    foreground = "${mpr.foreground}"
-    black = "${mpr.normal.black}"
-    red = "${mpr.normal.red}"
-    green = "${mpr.normal.green}"
-    yellow = "${mpr.normal.yellow}"
-    blue = "${mpr.normal.blue}"
-    magenta = "${mpr.normal.magenta}"
-    cyan = "${mpr.normal.cyan}"
-    white = "${mpr.normal.white}"
+    background = "${arc.background}"
+    foreground = "${arc.foreground}"
+    black = "${arc.normal.black}"
+    red = "${arc.normal.red}"
+    green = "${arc.normal.green}"
+    yellow = "${arc.normal.yellow}"
+    blue = "${arc.normal.blue}"
+    magenta = "${arc.normal.magenta}"
+    cyan = "${arc.normal.cyan}"
+    white = "${arc.normal.white}"
   '';
 }

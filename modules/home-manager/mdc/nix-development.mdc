@@ -97,7 +97,7 @@ alwaysApply: false
 ### Package Declarations
 
 ```nix
-# In home-manager configuration
+# In Linux home-manager configurations use pkgs directly
 home.packages = with pkgs; [
   # Development tools
   git
@@ -115,6 +115,14 @@ home.packages = with pkgs; [
   bat
 ];
 ```
+
+#### Darwin Package Strategy
+
+- All macOS tooling must be installed declaratively through `modules/darwin/homebrew.nix`.
+- Keep `home.packages` and other `with pkgs` lists Linux-only to avoid duplicate package managers.
+- When adding a new CLI for macOS, update `homebrew.brews`/`homebrew.casks` and, if applicable, wrap the old Nix list in `lib.mkIf pkgs.stdenv.isLinux`.
+- Prefer currently maintained taps (e.g. `clojure/tools`, `clojure-lsp/brew`, `nikitabobko/tap`) and document any extra tap rationale inline.
+- If a tool has no Homebrew formula/cask (e.g. `nil` or `babashka` after tap removals), call out the exception in the PR and consider keeping that package installed via Nix until a Brew source exists.
 
 ### Package Overrides
 

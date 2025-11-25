@@ -66,25 +66,6 @@
     };
   };
 
-  # System packages: manter apenas o essencial de sistema
-  environment.systemPackages = with pkgs; [
-    eza
-    btop
-    htop
-    bat
-    delta
-    direnv
-    fzf
-    ripgrep
-    fd
-    yq
-    silver-searcher
-    cmake
-    fish
-    maple-mono-NF
-    font-awesome
-  ];
-
   # Enable TouchID for sudo authentication
   security.pam.enableSudoTouchIdAuth = true;
 

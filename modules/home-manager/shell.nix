@@ -99,11 +99,12 @@ in
       EZA_COLORS = "di=38;2;255;149;92:ln=38;2;120;220;232:ex=38;2;169;220;118:fi=38;2;252;252;250:or=38;2;255;97;136";
     };
 
-    packages = with pkgs; [
-      fzf
-      fd
-      bat
-    ];
+    packages =
+      lib.optionals pkgs.stdenv.isLinux (with pkgs; [
+        fzf
+        fd
+        bat
+      ]);
 
     # Create Fish directories
     file = {

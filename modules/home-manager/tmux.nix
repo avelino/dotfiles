@@ -1,19 +1,19 @@
 { config, pkgs, lib, ... }:
 
 let colors = import ./colors.nix;
-    mpr = colors.monokaiProRistretto;
+    arc = if colors ? arcBlueberry then colors.arcBlueberry else colors;
     tmuxExtraConfigBody =
       let
         body = builtins.readFile ./tmux/extra.conf;
       in lib.replaceStrings [
         "@BG@" "@FG@" "@YELLOW@" "@BLUE@" "@BRIGHT_BLACK@" "@MAGENTA@" "@GREEN@"
       ] [
-        mpr.background mpr.foreground mpr.normal.yellow mpr.normal.blue mpr.bright.black mpr.normal.magenta mpr.normal.green
+        arc.background arc.foreground arc.normal.yellow arc.normal.blue arc.bright.black arc.normal.magenta arc.normal.green
       ] body;
 in {
   programs.tmux = {
     enable = true;
-    shell = "${pkgs.fish}/bin/fish";
+    shell = "/opt/homebrew/bin/fish";
     terminal = "tmux-256color";
     historyLimit = 1000000;
     escapeTime = 0;

@@ -54,24 +54,28 @@ let
     yamllint
   ];
 
-  darwinExtra = with pkgs; [
-    arc-browser
-    unnaturalscrollwheels
-    graalvm-ce
-    rustup
-  ];
-
   linuxExtra = with pkgs; [ ];
+
+  darwinFallback = with pkgs; [
+    # Keep these available on macOS until there is a maintained Homebrew tap.
+    nil
+    babashka
+    clj-kondo
+  ];
 in
-{
-  home.packages = devTools
-    ++ languagesAndRuntimes
-    ++ cliUtilities
-    ++ languageServers
-    ++ formattersAndLinters
-    ++ lib.optionals pkgs.stdenv.isDarwin darwinExtra
-    ++ lib.optionals pkgs.stdenv.isLinux linuxExtra;
-}
+lib.mkMerge [
+  (lib.mkIf pkgs.stdenv.isLinux {
+    home.packages = devTools
+      ++ languagesAndRuntimes
+      ++ cliUtilities
+      ++ languageServers
+      ++ formattersAndLinters
+      ++ linuxExtra;
+  })
+  (lib.mkIf pkgs.stdenv.isDarwin {
+    home.packages = darwinFallback;
+  })
+]
 
 
 
