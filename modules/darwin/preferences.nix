@@ -1,9 +1,7 @@
 { pkgs, lib, ... }:
 
-let
-  home = if pkgs.stdenv.isDarwin then "/Users/avelino" else "/home/avelino";
-in
-{
+let home = if pkgs.stdenv.isDarwin then "/Users/avelino" else "/home/avelino";
+in {
   system.defaults.NSGlobalDomain = {
     # Keyboard and Input
     InitialKeyRepeat = 15;
@@ -20,13 +18,17 @@ in
 
     # Visual and UI
     AppleShowScrollBars = "Automatic";
-    NSWindowResizeTime = 0.001;
+    NSWindowResizeTime = 1.0e-3;
     AppleFontSmoothing = 1;
     NSTableViewDefaultSizeMode = 1;
     AppleShowAllExtensions = true;
     NSNavPanelExpandedStateForSaveMode = true;
     NSNavPanelExpandedStateForSaveMode2 = true;
     AppleShowAllFiles = true;
+
+    # Animation optimizations (faster webapp switching)
+    NSAutomaticWindowAnimationsEnabled = false;
+    AppleScrollerPagingBehavior = true;
 
     # System Behavior
     NSDocumentSaveNewDocumentsToCloud = false;
@@ -52,6 +54,6 @@ in
 
   # Language and region settings via activation script
   system.activationScripts.extraUserSettings.text =
-    let body = builtins.readFile ./darwin/extraUserSettings.sh; in
-    lib.replaceStrings [ "@HOME@" ] [ home ] body;
+    let body = builtins.readFile ./darwin/extraUserSettings.sh;
+    in lib.replaceStrings [ "@HOME@" ] [ home ] body;
 }

@@ -113,7 +113,7 @@ alt-shift-l = ['join-with right', 'mode main']
 
 # Window detection rules
 [[on-window-detected]]
-if.app-id = 'com.brave.Browser'
+if.app-id = 'com.google.Chrome'
 run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
@@ -130,6 +130,49 @@ run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
 if.app-id = 'us.zoom.xos'
-run = 'move-node-to-workspace 5'
+run = 'move-node-to-workspace 3'
 
+# Chrome PWAs (webapps) - organized by workspace
+# Workspace 3: Work
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+if.window-title-regex-substring = '(?i)gmail'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+if.window-title-regex-substring = '(?i)slack'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+if.window-title-regex-substring = '(?i)notion'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+if.window-title-regex-substring = '(?i)meet\.google'
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+if.window-title-regex-substring = '(?i)zoom'
+run = 'move-node-to-workspace 3'
+
+# Workspace 4: Media & Entertainment
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+if.window-title-regex-substring = '(?i)spotify'
+run = 'move-node-to-workspace 4'
+
+# Workspace 1: AI & Tools
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+if.window-title-regex-substring = '(?i)chatgpt'
+run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+if.window-title-regex-substring = '(?i)claude'
+run = 'move-node-to-workspace 1'
 

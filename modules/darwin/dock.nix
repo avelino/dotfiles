@@ -5,11 +5,14 @@
   system.defaults.dock = {
     # Auto-hide and show behavior
     autohide = true;
+    autohide-delay = 0.0;
+    autohide-time-modifier = 0.15;
 
-    # Animation and visual settings
+    # Animation and visual settings (optimized for webapps)
     mineffect = "scale";
     minimize-to-application = true;
     mouse-over-hilite-stack = true;
+    launchanim = false;
 
     # Size and magnification
     largesize = 44;
@@ -32,5 +35,6 @@
   # STEPS:
   # 1. `defaults read com.apple.dock > dock.json`
   # 2. read `dock.json` and convert to nix extraDockSettings
-  system.activationScripts.extraDockSettings.text = builtins.readFile ./darwin/extraDockSettings.sh;
+  system.activationScripts.extraDockSettings.text =
+    builtins.readFile ./darwin/extraDockSettings.sh;
 }
