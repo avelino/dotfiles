@@ -16,6 +16,7 @@
     };
 
     taps = [
+      "borkdude/brew"
       "oven-sh/bun"
       "clojure/tools"
       "clojure-lsp/brew"
@@ -36,6 +37,7 @@
       "tflint"
 
       # --- Languages, runtimes & package managers ---
+      "borkdude/brew/babashka"
       "clojure/tools/clojure"
       "go"
       "node"
