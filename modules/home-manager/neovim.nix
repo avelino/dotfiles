@@ -1,10 +1,7 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
-
+{ pkgs, ... }:
+let
+  packages = import ../packages.nix;
+in
 {
   programs.neovim = {
     enable = true;
@@ -12,27 +9,10 @@
     viAlias = true;
     vimAlias = true;
 
-    extraPackages = with pkgs; [
-      # Language servers
-      clojure-lsp
-      pyright
-      rust-analyzer
-      nil # Nix LSP
-      nodePackages_latest.bash-language-server
-
-      # Tools
-      ripgrep
-      fd
-      tree-sitter
-      nodejs # Required for Copilot
-
-      # Formatters and linters
-      black
-      ruff
-      # ruff-lsp
-      nixfmt-classic
-      rustfmt
-    ];
+    # Only Neovim-specific packages not installed globally
+    # LSPs/formatters are already in Homebrew (Darwin) or packages.nix (Linux)
+    extraPackages = with pkgs;
+      map (name: pkgs.${name}) packages.neovimOnly;
   };
 
   xdg.configFile = {

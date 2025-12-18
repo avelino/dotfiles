@@ -2,7 +2,7 @@
 
 let
   # Definições centralizadas para fácil manutenção
-  defaultEditor = "cursor";
+  defaultEditor = "nvim";
   defaultPager = "less -FirSwX";
   logseqPaths = {
     notes = "~/notes";

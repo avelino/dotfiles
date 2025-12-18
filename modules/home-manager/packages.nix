@@ -1,63 +1,61 @@
 { pkgs, lib, ... }:
 let
-  devTools = with pkgs; [
-    git
-    gh
-    act
-    hugo
+  packages = import ../packages.nix;
+
+  # Map Homebrew package names to Nix equivalents
+  nixNames = {
+    # Languages
+    "borkdude/brew/babashka" = "babashka";
+    "clojure/tools/clojure" = "clojure";
+    "oven-sh/bun/bun" = "bun";
+    "node" = "nodejs";
+    # LSP
+    "clojure-lsp/brew/clojure-lsp-native" = "clojure-lsp";
+    "dockerfile-language-server" = "dockerfile-language-server-nodejs";
+    "nixfmt" = "nixfmt-classic";
+    # CLI
+    "nvim" = "neovim";
+    "git-delta" = "delta";
+    "fd" = "fd";
+  };
+
+  toNixName = name: nixNames.${name} or name;
+
+  # Packages to skip on Linux (Darwin-specific or not in nixpkgs)
+  skipOnLinux = [
+    "nodenv"
+    "nvm"
+    "poetry"
+    "python@3.13"
+    "rustup-init"
+    "uv"
+    "cocoapods"
+    "llvm"
+    "cmake"
+    "the_silver_searcher"
+    "gnupg"
+    "imagemagick"
   ];
 
-  languagesAndRuntimes = with pkgs; [
-    go
-    nodejs
-    yarn
-    clojure
-    babashka
-    clj-kondo
-    clojure-lsp
-  ];
+  isNotSkipped = name: !builtins.elem name skipOnLinux;
 
-  cliUtilities = with pkgs; [
-    d2
-    jq
-    kubectl
-    kubectx
-    stern
-    argocd
-  ];
+  # Build Linux package list from central definition
+  linuxBrews = builtins.filter isNotSkipped (
+    packages.devops
+    ++ packages.languages.brewOnly
+    ++ packages.languages.common
+    ++ packages.buildTools
+    ++ packages.lsp.common
+    ++ packages.lsp.brewOnly
+    ++ packages.lsp.nixOnly
+    ++ packages.cli
+    ++ packages.docs
+  );
 
-  languageServers = with pkgs; [
-    bash-language-server
-    clang-tools
-    delve
-    dockerfile-language-server-nodejs
-    gofumpt
-    nil
-    lua-language-server
-    tailwindcss-language-server
-    taplo
-    terraform-ls
-    tflint
-    tree-sitter
-    typescript-language-server
-    vscode-langservers-extracted
-    yaml-language-server
-    zls
-  ];
+  linuxPackages = map (name: pkgs.${toNixName name}) linuxBrews;
 
-  formattersAndLinters = with pkgs; [
-    nixfmt-classic
-    pgformatter
-    shellcheck
-    shfmt
-    stylua
-    yamllint
-  ];
-
-  linuxExtra = with pkgs; [ ];
-
+  # Darwin fallback - packages better installed via Nix even on macOS
   darwinFallback = with pkgs; [
-    # Keep these available on macOS until there is a maintained Homebrew tap.
     nil
     babashka
     clj-kondo
@@ -65,19 +63,9 @@ let
 in
 lib.mkMerge [
   (lib.mkIf pkgs.stdenv.isLinux {
-    home.packages = devTools
-      ++ languagesAndRuntimes
-      ++ cliUtilities
-      ++ languageServers
-      ++ formattersAndLinters
-      ++ linuxExtra;
+    home.packages = linuxPackages;
   })
   (lib.mkIf pkgs.stdenv.isDarwin {
     home.packages = darwinFallback;
   })
 ]
-
-
-
-
-
